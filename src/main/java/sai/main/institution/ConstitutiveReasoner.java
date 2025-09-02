@@ -101,7 +101,7 @@ public class ConstitutiveReasoner extends Thread {
 
 
 	private String adaptTerm(String term){
-		return term.replaceAll("((_)(\\d)+(Var)?)+", "Var$1");
+		return term.replaceAll("(([\\(,\s])(_)+(\\d+)(Var)?)+", "$2Var$4");
 	}
 
 

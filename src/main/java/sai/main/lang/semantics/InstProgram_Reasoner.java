@@ -138,7 +138,9 @@ public class InstProgram_Reasoner extends InstProgram{
 		//}
 
 		//rule = rule + crule.getM();
-		rule = rule + FormulaAdapter.adaptFormula( crule.getM().toString().replaceAll("((_)+(\\d+)(Var)?)+", "Var$3"), this);
+		
+		//replace vars such as "_99" (preceeded by "(", ",", space, or nothing) with "Var99"
+		rule = rule + FormulaAdapter.adaptFormula( crule.getM().toString().replaceAll("(([\\(,\s])(_)+(\\d+)(Var)?)+", "$2Var$4"), this);
 		rule = rule + ")";
 
 
