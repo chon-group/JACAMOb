@@ -10,6 +10,7 @@ import jason.asSyntax.Term;
 import java.io.IOException;
 import java.util.AbstractQueue;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -150,6 +151,8 @@ public class ConstitutiveReasoner extends Thread {
 		int cicle=0;
 		ArrayList<String> sToAdd = new ArrayList<String>();
 		ArrayList<String> sToRemove = new ArrayList<String>();
+		HashSet<String> currentAssignments = new HashSet<String>();
+		String assignment;
 		synchronized (reasoner) {
 			//when a new constitutive state is calculated, event assignments are dropped
 			//first, remove the assignments from the listeners
@@ -165,26 +168,28 @@ public class ConstitutiveReasoner extends Thread {
 			pendingNormativeUpdates = false;
 			do{
 				changed=false;
-
+				currentAssignments.clear();
 
 				Iterator<Unifier> it = reasoner.findall("inGa(X,Y,M)");
 				String assignee = "";
 				while(it.hasNext()){				
 					Unifier un = it.next();					
-					if(reasoner.check( adaptTerm(un.get("M").toString()))){
-						changed=true;
+					if(reasoner.check( adaptTerm(un.get("M").toString()))){						
 						if(un.get("X")!=null){
-							sToAdd.add("sai__is("+ adaptTerm(un.get("X").toString()) + ","+ adaptTerm(un.get("Y").toString())+","+adaptTerm(un.get("M").toString())  +")");
+							assignment = "sai__is("+ adaptTerm(un.get("X").toString()) + ","+ adaptTerm(un.get("Y").toString())+","+adaptTerm(un.get("M").toString())  +")";
 							assignee = adaptTerm(un.get("X").toString());
 						}
 						else{
-							sToAdd.add("sai__is(_,"+ adaptTerm(un.get("Y").toString())+","+ adaptTerm(un.get("M").toString())  +")");
+							assignment = "sai__is(_,"+ adaptTerm(un.get("Y").toString())+","+ adaptTerm(un.get("M").toString())  +")";
 							assignee = "_";							
 						}
 
-						for( ConstitutiveListener l : constitutiveListeners){
-							l.addAgentAssignment(assignee, new AgentStatusFunction(createAtom(adaptTerm(un.get("Y").toString()))));
-
+						if(!currentAssignments.contains(assignment)) { //if there is not an equal assignment in the same cycle (i.e., which is not yet in the constitutive reasoner)
+							sToAdd.add(assignment);
+							for( ConstitutiveListener l : constitutiveListeners){
+								l.addAgentAssignment(assignee, new AgentStatusFunction(createAtom(adaptTerm(un.get("Y").toString()))));
+							}
+							changed=true;
 						}
 					}				
 				}
@@ -192,32 +197,32 @@ public class ConstitutiveReasoner extends Thread {
 				it = reasoner.findall("inGs(X,Y,M)");
 				while(it.hasNext()){				
 					Unifier un = it.next();
-					if(reasoner.check( adaptTerm(un.get("M").toString()))){
-						changed=true;
-						
-						assignee = addStateSf(un.get("X"), un.get("Y"), un.get("M"), sToAdd);
-						
-						for( ConstitutiveListener l : constitutiveListeners){
-							l.addStateAssignment(assignee, new StateStatusFunction(new Pred(parseLiteral(adaptTerm(un.get("Y").toString())))));
-						}						
+					if(reasoner.check( adaptTerm(un.get("M").toString()))){						
+						assignee = addStateSf(un.get("X"), un.get("Y"), un.get("M"), sToAdd, currentAssignments);
+						if(assignee!=null) {
+							changed=true;
+							for( ConstitutiveListener l : constitutiveListeners){
+								l.addStateAssignment(assignee, new StateStatusFunction(new Pred(parseLiteral(adaptTerm(un.get("Y").toString())))));
+							}					
+						}
 					}
-
-
-
 				}
 
 				it = reasoner.findall("inGe(X,Y,A,M)");
 				while(it.hasNext()){								
-					Unifier un = it.next();		
-					changed=true;
-					if(un.get("X")!=null)
-						sToAdd.add("sai__is("+ adaptTerm(un.get("X").toString()) + ","+ adaptTerm(un.get("Y").toString())+","+adaptTerm(un.get("A").toString())+","+adaptTerm(un.get("M").toString())  +")");
+					Unifier un = it.next();							
+					if(un.get("X")!=null) 
+						assignment = "sai__is("+ adaptTerm(un.get("X").toString()) + ","+ adaptTerm(un.get("Y").toString())+","+adaptTerm(un.get("A").toString())+","+adaptTerm(un.get("M").toString())  +")";
 					else
-						sToAdd.add("sai__is(_,"+ adaptTerm(un.get("Y").toString())+","+adaptTerm(un.get("A").toString()) +","+adaptTerm(un.get("M").toString()) +")");
-					sToAdd.add("sigmaE("+adaptTerm(un.get("Y").toString())+"[sai__agent("+adaptTerm(un.get("A").toString())+")])");
+						assignment = "sai__is(_,"+ adaptTerm(un.get("Y").toString())+","+adaptTerm(un.get("A").toString()) +","+adaptTerm(un.get("M").toString()) +")";
 
-					for( ConstitutiveListener l : constitutiveListeners){
-						l.addEventAssignment(adaptTerm(un.get("X").toString()), new EventStatusFunction(new Pred(parseLiteral(un.get("Y").toString()))),createAtom(adaptTerm(un.get("A").toString())));
+					if(!currentAssignments.contains(assignment)) { //if there is not an equal assignment in the same cycle (i.e., which is not yet in the constitutive reasoner)
+						sToAdd.add("sigmaE("+adaptTerm(un.get("Y").toString())+"[sai__agent("+adaptTerm(un.get("A").toString())+")])");
+
+						for( ConstitutiveListener l : constitutiveListeners){
+							l.addEventAssignment(adaptTerm(un.get("X").toString()), new EventStatusFunction(new Pred(parseLiteral(un.get("Y").toString()))),createAtom(adaptTerm(un.get("A").toString())));
+						}
+						changed=true;
 					}
 				}
 
@@ -277,9 +282,9 @@ public class ConstitutiveReasoner extends Thread {
 					reasoner.retract(s);
 				}	
 				sToRemove.clear();
-				
+
 				if(changed==true) //if the constitutive state has changed, then there are pending updates in the normative listeners
-				   pendingNormativeUpdates = true;
+					pendingNormativeUpdates = true;
 
 
 			}while(changed==true);
@@ -299,17 +304,23 @@ public class ConstitutiveReasoner extends Thread {
 		}//synchronized
 
 	}
-	
-	private String addStateSf(Term x, Term y, Term m, List<String> sToAdd) throws IOException {
-		String assignee;
+
+	private String addStateSf(Term x, Term y, Term m, List<String> sToAdd, HashSet<String> currentAssignments) throws IOException {
+		String assignee, assignment;
 		if(x!=null){
-			sToAdd.add("sai__is("+ adaptTerm(x.toString()) + ","+ adaptTerm(y.toString())+","+FormulaAdapter.adaptContextSFA(adaptTerm(m.toString()),false)+")");
+			assignment = "sai__is("+ adaptTerm(x.toString()) + ","+ adaptTerm(y.toString())+","+FormulaAdapter.adaptContextSFA(adaptTerm(m.toString()),false)+")"; 
+			if(currentAssignments.contains(assignment)) return null;
+			currentAssignments.add(assignment);
+			sToAdd.add(assignment);
 			assignee = adaptTerm(x.toString());
 		}
-		else{
-			sToAdd.add("sai__is(_,"+ adaptTerm(y.toString())+","+FormulaAdapter.adaptContextSFA(adaptTerm(m.toString())) +")");						
+		else{			
+			assignment = "sai__is(_,"+ adaptTerm(y.toString())+","+FormulaAdapter.adaptContextSFA(adaptTerm(m.toString())) +")";
+			if(currentAssignments.contains(assignment)) return null;
+			currentAssignments.add(assignment);
+			sToAdd.add( assignment);						
 			assignee = "_";
-		}
+		}		
 		sToAdd.add(adaptTerm(y.toString()));
 		return assignee;
 	}
