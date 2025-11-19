@@ -55,9 +55,9 @@ public class BasicReasonerHttpGUI implements IReasonerHttpGUI{
     }
 
     public synchronized static BasicReasonerHttpGUI get(int port) {
-        if(singleton==null) {
+        //if(singleton==null) {
             singleton = new BasicReasonerHttpGUI(port);
-        }
+        //}
         return singleton;
     }
 
