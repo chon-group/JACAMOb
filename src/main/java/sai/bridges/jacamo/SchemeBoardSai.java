@@ -20,6 +20,7 @@ import cartago.OpFeedbackParam;
 import cartago.util.agent.ActionFailedException;
 import jason.asSemantics.Unifier;
 import moise.common.MoiseException;
+import npl.NormativeListener;
 import npl.parser.ParseException;
 import ora4mas.nopl.SchemeBoard;
 import ora4mas.nopl.oe.Scheme;
@@ -134,6 +135,13 @@ public class SchemeBoardSai extends SchemeBoard implements IScheme2SaiListener{
 			e.printStackTrace();
 		}
 
+		
+		
+	}
+	
+	@OPERATION
+	public void addNormativeListener(NormativeListener listener) {
+		this.nengine.addListener(listener);
 	}
 
 
