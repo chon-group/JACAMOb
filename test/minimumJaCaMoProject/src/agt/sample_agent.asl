@@ -13,7 +13,10 @@
        .date(Y,M,D); .time(H,Min,Sec,MilSec); // get current date & time
        +started(Y,M,D,H,Min,Sec).            // add a new belief
 
-+body::port(P,S) <- .print(P," ",S).
++myBody::port(P,S) <- .print(P," ",S).
+
+//+myBody::light(V) <- .print("Light ",V).
+
 //+body::outraCoisa(S) <-  .print(S).
 
 { include("/home/nilson/chonGroup/JACAMOb/src/main/resources/templates/common-cartago.asl")}

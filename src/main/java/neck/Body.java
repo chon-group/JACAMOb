@@ -10,6 +10,7 @@ import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Structure;
 import jason.asSyntax.Term;
+import org.json.JSONObject;
 
 import java.util.*;
 
@@ -29,10 +30,10 @@ public class Body {
         this();
         this.bodyName = bodyName;
         this.logger = Logger.getLogger(bodyName);
+
     }
 
     public void attachApparatus(Apparatus implementation, String apparatusName) {
-        //String address = implementation.toString(); // placeholder — prefira app.getAddress() se existir.
         String address = implementation.getAddress();
 
         if (address != null && apparatusAttached.contains(address)) {
@@ -47,95 +48,24 @@ public class Body {
 
         apparatus[idx] = implementation;
         if (address != null) apparatusAttached.add(address);
-       // System.out.println("Attaching custom Apparatus: " + implementation.getClass().getName() +
-       //         (address != null ? " @ " + address : ""));
-
         apparatus[idx].setApparatusName(apparatusName);
     }
-
-//    public void attachApparatus(String address){
-//        if (!apparatusAttached.contains(address)){
-//            apparatus[apparatusAttached.size()] = new Apparatus(address);
-//            System.out.println("Attaching Apparatus in "+address);
-//            apparatusAttached.add(address);
-//        }else{
-//            System.out.println("Apparatus in "+address+" already attached");
-//        }
-//    }
-
-
-//    public List<Literal> getPerceptsList() {
-////        List<Literal> jPercept = new ArrayList<Literal>();
-////        // separa em ';' tolerando espaços antes/depois
-////        String[] perception = getPercepts().split("\\s*;\\s*");
-////        for (String p : perception) {
-////            if (p == null) continue;
-////            String t = p.trim();
-////            if (t.isEmpty()) continue; // ignora último vazio por causa do ';' final
-////            try {
-////                jPercept.add(parseLiteral("mybody::"+normalizeSourceTag(t)));
-////                //getTS().getAg().getBB().add(Literal.parseLiteral(rwPercepts.replace("[e]","[source(exteroception)]")));
-////            } catch (Exception e) {
-////                logger.log(Level.WARNING, "Parse error when parsing "+t);
-////            }
-////        }
-////        return jPercept;
-//        logger.log(Level.WARNING, "Nao esta percebendo ainda");
-//
-//        return null;
-//    }
 
     private List<Literal> getPercepts(){
         List<Literal> list = new ArrayList<>();
         for(int i = 0; i < apparatusAttached.size(); i++){
             if(apparatus[i].getStatus()){
-                //logger.log(Level.SEVERE,"Apparatus ["+apparatusAttached.get(i).toString()+"] OK");
-                apparatus[i].perceive();
+                apparatus[i].bodyPerception();
                 list.addAll(apparatus[i].getAllPerceptions());
             }else{
                 logger.log(Level.SEVERE,"Apparatus ["+apparatusAttached.get(i).toString()+"] not OK");
             }
         }
-         return list;
+        return list;
     }
-
-//    public void updatePercepts(TransitionSystem ts){
-//        try {
-//            removeBeliefsBySource("interoception",ts);
-//            removeBeliefsBySource("proprioception",ts);
-//            removeBeliefsBySource("exteroception",ts);
-//        } catch (RevisionFailedException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        List<Literal> newPercepts = getPercepts();
-//        for (Literal perception : newPercepts) {
-//            try {
-//                ts.getAg().addBel(perception);
-//            } catch (RevisionFailedException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
-//
-//    private void removeBeliefsBySource(String source, TransitionSystem ts) throws RevisionFailedException {
-//        for (Literal belief : ts.getAg().getBB()) {
-//            if (belief.hasAnnot()) {
-//                for (Term annotation : belief.getAnnots()) {
-//                    if (annotation.isStructure()) {
-//                        Structure annot = (Structure) annotation;
-//                        if (annot.getFunctor().equals("source") && annot.getTerm(0).equals(Literal.parseLiteral(source))) {
-//                            ts.getAg().delBel(belief);
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-
     public void updatePercepts(TransitionSystem ts) {
         try {
-            // 1) Novas percepções (já com as anotações source(i|p|e) conforme seu pipeline)
+            // 1) Novas percepções (já com as anotações source(i|p|e))
             List<Literal> incoming = getPercepts();
             Set<String> incomingKeys = new HashSet<>();
             for (Literal lit : incoming) {
@@ -216,8 +146,6 @@ public class Body {
         return ""; // nenhum source
     }
 
-
-
     public void act(String CMD){
         for(int i = 0; i < apparatusAttached.size(); i++){
             apparatus[i].act(CMD);
@@ -226,81 +154,4 @@ public class Body {
     }
 
 
-
-
-
-
-//    private String[] discover(){
-//        String[] portNames = SerialPortList.getPortNames();
-//        apparatusAvailablesInt = portNames.length;
-//
-//        if (portNames.length == 0) {
-//            System.out.println("Nenhuma porta serial encontrada.");
-//        }else{
-//            System.out.println("Portas seriais encontradas:");
-//            for (String portName : portNames) {
-//                System.out.println("- " + portName);
-//            }
-//        }
-//
-//        this.apparatusAvailables = new String[portNames.length];
-//        this.apparatusAvailables = portNames;
-//        return portNames;
-//    }
-
-//    public static String normalizeSourceTag(String s) {
-//
-//        // já está no formato [source(...)]? (case-insensitive, espaços tolerados)
-//        if (s.matches("(?i).*\\[\\s*source\\s*\\(.*\\)\\s*]\\s*$")) {
-//            return s;
-//        }
-//
-//        // separa "head" e o conteúdo opcional dos colchetes
-//        Matcher m = Pattern.compile("^\\s*(.*?)\\s*(?:\\[(.*?)\\])?\\s*$").matcher(s);
-//        if (!m.matches()) {
-//            // fallback: se não casar, adiciona default
-//            return s + "[source(interoception)]";
-//        }
-//
-//        String head = m.group(1).trim();
-//        String tag  = m.group(2) == null ? "" : m.group(2).trim();
-//
-//        String src;
-//        if (tag.equalsIgnoreCase("e"))      src = "exteroception";
-//        else if (tag.equalsIgnoreCase("p")) src = "proprioception";
-//        else                                src = "interoception"; // inclui [i] e sem colchetes
-//
-//        return head + "[source(" + src + ")]";
-//    }
-
 }
-
-
-//       ANDAMENTO
-
-//    public Body(Mode mode) {
-//        this();
-//        if (mode == Mode.AUTODISCOVERY) {
-//            String[] apparatusList = discover();
-//            for (int i=0;i<apparatusList.length;i++){
-//                attachApparatus(apparatusList[i]);
-//            }
-//
-//        }
-//    }
-
-
-//    public void disattachApparatus(String address){
-//
-//        if (apparatusAttached.contains(address)){
-//            for(int i = 0; i < apparatusAttached.size(); i++){
-//                if(apparatus[i].getPort()){
-//
-//                }
-//            }
-//            apparatusAttached.remove(address);
-//            apparatus[apparatusAttached.size()] = new Apparatus(address);
-//            System.out.println("Attaching Apparatus in "+address);
-//            apparatusAttached.add(address);
-//        }
-//    }

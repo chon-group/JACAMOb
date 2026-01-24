@@ -10,20 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dec0aa4-58dc-40b0-9fdb-139190be86f4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JACAMOb_jar.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/neck/DefaultApparatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/neck/model/BodyResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/neck/model/PerceptionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/neck/model/SerialPortStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maop/cartago/src/main/java/cartago/Workspace.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/cartago/src/main/java/cartago/Workspace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoAgArch.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoAgArch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/architecture/AgArch.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/architecture/AgArch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/mybody/act.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/mybody/act.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maop/npl/src/main/java/npl/parser/ParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/npl/src/main/java/npl/parser/ParseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maop/npl/src/main/java/npl/parser/nplp.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/npl/src/main/java/npl/parser/nplp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/group/chon/Apparatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/group/chon/Body.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/group/chon/util/EnvCompileArtifact.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/group/chon/util/EnvCompilerLite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/group/chon/util/ReflectCall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Body.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/minimumJaCaMoProject.jcm" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/minimumJaCaMoProject.jcm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/env/example/Counter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/bdy/custom/MyCustomApparatusImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/bdy/custom/MyCustomApparatusImplementation.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +42,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -53,13 +59,18 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Application.JaCaMoLauncher.executor&quot;: &quot;Run&quot;,
     &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Run.executor&quot;: &quot;Run&quot;,
     &quot;Application.RunJaCaMoProject.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SerialComm.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.intellij.ide.FileNotInSourceRootChecker.no.check&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/nilson/chonGroup/JACAMOb/test/minimumJaCaMoProject&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -125,8 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.138" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.138" />
       </set>
     </attachedChunks>
   </component>
@@ -157,6 +168,10 @@
       <workItem from="1759436380344" duration="12162000" />
       <workItem from="1759495237478" duration="6831000" />
       <workItem from="1759502583186" duration="1000000" />
+      <workItem from="1769110514538" duration="9167000" />
+      <workItem from="1769193704184" duration="7170000" />
+      <workItem from="1769261704471" duration="17420000" />
+      <workItem from="1769281392985" duration="5827000" />
     </task>
     <servers />
   </component>

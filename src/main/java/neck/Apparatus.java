@@ -1,6 +1,11 @@
 package neck;
 
+import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Literal;
+import neck.model.PerceptionType;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +14,6 @@ public abstract class Apparatus {
     private boolean status = true;
     private String apparatusName = null;
     private final String namespace = "myBody::";
-    private final String INTEROCEPTION = "source(interoception)";
-    private final String EXTEROCEPTION = "source(exteroception)";
-    private final String PROPRIOCEPTION = "source(proprioception)";
 
     List<Literal> interoceptions    = new ArrayList<>();
     List<Literal> exteroceptions    = new ArrayList<>();
@@ -33,8 +35,8 @@ public abstract class Apparatus {
 
     public void setApparatusName(String apparatusName) {this.apparatusName = apparatusName;}
 
-    private Literal getLiteralWithSourceBBAnotation(Literal l, String source) {
-        return Literal.parseLiteral(this.namespace+l.toString()+"["+source+",apparatus("+apparatusName+")]");
+    private Literal getLiteralWithSourceBBAnnotation(Literal l, PerceptionType type) {
+        return Literal.parseLiteral(this.namespace+l.toString()+"["+type.getSource()+",apparatus("+apparatusName+")]");
     }
 
     //
@@ -42,35 +44,23 @@ public abstract class Apparatus {
     /* TODO */
     public abstract void act(String CMD);
 
-    public abstract void perceive();
+    public abstract JSONObject perceive();
 
-    public List<Literal> getInteroceptions(){
-        List<Literal> list = new ArrayList<>();
-        list = interoceptions;
-        abolishInteroceptions();
-        return list;
-    }
+    public abstract JSONObject embody();
 
-    public List<Literal> getProprioceptions(){
-        List<Literal> list = new ArrayList<>();
-        list = proprioceptions;
-        abolishProprioceptions();
-        return list;
-    }
+    private List<Literal> getInteroceptions(){return this.interoceptions;}
+    private List<Literal> getProprioceptions(){return this.proprioceptions;}
+    private List<Literal> getExteroceptions(){return this.exteroceptions;}
 
-    public List<Literal> getExteroceptions(){
-        List<Literal> list = new ArrayList<>();
-        list = exteroceptions;
-        abolishExteroceptions();
-        return list;
-    }
+    private void abolishProprioceptions(){this.proprioceptions.clear();}
+    private void abolishInteroceptions(){this.interoceptions.clear();}
+    private void abolishExteroceptions(){this.exteroceptions.clear();}
 
     public List<Literal> getAllPerceptions() {
-    //    System.out.println("getAllPerceptions");
         List<Literal> list = new ArrayList<>();
-        list.addAll(interoceptions);
-        list.addAll(proprioceptions);
-        list.addAll(exteroceptions);
+        list.addAll(getInteroceptions());
+        list.addAll(getProprioceptions());
+        list.addAll(getExteroceptions());
 
         abolishInteroceptions();
         abolishProprioceptions();
@@ -79,21 +69,79 @@ public abstract class Apparatus {
         return list;
     }
 
-    public void addInteroception(Literal l){
-        interoceptions.add(getLiteralWithSourceBBAnotation(l,INTEROCEPTION));
+    public void bodyPerception() {
+        JSONObject bodyResponse = perceive();
+        loadPercepts(bodyResponse);
+        //addPercepts();
     }
 
-    public void addExteroception(Literal l){
-        exteroceptions.add(getLiteralWithSourceBBAnotation(l,EXTEROCEPTION));
+    private void addPercept(Literal l, PerceptionType type){
+        switch (type) {
+            case EXTEROCEPTION -> exteroceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.EXTEROCEPTION));
+            case INTEROCEPTION -> interoceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.INTEROCEPTION));
+            case PROPRIOCEPTION -> proprioceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.PROPRIOCEPTION));
+        }
     }
 
-    public void addProprioception(Literal l){
-        proprioceptions.add(getLiteralWithSourceBBAnotation(l,PROPRIOCEPTION));
+
+    private void loadPercepts(JSONObject bodyResponse) {
+        if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) return;
+        JSONObject percepts = bodyResponse.getJSONObject("percepts");
+        addPercepts(percepts, PerceptionType.EXTEROCEPTION);
+        addPercepts(percepts, PerceptionType.INTEROCEPTION);
+        addPercepts(percepts, PerceptionType.PROPRIOCEPTION);
     }
 
-    private void abolishProprioceptions(){proprioceptions.clear();}
+    private void addPercepts(JSONObject percepts, PerceptionType type) {
+        if (!percepts.has(type.getKey())) return;
 
-    private void abolishInteroceptions(){interoceptions.clear();}
+        JSONArray arr = percepts.getJSONArray(type.getKey());
 
-    private void abolishExteroceptions(){exteroceptions.clear();}
+        for (int i = 0; i < arr.length(); i++) {
+            JSONObject p = arr.getJSONObject(i);
+
+            String belief = p.optString("belief", null);
+            if (belief == null || belief.isBlank()) continue;
+
+            JSONArray args = p.optJSONArray("args");
+
+            addPercept(JSON2Literal(belief, args),type);
+        }
+    }
+
+    private Literal JSON2Literal(String belief, JSONArray args) {
+        Literal lit = ASSyntax.createLiteral(belief);
+
+        // sem args -> belief
+        if (args == null) return lit;
+
+        // com args -> belief(a,b,c)
+        for (int i = 0; i < args.length(); i++) {
+            lit.addTerm(ArgtoTerm(args.get(i)));
+        }
+
+        return lit;
+    }
+
+    private jason.asSyntax.Term ArgtoTerm(Object v) {
+        if (v == null || v == JSONObject.NULL) return ASSyntax.createString("null");
+        switch (v) {
+            case Boolean b -> {return ASSyntax.createAtom(b ? "true" : "false");}
+            case Integer i -> {return ASSyntax.createNumber(i);}
+            case Long    l -> {return ASSyntax.createNumber(l);}
+            case Double  d -> {return ASSyntax.createNumber(d);}
+            case String  s -> {
+                s = s.trim();
+                if (s.isEmpty()) return ASSyntax.createString("");
+                if (s.matches("[a-z][a-zA-Z0-9_]*")) {
+                    return ASSyntax.createAtom(s);      // tenta virar átomo
+                } else {
+                    return ASSyntax.createString(String.valueOf(v));
+                }
+            }
+            default -> {
+                return null;
+            }
+        }
+    }
 }
