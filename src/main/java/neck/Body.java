@@ -7,9 +7,7 @@ import java.util.logging.Logger;
 
 import jason.RevisionFailedException;
 import jason.asSemantics.TransitionSystem;
-import jason.asSyntax.Literal;
-import jason.asSyntax.Structure;
-import jason.asSyntax.Term;
+import jason.asSyntax.*;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -21,6 +19,8 @@ public class Body {
     Integer apparatusAvailablesInt = 0;
     Apparatus[] apparatus = new Apparatus[128];
     String bodyName;
+    public static final Atom BODY_NAMESPACE = ASSyntax.createAtom("myBody");
+    private static final String SOURCE_FUNCTOR = "source";
 
     private Body(){
        // System.out.println("CRIANDO UM CORPO...");
@@ -69,22 +69,24 @@ public class Body {
             List<Literal> incoming = getPercepts();
             Set<String> incomingKeys = new HashSet<>();
             for (Literal lit : incoming) {
-                incomingKeys.add(keyFor(lit));
+                incomingKeys.addAll(keysFor(lit));
             }
 
             // 2) Coleta crenças atuais com source(i|p|e) e identifica as que devem sair
             List<Literal> toDelete = new ArrayList<>();
             Set<String> currentKeys = new HashSet<>();
             for (Literal belief : ts.getAg().getBB()) {
-                if (!isFromKnownSource(belief)) continue; // só mexe nas crenças dessas origens
-                String k = keyFor(belief);
-                currentKeys.add(k);
-                if (!incomingKeys.contains(k)) {
-                    toDelete.add(belief); // estava antes e não veio agora → remover
+                if(!isFomBodyNS(belief)){continue;}
+                Set<String> ks = keysFor(belief);
+                currentKeys.addAll(ks);
+                for (String k : ks) {
+                    if (!incomingKeys.contains(k)) {
+                        toDelete.add(literalFromKey(belief, k));
+                    }
                 }
             }
 
-            // 3) Remove as que sumiram
+            // 3) Remove as que sumiram/mudaram
             for (Literal b : toDelete) {
                 ts.getAg().delBel(b);
             }
@@ -102,24 +104,7 @@ public class Body {
         }
     }
 
-    /** Verifica se a crença tem anotação source(i|p|e). */
-    private boolean isFromKnownSource(Literal belief) {
-        if (!belief.hasAnnot()) return false;
-        for (Term ann : belief.getAnnots()) {
-            if (ann.isStructure()) {
-                Structure s = (Structure) ann;
-                if ("source".equals(s.getFunctor()) && s.getArity() == 1) {
-                    String src = s.getTerm(0).toString(); // "interoception"/"proprioception"/"exteroception"
-                    if ("interoception".equals(src) || "proprioception".equals(src) || "exteroception".equals(src)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    /** Chave canônica: functor + termos + source(...) — garante comparação estável. */
+    /** Chave canônica: crença + termos + source(type,apparatus)*/
     private String keyFor(Literal l) {
         StringBuilder sb = new StringBuilder();
         sb.append(l.getFunctor()).append('(');
@@ -129,22 +114,32 @@ public class Body {
         }
         sb.append(')');
         sb.append("#src=").append(extractSource(l));
+        sb.append("#app=").append(extractApparatus(l));
         return sb.toString();
     }
 
-    private String extractSource(Literal l) {
-        if (l.hasAnnot()) {
-            for (Term ann : l.getAnnots()) {
-                if (ann.isStructure()) {
-                    Structure s = (Structure) ann;
-                    if ("source".equals(s.getFunctor()) && s.getArity() == 1) {
-                        return s.getTerm(0).toString();
-                    }
+
+    /** Pega o literal source(Type,App). */
+    private Literal getSource2(Literal l) {
+        for (Term ann : l.getAnnots()) {
+            if (ann.isLiteral()) {
+                Literal a = (Literal) ann;
+                if (SOURCE_FUNCTOR.equals(a.getFunctor()) && a.getArity() == 2) {
+                    return a;
                 }
             }
         }
-        return ""; // nenhum source
+        throw new IllegalStateException("Percept sem annotation source(Type,App): " + l);
     }
+
+    private String extractSource(Literal l) {
+        return getSource2(l).getTerm(0).toString(); // Type
+    }
+
+    private String extractApparatus(Literal l) {
+        return getSource2(l).getTerm(1).toString(); // App
+    }
+
 
     public void act(String CMD){
         for(int i = 0; i < apparatusAttached.size(); i++){
@@ -153,5 +148,106 @@ public class Body {
         }
     }
 
+
+    private boolean isFomBodyNS(Literal b){
+        if (b.getNS() == BODY_NAMESPACE){
+            //System.out.println("\t [SIM]"+b.toString());
+            return true;
+        }else{
+           // System.out.println("\t [NAO]"+b.toString());
+            return false;
+        }
+    }
+
+
+
+    private Set<String> keysFor(Literal l) {
+        String base = baseKey(l); // functor(termos...)
+
+        Set<String> keys = new LinkedHashSet<>();
+        for (SrcApp sa : extractSourcePairs(l)) {
+            keys.add(base + "#src=" + sa.src + "#app=" + sa.app);
+        }
+
+        // fallback de segurança (se não tiver source/2 por algum motivo)
+        if (keys.isEmpty()) {
+            keys.add(base + "#src=unknown#app=unknown");
+        }
+        return keys;
+    }
+
+    private static class SrcApp {
+        final String src;
+        final String app;
+        SrcApp(String src, String app) { this.src = src; this.app = app; }
+    }
+
+    private List<SrcApp> extractSourcePairs(Literal l) {
+        List<SrcApp> out = new ArrayList<>();
+
+        // pega TODAS as annotations e filtra source(...)
+        for (Term annT : l.getAnnots()) {
+            if (!(annT instanceof Literal ann)) continue;
+
+            if (!"source".equals(ann.getFunctor())) continue;
+
+            // source(Type,App)
+            if (ann.getArity() >= 2) {
+                String src = ann.getTerm(0).toString();
+                String app = ann.getTerm(1).toString();
+                out.add(new SrcApp(src, app));
+                continue;
+            }
+
+        }
+
+        return out;
+    }
+
+    private String baseKey(Literal l) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(l.getFunctor()).append('(');
+        for (int i = 0; i < l.getArity(); i++) {
+            if (i > 0) sb.append(',');
+            sb.append(l.getTerm(i).toString());
+        }
+        sb.append(')');
+        return sb.toString();
+    }
+
+    private Literal literalFromKey(Literal template, String key) {
+        // key:  "...#src=TYPE#app=APPARATUS"
+        String src = extractBetween(key, "#src=", "#app=");
+        String app = extractAfter(key, "#app=");
+
+        Literal out = (Literal) template.clone();
+        out.clearAnnots();
+
+        // source(TYPE,APPARATUS)
+        out.addAnnot(
+                ASSyntax.createStructure(
+                        "source",
+                        ASSyntax.createAtom(src),
+                        ASSyntax.createAtom(app)
+                )
+        );
+        return out;
+    }
+
+
+    private String extractBetween(String s, String a, String b) {
+        int ia = s.indexOf(a);
+        if (ia < 0) return "";
+        ia += a.length();
+        int ib = s.indexOf(b, ia);
+        if (ib < 0) return s.substring(ia);
+        return s.substring(ia, ib);
+    }
+
+    private String extractAfter(String s, String a) {
+        int ia = s.indexOf(a);
+        if (ia < 0) return "";
+        return s.substring(ia + a.length());
+    }
 
 }

@@ -13,7 +13,6 @@ public abstract class Apparatus {
     private String address = "setAddress";
     private boolean status = true;
     private String apparatusName = null;
-    private final String namespace = "myBody::";
 
     List<Literal> interoceptions    = new ArrayList<>();
     List<Literal> exteroceptions    = new ArrayList<>();
@@ -36,7 +35,19 @@ public abstract class Apparatus {
     public void setApparatusName(String apparatusName) {this.apparatusName = apparatusName;}
 
     private Literal getLiteralWithSourceBBAnnotation(Literal l, PerceptionType type) {
-        return Literal.parseLiteral(this.namespace+l.toString()+"["+type.getSource()+",apparatus("+apparatusName+")]");
+
+        //adding NAMESPACE
+        Literal out = Literal.parseLiteral(Body.BODY_NAMESPACE+"::"+l.toString());
+
+        // adding source(TYPE,APPARATUS)
+        out.addAnnot(
+                ASSyntax.createStructure(
+                        "source",
+                        ASSyntax.createAtom(type.getKey()),
+                        ASSyntax.createAtom(apparatusName)
+                )
+        );
+        return out;
     }
 
     //

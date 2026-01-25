@@ -15,6 +15,14 @@
 
 +myBody::port(P,S) <- .print(P," ",S).
 
+
+/*+myBody::lampStatus(V)[SOURCE]
+: SOURCE=source(T,S) & T=proprioception
+<- .print("IN lampStatus ->",V,"  ",T).
+-myBody::lampStatus(V)[SOURCE]
+: SOURCE=source(T,S) & T=proprioception
+<- .print("OUT lampStatus ->",V,"  ",T).
+*/
 //+myBody::light(V) <- .print("Light ",V).
 
 //+body::outraCoisa(S) <-  .print(S).
