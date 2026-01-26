@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 public class SerialComm {
     // JSON-seq over SLIP (igual ao JSON_SLP.h)
@@ -16,13 +17,16 @@ public class SerialComm {
     private static final int JSONSTART      = 0x1E; // RS  (JSON-seq)
     private static final int JSONEND        = 0x0A; // LF  (JSON-seq)
     private static final int TIMEOUTms      = 2500;
+    private Logger logger;
     private SerialPortStatus portStatus     = SerialPortStatus.UNKNOWN;
     private final String portAddress;
     private SerialPort port;
     private InputStream in;
     private OutputStream out;
 
+
     public SerialComm(String portName) {
+        this.logger = Logger.getLogger("NECK");
         this.portAddress = portName;
     }
 
@@ -34,8 +38,12 @@ public class SerialComm {
             port.setNumStopBits(SerialPort.ONE_STOP_BIT);
             port.setParity(SerialPort.NO_PARITY);
             port.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, TIMEOUTms, 0); // Leitura bloqueante com timeout (evita travar pra sempre)
-            if(port.openPort()) setPortStatus(SerialPortStatus.ON);
+            if(port.openPort()){
+                logger.info("Opening SerialComm at "+getPortAddress());
+                setPortStatus(SerialPortStatus.ON);
+            }
         }catch (Exception ex){
+            logger.info("ERROR to connect at "+getPortAddress());
             setPortStatus(SerialPortStatus.OFF);
             return;
         }
@@ -166,7 +174,7 @@ public class SerialComm {
     }
 
     public void setPortStatus(SerialPortStatus status){
-        System.out.println("[INFO]: "+getPortAddress()+" is "+status);
+        logger.info("Serial port is "+status);
         this.portStatus = status;
     }
     // ---------- Privados ----------
@@ -210,16 +218,23 @@ public class SerialComm {
             out.write(TRANSMISSION);        // endTransmission()
             out.flush();
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao enviar JSON_SLP", e);
+            setPortStatus(SerialPortStatus.OFF);
+            logger.severe("ERROR with communication at "+getPortAddress());
         }
     }
 
     private void readUntilByte(int target) {
         while (true) {
-            if (getPortStatus() == SerialPortStatus.TIMEOUT) return;
-            int b = readByte();
-            if (b < 0) throw new RuntimeException("Serial fechou antes de encontrar byte " + target);
-            if (b == target) return;
+            if (getPortStatus() == SerialPortStatus.ON){
+                int b = readByte();
+                if (b < 0){
+                    setPortStatus(SerialPortStatus.OFF);
+                    logger.severe("Serial fechou antes de encontrar byte");
+                }
+                if (b == target) return;
+            }else{
+                return;
+            }
         }
     }
 

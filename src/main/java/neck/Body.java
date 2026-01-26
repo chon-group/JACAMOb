@@ -151,14 +151,11 @@ public class Body {
 
     private boolean isFomBodyNS(Literal b){
         if (b.getNS() == BODY_NAMESPACE){
-            //System.out.println("\t [SIM]"+b.toString());
             return true;
         }else{
-           // System.out.println("\t [NAO]"+b.toString());
             return false;
         }
     }
-
 
 
     private Set<String> keysFor(Literal l) {

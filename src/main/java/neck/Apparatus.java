@@ -2,6 +2,7 @@ package neck;
 
 import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Literal;
+import jason.asSyntax.Term;
 import neck.model.PerceptionType;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,26 +12,26 @@ import java.util.List;
 
 public abstract class Apparatus {
     private String address = "setAddress";
-    private boolean status = true;
+    private boolean status = false;
     private String apparatusName = null;
 
-    List<Literal> interoceptions    = new ArrayList<>();
-    List<Literal> exteroceptions    = new ArrayList<>();
-    List<Literal> proprioceptions   = new ArrayList<>();
+    private List<Literal> interoceptions    = new ArrayList<>();
+    private List<Literal> exteroceptions    = new ArrayList<>();
+    private List<Literal> proprioceptions   = new ArrayList<>();
 
     public Apparatus() {}
 
     public Apparatus(String address) {this.address = address;}
 
-    public String getAddress() {return address;}
+    public String getAddress() {return this.address;}
 
     public void setAddress(String address) {this.address = address;}
 
-    public boolean getStatus() {return status;}
+    public boolean getStatus() {return this.status;}
 
     public void setStatus(boolean status) {this.status = status;}
 
-    //public String getApparatusName() {return apparatusName;}
+    public String getApparatusName() {return this.apparatusName;}
 
     public void setApparatusName(String apparatusName) {this.apparatusName = apparatusName;}
 
@@ -50,13 +51,13 @@ public abstract class Apparatus {
         return out;
     }
 
-    //
-
-    /* TODO */
+    /* TODO in Apparatus Implementation */
     public abstract void act(String CMD);
 
+    /* TODO in Apparatus Implementation */
     public abstract JSONObject perceive();
 
+    /* TODO in Apparatus Implementation */
     public abstract JSONObject embody();
 
     private List<Literal> getInteroceptions(){return this.interoceptions;}
@@ -82,8 +83,87 @@ public abstract class Apparatus {
 
     public void bodyPerception() {
         JSONObject bodyResponse = perceive();
+        loadInfo(bodyResponse);
         loadPercepts(bodyResponse);
-        //addPercepts();
+    }
+
+    private void loadInfo(JSONObject bdyReply){
+        if (!bdyReply.has("port")) return;
+
+        Literal litINFO = ASSyntax.createLiteral("port");
+        Term portStatus     = ASSyntax.createAtom(bdyReply.getString("port"));
+        Term portAddress    = ASSyntax.createString(getAddress());
+        Term apparatusName;
+        Term apparatusID;
+
+        if (bdyReply.has("apparatus") && bdyReply.has("apparatusID")){
+            apparatusName  = neck.util.Util.stringToAtom(bdyReply.getString("apparatus"));
+            apparatusID    = ASSyntax.createNumber(bdyReply.getLong("apparatusID"));
+        }else{
+            apparatusName  = neck.util.Util.stringToAtom("unknown");
+            apparatusID    = ASSyntax.createNumber(0);
+        }
+
+
+        litINFO.addTerm(portStatus);
+        litINFO.addTerm(portAddress);
+        litINFO.addTerm(apparatusName);
+        litINFO.addTerm(apparatusID);
+
+        addPercept(litINFO,PerceptionType.INTEROCEPTION);
+    }
+
+    private void loadPercepts(JSONObject bodyResponse) {
+        if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) return;
+        JSONObject percepts = bodyResponse.getJSONObject("percepts");
+        addPerceptsByPerceptionsType(percepts, PerceptionType.EXTEROCEPTION);
+        addPerceptsByPerceptionsType(percepts, PerceptionType.INTEROCEPTION);
+        addPerceptsByPerceptionsType(percepts, PerceptionType.PROPRIOCEPTION);
+    }
+
+    private void addPerceptsByPerceptionsType(JSONObject perceptions, PerceptionType perceptionType) {
+        /* EXPECTED...
+        {
+            "exteroception" :[{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}],
+            "interoception" :[{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}],
+            "proprioception":[{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}]
+        }
+        */
+        if (!perceptions.has(perceptionType.getKey())) return;
+
+        /* Extracting the array of the percepts type (based on PerceptionType informed)
+            "exteroception" : [{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}]
+        */
+        JSONArray filteredPerceptionsByType = perceptions.getJSONArray(perceptionType.getKey());
+
+        /*  Traversing the chosen array
+            [
+                {"belief":"b1","args":[0,1,2]},
+                {"belief":"b2","args":[0,1,2]},
+                {"belief":"bn"}
+            ]
+        */
+        for (int i = 0; i < filteredPerceptionsByType.length(); i++) {
+            /* getting the object (i)
+            *   {"belief":"b1","args":[0,1,2]}
+            * */
+            JSONObject jsonObject = filteredPerceptionsByType.getJSONObject(i);
+
+            /* EXPECTED
+            * {"belief":"b1","args":[0,1,2]}
+            * */
+            if(jsonObject.has("belief")){
+                /* getting the belief name -->  "belief":"b1"   */
+                Literal belief = neck.util.Util.JSONObjectToLiteral(jsonObject,"belief");
+
+                /* getting the args array -->   "args":[0,1,2]  */
+                if(jsonObject.has("args")){
+                    JSONArray termsArgs = jsonObject.getJSONArray("args");
+                    belief = neck.util.Util.addJSONArrayAsTermsInLiteral(belief,termsArgs);
+                }
+                addPercept(belief,perceptionType);
+            }
+        }
     }
 
     private void addPercept(Literal l, PerceptionType type){
@@ -91,68 +171,6 @@ public abstract class Apparatus {
             case EXTEROCEPTION -> exteroceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.EXTEROCEPTION));
             case INTEROCEPTION -> interoceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.INTEROCEPTION));
             case PROPRIOCEPTION -> proprioceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.PROPRIOCEPTION));
-        }
-    }
-
-
-    private void loadPercepts(JSONObject bodyResponse) {
-        if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) return;
-        JSONObject percepts = bodyResponse.getJSONObject("percepts");
-        addPercepts(percepts, PerceptionType.EXTEROCEPTION);
-        addPercepts(percepts, PerceptionType.INTEROCEPTION);
-        addPercepts(percepts, PerceptionType.PROPRIOCEPTION);
-    }
-
-    private void addPercepts(JSONObject percepts, PerceptionType type) {
-        if (!percepts.has(type.getKey())) return;
-
-        JSONArray arr = percepts.getJSONArray(type.getKey());
-
-        for (int i = 0; i < arr.length(); i++) {
-            JSONObject p = arr.getJSONObject(i);
-
-            String belief = p.optString("belief", null);
-            if (belief == null || belief.isBlank()) continue;
-
-            JSONArray args = p.optJSONArray("args");
-
-            addPercept(JSON2Literal(belief, args),type);
-        }
-    }
-
-    private Literal JSON2Literal(String belief, JSONArray args) {
-        Literal lit = ASSyntax.createLiteral(belief);
-
-        // sem args -> belief
-        if (args == null) return lit;
-
-        // com args -> belief(a,b,c)
-        for (int i = 0; i < args.length(); i++) {
-            lit.addTerm(ArgtoTerm(args.get(i)));
-        }
-
-        return lit;
-    }
-
-    private jason.asSyntax.Term ArgtoTerm(Object v) {
-        if (v == null || v == JSONObject.NULL) return ASSyntax.createString("null");
-        switch (v) {
-            case Boolean b -> {return ASSyntax.createAtom(b ? "true" : "false");}
-            case Integer i -> {return ASSyntax.createNumber(i);}
-            case Long    l -> {return ASSyntax.createNumber(l);}
-            case Double  d -> {return ASSyntax.createNumber(d);}
-            case String  s -> {
-                s = s.trim();
-                if (s.isEmpty()) return ASSyntax.createString("");
-                if (s.matches("[a-z][a-zA-Z0-9_]*")) {
-                    return ASSyntax.createAtom(s);      // tenta virar átomo
-                } else {
-                    return ASSyntax.createString(String.valueOf(v));
-                }
-            }
-            default -> {
-                return null;
-            }
         }
     }
 }
