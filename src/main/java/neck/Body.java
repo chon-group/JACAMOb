@@ -53,9 +53,10 @@ public class Body {
             attachedAppName.add(apparatusName);
             apparatus[idx] = implementation;
             apparatus[idx].setApparatusName(apparatusName);
+            logger.info("Apparatus ["+apparatusName+"] was attached!");
             return true;
         }
-
+        logger.info("ERROR when attaching the Apparatus ["+apparatusName+"]");
         return false;
     }
 
@@ -262,9 +263,11 @@ public class Body {
                     apparatus[k] = apparatus[k + 1];
                 }
                 apparatus[newSize] = null;
+                logger.info("Apparatus ["+apparatusName+"] was detached!");
                 return true;
             }
         }
+        logger.severe("ERROR in detaching Apparatus ["+apparatusName+"]");
         return false;
     }
 }

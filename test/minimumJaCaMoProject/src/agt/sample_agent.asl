@@ -6,7 +6,7 @@
 
 !start.
 !attach1.
-!attach2.
+//!attach2.
 
 /* Plans */
 
@@ -44,3 +44,9 @@
 
 // uncomment the include below to have an agent compliant with its organisation
 //{ include("$moise/asl/org-obedient.asl") }
+
+
++myBody::port(off,PORT,_,_)[source(interoception,APPARATUS)] <-
+    .print(APPARATUS, " is OFF");
+    .mybody.neckDetach(APPARATUS);
+.
