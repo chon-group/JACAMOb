@@ -63,6 +63,18 @@ public class Util {
         return literal;
     }
 
+     public static String getFormatedPortName(String in){
+        if (in != null){
+            in = in.trim();
+            // remove aspas apenas se estiverem no início e no fim
+            if (in.length() >= 2 &&
+                    in.startsWith("\"") &&
+                    in.endsWith("\"")) {
+                in = in.substring(1, in.length() - 1);
+            }
+        }
+        return in;
+    }
 
     /* PRIVATES */
     private static Term jsonObjectToTerm(Object object) {

@@ -14,55 +14,61 @@ import java.util.*;
 
 public class Body {
     Logger logger;
-    String[] apparatusAvailables;
-    List<String> apparatusAttached = new ArrayList<>();
-    Integer apparatusAvailablesInt = 0;
+    //String[] apparatusAvailables;
+    List<String> attachedAppAddress = new ArrayList<>();
+    List<String> attachedAppName = new ArrayList<>();
+    //Integer apparatusAvailablesInt = 0;
     Apparatus[] apparatus = new Apparatus[128];
     String bodyName;
     public static final Atom BODY_NAMESPACE = ASSyntax.createAtom("myBody");
     private static final String SOURCE_FUNCTOR = "source";
 
-    private Body(){
-       // System.out.println("CRIANDO UM CORPO...");
-    }
-
     public Body(String bodyName) {
-        this();
         this.bodyName = bodyName;
         this.logger = Logger.getLogger(bodyName);
-
+        logger.info("Embodying...");
     }
 
-    public void attachApparatus(Apparatus implementation, String apparatusName) {
+    public boolean attachApparatus(Apparatus implementation, String apparatusName) {
         String address = implementation.getAddress();
+        int idx = attachedAppAddress.size();
 
-        if (address != null && apparatusAttached.contains(address)) {
-            System.out.println("Apparatus in " + address + " already attached");
-            return;
+        if (address != null && attachedAppAddress.contains(address)) {
+            logger.info("Apparatus in " + address + " already attached");
+            return false;
         }
 
-        int idx = apparatusAttached.size();
+        if (apparatusName != null && attachedAppName.contains(apparatusName)) {
+            logger.info("Apparatus " + apparatusName + " is already attached");
+            return false;
+        }
+
         if (idx >= apparatus.length) {
-            throw new IllegalStateException("Capacidade de apparatus esgotada (" + apparatus.length + ")");
+            logger.severe("Capacidade de apparatus esgotada (" + apparatus.length + ")");
+            return false;
         }
 
-        apparatus[idx] = implementation;
-        if (address != null) apparatusAttached.add(address);
-        apparatus[idx].setApparatusName(apparatusName);
+        if (address != null && apparatusName != null){
+            attachedAppAddress.add(address);
+            attachedAppName.add(apparatusName);
+            apparatus[idx] = implementation;
+            apparatus[idx].setApparatusName(apparatusName);
+            return true;
+        }
+
+        return false;
     }
 
     private List<Literal> getPercepts(){
         List<Literal> list = new ArrayList<>();
-        for(int i = 0; i < apparatusAttached.size(); i++){
-            if(apparatus[i].getStatus()){
-                apparatus[i].bodyPerception();
-                list.addAll(apparatus[i].getAllPerceptions());
-            }else{
-                logger.log(Level.SEVERE,"Apparatus ["+apparatusAttached.get(i).toString()+"] not OK");
-            }
+        for(int i = 0; i < attachedAppName.size(); i++){
+            if(!apparatus[i].getStatus()) logger.log(Level.SEVERE,"Apparatus ["+apparatus[i].getApparatusName()+"] is "+apparatus[i].getConnectionStatus());
+            apparatus[i].bodyPerception();
+            list.addAll(apparatus[i].getAllPerceptions());
         }
         return list;
     }
+
     public void updatePercepts(TransitionSystem ts) {
         try {
             // 1) Novas percepções (já com as anotações source(i|p|e))
@@ -118,7 +124,6 @@ public class Body {
         return sb.toString();
     }
 
-
     /** Pega o literal source(Type,App). */
     private Literal getSource2(Literal l) {
         for (Term ann : l.getAnnots()) {
@@ -142,7 +147,7 @@ public class Body {
 
 
     public void act(String CMD){
-        for(int i = 0; i < apparatusAttached.size(); i++){
+        for(int i = 0; i < attachedAppName.size(); i++){
             apparatus[i].act(CMD);
             logger.log(Level.SEVERE,"[body] actinging "+CMD+" in "+apparatus[i].getAddress());
         }
@@ -156,7 +161,6 @@ public class Body {
             return false;
         }
     }
-
 
     private Set<String> keysFor(Literal l) {
         String base = baseKey(l); // functor(termos...)
@@ -231,7 +235,6 @@ public class Body {
         return out;
     }
 
-
     private String extractBetween(String s, String a, String b) {
         int ia = s.indexOf(a);
         if (ia < 0) return "";
@@ -247,4 +250,21 @@ public class Body {
         return s.substring(ia + a.length());
     }
 
+    public boolean detachApparatusByName(String apparatusName) {
+        if (apparatusName == null) return false;
+        int n = attachedAppName.size();
+        for (int i = 0; i < n; i++) {
+            if (apparatus[i] != null && apparatusName.equals(apparatus[i].getApparatusName())) {
+                attachedAppName.remove(i);
+                attachedAppAddress.remove(i);
+                int newSize = attachedAppName.size();
+                for (int k = i; k < newSize; k++) {
+                    apparatus[k] = apparatus[k + 1];
+                }
+                apparatus[newSize] = null;
+                return true;
+            }
+        }
+        return false;
+    }
 }

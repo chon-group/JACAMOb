@@ -153,22 +153,20 @@ public class JaCaMoAgArch extends AgArch {
     }
 
 
-
-    public void createMyBody(){
+    private void createMyBody(){
         CompilerLite.ensureEnvClassLoaderInstalled("src/bdy");
         Collection<JaCaMoBodyParameters> bodies = JaCaMoLauncher.getJaCaMoRunner().getJaCaMoProject().getBodies();
 
         for (JaCaMoBodyParameters b : bodies) {
             if(getAgName().equals(b.getName())){
-                this.body = new Body(b.getName());
                 for (var e : b.getApparatusEntries()) {
                     String name = e.getKey();
                     ClassParameters cp = e.getValue();
                     System.out.println(" - " + name + " -> " + cp);
                     try {
-                        Object created = ReflectCall.invoke(body, cp.toString());
+                        Object created = ReflectCall.invoke(getAgtBody(), cp.toString());
                         if (created instanceof Apparatus) {
-                            body.attachApparatus((Apparatus) created, name);
+                            getAgtBody().attachApparatus((Apparatus) created, name);
                         }
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
@@ -176,6 +174,11 @@ public class JaCaMoAgArch extends AgArch {
                 }
             }
         }
+    }
+
+    public Body getAgtBody(){
+        if(this.body == null)this.body = new Body(getAgName());
+        return this.body;
     }
 
     @Override

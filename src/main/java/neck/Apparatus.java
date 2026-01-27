@@ -4,6 +4,8 @@ import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Term;
 import neck.model.PerceptionType;
+import neck.model.SerialPortStatus;
+import neck.util.SerialComm;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,9 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Apparatus {
-    private String address = "setAddress";
-    private boolean status = false;
+    //private String address = "setAddress";
+    //private boolean status = false;
     private String apparatusName = null;
+    private String hwAppName = null;
+    private Long hwAppID = null;
+    private SerialComm serialComm = null;
 
     private List<Literal> interoceptions    = new ArrayList<>();
     private List<Literal> exteroceptions    = new ArrayList<>();
@@ -21,15 +26,32 @@ public abstract class Apparatus {
 
     public Apparatus() {}
 
-    public Apparatus(String address) {this.address = address;}
+    //public Apparatus(String address) {setAddress(address);}
+    public void setSerialComm(SerialComm sComm){
+        if(this.serialComm != null && this.serialComm.getPortStatus() == SerialPortStatus.ON) this.serialComm.closeConnection();
+        this.serialComm = sComm;
+        this.serialComm.openConnection();
+    }
+    public String getAddress() {
+        if(this.serialComm != null) return this.serialComm.getPortAddress();
+        return null;
+    }
 
-    public String getAddress() {return this.address;}
+    public boolean getStatus() {
+        if(this.serialComm.getPortStatus() == SerialPortStatus.ON) return true;
+        else return false;
+    }
 
-    public void setAddress(String address) {this.address = address;}
+    public SerialPortStatus getConnectionStatus(){
+        return this.serialComm.getPortStatus();
+    }
 
-    public boolean getStatus() {return this.status;}
-
-    public void setStatus(boolean status) {this.status = status;}
+    public String getHwAppName(){
+        JSONObject jsonObject = this.serialComm.sendMsg("getHWInfo");
+        if(jsonObject.has("apparatus"))
+            return jsonObject.getString("apparatus");
+        return "unknown";
+    }
 
     public String getApparatusName() {return this.apparatusName;}
 
@@ -173,4 +195,5 @@ public abstract class Apparatus {
             case PROPRIOCEPTION -> proprioceptions.add(getLiteralWithSourceBBAnnotation(l,PerceptionType.PROPRIOCEPTION));
         }
     }
+
 }

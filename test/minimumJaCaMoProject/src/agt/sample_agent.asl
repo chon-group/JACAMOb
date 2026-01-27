@@ -5,6 +5,8 @@
 /* Initial goals */
 
 !start.
+!attach1.
+!attach2.
 
 /* Plans */
 
@@ -12,6 +14,14 @@
     <- .print("hello world.");
        .date(Y,M,D); .time(H,Min,Sec,MilSec); // get current date & time
        +started(Y,M,D,H,Min,Sec).            // add a new belief
+
++!attach1 <-
+    .mybody.neckAttach(app1,"/dev/ttyUSB0");
+.
+
++!attach2 <-
+     .mybody.neckAttach(app1,"/dev/ttyUSB1");
+.
 
 +myBody::port(P,S) <- .print(P," ",S).
 

@@ -1,5 +1,6 @@
 package neck;
 
+import jason.asSyntax.ASSyntax;
 import neck.model.SerialPortStatus;
 import neck.util.SerialComm;
 import org.json.JSONObject;
@@ -11,15 +12,8 @@ public class DefaultApparatus extends Apparatus {
     private SerialComm serialComm;
 
     public DefaultApparatus(String address) {
-        super(address);
-        this.logger = Logger.getLogger(address);
-        this.serialComm = new SerialComm(address);
-        this.serialComm.openConnection();
-        if(this.serialComm.getPortStatus() == SerialPortStatus.ON){
-            this.setStatus(true);
-        }else{
-            this.setStatus(false);
-        }
+        this.serialComm = new SerialComm(neck.util.Util.getFormatedPortName(address));
+        super.setSerialComm(this.serialComm);
     }
 
     @Override
@@ -29,7 +23,7 @@ public class DefaultApparatus extends Apparatus {
 
     @Override
     public JSONObject perceive() {
-        JSONObject out =serialComm.sendMsg("getPercepts");
+        JSONObject out = serialComm.sendMsg("getPercepts");
         //System.out.println(out.toString());
         return out;
     }

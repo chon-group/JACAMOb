@@ -19,28 +19,29 @@ public class SerialComm {
     private static final int TIMEOUTms      = 2500;
     private Logger logger;
     private SerialPortStatus portStatus     = SerialPortStatus.UNKNOWN;
-    private final String portAddress;
+    private String portAddress;
     private SerialPort port;
     private InputStream in;
     private OutputStream out;
 
-
     public SerialComm(String portName) {
         this.logger = Logger.getLogger("NECK");
-        this.portAddress = portName;
+        this.portAddress = neck.util.Util.getFormatedPortName(portName);
     }
 
     public void openConnection() {
         try{
-            port = SerialPort.getCommPort(portAddress);
-            port.setBaudRate(BAUD_RATE);
-            port.setNumDataBits(8);
-            port.setNumStopBits(SerialPort.ONE_STOP_BIT);
-            port.setParity(SerialPort.NO_PARITY);
-            port.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, TIMEOUTms, 0); // Leitura bloqueante com timeout (evita travar pra sempre)
-            if(port.openPort()){
+            this.port = SerialPort.getCommPort(portAddress);
+            this.port.setBaudRate(BAUD_RATE);
+            this.port.setNumDataBits(8);
+            this.port.setNumStopBits(SerialPort.ONE_STOP_BIT);
+            this.port.setParity(SerialPort.NO_PARITY);
+            this.port.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, TIMEOUTms, 0); // Leitura bloqueante com timeout (evita travar pra sempre)
+            if(this.port.openPort()){
                 logger.info("Opening SerialComm at "+getPortAddress());
-                setPortStatus(SerialPortStatus.ON);
+            }else{
+                logger.info("Port already in use or cannot open: " + getPortAddress());
+                return;
             }
         }catch (Exception ex){
             logger.info("ERROR to connect at "+getPortAddress());
@@ -51,13 +52,12 @@ public class SerialComm {
         try {
             Thread.sleep(TIMEOUTms);          // janela de boot
             drainInput(TIMEOUTms/4, TIMEOUTms);
+            in = port.getInputStream();
+            out = port.getOutputStream();
+            setPortStatus(SerialPortStatus.ON);
         } catch (InterruptedException e) {
             setPortStatus(SerialPortStatus.OFF);
-            return;
         }
-
-        in = port.getInputStream();
-        out = port.getOutputStream();
     }
 
     public void closeConnection() {
@@ -173,11 +173,11 @@ public class SerialComm {
         return this.portAddress;
     }
 
-    public void setPortStatus(SerialPortStatus status){
-        logger.info("Serial port is "+status);
+    // ---------- Privados ----------
+    private void setPortStatus(SerialPortStatus status){
+        logger.info("Serial port ["+getPortAddress()+"] is "+status);
         this.portStatus = status;
     }
-    // ---------- Privados ----------
 
     private JSONObject prepareJSON(String strMessage, Object... args){
         JSONObject req = new JSONObject();
@@ -218,8 +218,8 @@ public class SerialComm {
             out.write(TRANSMISSION);        // endTransmission()
             out.flush();
         } catch (Exception e) {
-            setPortStatus(SerialPortStatus.OFF);
             logger.severe("ERROR with communication at "+getPortAddress());
+            setPortStatus(SerialPortStatus.OFF);
         }
     }
 
@@ -283,22 +283,4 @@ public class SerialComm {
         }
     }
 
-    /* testes */
-
-    public static void main(String[] args){
-        SerialComm serialComm = new SerialComm("/dev/ttyUSB0");
-        System.out.println("Abrindo conexao...");
-        serialComm.openConnection();
-        System.out.println("Enviando getPercepts");
-        JSONObject reply = serialComm.sendMsg("getPercepts");
-        System.out.println(reply.toString());
-        reply = serialComm.sendMsg("getPercepts");
-        System.out.println(reply.toString());
-        /*reply = serialComm.sendMsg("getActions");
-        System.out.println(reply.toString());
-        reply = serialComm.sendMsg("getSkills");
-        System.out.println(reply.toString());*/
-        System.out.println("Fechando conexao...");
-        serialComm.closeConnection();
-    }
 }
