@@ -73,7 +73,7 @@ public class SerialComm {
     public JSONObject sendMsg(String strMessage, Object... args) {
 
         //enviando mensagem...
-        if (getPortStatus() == SerialPortStatus.ON) sendJsonSlp(prepareJSON(strMessage,args));
+        if (!(getPortStatus() == SerialPortStatus.OFF)) sendJsonSlp(prepareJSON(strMessage,args));
 
         // Preparando para receber resposta.
         JSONObject meta = new JSONObject();         // bodyResponse
@@ -86,10 +86,9 @@ public class SerialComm {
                 .put("proprioception", new JSONArray())
                 .put("exteroception", new JSONArray());
 
-        if (getPortStatus() == SerialPortStatus.ON) {
-            readUntilByte(TRANSMISSION);                // 1) aguarda início da transmissão (0xC0)
-
-            while (getPortStatus() == SerialPortStatus.ON) {                              // 2) lê records até fechar transmissão (próximo 0xC0)
+        if (!(getPortStatus() == SerialPortStatus.OFF)) {
+            readUntilByte(TRANSMISSION);                                // 1) aguarda início da transmissão (0xC0)
+            while (getPortStatus() == SerialPortStatus.ON) {            // 2) lê records até fechar transmissão (próximo 0xC0)
                 int b = readByte();
                 if (b < 0) throw new RuntimeException("Serial fechou durante a leitura.");
                 if (b == TRANSMISSION) break;           // fim da transmissão
@@ -226,14 +225,22 @@ public class SerialComm {
 
     private void readUntilByte(int target) {
         while (true) {
-            if (getPortStatus() == SerialPortStatus.ON){
+            if (!(getPortStatus() == SerialPortStatus.OFF)){
                 int b = readByte();
-                if (b < 0){
-                    setPortStatus(SerialPortStatus.OFF);
-                    logger.severe("Serial fechou antes de encontrar byte");
+                if (b == target) {
+                    if(getPortStatus()==SerialPortStatus.TIMEOUT) setPortStatus(SerialPortStatus.ON);
+                    return;
                 }
-                if (b == target) return;
+                else if (b < 0) {
+                    logger.severe("Serial port is OFF...");
+                    setPortStatus(SerialPortStatus.OFF);
+                    return;
+                }else if (b == 0){
+                    if(getPortStatus()==SerialPortStatus.ON) setPortStatus(SerialPortStatus.TIMEOUT);
+                    return;
+                }
             }else{
+                logger.severe("Serial port is OFF...");
                 return;
             }
         }

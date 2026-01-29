@@ -6,7 +6,7 @@
 
 !start.
 !attach1.
-!attach2.
+//!attach2.
 
 /* Plans */
 
@@ -16,7 +16,7 @@
        +started(Y,M,D,H,Min,Sec).            // add a new belief
 
 +!attach1 <-
-    .mybody.neckAttach("/dev/ttyUSB0");
+    .mybody.neckAttach("/dev/ttyEmulatedPort2");
 .
 
 +!attach2 <-
