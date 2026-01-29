@@ -38,13 +38,13 @@ public class SerialComm {
             this.port.setParity(SerialPort.NO_PARITY);
             this.port.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, TIMEOUTms, 0); // Leitura bloqueante com timeout (evita travar pra sempre)
             if(this.port.openPort()){
-                logger.info("Opening SerialComm at "+getPortAddress());
+                logger.fine("Opening SerialComm at "+getPortAddress());
             }else{
-                logger.info("Port already in use or cannot open: " + getPortAddress());
+                logger.severe("Port already in use or cannot open: " + getPortAddress());
                 return;
             }
         }catch (Exception ex){
-            logger.info("ERROR to connect at "+getPortAddress());
+            logger.severe("ERROR to connect at "+getPortAddress());
             setPortStatus(SerialPortStatus.OFF);
             return;
         }
@@ -61,9 +61,10 @@ public class SerialComm {
     }
 
     public void closeConnection() {
-        try { if (in != null) in.close(); } catch (Exception ignored) {}
-        try { if (out != null) out.close(); } catch (Exception ignored) {}
-        if (port != null) port.closePort();
+        try { if (this.in != null) this.in.close(); } catch (Exception ignored) {}
+        try { if (this.out != null) this.out.close(); } catch (Exception ignored) {}
+        if (this.port != null) this.port.closePort();
+        this.port = null;
         portStatus = SerialPortStatus.OFF;
     }
 
@@ -175,7 +176,7 @@ public class SerialComm {
 
     // ---------- Privados ----------
     private void setPortStatus(SerialPortStatus status){
-        logger.info("Serial port ["+getPortAddress()+"] is "+status);
+        logger.fine("Serial port ["+getPortAddress()+"] is "+status);
         this.portStatus = status;
     }
 

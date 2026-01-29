@@ -11,7 +11,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0dec0aa4-58dc-40b0-9fdb-139190be86f4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/mybody/neckAttach.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/mybody/neckAttach.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/neck/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/DefaultApparatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/DefaultApparatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,6 +168,8 @@
       <workItem from="1769351835241" duration="20108000" />
       <workItem from="1769448131619" duration="11523000" />
       <workItem from="1769518201509" duration="25657000" />
+      <workItem from="1769657841236" duration="4190000" />
+      <workItem from="1769662079035" duration="1399000" />
     </task>
     <servers />
   </component>

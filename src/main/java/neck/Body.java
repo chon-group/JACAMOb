@@ -48,7 +48,7 @@ public class Body {
             return false;
         }
 
-        if (address != null && apparatusName != null){
+        if (address != null && apparatusName != null && implementation.getStatus()){
             attachedAppAddress.add(address);
             attachedAppName.add(apparatusName);
             apparatus[idx] = implementation;
@@ -256,6 +256,7 @@ public class Body {
         int n = attachedAppName.size();
         for (int i = 0; i < n; i++) {
             if (apparatus[i] != null && apparatusName.equals(apparatus[i].getApparatusName())) {
+                apparatus[i].disconnect();
                 attachedAppName.remove(i);
                 attachedAppAddress.remove(i);
                 int newSize = attachedAppName.size();

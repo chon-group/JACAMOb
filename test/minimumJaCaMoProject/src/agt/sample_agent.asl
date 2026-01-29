@@ -6,7 +6,7 @@
 
 !start.
 !attach1.
-//!attach2.
+!attach2.
 
 /* Plans */
 
@@ -16,11 +16,11 @@
        +started(Y,M,D,H,Min,Sec).            // add a new belief
 
 +!attach1 <-
-    .mybody.neckAttach(app1,"/dev/ttyUSB0");
+    .mybody.neckAttach("/dev/ttyUSB0");
 .
 
 +!attach2 <-
-     .mybody.neckAttach(app1,"/dev/ttyUSB1");
+     .mybody.neckAttach("/dev/ttyUSB1");
 .
 
 +myBody::port(P,S) <- .print(P," ",S).
@@ -47,6 +47,14 @@
 
 
 +myBody::port(off,PORT,_,_)[source(interoception,APPARATUS)] <-
-    .print(APPARATUS, " is OFF");
     .mybody.neckDetach(APPARATUS);
+    !!tryAttach(APPARATUS,PORT);
 .
+
++!tryAttach(APPARATUS,PORT) <-
+     .random(R);
+     .wait(15000*R);
+     .mybody.neckAttach(APPARATUS,PORT);
+.
+
+-!tryAttach(APPARATUS,PORT) <- !!tryAttach(APPARATUS,PORT); .

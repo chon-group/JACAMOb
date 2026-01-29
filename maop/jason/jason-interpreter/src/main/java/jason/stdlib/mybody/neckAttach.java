@@ -46,6 +46,7 @@ public class neckAttach extends DefaultInternalAction {
             .mybody.neckAttach(ADDRESS)
          */
         checkArguments(args);
+        if(!neck.util.Util.serialPortIsAvailable(getAppAddressAsString())) return false;
 
         try {
             if(currentAgtBody(ts) != null){

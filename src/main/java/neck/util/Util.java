@@ -1,5 +1,6 @@
 package neck.util;
 
+import com.fazecast.jSerialComm.SerialPort;
 import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Atom;
 import jason.asSyntax.Literal;
@@ -8,8 +9,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.Normalizer;
+import java.util.logging.Logger;
+
+import static neck.util.CompilerLite.logger;
 
 public class Util {
+    private static Logger logger = Logger.getLogger("NECK");
 
     public static Atom stringToAtom(String input) {
         if (input == null || input.isBlank()) {
@@ -74,6 +79,23 @@ public class Util {
             }
         }
         return in;
+    }
+
+    public static boolean serialPortIsAvailable(String portAddress) {
+        try {
+            SerialPort p = SerialPort.getCommPort(getFormatedPortName(portAddress));
+            if (p.openPort(0)){
+                p.closePort();
+                p=null;
+                return true;
+            }else{
+                p=null;
+                return false;
+            }
+        }catch (Exception ex){
+            logger.fine(ex.toString());
+            return false;
+        }
     }
 
     /* PRIVATES */

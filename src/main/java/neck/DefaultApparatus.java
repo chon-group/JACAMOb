@@ -9,11 +9,10 @@ import java.util.logging.Logger;
 
 public class DefaultApparatus extends Apparatus {
     Logger logger;
-    private SerialComm serialComm;
+    //private SerialComm serialComm;
 
     public DefaultApparatus(String address) {
-        this.serialComm = new SerialComm(neck.util.Util.getFormatedPortName(address));
-        super.setSerialComm(this.serialComm);
+        super(new SerialComm(neck.util.Util.getFormatedPortName(address)));
     }
 
     @Override
@@ -23,7 +22,7 @@ public class DefaultApparatus extends Apparatus {
 
     @Override
     public JSONObject perceive() {
-        JSONObject out = serialComm.sendMsg("getPercepts");
+        JSONObject out = super.getSerialComm().sendMsg("getPercepts");
         //System.out.println(out.toString());
         return out;
     }

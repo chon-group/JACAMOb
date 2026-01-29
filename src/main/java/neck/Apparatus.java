@@ -26,15 +26,25 @@ public abstract class Apparatus {
 
     public Apparatus() {}
 
+    public Apparatus(SerialComm serial){
+        this.serialComm = serial;
+        connect();
+    }
     //public Apparatus(String address) {setAddress(address);}
-    public void setSerialComm(SerialComm sComm){
+    private void connect(){
         if(this.serialComm != null && this.serialComm.getPortStatus() == SerialPortStatus.ON) this.serialComm.closeConnection();
-        this.serialComm = sComm;
         this.serialComm.openConnection();
     }
     public String getAddress() {
         if(this.serialComm != null) return this.serialComm.getPortAddress();
         return null;
+    }
+
+    public SerialComm getSerialComm(){
+        return this.serialComm;
+    }
+    public void disconnect(){
+        this.serialComm.closeConnection();
     }
 
     public boolean getStatus() {
