@@ -1,4 +1,4 @@
-package jason.stdlib.mybody;
+package jason.stdlib.myBody;
 
 import jacamo.infra.JaCaMoAgArch;
 import jason.JasonException;
@@ -8,24 +8,33 @@ import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.StringTerm;
 import jason.asSyntax.Term;
-import neck.Apparatus;
 import neck.Body;
-import neck.DefaultApparatus;
+import neck.model.BodyResponse;
 
-public class neckDetach extends DefaultInternalAction {
-    private Term appName = null;
+
+
+public class act extends DefaultInternalAction {
+
+    private BodyResponse bdyResponse = BodyResponse.UNKNOWN;
+    private Term    actionTerm = null;
+    private String  apparatusName = null;
 
     @Override
     public int getMinArgs() {return 1;}
 
     @Override
-    public int getMaxArgs() {return 1;}
+    public int getMaxArgs() {return 2;}
 
     @Override
     protected void checkArguments(Term[] args) throws JasonException {
         super.checkArguments(args); // check number of arguments
-        if (args.length == 1 && args[0].isAtom()){
-            this.appName = args[0];
+        if (args.length == 2 && args[0].isLiteral() && args[1].isAtom()){
+            this.actionTerm = args[0];
+            this.apparatusName = args[1].toString();
+        }
+        else if (args.length == 1 && args[0].isLiteral()){
+            this.actionTerm = args[0];
+            this.apparatusName = null;
         }
         else {
             throw JasonException.createWrongArgument(this, "ERROR: Consult https://github.com/chon-group/JACAMOb/wiki");
@@ -34,31 +43,14 @@ public class neckDetach extends DefaultInternalAction {
 
     @Override
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
-        /* EXPECTED
-            .mybody.neckDetach(APPARATUSNAME)
-         */
         checkArguments(args);
 
-        try {
-            if(currentAgtBody(ts) != null){
-                return currentAgtBody(ts).detachApparatusByName(getAppNameAsString());
-            }
-            return false;
-        } catch (Exception ex) {
-            throw JasonException.createWrongArgument(
-                    this,
-                    "Failed to detach apparatus at " + getAppNameAsString()
-            );
-        }
+        bdyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
 
+        if(bdyResponse != null) System.out.println(bdyResponse.toString());
+        /* FAZER AINDA */
+        return true;
     }
-
-
-    private String getAppNameAsString(){
-        if(appName == null) return null;
-        return this.appName.toString();
-    }
-
 
     private static Body currentAgtBody(TransitionSystem ts) {
         AgArch arch = ts.getAgArch().getFirstAgArch();

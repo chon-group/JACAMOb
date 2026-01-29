@@ -5,6 +5,7 @@ import java.util.logging.Level;
 
 import neck.Apparatus;
 import neck.Body;
+import neck.model.BodyResponse;
 import neck.util.CompilerLite;
 import neck.util.ReflectCall;
 import jaca.CAgentArch;
@@ -177,12 +178,13 @@ public class JaCaMoAgArch extends AgArch {
     }
 
     public Body getAgtBody(){
-        if(this.body == null)this.body = new Body(getAgName());
+        if(this.body == null) this.body = new Body(getAgName());
         return this.body;
     }
 
-    @Override
-    public void realWorldAct(String CMD){
-        body.act(CMD);
+    //@Override
+    public BodyResponse realWorldAct(Term term, String apparatusName){
+        if(this.body == null) this.body = new Body(getAgName());
+        return body.act(term, apparatusName);
     }
 }

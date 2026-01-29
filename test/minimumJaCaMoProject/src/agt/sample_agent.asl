@@ -16,15 +16,31 @@
        +started(Y,M,D,H,Min,Sec).            // add a new belief
 
 +!attach1 <-
-    .mybody.neckAttach("/dev/ttyEmulatedPort2");
+    .myBody.neckAttach("/dev/ttyUSB0");
+        //.myBody.act(turnOnLamp);
+        //.myBody.act(changeLED(13,true));
 .
+
 
 +!attach2 <-
-     .mybody.neckAttach("/dev/ttyUSB1");
+     .myBody.neckAttach("/dev/ttyUSB1");
 .
 
-+myBody::port(P,S) <- .print(P," ",S).
++myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
+: VALUE = enable
+<-
+    .wait(1000);
+    .print("desligando ",APPARATUS);
+    .myBody.act(changeLED(13,false),APPARATUS);
+.
 
++myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
+: VALUE = disable
+<-
+    .wait(1000);
+    .print("ligando ",APPARATUS);
+    .myBody.act(turnOnLamp);
+.
 
 /*+myBody::lampStatus(V)[SOURCE]
 : SOURCE=source(T,S) & T=proprioception
@@ -47,14 +63,14 @@
 
 
 +myBody::port(off,PORT,_,_)[source(interoception,APPARATUS)] <-
-    .mybody.neckDetach(APPARATUS);
+    .myBody.neckDetach(APPARATUS);
     !!tryAttach(APPARATUS,PORT);
 .
 
 +!tryAttach(APPARATUS,PORT) <-
      .random(R);
      .wait(15000*R);
-     .mybody.neckAttach(APPARATUS,PORT);
+     .myBody.neckAttach(APPARATUS,PORT);
 .
 
 -!tryAttach(APPARATUS,PORT) <- !!tryAttach(APPARATUS,PORT); .

@@ -70,7 +70,7 @@ public class SerialComm {
 
     public JSONObject sendMsg(String strMessage) {return sendMsg(strMessage, (Object[]) null);}
 
-    public JSONObject sendMsg(String strMessage, Object... args) {
+    public JSONObject sendMsg(String strMessage, Object[] args) {
 
         //enviando mensagem...
         if (!(getPortStatus() == SerialPortStatus.OFF)) sendJsonSlp(prepareJSON(strMessage,args));
@@ -179,7 +179,7 @@ public class SerialComm {
         this.portStatus = status;
     }
 
-    private JSONObject prepareJSON(String strMessage, Object... args){
+    private JSONObject prepareJSON(String strMessage, Object[] args){
         JSONObject req = new JSONObject();
         req.put("msg", strMessage);
         if (args != null && args.length > 0) {

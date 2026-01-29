@@ -306,8 +306,4 @@ public class AgArch implements Comparable<AgArch>, Serializable {
 //    public boolean hasBody(){
 //        return this.body != null;
 //    }
-
-    public void realWorldAct(String ACT){
-
-    }
 }

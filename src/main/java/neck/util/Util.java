@@ -1,14 +1,14 @@
 package neck.util;
 
 import com.fazecast.jSerialComm.SerialPort;
-import jason.asSyntax.ASSyntax;
-import jason.asSyntax.Atom;
-import jason.asSyntax.Literal;
-import jason.asSyntax.Term;
+import jason.NoValueException;
+import jason.asSyntax.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import static neck.util.CompilerLite.logger;
@@ -96,6 +96,53 @@ public class Util {
             logger.fine(ex.toString());
             return false;
         }
+    }
+
+    public static String getFunctor(Term term) {
+        if (term == null) return null;
+
+        if (term.isStructure()) return ((Structure) term).getFunctor();
+        if (term.isAtom())      return ((Atom) term).getFunctor();
+
+        return null;
+    }
+
+    public static Object[] termArgsToObjects(Term actionTerm) {
+        if (actionTerm.isAtom()) return null;
+
+        if (!actionTerm.isLiteral()) return null;
+        Literal literal = ((Literal) actionTerm);
+
+        Object[] objects = new Object[literal.getArity()];
+
+        for (int i=0; i<literal.getArity(); i++){
+            Term asTerm = literal.getTerm(i);
+                try{
+                    objects[i] = Integer.parseInt(asTerm.toString());
+                    continue;
+                }catch (NumberFormatException ignore){}
+
+                try{
+                    objects[i] = Long.parseLong(asTerm.toString());
+                    continue;
+                }catch (NumberFormatException ignore){}
+
+                try{
+                    objects[i] = Double.parseDouble(asTerm.toString());
+                    continue;
+                }catch (NumberFormatException ignore){}
+
+                try {
+                    objects[i] = Boolean.parseBoolean(asTerm.toString());
+                    continue;
+                }catch (Exception ignore){}
+
+                try {
+                    objects[i] = asTerm.toString();
+                    continue;
+                }catch (Exception ignore){}
+        }
+        return objects;
     }
 
     /* PRIVATES */

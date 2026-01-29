@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import jason.RevisionFailedException;
 import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.*;
+import neck.model.BodyResponse;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -147,12 +148,16 @@ public class Body {
     }
 
 
-    public void act(String CMD){
-        for(int i = 0; i < attachedAppName.size(); i++){
-            apparatus[i].act(CMD);
-            logger.log(Level.SEVERE,"[body] actinging "+CMD+" in "+apparatus[i].getAddress());
+    public BodyResponse act(Term actionTerm, String appName){
+        if (appName != null && attachedAppName.contains(appName)){
+            return getApparatusByName(appName).act(actionTerm);
+        }else{
+            String actionName = neck.util.Util.getFunctor(actionTerm);
+            return getApparatusBySupportedAction(actionName).act(actionTerm);
         }
     }
+
+
 
 
     private boolean isFomBodyNS(Literal b){
@@ -270,5 +275,20 @@ public class Body {
         }
         logger.severe("ERROR in detaching Apparatus ["+apparatusName+"]");
         return false;
+    }
+
+    private Apparatus getApparatusByName(String appName){
+        /* PODERIA SER ATOM */
+        for (int i = 0; i < this.apparatus.length; i++) {
+            if(apparatus[i].getApparatusName().equals(appName)) return apparatus[i];
+        }
+        return null;
+    }
+
+    private Apparatus getApparatusBySupportedAction(String actionName){
+        for (int i = 0; i < this.apparatus.length; i++) {
+            if(apparatus[i].supportsAction(actionName)) return apparatus[i];
+        }
+        return null;
     }
 }

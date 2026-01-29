@@ -3,6 +3,7 @@ package neck;
 import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Term;
+import neck.model.BodyResponse;
 import neck.model.PerceptionType;
 import neck.model.SerialPortStatus;
 import neck.util.SerialComm;
@@ -10,15 +11,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Apparatus {
     //private String address = "setAddress";
     //private boolean status = false;
-    private String apparatusName = null;
-    private String hwAppName = null;
-    private Long hwAppID = null;
+    private String  apparatusName = null;
+    private String  hwAppName = null;
+    private Set<String> supportedActions = new HashSet<>();
+    private Long    hwAppID;
     private SerialComm serialComm = null;
+
 
     private List<Literal> interoceptions    = new ArrayList<>();
     private List<Literal> exteroceptions    = new ArrayList<>();
@@ -29,6 +34,7 @@ public abstract class Apparatus {
     public Apparatus(SerialComm serial){
         this.serialComm = serial;
         connect();
+        if(getStatus()) loadApparatusInfo();
     }
     //public Apparatus(String address) {setAddress(address);}
     private void connect(){
@@ -38,6 +44,10 @@ public abstract class Apparatus {
     public String getAddress() {
         if(this.serialComm != null) return this.serialComm.getPortAddress();
         return null;
+    }
+
+    public boolean supportsAction(String actionName){
+        return this.supportedActions.contains(actionName);
     }
 
     public SerialComm getSerialComm(){
@@ -56,12 +66,7 @@ public abstract class Apparatus {
         return this.serialComm.getPortStatus();
     }
 
-    public String getHwAppName(){
-        JSONObject jsonObject = this.serialComm.sendMsg("getHWInfo");
-        if(jsonObject.has("apparatus"))
-            return jsonObject.getString("apparatus");
-        return "unknown";
-    }
+    public String getHwAppName(){return this.hwAppName;}
 
     public String getApparatusName() {return this.apparatusName;}
 
@@ -84,7 +89,7 @@ public abstract class Apparatus {
     }
 
     /* TODO in Apparatus Implementation */
-    public abstract void act(String CMD);
+    public abstract BodyResponse act(Term actionTerm);
 
     /* TODO in Apparatus Implementation */
     public abstract JSONObject perceive();
@@ -115,11 +120,11 @@ public abstract class Apparatus {
 
     public void bodyPerception() {
         JSONObject bodyResponse = perceive();
-        loadInfo(bodyResponse);
+        loadConnectionInfo(bodyResponse);
         loadPercepts(bodyResponse);
     }
 
-    private void loadInfo(JSONObject bdyReply){
+    private void loadConnectionInfo(JSONObject bdyReply){
         if (!bdyReply.has("port")) return;
 
         Literal litINFO = ASSyntax.createLiteral("port");
@@ -206,4 +211,24 @@ public abstract class Apparatus {
         }
     }
 
+    private void loadApparatusInfo() {
+        JSONObject jsonObject = this.serialComm.sendMsg("getActions");
+
+        this.hwAppName = jsonObject.optString("apparatus", "unknown");
+        this.hwAppID   = jsonObject.optLong("apparatusID", 0L);
+
+        this.supportedActions.clear();
+
+        if (jsonObject.has("actions")) {
+            JSONArray actions = jsonObject.getJSONArray("actions");
+
+            for (int i = 0; i < actions.length(); i++) {
+                JSONObject actionObj = actions.getJSONObject(i);
+
+                if (actionObj.has("actionName")) {
+                    this.supportedActions.add(actionObj.getString("actionName"));
+                }
+            }
+        }
+    }
 }

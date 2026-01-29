@@ -1,4 +1,4 @@
-package jason.stdlib.mybody;
+package jason.stdlib.myBody;
 
 import jacamo.infra.JaCaMoAgArch;
 import jason.JasonException;
@@ -6,33 +6,23 @@ import jason.architecture.AgArch;
 import jason.asSemantics.DefaultInternalAction;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
-import jason.asSyntax.StringTerm;
 import jason.asSyntax.Term;
-import neck.Apparatus;
 import neck.Body;
-import neck.DefaultApparatus;
 
-public class neckAttach extends DefaultInternalAction {
-
+public class neckDetach extends DefaultInternalAction {
     private Term appName = null;
-    private Term appAddress = null;
 
     @Override
     public int getMinArgs() {return 1;}
 
     @Override
-    public int getMaxArgs() {return 2;}
+    public int getMaxArgs() {return 1;}
 
     @Override
     protected void checkArguments(Term[] args) throws JasonException {
         super.checkArguments(args); // check number of arguments
-        if (args.length == 2 && args[0].isLiteral() && args[1].isString()){
+        if (args.length == 1 && args[0].isAtom()){
             this.appName = args[0];
-            this.appAddress = (StringTerm) args[1];
-        }
-        else if (args.length == 1 && args[0].isString()){
-            this.appName = null;
-            this.appAddress = (StringTerm) args[0];
         }
         else {
             throw JasonException.createWrongArgument(this, "ERROR: Consult https://github.com/chon-group/JACAMOb/wiki");
@@ -42,35 +32,24 @@ public class neckAttach extends DefaultInternalAction {
     @Override
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
         /* EXPECTED
-            .mybody.neckAttach(APPARATUSNAME,ADDRESS)
-            .mybody.neckAttach(ADDRESS)
+            .mybody.neckDetach(APPARATUSNAME)
          */
         checkArguments(args);
-        if(!neck.util.Util.serialPortIsAvailable(getAppAddressAsString())) return false;
 
         try {
             if(currentAgtBody(ts) != null){
-                Apparatus apparatus = null;
-                if (getAppAddressAsString() != null) apparatus = new DefaultApparatus(getAppAddressAsString());
-                if(getAppNameAsString()!=null){
-                    return currentAgtBody(ts).attachApparatus(apparatus,getAppNameAsString());
-                }else {
-                    return currentAgtBody(ts).attachApparatus(apparatus,apparatus.getHwAppName());
-                }
+                return currentAgtBody(ts).detachApparatusByName(getAppNameAsString());
             }
-                return false;
+            return false;
         } catch (Exception ex) {
             throw JasonException.createWrongArgument(
                     this,
-                    "Failed to attach apparatus at " + getAppAddressAsString()
+                    "Failed to detach apparatus at " + getAppNameAsString()
             );
         }
 
     }
 
-    private String getAppAddressAsString(){
-            return this.appAddress.toString();
-    }
 
     private String getAppNameAsString(){
         if(appName == null) return null;
