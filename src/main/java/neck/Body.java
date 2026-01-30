@@ -148,13 +148,15 @@ public class Body {
     }
 
 
-    public BodyResponse act(Term actionTerm, String appName){
-        if (appName != null && attachedAppName.contains(appName)){
-            return getApparatusByName(appName).act(actionTerm);
-        }else{
-            String actionName = neck.util.Util.getFunctor(actionTerm);
-            return getApparatusBySupportedAction(actionName).act(actionTerm);
-        }
+    public BodyResponse act(Term actionTerm, Atom apparatusName){
+        Apparatus apparatus = null;
+
+        if(apparatusName == null) apparatus = getApparatusBySupportedAction(actionTerm);
+        else apparatus = getApparatusByName(apparatusName);
+
+        if(apparatus == null) return BodyResponse.UNKNOWN;
+
+        return apparatus.act(actionTerm);
     }
 
 
@@ -277,17 +279,20 @@ public class Body {
         return false;
     }
 
-    private Apparatus getApparatusByName(String appName){
+    private Apparatus getApparatusByName(Atom appName){
         /* PODERIA SER ATOM */
-        for (int i = 0; i < this.apparatus.length; i++) {
-            if(apparatus[i].getApparatusName().equals(appName)) return apparatus[i];
+        if (!attachedAppName.contains(appName.getFunctor())) return null;
+        for (int i = 0; i < this.attachedAppName.size(); i++) {
+            if(apparatus[i].getApparatusName().equals(appName.getFunctor()))
+                return apparatus[i];
         }
         return null;
     }
 
-    private Apparatus getApparatusBySupportedAction(String actionName){
-        for (int i = 0; i < this.apparatus.length; i++) {
-            if(apparatus[i].supportsAction(actionName)) return apparatus[i];
+    private Apparatus getApparatusBySupportedAction(Term actionName){
+        for (int i = 0; i < this.attachedAppName.size(); i++) {
+            if(apparatus[i].supportsAction(neck.util.Util.getFunctor(actionName)))
+                return apparatus[i];
         }
         return null;
     }

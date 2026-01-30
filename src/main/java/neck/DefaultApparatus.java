@@ -20,17 +20,12 @@ public class DefaultApparatus extends Apparatus {
 
     @Override
     public BodyResponse act(Term actionTerm) {
-        String actionCMD = neck.util.Util.getFunctor(actionTerm);
-        Object[] commandArgs = neck.util.Util.termArgsToObjects(actionTerm);
-        JSONObject jsonObject;
-        if(commandArgs == null){
-             jsonObject = super.getSerialComm().sendMsg(actionCMD);
-        }else{
-            jsonObject = super.getSerialComm().sendMsg(actionCMD,commandArgs);
-        }
-
-        System.out.println("RESPOSTA DO CORPO: "+jsonObject.toString());
-        return null;
+        return BodyResponse.jsonObjectToBodyResponse(
+                super.getSerialComm().sendMsg(
+                        neck.util.Util.getFunctor(actionTerm),
+                        neck.util.Util.argsOfTermToObjects(actionTerm)
+                )
+        );
     }
 
     @Override

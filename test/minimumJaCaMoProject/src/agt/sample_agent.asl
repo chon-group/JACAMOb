@@ -5,7 +5,7 @@
 /* Initial goals */
 
 !start.
-!attach1.
+//!attach1.
 //!attach2.
 
 /* Plans */
@@ -32,6 +32,7 @@
     .wait(1000);
     .print("desligando ",APPARATUS);
     .myBody.act(changeLED(13,false),APPARATUS);
+    .myBody.act(changeLED(13,false),APPARATUS);
 .
 
 +myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
@@ -41,6 +42,8 @@
     .print("ligando ",APPARATUS);
     .myBody.act(turnOnLamp);
 .
+
++myBody::led(STATUS)[source(TYPE,APPARATUS)] <- .wait(250); .myBody.act(toggleLED).
 
 /*+myBody::lampStatus(V)[SOURCE]
 : SOURCE=source(T,S) & T=proprioception
@@ -74,3 +77,4 @@
 .
 
 -!tryAttach(APPARATUS,PORT) <- !!tryAttach(APPARATUS,PORT); .
+

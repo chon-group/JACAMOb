@@ -15,20 +15,20 @@
 mas minimumJaCaMoProject {
 
    // agent maria: sample_agent.asl
+   agent agent2
 
     agent bob: sample_agent.asl {
             focus: w.c1
             }
 
     body bob {
-      //apparatus ap123 : neck.DefaultApparatus("/dev/ttyUSB0")
-      //apparatus ap222 : neck.DefaultApparatus("/dev/ttyUSB1")
+      //apparatus qualquer2 : neck.DefaultApparatus("/dev/ttyUSB1")
       //apparatus ap111 : custom.MyCustomApparatusImplementation("/dev/ttyUSB1")
     }
 
-    /*body maria {
-      apparatus c0: attachApparatus("/dev/ttyACM0")
-    }*/
+    body agent2 {
+      apparatus app1 : neck.DefaultApparatus("/dev/ttyUSB0")
+    }
 
     workspace w {
       artifact c1: teste.Counter(3)

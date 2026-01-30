@@ -6,7 +6,8 @@ import jason.architecture.AgArch;
 import jason.asSemantics.DefaultInternalAction;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
-import jason.asSyntax.StringTerm;
+import jason.asSyntax.ASSyntax;
+import jason.asSyntax.Atom;
 import jason.asSyntax.Term;
 import neck.Body;
 import neck.model.BodyResponse;
@@ -16,29 +17,65 @@ import neck.model.BodyResponse;
 public class act extends DefaultInternalAction {
 
     private BodyResponse bdyResponse = BodyResponse.UNKNOWN;
-    private Term    actionTerm = null;
-    private String  apparatusName = null;
+    private Term    actionTerm          = null;
+    private Atom    apparatusName       = null;
+    private Term    replyRequested         = null;
 
     @Override
     public int getMinArgs() {return 1;}
 
     @Override
-    public int getMaxArgs() {return 2;}
+    public int getMaxArgs() {return 3;}
 
     @Override
     protected void checkArguments(Term[] args) throws JasonException {
         super.checkArguments(args); // check number of arguments
-        if (args.length == 2 && args[0].isLiteral() && args[1].isAtom()){
-            this.actionTerm = args[0];
-            this.apparatusName = args[1].toString();
-        }
-        else if (args.length == 1 && args[0].isLiteral()){
+
+        /* EXPECTED -->
+            .myBody.act(action(arg1,arg2,argn));
+            .myBody.act(actionWithoutArgs);
+        */
+        if (args.length == 1 && args[0].isLiteral()){
             this.actionTerm = args[0];
             this.apparatusName = null;
+            this.replyRequested = null;
+            return;
         }
-        else {
-            throw JasonException.createWrongArgument(this, "ERROR: Consult https://github.com/chon-group/JACAMOb/wiki");
+
+        /* EXPECTED -->
+            .myBody.act(action(arg1,arg2,argn),REPLY);
+            .myBody.act(actionWithoutArgs,REPLY);
+        */
+        if (args.length == 2 && args[0].isLiteral() && args[1].isVar()){
+            this.actionTerm = args[0];
+            this.apparatusName = null;
+            this.replyRequested = args[1];
+            return;
         }
+
+        /* EXPECTED -->
+            .myBody.act(action(arg1,arg2,argn),apparatus1);
+            .myBody.act(actionWithoutArgs,apparatus1);
+        */
+        if (args.length == 2 && args[0].isLiteral() && args[1].isAtom()){
+            this.actionTerm = args[0];
+            this.apparatusName = ASSyntax.createAtom(args[1].toString());
+            this.replyRequested = null;
+            return;
+        }
+
+        /* EXPECTED -->
+            .myBody.act(action(arg1,arg2,argn),apparatus1,REPLY);
+            .myBody.act(actionWithoutArgs,apparatus1,REPLY);
+        */
+        if (args.length == 3 && args[0].isLiteral() && args[1].isAtom() && args[2].isVar()){
+            this.actionTerm = args[0];
+            this.apparatusName = ASSyntax.createAtom(args[1].toString());
+            this.replyRequested = args[2];
+            return;
+        }
+
+        throw JasonException.createWrongArgument(this, "ERROR: Consult https://github.com/chon-group/JACAMOb/wiki");
     }
 
     @Override
@@ -47,9 +84,21 @@ public class act extends DefaultInternalAction {
 
         bdyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
 
-        if(bdyResponse != null) System.out.println(bdyResponse.toString());
-        /* FAZER AINDA */
-        return true;
+        if (bdyResponse != null){
+            if (replyRequested != null){
+                un.unifies(replyRequested,bdyResponse.toTerm());
+                ts.getLogger().fine("Action "+this.actionTerm+" replied "+bdyResponse);
+                return true;
+            }
+
+            if (bdyResponse == BodyResponse.EXECUTED) ts.getLogger().fine("Action "+this.actionTerm+" replied "+bdyResponse);
+            else if (bdyResponse == BodyResponse.UNCHANGED) ts.getLogger().info("Action "+this.actionTerm+" replied "+bdyResponse);
+            else ts.getLogger().severe("Action "+this.actionTerm+" replied "+bdyResponse);
+
+            if((bdyResponse == BodyResponse.EXECUTED) || (bdyResponse == BodyResponse.UNCHANGED)) return true;
+            else return false;
+        }
+        return false;
     }
 
     private static Body currentAgtBody(TransitionSystem ts) {

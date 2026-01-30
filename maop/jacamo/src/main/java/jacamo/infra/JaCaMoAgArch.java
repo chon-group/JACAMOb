@@ -183,8 +183,8 @@ public class JaCaMoAgArch extends AgArch {
     }
 
     //@Override
-    public BodyResponse realWorldAct(Term term, String apparatusName){
+    /*public BodyResponse realWorldAct(Term term, String apparatusName){
         if(this.body == null) this.body = new Body(getAgName());
         return body.act(term, apparatusName);
-    }
+    }*/
 }

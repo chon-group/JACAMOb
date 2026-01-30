@@ -3,6 +3,7 @@ package neck.util;
 import com.fazecast.jSerialComm.SerialPort;
 import jason.NoValueException;
 import jason.asSyntax.*;
+import neck.model.BodyResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -107,7 +108,7 @@ public class Util {
         return null;
     }
 
-    public static Object[] termArgsToObjects(Term actionTerm) {
+    public static Object[] argsOfTermToObjects(Term actionTerm) {
         if (actionTerm.isAtom()) return null;
 
         if (!actionTerm.isLiteral()) return null;
