@@ -83,6 +83,8 @@ public class Util {
     }
 
     public static boolean serialPortIsAvailable(String portAddress) {
+        if(portAddress == null) return false;
+
         try {
             SerialPort p = SerialPort.getCommPort(getFormatedPortName(portAddress));
             if (p.openPort(0)){

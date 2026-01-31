@@ -30,9 +30,26 @@ public class Body {
         logger.info("Embodying...");
     }
 
+    public boolean attachApparatus(Apparatus implementation){
+        return attachApparatus(implementation,null);
+    }
+
     public boolean attachApparatus(Apparatus implementation, String apparatusName) {
+
+        if (!implementation.getStatus()){
+            logger.severe("Apparatus is not ready, skipping...");
+            return false;
+        }
+
         String address = implementation.getAddress();
+        if (apparatusName == null) apparatusName = implementation.getHwAppName();
+
         int idx = attachedAppAddress.size();
+
+        if (idx >= apparatus.length) {
+            logger.severe("Capacidade de apparatus esgotada (" + apparatus.length + ")");
+            return false;
+        }
 
         if (address != null && attachedAppAddress.contains(address)) {
             logger.info("Apparatus in " + address + " already attached");
@@ -40,13 +57,14 @@ public class Body {
         }
 
         if (apparatusName != null && attachedAppName.contains(apparatusName)) {
-            logger.info("Apparatus " + apparatusName + " is already attached");
-            return false;
-        }
-
-        if (idx >= apparatus.length) {
-            logger.severe("Capacidade de apparatus esgotada (" + apparatus.length + ")");
-            return false;
+            logger.info("Has an apparatus with same name: " + apparatusName);
+            for(int i=2; i<apparatus.length; i++){
+                if(!attachedAppName.contains(String.valueOf(apparatusName+i))){
+                    apparatusName = String.valueOf(apparatusName+i);
+                    i = apparatus.length;
+                }
+            }
+            //return false;
         }
 
         if (address != null && apparatusName != null && implementation.getStatus()){
@@ -57,7 +75,7 @@ public class Body {
             logger.info("Apparatus ["+apparatusName+"] was attached!");
             return true;
         }
-        logger.info("ERROR when attaching the Apparatus ["+apparatusName+"]");
+        logger.info("ERROR when attaching the Apparatus ["+apparatusName+"] at ["+address+"]");
         return false;
     }
 

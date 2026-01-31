@@ -16,10 +16,10 @@ import neck.model.BodyResponse;
 
 public class act extends DefaultInternalAction {
 
-    private BodyResponse bdyResponse = BodyResponse.UNKNOWN;
+    private BodyResponse bodyResponse    = null;
     private Term    actionTerm          = null;
     private Atom    apparatusName       = null;
-    private Term    replyRequested         = null;
+    private Term    replyRequested      = null;
 
     @Override
     public int getMinArgs() {return 1;}
@@ -82,20 +82,20 @@ public class act extends DefaultInternalAction {
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
         checkArguments(args);
 
-        bdyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
+        bodyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
 
-        if (bdyResponse != null){
+        if (bodyResponse != null){
             if (replyRequested != null){
-                un.unifies(replyRequested,bdyResponse.toTerm());
-                ts.getLogger().fine("Action "+this.actionTerm+" replied "+bdyResponse);
+                un.unifies(replyRequested,bodyResponse.toTerm());
+                ts.getLogger().fine("Action "+this.actionTerm+" replied "+bodyResponse);
                 return true;
             }
 
-            if (bdyResponse == BodyResponse.EXECUTED) ts.getLogger().fine("Action "+this.actionTerm+" replied "+bdyResponse);
-            else if (bdyResponse == BodyResponse.UNCHANGED) ts.getLogger().info("Action "+this.actionTerm+" replied "+bdyResponse);
-            else ts.getLogger().severe("Action "+this.actionTerm+" replied "+bdyResponse);
+            if (bodyResponse == BodyResponse.EXECUTED) ts.getLogger().fine("Action "+this.actionTerm+" replied "+bodyResponse);
+            else if (bodyResponse == BodyResponse.UNCHANGED) ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
+            else ts.getLogger().severe("Action "+this.actionTerm+" replied "+bodyResponse);
 
-            if((bdyResponse == BodyResponse.EXECUTED) || (bdyResponse == BodyResponse.UNCHANGED)) return true;
+            if((bodyResponse == BodyResponse.EXECUTED) || (bodyResponse == BodyResponse.UNCHANGED)) return true;
             else return false;
         }
         return false;
