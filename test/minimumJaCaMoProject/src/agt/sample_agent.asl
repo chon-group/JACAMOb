@@ -1,46 +1,29 @@
-// Agent bob in project minimumJaCaMoProject
-
-/* Initial beliefs and rules */
-
-/* Initial goals */
-
-!start.
-//!attach1.
-//!attach2.
-
-/* Plans */
-
-+!start : true
-    <- .print("hello world.");
-       .date(Y,M,D); .time(H,Min,Sec,MilSec); // get current date & time
-       +started(Y,M,D,H,Min,Sec).            // add a new belief
+!attach1.
 
 +!attach1 <-
     .myBody.neckAttach("/dev/ttyUSB0");
-        //.myBody.act(turnOnLamp);
-        //.myBody.act(changeLED(13,true));
+    .myBody.neckAttach(lampBoy);
+    //.myBody.neckAttach(lampBoy);
+    //.myBody.neckAttach("/dev/ttyUSB0");
+
+  //  .myBody.neckAttach(ap1,"/dev/ttyEmulatedPort0",Reply3);
 .
 
-
-+!attach2 <-
-     .myBody.neckAttach("/dev/ttyUSB1");
-.
 
 +myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
 : VALUE = enable
 <-
-    .wait(1000);
+   // .wait(1000);
     .print("desligando ",APPARATUS);
-    .myBody.act(changeLED(13,false),APPARATUS);
     .myBody.act(changeLED(13,false),APPARATUS);
 .
 
 +myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
 : VALUE = disable
 <-
-    .wait(1000);
+ //   .wait(1000);
     .print("ligando ",APPARATUS);
-    .myBody.act(turnOnLamp);
+    .myBody.act(turnOnLamp,APPARATUS);
 .
 
 +myBody::led(STATUS)[source(TYPE,APPARATUS)] <- .wait(250); .myBody.act(toggleLED).

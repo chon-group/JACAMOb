@@ -1,7 +1,7 @@
 
 +myBody::led(STATUS)[source(TYPE,APPARATUS)] <-
     .wait(250);
-    .myBody.act(toggleLED,app2,BodyRESPONSE);
+    .myBody.act(toggleLED,BodyRESPONSE);
     .print("result is ",BodyRESPONSE);
 .
 
@@ -16,6 +16,7 @@
      .random(R);
      .wait(15000*R);
      .myBody.neckAttach(APPARATUS,PORT);
-.
+
+
 
 -!tryAttach(APPARATUS,PORT) <- !!tryAttach(APPARATUS,PORT); .

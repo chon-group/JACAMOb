@@ -3,12 +3,15 @@ package neck.util;
 import com.fazecast.jSerialComm.SerialPort;
 import jason.NoValueException;
 import jason.asSyntax.*;
+import neck.Apparatus;
+import neck.DefaultApparatus;
 import neck.model.BodyResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -82,6 +85,26 @@ public class Util {
         return in;
     }
 
+    public static String[] getAvailableSerialPorts(){
+        SerialPort[] ports = SerialPort.getCommPorts();
+        if (ports.length == 0) return null;
+
+        List<String> portsList = new ArrayList<>();
+        for (SerialPort port : ports) {
+            if(serialPortIsAvailable(port.getSystemPortPath()))
+                portsList.add(port.getSystemPortPath());
+        }
+
+        ports = null;
+        Collections.sort(portsList);
+        String[] out = new String[portsList.size()];
+
+        for (int i = 0; i < portsList.size(); i++)
+            out[i] = portsList.get(i);
+
+        return out;
+    }
+
     public static boolean serialPortIsAvailable(String portAddress) {
         if(portAddress == null) return false;
 
@@ -101,6 +124,22 @@ public class Util {
         }
     }
 
+    public static Term getPortAddressByApparatusName(Term apparatusName){
+        logger.fine("Searching for Apparatus "+apparatusName.toString());
+        String[] availablePorts = getAvailableSerialPorts();
+        for(int i=0; i<availablePorts.length; i++){
+            Apparatus tempApparatus = null;
+            tempApparatus = new DefaultApparatus(availablePorts[i]);
+            if (tempApparatus.getStatus() && apparatusName.toString().equals(tempApparatus.getHwAppName())){
+                tempApparatus.disconnect();
+                logger.info("Apparatus "+apparatusName.toString()+" found at "+availablePorts[i]);
+                return ASSyntax.createString(availablePorts[i]);
+            }
+            tempApparatus.disconnect();
+        }
+        logger.severe("Apparatus "+apparatusName.toString()+" not found!");
+        return null;
+    }
     public static String getFunctor(Term term) {
         if (term == null) return null;
 
@@ -172,4 +211,6 @@ public class Util {
         }
         return null;
     }
+
+
 }

@@ -36,11 +36,6 @@ public class Body {
 
     public boolean attachApparatus(Apparatus implementation, String apparatusName) {
 
-        if (!implementation.getStatus()){
-            logger.severe("Apparatus is not ready, skipping...");
-            return false;
-        }
-
         String address = implementation.getAddress();
         if (apparatusName == null) apparatusName = implementation.getHwAppName();
 

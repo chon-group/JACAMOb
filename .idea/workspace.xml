@@ -10,15 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dec0aa4-58dc-40b0-9fdb-139190be86f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/inc/agent2.asl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/agent2.asl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoAgArch.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoAgArch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/act.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/act.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/neckAttach.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/neckAttach.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/neck/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Body.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/neck/DefaultApparatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/DefaultApparatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/neck/model/BodyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/model/BodyResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/neck/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/minimumJaCaMoProject.jcm" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/minimumJaCaMoProject.jcm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/inc/agent2.asl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +79,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt" />
       <recent name="$PROJECT_DIR$/test/minimumJaCaMoProject/src/bdy" />
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/libs/old" />
@@ -174,7 +173,10 @@
       <workItem from="1769662079035" duration="2100000" />
       <workItem from="1769696553358" duration="9281000" />
       <workItem from="1769715573516" duration="10874000" />
-      <workItem from="1769797267348" duration="13221000" />
+      <workItem from="1769797267348" duration="13797000" />
+      <workItem from="1769868166081" duration="6007000" />
+      <workItem from="1769876234498" duration="3187000" />
+      <workItem from="1769883810624" duration="4383000" />
     </task>
     <servers />
   </component>
