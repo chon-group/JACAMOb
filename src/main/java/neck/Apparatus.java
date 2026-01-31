@@ -1,8 +1,8 @@
 package neck;
 
-import jason.asSyntax.ASSyntax;
-import jason.asSyntax.Literal;
-import jason.asSyntax.Term;
+import jason.asSyntax.*;
+import jason.asSyntax.parser.ParseException;
+import jason.pl.PlanLibrary;
 import neck.model.BodyResponse;
 import neck.model.PerceptionType;
 import neck.model.SerialPortStatus;
@@ -25,6 +25,7 @@ public abstract class Apparatus {
     private SerialComm serialComm = null;
 
 
+    private List<Plan>    apparatusPlans    = new ArrayList<>();
     private List<Literal> interoceptions    = new ArrayList<>();
     private List<Literal> exteroceptions    = new ArrayList<>();
     private List<Literal> proprioceptions   = new ArrayList<>();
@@ -48,6 +49,17 @@ public abstract class Apparatus {
 
     public boolean supportsAction(String actionName){
         return this.supportedActions.contains(actionName);
+    }
+
+    private void addPlan(String trigger, String context, String body) throws ParseException {
+        if (trigger == null || trigger.isBlank()) throw new IllegalArgumentException("Trigger cannot be null");
+        if (context == null || context.isBlank()) context = "true";
+        if (body == null || body.isBlank()) body = "true";
+
+        Plan p = ASSyntax.parsePlan("+!"+trigger + " : " + context + " <- " + body + ".");
+
+        if (p == null) return;
+        this.apparatusPlans.add(p);
     }
 
     public SerialComm getSerialComm(){
@@ -230,5 +242,58 @@ public abstract class Apparatus {
                 }
             }
         }
+    }
+
+    private void loadPlans(){
+        JSONObject jsonObject = this.serialComm.sendMsg("getSkills");
+        if (jsonObject.has("skills")) {
+
+            JSONArray skills = jsonObject.getJSONArray("skills");
+
+            for (int i = 0; i < skills.length(); i++) {
+                JSONObject skillObj = skills.getJSONObject(i);
+                String context = null;
+                String trigger = null;
+                String planBody = null;
+                if(skillObj.has("context") && skillObj.has("skill") && skillObj.has("plans")){
+                    trigger     = skillObj.get("skill").toString();
+                    context     = skillObj.get("context").toString();
+                    planBody    = skillObj.get("plans").toString();
+
+                    if (context.equals("FILE")){
+                        //loadFile...
+                        System.out.println("é FILE skipping");
+                    }
+                    else if (context.equals("URL")){
+                        //download
+                        System.out.println("é URL skipping ");
+                    }
+                    else{
+                        try {
+                            addPlan(trigger,context,planBody);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        //carrega na mente
+                        // System.out.println("é outro "+context);
+                    }
+                }
+            }
+        }
+    }
+
+    public void loadPlansFromDevice(){
+        this.apparatusPlans.clear();
+        loadPlans();
+    }
+
+    public Plan[] getPlans(){
+        if(this.apparatusPlans.isEmpty()) return null;
+
+        Plan[] planList = new Plan[this.apparatusPlans.size()];
+        for(int i=0; i<this.apparatusPlans.size(); i++){
+            planList[i] = this.apparatusPlans.get(i);
+        }
+        return planList;
     }
 }

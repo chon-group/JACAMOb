@@ -6,9 +6,7 @@ import jason.architecture.AgArch;
 import jason.asSemantics.DefaultInternalAction;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
-import jason.asSyntax.ASSyntax;
-import jason.asSyntax.StringTerm;
-import jason.asSyntax.Term;
+import jason.asSyntax.*;
 import neck.Apparatus;
 import neck.Body;
 import neck.DefaultApparatus;
@@ -114,7 +112,6 @@ public class neckAttach extends DefaultInternalAction {
             if(currentAgtBody(ts) != null){
                 Apparatus newApparatus = new DefaultApparatus(getAppAddressAsString());
 
-
                 if (!newApparatus.getStatus()){
                     ts.getLogger().severe("Apparatus is not ready, skipping...");
                     newApparatus.disconnect();
@@ -137,6 +134,15 @@ public class neckAttach extends DefaultInternalAction {
                     return false;
                 }else{
                     if (this.response != null) un.unifies(this.response, ASSyntax.createAtom(newApparatus.getApparatusName()));
+                    newApparatus.loadPlansFromDevice();
+                    Plan[] plans = newApparatus.getPlans();
+                    if(plans != null){
+                        for(int i=0; i< plans.length; i++){
+                            ts.getAg().getPL().add(plans[i]);
+                            plans[i].getLabel().addAnnot(ASSyntax.createLiteral("apparatus", ASSyntax.createAtom(newApparatus.getApparatusName())));
+                            ts.getLogger().info("Adding into plan Library: "+plans[i].toString());
+                        }
+                    }
                     return true;
                 }
             }

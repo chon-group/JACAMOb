@@ -163,11 +163,28 @@ public class JaCaMoAgArch extends AgArch {
                 for (var e : b.getApparatusEntries()) {
                     String name = e.getKey();
                     ClassParameters cp = e.getValue();
-                    System.out.println(" - " + name + " -> " + cp);
+                    //System.out.println(" - " + name + " -> " + cp);
                     try {
                         Object created = ReflectCall.invoke(getAgtBody(), cp.toString());
                         if (created instanceof Apparatus) {
-                            getAgtBody().attachApparatus((Apparatus) created, name);
+                            if(getAgtBody().attachApparatus((Apparatus) created, name)){
+                                /* loading plans */
+                                ((Apparatus) created).loadPlansFromDevice();
+                                Plan[] plans = ((Apparatus) created).getPlans();
+                                if (plans != null){
+                                    for(int i=0; i< plans.length; i++){
+                                        getTS().getAg().getPL().add(plans[i]);
+                                        plans[i].getLabel().addAnnot(ASSyntax.createLiteral("apparatus", ASSyntax.createAtom(name)));
+                                        getTS().getLogger().fine("Adding into plan Library: "+plans[i].toString());
+                                    }
+                                }
+                            }else{
+                                System.out.println("deu bode");
+                            }
+
+
+                            //System.out.println("carregar os planos...");
+                            //System.out.println(getTS().getAg().getPL().toString());
                         }
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
@@ -177,6 +194,10 @@ public class JaCaMoAgArch extends AgArch {
         }
     }
 
+   /*rivate void loadPlans(){
+        Agent ag = ts.getAg();
+        PlanLibrary pl = ag.getPL();
+    }*/
     public Body getAgtBody(){
         if(this.body == null) this.body = new Body(getAgName());
         return this.body;

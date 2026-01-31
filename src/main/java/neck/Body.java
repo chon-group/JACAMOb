@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import jason.RevisionFailedException;
 import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.*;
+import jason.pl.PlanLibrary;
 import neck.model.BodyResponse;
 import org.json.JSONObject;
 
@@ -35,7 +36,6 @@ public class Body {
     }
 
     public boolean attachApparatus(Apparatus implementation, String apparatusName) {
-
         String address = implementation.getAddress();
         if (apparatusName == null) apparatusName = implementation.getHwAppName();
 
@@ -67,6 +67,7 @@ public class Body {
             attachedAppName.add(apparatusName);
             apparatus[idx] = implementation;
             apparatus[idx].setApparatusName(apparatusName);
+            //apparatus[idx].loadPlans();
             logger.info("Apparatus ["+apparatusName+"] was attached!");
             return true;
         }
@@ -271,6 +272,16 @@ public class Body {
         return s.substring(ia + a.length());
     }
 
+    public Plan[] getPlansByApparatusName(String apparatusName){
+        if (apparatusName == null) return null;
+        int n = this.attachedAppName.size();
+        for (int i = 0; i < n; i++) {
+            if (this.apparatus[i] != null && apparatusName.equals(this.apparatus[i].getApparatusName())) {
+                return this.apparatus[i].getPlans();
+            }
+        }
+        return null;
+    }
     public boolean detachApparatusByName(String apparatusName) {
         if (apparatusName == null) return false;
         int n = attachedAppName.size();

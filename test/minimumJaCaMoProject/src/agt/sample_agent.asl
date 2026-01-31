@@ -1,11 +1,12 @@
 !attach1.
+//!andar1.
 
 +!attach1 <-
-    .myBody.neckAttach("/dev/ttyUSB0");
-    .myBody.neckAttach(lampBoy);
+   .myBody.neckAttach("/dev/ttyUSB0");
+    .myBody.neckAttach("/dev/ttyUSB1");
     //.myBody.neckAttach(lampBoy);
     //.myBody.neckAttach("/dev/ttyUSB0");
-
+    //!andar1[source(lampBoy)]
   //  .myBody.neckAttach(ap1,"/dev/ttyEmulatedPort0",Reply3);
 .
 
@@ -13,16 +14,17 @@
 +myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
 : VALUE = enable
 <-
-   // .wait(1000);
-    .print("desligando ",APPARATUS);
+    //.print("detaching ",APPARATUS);
+    .wait(1000);
     .myBody.act(changeLED(13,false),APPARATUS);
+   //.myBody.neckDetach(APPARATUS);
 .
 
 +myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
 : VALUE = disable
 <-
- //   .wait(1000);
-    .print("ligando ",APPARATUS);
+    .wait(1000);
+   // .print("ligando ",APPARATUS);
     .myBody.act(turnOnLamp,APPARATUS);
 .
 

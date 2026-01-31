@@ -6,6 +6,8 @@ import jason.architecture.AgArch;
 import jason.asSemantics.DefaultInternalAction;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
+import jason.asSyntax.ASSyntax;
+import jason.asSyntax.Plan;
 import jason.asSyntax.Term;
 import neck.Body;
 
@@ -38,6 +40,18 @@ public class neckDetach extends DefaultInternalAction {
 
         try {
             if(currentAgtBody(ts) != null){
+
+
+                Plan[] x = currentAgtBody(ts).getPlansByApparatusName(getAppNameAsString());
+                for(int i=0; i< x.length; i++){
+                    System.out.println(x[i]);
+                    try{
+                        ts.getLogger().info("Removing from plan Library "+x[i].getLabel());
+                        ts.getAg().getPL().remove(x[i].getLabel());
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                    }
+                }
                 return currentAgtBody(ts).detachApparatusByName(getAppNameAsString());
             }
             return false;
