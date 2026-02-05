@@ -16,7 +16,7 @@ public class SerialComm {
     private static final int TRANSMISSION   = 0xC0; // END (SLIP)
     private static final int JSONSTART      = 0x1E; // RS  (JSON-seq)
     private static final int JSONEND        = 0x0A; // LF  (JSON-seq)
-    private static final int TIMEOUTms      = 2500;
+    private static final int TIMEOUTms      = 4000;
     private Logger logger;
     private SerialPortStatus portStatus     = SerialPortStatus.UNKNOWN;
     private String portAddress;
@@ -73,8 +73,8 @@ public class SerialComm {
     public JSONObject sendMsg(String strMessage, Object[] args) {
 
         //enviando mensagem...
+        drainInput(25, 50);         // limpando o canal
         if (!(getPortStatus() == SerialPortStatus.OFF)) sendJsonSlp(prepareJSON(strMessage,args));
-
         // Preparando para receber resposta.
         JSONObject meta = new JSONObject();         // bodyResponse
         JSONArray intentions = new JSONArray();     // lista de intenções
@@ -102,7 +102,6 @@ public class SerialComm {
                     } catch (Exception e) {
                         continue;   // se vier um fragmento inválido, ignora
                     }
-
                     // METADADOS
                     if (obj.has("apparatus")) meta.put("apparatus", obj.get("apparatus"));
                     if (obj.has("apparatusID")) meta.put("apparatusID", obj.get("apparatusID"));
@@ -238,6 +237,8 @@ public class SerialComm {
                 }else if (b == 0){
                     if(getPortStatus()==SerialPortStatus.ON) setPortStatus(SerialPortStatus.TIMEOUT);
                     return;
+                }else{
+                    System.out.print(".");
                 }
             }else{
                 logger.severe("Serial port is OFF...");

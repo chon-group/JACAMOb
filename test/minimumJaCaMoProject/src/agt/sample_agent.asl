@@ -3,12 +3,21 @@
 
 +!attach1 <-
    .myBody.neckAttach("/dev/ttyUSB0");
-    .myBody.neckAttach("/dev/ttyUSB1");
+   // .myBody.neckAttach("/dev/ttyUSB1");
     //.myBody.neckAttach(lampBoy);
     //.myBody.neckAttach("/dev/ttyUSB0");
     //!andar1[source(lampBoy)]
   //  .myBody.neckAttach(ap1,"/dev/ttyEmulatedPort0",Reply3);
 .
+
++myBody::blink(false)[source(interoception,noName)] <-
+   // .wait(500);
+    .myBody.act(blinkOn,Reply);
+    .print("ON ------> ",Reply).
+
++myBody::blink(true)[source(interoception,noName)] <-
+    .myBody.act(blinkOff,Reply);
+    .print("OFF -----> ",Reply).
 
 
 +myBody::lampStatus(VALUE)[source(TYPE,APPARATUS)]
