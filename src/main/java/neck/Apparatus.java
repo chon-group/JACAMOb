@@ -10,6 +10,7 @@ import neck.util.SerialComm;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -29,6 +30,7 @@ public abstract class Apparatus {
     private List<Literal> interoceptions    = new ArrayList<>();
     private List<Literal> exteroceptions    = new ArrayList<>();
     private List<Literal> proprioceptions   = new ArrayList<>();
+    private List<Literal> desires           = new ArrayList<>();
 
     public Apparatus() {}
 
@@ -113,6 +115,10 @@ public abstract class Apparatus {
     private List<Literal> getProprioceptions(){return this.proprioceptions;}
     private List<Literal> getExteroceptions(){return this.exteroceptions;}
 
+    public List<Literal> getDesires(){
+        return  this.desires;
+    }
+
     private void abolishProprioceptions(){this.proprioceptions.clear();}
     private void abolishInteroceptions(){this.interoceptions.clear();}
     private void abolishExteroceptions(){this.exteroceptions.clear();}
@@ -134,6 +140,7 @@ public abstract class Apparatus {
         JSONObject bodyResponse = perceive();
         loadConnectionInfo(bodyResponse);
         loadPercepts(bodyResponse);
+        loadDesires(bodyResponse);
     }
 
     private void loadConnectionInfo(JSONObject bdyReply){
@@ -162,6 +169,25 @@ public abstract class Apparatus {
         addPercept(litINFO,PerceptionType.INTEROCEPTION);
     }
 
+    private void loadDesires(JSONObject bodyResponse){
+        this.desires.clear();
+        if (!bodyResponse.has("desires") || bodyResponse.isNull("desires")) return;
+
+        JSONArray desires = bodyResponse.getJSONArray("desires");
+        for (int i=0; i<desires.length(); i++){
+            JSONObject desire = desires.getJSONObject(i);
+            Literal newDesire;
+            if(desire.has("desire") && desire.has("args")){
+                JSONArray argsDesire = desire.getJSONArray("args");
+                newDesire = neck.util.Util.JSONObjectToLiteral(desire,"desire");
+                this.desires.add(neck.util.Util.addJSONArrayAsTermsInLiteral(newDesire,argsDesire));
+            }
+            else if(desire.has("desire") && !desire.has("args")) {
+                this.desires.add(neck.util.Util.JSONObjectToLiteral(desire,"desire"));
+            }
+        }
+    }
+
     private void loadPercepts(JSONObject bodyResponse) {
         if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) return;
         JSONObject percepts = bodyResponse.getJSONObject("percepts");
@@ -173,37 +199,37 @@ public abstract class Apparatus {
     private void addPerceptsByPerceptionsType(JSONObject perceptions, PerceptionType perceptionType) {
         /* EXPECTED...
         {
-            "exteroception" :[{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}],
-            "interoception" :[{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}],
-            "proprioception":[{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}]
+            "exteroception" :[{"percept":"b1","args":[0,1,2]},{"percept":"b2","args":[0,1,2]},{"percept":"bn"}],
+            "interoception" :[{"percept":"b1","args":[0,1,2]},{"percept":"b2","args":[0,1,2]},{"percept":"bn"}],
+            "proprioception":[{"percept":"b1","args":[0,1,2]},{"percept":"b2","args":[0,1,2]},{"percept":"bn"}]
         }
         */
         if (!perceptions.has(perceptionType.getKey())) return;
 
         /* Extracting the array of the percepts type (based on PerceptionType informed)
-            "exteroception" : [{"belief":"b1","args":[0,1,2]},{"belief":"b2","args":[0,1,2]},{"belief":"bn"}]
+            "exteroception" : [{"percept":"b1","args":[0,1,2]},{"percept":"b2","args":[0,1,2]},{"percept":"bn"}]
         */
         JSONArray filteredPerceptionsByType = perceptions.getJSONArray(perceptionType.getKey());
 
         /*  Traversing the chosen array
             [
-                {"belief":"b1","args":[0,1,2]},
-                {"belief":"b2","args":[0,1,2]},
-                {"belief":"bn"}
+                {"percept":"b1","args":[0,1,2]},
+                {"percept":"b2","args":[0,1,2]},
+                {"percept":"bn"}
             ]
         */
         for (int i = 0; i < filteredPerceptionsByType.length(); i++) {
             /* getting the object (i)
-            *   {"belief":"b1","args":[0,1,2]}
+            *   {"percept":"b1","args":[0,1,2]}
             * */
             JSONObject jsonObject = filteredPerceptionsByType.getJSONObject(i);
 
             /* EXPECTED
-            * {"belief":"b1","args":[0,1,2]}
+            * {"percept":"b1","args":[0,1,2]}
             * */
-            if(jsonObject.has("belief")){
-                /* getting the belief name -->  "belief":"b1"   */
-                Literal belief = neck.util.Util.JSONObjectToLiteral(jsonObject,"belief");
+            if(jsonObject.has("percept")){
+                /* getting the belief name -->  "percept":"b1"   */
+                Literal belief = neck.util.Util.JSONObjectToLiteral(jsonObject,"percept");
 
                 /* getting the args array -->   "args":[0,1,2]  */
                 if(jsonObject.has("args")){

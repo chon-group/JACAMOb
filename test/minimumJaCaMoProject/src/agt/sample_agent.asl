@@ -72,3 +72,5 @@
 
 -!tryAttach(APPARATUS,PORT) <- !!tryAttach(APPARATUS,PORT); .
 
+
++!meuDesejo(T) <- .print(T).

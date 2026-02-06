@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0dec0aa4-58dc-40b0-9fdb-139190be86f4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/act.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/act.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/model/BodyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/model/BodyResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" afterDir="false" />
     </list>
@@ -173,7 +177,10 @@
       <workItem from="1769876234498" duration="3187000" />
       <workItem from="1769883810624" duration="14739000" />
       <workItem from="1770246775692" duration="870000" />
-      <workItem from="1770291150124" duration="9510000" />
+      <workItem from="1770291150124" duration="10148000" />
+      <workItem from="1770307319292" duration="2164000" />
+      <workItem from="1770313843911" duration="28000" />
+      <workItem from="1770407014187" duration="9320000" />
     </task>
     <servers />
   </component>

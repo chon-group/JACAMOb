@@ -75,16 +75,17 @@ public class SerialComm {
         //enviando mensagem...
         drainInput(25, 50);         // limpando o canal
         if (!(getPortStatus() == SerialPortStatus.OFF)) sendJsonSlp(prepareJSON(strMessage,args));
+
         // Preparando para receber resposta.
-        JSONObject meta = new JSONObject();         // bodyResponse
-        JSONArray intentions = new JSONArray();     // lista de intenções
-        JSONArray actions = new JSONArray();        // lista de actions
-        JSONArray skills = new JSONArray();         // lista de skills
+        JSONObject  meta        = new JSONObject();             // bodyResponse
+        JSONArray   desires  = new JSONArray();              // DESEJOS DO CORPO...
+        JSONArray   actions     = new JSONArray();              // CAPACIDADES DO CORPO? AÇÕES SUPORTADAS
+        JSONArray   skills      = new JSONArray();              // PLANOS/CAPACIDADE/INSTINTO? DO CORPO
+        JSONObject  percepts    = new JSONObject();             // PERCEPÇÕES DO CORPO
+            percepts.put("interoception", new JSONArray());
+            percepts.put("proprioception", new JSONArray());
+            percepts.put("exteroception", new JSONArray());
         boolean hasAnyPercept = false;
-        JSONObject percepts = new JSONObject()
-                .put("interoception", new JSONArray())
-                .put("proprioception", new JSONArray())
-                .put("exteroception", new JSONArray());
 
         if (!(getPortStatus() == SerialPortStatus.OFF)) {
             readUntilByte(TRANSMISSION);                                // 1) aguarda início da transmissão (0xC0)
@@ -102,17 +103,18 @@ public class SerialComm {
                     } catch (Exception e) {
                         continue;   // se vier um fragmento inválido, ignora
                     }
+                    //System.out.println(obj.toString());
                     // METADADOS
                     if (obj.has("apparatus")) meta.put("apparatus", obj.get("apparatus"));
                     if (obj.has("apparatusID")) meta.put("apparatusID", obj.get("apparatusID"));
                     if (obj.has("bodyResponse")) meta.put("bodyResponse", obj.get("bodyResponse"));
 
                     // INTENTIONS (um grupo só)
-                    if (obj.has("intention")) {
-                        JSONObject it = new JSONObject();
-                        it.put("intention", obj.get("intention"));
-                        if (obj.has("value")) it.put("value", obj.get("value"));
-                        intentions.put(it);
+                    if (obj.has("desire")) {
+                        JSONObject desire = new JSONObject();
+                        desire.put("desire", obj.get("desire"));
+                        if (obj.has("args")) desire.put("args", obj.get("args"));
+                        desires.put(desire);
                     }
 
                     // ACTIONS
@@ -133,11 +135,11 @@ public class SerialComm {
                     }
 
                     // PERCEPTS agrupados por type (NOVO PADRÃO: args[])
-                    if (obj.has("belief") && obj.has("type")) {
+                    if (obj.has("percept") && obj.has("type")) {
                         String type = obj.optString("type", "");
                         if (percepts.has(type)) {
                             JSONObject p = new JSONObject();
-                            p.put("belief", obj.get("belief"));
+                            p.put("percept", obj.get("percept"));
 
                             // args é opcional (crença sem argumentos)
                             if (obj.has("args") && !obj.isNull("args")) {
@@ -156,7 +158,7 @@ public class SerialComm {
 
         // Monta JSON final
         JSONObject result = new JSONObject(meta.toMap());
-        if (intentions.length() > 0) result.put("intentions", intentions);
+        if (desires.length() > 0) result.put("desires", desires);
         if (actions.length() > 0) result.put("actions", actions);
         if (skills.length() > 0) result.put("skills", skills);
         if (hasAnyPercept) result.put("percepts", percepts);
@@ -216,6 +218,7 @@ public class SerialComm {
             out.write(JSONEND);             // transmit()
             out.write(TRANSMISSION);        // endTransmission()
             out.flush();
+            //System.out.println(doc.toString());
         } catch (Exception e) {
             logger.severe("ERROR with communication at "+getPortAddress());
             setPortStatus(SerialPortStatus.OFF);

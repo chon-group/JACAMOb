@@ -92,10 +92,10 @@ public class act extends DefaultInternalAction {
             }
 
             if (bodyResponse == BodyResponse.EXECUTED) ts.getLogger().fine("Action "+this.actionTerm+" replied "+bodyResponse);
-            else if (bodyResponse == BodyResponse.UNCHANGED) ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
+            else if (bodyResponse == BodyResponse.ALREADY) ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
             else ts.getLogger().severe("Action "+this.actionTerm+" replied "+bodyResponse);
 
-            if((bodyResponse == BodyResponse.EXECUTED) || (bodyResponse == BodyResponse.UNCHANGED)) return true;
+            if((bodyResponse == BodyResponse.EXECUTED) || (bodyResponse == BodyResponse.ALREADY)) return true;
             else return false;
         }
         return false;
