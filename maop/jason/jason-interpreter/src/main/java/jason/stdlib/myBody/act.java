@@ -80,6 +80,9 @@ public class act extends DefaultInternalAction {
 
     @Override
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
+        /* MULTIPLAS RESPOSTAS NÃO SÃO CONSIDERADAS AINDA */
+        /* NO CASO DE UMA ACAO QUE VÁRIOS APARATUS PODEM EXECUTAR, ATUALMENTE ENVIAMOS PARA O PRIMEIRO */
+        /* PORÉM VÁRIOS ELEMENTOS NO MESMO APARATUS PODEM EXECUTAR A MESMA AÇÃO */
         checkArguments(args);
 
         bodyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);

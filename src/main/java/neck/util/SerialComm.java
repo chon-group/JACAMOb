@@ -78,9 +78,9 @@ public class SerialComm {
 
         // Preparando para receber resposta.
         JSONObject  meta        = new JSONObject();             // bodyResponse
-        JSONArray   desires  = new JSONArray();              // DESEJOS DO CORPO...
+        JSONArray   triebs      = new JSONArray();              // DESEJOS DO CORPO...
         JSONArray   actions     = new JSONArray();              // CAPACIDADES DO CORPO? AÇÕES SUPORTADAS
-        JSONArray   skills      = new JSONArray();              // PLANOS/CAPACIDADE/INSTINTO? DO CORPO
+        JSONArray   knowHow     = new JSONArray();              // PLANOS/CAPACIDADE/INSTINTO? DO CORPO
         JSONObject  percepts    = new JSONObject();             // PERCEPÇÕES DO CORPO
             percepts.put("interoception", new JSONArray());
             percepts.put("proprioception", new JSONArray());
@@ -103,48 +103,59 @@ public class SerialComm {
                     } catch (Exception e) {
                         continue;   // se vier um fragmento inválido, ignora
                     }
-                    //System.out.println(obj.toString());
+
                     // METADADOS
                     if (obj.has("apparatus")) meta.put("apparatus", obj.get("apparatus"));
                     if (obj.has("apparatusID")) meta.put("apparatusID", obj.get("apparatusID"));
                     if (obj.has("bodyResponse")) meta.put("bodyResponse", obj.get("bodyResponse"));
+                    if (obj.has("request")) meta.put("request", obj.get("request"));
 
-                    // INTENTIONS (um grupo só)
-                    if (obj.has("desire")) {
-                        JSONObject desire = new JSONObject();
-                        desire.put("desire", obj.get("desire"));
-                        if (obj.has("args")) desire.put("args", obj.get("args"));
-                        desires.put(desire);
+                    // TRIEB - "desejos" do corpo (um grupo só)
+                    // Não considerando o DRANG ainda "a urgência", nem o elemento
+                    if (obj.has("trieb")) {
+                        JSONObject trieb = new JSONObject();
+                        trieb.put("trieb", obj.get("trieb"));
+                        if (obj.has("args")) trieb.put("args", obj.get("args"));
+                        if (obj.has("drang")) trieb.put("drang", obj.get("drang"));
+                        if (obj.has("element")) trieb.put("element", obj.get("element"));
+                        triebs.put(trieb);
                     }
 
-                    // ACTIONS
-                    if (obj.has("actionName")) {
+                    // SUPPORTED ACTIONS
+                    // atualmente não considero o Elemento em que a ação está ligada...
+                    // por hora estou apenas agrupando ações por Apparatus
+                    // FUTURO
+                    if (obj.has("action")) {
                         JSONObject a = new JSONObject();
-                        a.put("actionName", obj.get("actionName"));
+                        a.put("action", obj.get("action"));
                         if (obj.has("args")) a.put("args", obj.get("args")); // geralmente JSONArray
                         actions.put(a);
                     }
 
-                    // SKILLS
+                    // KnowHow
                     if (obj.has("skill")) {
                         JSONObject s = new JSONObject();
                         s.put("skill", obj.get("skill"));
                         if (obj.has("context")) s.put("context", obj.get("context"));
-                        if (obj.has("plans")) s.put("plans", obj.get("plans"));
-                        skills.put(s);
+                        if (obj.has("plan")) s.put("plan", obj.get("plan"));
+                        knowHow.put(s);
                     }
 
-                    // PERCEPTS agrupados por type (NOVO PADRÃO: args[])
+                    // PERCEPTIONS
+                    /*{"percept":"ledID","element":"led","type":"proprioception","response":"percepted","args":[13]}*/
+                    // Ainda não foi implementada ação para falha na percept...
                     if (obj.has("percept") && obj.has("type")) {
                         String type = obj.optString("type", "");
                         if (percepts.has(type)) {
                             JSONObject p = new JSONObject();
                             p.put("percept", obj.get("percept"));
 
-                            // args é opcional (crença sem argumentos)
+                            // args é opcional (perception sem argumentos)
                             if (obj.has("args") && !obj.isNull("args")) {
                                 p.put("args", obj.get("args")); // normalmente JSONArray
                             }
+                            if(obj.has("element")) p.put("element",obj.get("element"));
+                            if(obj.has("status")) p.put("status",obj.get("status"));
 
                             percepts.getJSONArray(type).put(p);
                             hasAnyPercept = true;
@@ -158,11 +169,12 @@ public class SerialComm {
 
         // Monta JSON final
         JSONObject result = new JSONObject(meta.toMap());
-        if (desires.length() > 0) result.put("desires", desires);
+        if (triebs.length() > 0) result.put("triebs", triebs);
         if (actions.length() > 0) result.put("actions", actions);
-        if (skills.length() > 0) result.put("skills", skills);
+        if (knowHow.length() > 0) result.put("knowHow", knowHow);
         if (hasAnyPercept) result.put("percepts", percepts);
 
+        //System.out.println(result.toString());
         return result;
     }
 

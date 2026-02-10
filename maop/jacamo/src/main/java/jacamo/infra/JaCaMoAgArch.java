@@ -175,7 +175,7 @@ public class JaCaMoAgArch extends AgArch {
                                     for(int i=0; i< plans.length; i++){
                                         getTS().getAg().getPL().add(plans[i]);
                                         plans[i].getLabel().addAnnot(ASSyntax.createLiteral("apparatus", ASSyntax.createAtom(name)));
-                                        getTS().getLogger().fine("Adding into plan Library: "+plans[i].toString());
+                                        getTS().getLogger().info("Adding into plan Library: "+plans[i].toString());
                                     }
                                 }
                             }else{

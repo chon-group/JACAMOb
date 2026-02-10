@@ -22,7 +22,7 @@ mas minimumJaCaMoProject {
             }
 
     body bob {
-     // apparatus ap1 : neck.DefaultApparatus("/dev/ttyUSB0")
+      apparatus ap1 : neck.DefaultApparatus("/dev/ttyUSB0")
      // apparatus ap2 : neck.DefaultApparatus("/dev/ttyUSB1")
       //apparatus ap111 : custom.MyCustomApparatusImplementation("/dev/ttyUSB1")
     }

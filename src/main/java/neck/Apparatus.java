@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public abstract class Apparatus {
     //private String address = "setAddress";
@@ -24,7 +25,7 @@ public abstract class Apparatus {
     private Set<String> supportedActions = new HashSet<>();
     private Long    hwAppID;
     private SerialComm serialComm = null;
-
+    private Logger logger;
 
     private List<Plan>    apparatusPlans    = new ArrayList<>();
     private List<Literal> interoceptions    = new ArrayList<>();
@@ -35,6 +36,7 @@ public abstract class Apparatus {
     public Apparatus() {}
 
     public Apparatus(SerialComm serial){
+        this.logger = Logger.getLogger("NECK");
         this.serialComm = serial;
         connect();
         if(getStatus()) loadApparatusInfo();
@@ -53,15 +55,24 @@ public abstract class Apparatus {
         return this.supportedActions.contains(actionName);
     }
 
-    private void addPlan(String trigger, String context, String body) throws ParseException {
-        if (trigger == null || trigger.isBlank()) throw new IllegalArgumentException("Trigger cannot be null");
+    private void addPlan(String trigger, String context, String body) {
         if (context == null || context.isBlank()) context = "true";
         if (body == null || body.isBlank()) body = "true";
 
-        Plan p = ASSyntax.parsePlan("+!"+trigger + " : " + context + " <- " + body + ".");
+        String stringPlan = "+!"+trigger + " : " + context + " <- " + body + ".";
+        if (trigger == null || trigger.isBlank()) {
+            logger.severe("BAD formated Skill: "+stringPlan);
+            return;
+        }
 
-        if (p == null) return;
-        this.apparatusPlans.add(p);
+        Plan plan = null;
+        try{
+            plan = ASSyntax.parsePlan(stringPlan);
+            if (plan != null) this.apparatusPlans.add(plan);
+        }catch (Exception ex){
+            logger.severe("BAD formated Skill: "+stringPlan);
+        }
+        return;
     }
 
     public SerialComm getSerialComm(){
@@ -170,25 +181,33 @@ public abstract class Apparatus {
     }
 
     private void loadDesires(JSONObject bodyResponse){
+        // Ainda não considerando o DRANG "urgência" dos "desejos" do corpo (TRIEB)
+        // Nome do Apparatus já vem no bodyResponse (META)
+        // FUTURO
         this.desires.clear();
-        if (!bodyResponse.has("desires") || bodyResponse.isNull("desires")) return;
+        if (!bodyResponse.has("triebs") || bodyResponse.isNull("triebs")) return;
 
-        JSONArray desires = bodyResponse.getJSONArray("desires");
+        JSONArray desires = bodyResponse.getJSONArray("triebs");
         for (int i=0; i<desires.length(); i++){
             JSONObject desire = desires.getJSONObject(i);
+
             Literal newDesire;
-            if(desire.has("desire") && desire.has("args")){
+            if(desire.has("trieb") && desire.has("args")){
                 JSONArray argsDesire = desire.getJSONArray("args");
-                newDesire = neck.util.Util.JSONObjectToLiteral(desire,"desire");
+                newDesire = neck.util.Util.JSONObjectToLiteral(desire,"trieb");
                 this.desires.add(neck.util.Util.addJSONArrayAsTermsInLiteral(newDesire,argsDesire));
             }
-            else if(desire.has("desire") && !desire.has("args")) {
-                this.desires.add(neck.util.Util.JSONObjectToLiteral(desire,"desire"));
+            else if(desire.has("trieb") && !desire.has("args")) {
+                this.desires.add(neck.util.Util.JSONObjectToLiteral(desire,"trieb"));
             }
         }
     }
 
     private void loadPercepts(JSONObject bodyResponse) {
+        /* AINDA NÃO FORAM IMPLEMENTADOS OS CASOS:
+                UNAVAILABLE,    // The perception could not be obtained (e.g., sensor failure).
+                UNCHANGED;      // The perception was successfully obtained, but its value is the same as in the previous perception cycle.
+        */
         if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) return;
         JSONObject percepts = bodyResponse.getJSONObject("percepts");
         addPerceptsByPerceptionsType(percepts, PerceptionType.EXTEROCEPTION);
@@ -255,6 +274,8 @@ public abstract class Apparatus {
         this.hwAppName = jsonObject.optString("apparatus", "unknown");
         this.hwAppID   = jsonObject.optLong("apparatusID", 0L);
 
+        logger.fine("hwApparatusName: "+this.hwAppName+" hwApparatusID: "+this.hwAppID.toString());
+
         this.supportedActions.clear();
 
         if (jsonObject.has("actions")) {
@@ -263,45 +284,39 @@ public abstract class Apparatus {
             for (int i = 0; i < actions.length(); i++) {
                 JSONObject actionObj = actions.getJSONObject(i);
 
-                if (actionObj.has("actionName")) {
-                    this.supportedActions.add(actionObj.getString("actionName"));
+                if (actionObj.has("action")) {
+                    this.supportedActions.add(actionObj.getString("action"));
+                    logger.fine("supportedAction: "+actionObj.getString("action"));
                 }
             }
         }
     }
 
     private void loadPlans(){
-        JSONObject jsonObject = this.serialComm.sendMsg("getSkills");
-        if (jsonObject.has("skills")) {
+        JSONObject jsonObject = this.serialComm.sendMsg("getKnowHow");
 
-            JSONArray skills = jsonObject.getJSONArray("skills");
-
-            for (int i = 0; i < skills.length(); i++) {
-                JSONObject skillObj = skills.getJSONObject(i);
+        if (jsonObject.has("knowHow")) {
+            JSONArray knowHow = jsonObject.getJSONArray("knowHow");
+            for (int i = 0; i < knowHow.length(); i++) {
+                JSONObject skillObj = knowHow.getJSONObject(i);
                 String context = null;
                 String trigger = null;
                 String planBody = null;
-                if(skillObj.has("context") && skillObj.has("skill") && skillObj.has("plans")){
-                    trigger     = skillObj.get("skill").toString();
-                    context     = skillObj.get("context").toString();
-                    planBody    = skillObj.get("plans").toString();
+                if(skillObj.has("context") && skillObj.has("skill") && skillObj.has("plan")){
+                    if(!skillObj.isNull("skill"))   trigger  = skillObj.get("skill").toString();
+                    if(!skillObj.isNull("context")) context  = skillObj.get("context").toString();
+                    if(!skillObj.isNull("plan"))    planBody = skillObj.get("plan").toString();
 
-                    if (context.equals("FILE")){
-                        //loadFile...
+                    if (context != null && context.equals("FILE")){
+                        //loadFile... fazer ainda
                         System.out.println("é FILE skipping");
                     }
-                    else if (context.equals("URL")){
-                        //download
+                    else if (context != null && context.equals("URL")){
+                        //download fazer ainda
                         System.out.println("é URL skipping ");
                     }
                     else{
-                        try {
-                            addPlan(trigger,context,planBody);
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        //carrega na mente
-                        // System.out.println("é outro "+context);
+                        addPlan(trigger,context,planBody);
                     }
                 }
             }
@@ -318,7 +333,11 @@ public abstract class Apparatus {
 
         Plan[] planList = new Plan[this.apparatusPlans.size()];
         for(int i=0; i<this.apparatusPlans.size(); i++){
-            planList[i] = this.apparatusPlans.get(i);
+            try{
+                planList[i] = this.apparatusPlans.get(i);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
         return planList;
     }
