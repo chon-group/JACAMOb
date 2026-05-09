@@ -166,10 +166,9 @@ public class ConstitutiveReasoner extends Thread {
 			//after, remove from the internal constitutive state representation
 			reasoner.retract("sai__is(X,Y,A,H)");
 			pendingNormativeUpdates = false;
+			currentAssignments.clear();
 			do{
-				changed=false;
-				currentAssignments.clear();
-
+				changed=false;			
 				Iterator<Unifier> it = reasoner.findall("inGa(X,Y,M)");
 				String assignee = "";
 				while(it.hasNext()){				
@@ -186,6 +185,7 @@ public class ConstitutiveReasoner extends Thread {
 
 						if(!currentAssignments.contains(assignment)) { //if there is not an equal assignment in the same cycle (i.e., which is not yet in the constitutive reasoner)
 							sToAdd.add(assignment);
+							currentAssignments.add(assignment);
 							for( ConstitutiveListener l : constitutiveListeners){
 								l.addAgentAssignment(assignee, new AgentStatusFunction(createAtom(adaptTerm(un.get("Y").toString()))));
 							}
@@ -218,6 +218,7 @@ public class ConstitutiveReasoner extends Thread {
 
 					if(!currentAssignments.contains(assignment)) { //if there is not an equal assignment in the same cycle (i.e., which is not yet in the constitutive reasoner)
 						sToAdd.add("sigmaE("+adaptTerm(un.get("Y").toString())+"[sai__agent("+adaptTerm(un.get("A").toString())+")])");
+						currentAssignments.add(assignment);
 
 						for( ConstitutiveListener l : constitutiveListeners){
 							l.addEventAssignment(adaptTerm(un.get("X").toString()), new EventStatusFunction(new Pred(parseLiteral(un.get("Y").toString()))),createAtom(adaptTerm(un.get("A").toString())));
