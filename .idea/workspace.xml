@@ -10,11 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0dec0aa4-58dc-40b0-9fdb-139190be86f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test/helloJaCaMo/JACAMOb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/.jcm-deps.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/JACAMOb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/logging.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/masApp.jcm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/src/agt/sample_agent.asl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/src/env/example/Counter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/src/org/org.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/src/test/agt/test-sample.asl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/masApp/src/test/tests.jcm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/johnnie.asl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/kadu.asl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProjectBKP/.jcm-deps.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProjectBKP/JACAMOb.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/minimumJaCaMoProjectBKP/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/simulatedBody/Blink/Blink.hex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/simulatedBody/Blink/Blink.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/simulatedBody/Blink/Blink.sim1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JACAMOb_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoAgArch.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jacamo/src/main/java/jacamo/infra/JaCaMoAgArch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/act.java" beforeDir="false" afterPath="$PROJECT_DIR$/maop/jason/jason-interpreter/src/main/java/jason/stdlib/myBody/act.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Apparatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/util/SerialComm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/neck/Body.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/neck/Body.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/helloJaCaMo/src/agt/sample_agent.asl" beforeDir="false" afterPath="$PROJECT_DIR$/test/helloJaCaMo/src/agt/sample_agent.asl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/minimumJaCaMoProject.jcm" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/minimumJaCaMoProject.jcm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" beforeDir="false" afterPath="$PROJECT_DIR$/test/minimumJaCaMoProject/src/agt/sample_agent.asl" afterDir="false" />
     </list>
@@ -63,7 +87,7 @@
     &quot;com.intellij.ide.FileNotInSourceRootChecker.no.check&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/nilson/chonGroup/JACAMOb/test/minimumJaCaMoProject&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/nilson/chonGroup/JACAMOb/test/helloJaCaMo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,11 +109,11 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Launcher">
-    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Launcher" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="jacamo.infra.JaCaMoLauncher" />
       <module name="JACAMOb" />
       <option name="PROGRAM_PARAMETERS" value="minimumJaCaMoProject.jcm" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/minimumJaCaMoProject" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/02-action/MAS" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jacamo.infra.*" />
@@ -121,7 +145,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Launcher" />
         <item itemvalue="Application.Run" />
       </list>
     </recent_temporary>
@@ -183,7 +206,37 @@
       <workItem from="1770407014187" duration="9320000" />
       <workItem from="1770488648953" duration="9677000" />
       <workItem from="1770652159222" duration="2135000" />
-      <workItem from="1770753584528" duration="8173000" />
+      <workItem from="1770753584528" duration="8383000" />
+      <workItem from="1770817670612" duration="7246000" />
+      <workItem from="1770848570487" duration="1543000" />
+      <workItem from="1771255150425" duration="5763000" />
+      <workItem from="1771270142522" duration="3456000" />
+      <workItem from="1771274442199" duration="9000" />
+      <workItem from="1771362843594" duration="2000" />
+      <workItem from="1771429091912" duration="11698000" />
+      <workItem from="1771444562426" duration="5842000" />
+      <workItem from="1771451190398" duration="48000" />
+      <workItem from="1771504882267" duration="463000" />
+      <workItem from="1771506190088" duration="2097000" />
+      <workItem from="1771703253533" duration="18000" />
+      <workItem from="1771763054892" duration="1527000" />
+      <workItem from="1771764704832" duration="14000" />
+      <workItem from="1771776570388" duration="781000" />
+      <workItem from="1774464415379" duration="964000" />
+      <workItem from="1774560754075" duration="368000" />
+      <workItem from="1774561596945" duration="71000" />
+      <workItem from="1774812650761" duration="1000" />
+      <workItem from="1774823452703" duration="335000" />
+      <workItem from="1775051381852" duration="15000" />
+      <workItem from="1775071412070" duration="175000" />
+      <workItem from="1775332643759" duration="13000" />
+      <workItem from="1776607491928" duration="7000" />
+      <workItem from="1776806720857" duration="658000" />
+      <workItem from="1776809197030" duration="5000" />
+      <workItem from="1778786810661" duration="7000" />
+      <workItem from="1778796861514" duration="1668000" />
+      <workItem from="1778798694033" duration="1618000" />
+      <workItem from="1778884717384" duration="30000" />
     </task>
     <servers />
   </component>

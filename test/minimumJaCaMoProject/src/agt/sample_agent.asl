@@ -5,7 +5,7 @@
 //!andar1.
 
 +!attach1 <-
-   .myBody.neckAttach("/dev/ttyUSB0");
+   .myBody.neckAttach("/dev/ttyEmulatedPort0");
    // .myBody.neckAttach("/dev/ttyUSB1");
     //.myBody.neckAttach(lampBoy);
     //.myBody.neckAttach("/dev/ttyUSB0");
@@ -13,6 +13,8 @@
   //  .myBody.neckAttach(ap1,"/dev/ttyEmulatedPort0",Reply3);
 .
 
++!atuar <-
+    .myBody.act(changeLED(13,true).
 
 
 +myBody::ledStatus(false) <- .print("LED: false"); .myBody.act(toggleLED).
@@ -27,7 +29,7 @@
 
 +!tryAttach(APPARATUS,PORT) <-
      .random(R);
-     .wait(15000*R);
+     .wait(5000*R);
      .myBody.neckAttach(APPARATUS,PORT);
 .
 

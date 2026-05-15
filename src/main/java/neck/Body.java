@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import jason.JasonException;
 import jason.RevisionFailedException;
 import jason.asSemantics.Event;
+import jason.asSemantics.Intention;
 import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.*;
 import jason.pl.PlanLibrary;
@@ -104,7 +106,7 @@ public class Body {
     }
 
     public void updatePercepts(TransitionSystem ts) {
-
+        logger.info("Body update percepts, starting...");
         try {
             // 1) Novas percepções (já com as anotações source(i|p|e))
             List<Literal> incoming = getPercepts(ts);
@@ -129,20 +131,38 @@ public class Body {
 
             // 3) Remove as que sumiram/mudaram
             for (Literal b : toDelete) {
-                ts.getAg().delBel(b);
+                /* soft removing */
+                //ts.getAg().delBel(b);
+                //logger.info("\t removed..."+b.toString());
+                 //HARD REMOVING...
+                ts.getAg().getBB().remove(b);
+                Trigger te = new Trigger(Trigger.TEOperator.del, Trigger.TEType.belief, b);
+                Event ev = new Event(te, Intention.EmptyInt);
+                ts.getC().addEvent(ev);
+                logger.info("\t HARD removed..."+b.toString());
+                
             }
 
             // 4) Adiciona apenas o que é novo
             for (Literal lit : incoming) {
                 String k = keyFor(lit);
                 if (!currentKeys.contains(k)) {
-                    ts.getAg().addBel(lit);
+                    /* soft believe addition */
+                   // ts.getAg().addBel(lit);
+                  //  logger.info("\t added..."+lit.toString());
+                    /* hard believe addition */
+                    ts.getAg().getBB().add(lit);
+                    Trigger te = new Trigger(Trigger.TEOperator.add, Trigger.TEType.belief, lit);
+                    Event ev = new Event(te, Intention.EmptyInt);
+                    ts.getC().addEvent(ev);
+                    logger.info("\t HARD added..."+lit.toString());
                 }
             }
 
-        } catch (RevisionFailedException e) {
+        } catch (JasonException e) {
             throw new RuntimeException(e);
         }
+        logger.info("Body update percepts, finished...");
     }
 
     /** Chave canônica: crença + termos + source(type,apparatus)*/

@@ -12,6 +12,7 @@ import jason.asSyntax.Term;
 import neck.Body;
 import neck.model.BodyResponse;
 
+import java.util.logging.Logger;
 
 
 public class act extends DefaultInternalAction {
@@ -20,6 +21,7 @@ public class act extends DefaultInternalAction {
     private Term    actionTerm          = null;
     private Atom    apparatusName       = null;
     private Term    replyRequested      = null;
+    private Logger logger;
 
     @Override
     public int getMinArgs() {return 1;}
@@ -87,19 +89,24 @@ public class act extends DefaultInternalAction {
 
         bodyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
 
+
         if (bodyResponse != null){
             if (replyRequested != null){
                 un.unifies(replyRequested,bodyResponse.toTerm());
-                ts.getLogger().fine("Action "+this.actionTerm+" replied "+bodyResponse);
+                ts.getLogger().info("UNIFIES: Action "+this.actionTerm+" replied "+bodyResponse);
                 return true;
             }
 
-            if (bodyResponse == BodyResponse.EXECUTED) ts.getLogger().fine("Action "+this.actionTerm+" replied "+bodyResponse);
-            else if (bodyResponse == BodyResponse.ALREADY) ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
-            else ts.getLogger().severe("Action "+this.actionTerm+" replied "+bodyResponse);
-
-            if((bodyResponse == BodyResponse.EXECUTED) || (bodyResponse == BodyResponse.ALREADY)) return true;
-            else return false;
+            if (bodyResponse == BodyResponse.EXECUTED){
+                ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
+                return true;
+            }else if (bodyResponse == BodyResponse.ALREADY){
+                ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
+                return true;
+            }else {
+                ts.getLogger().severe("severe Action "+this.actionTerm+" replied "+bodyResponse);
+                return false;
+            }
         }
         return false;
     }
