@@ -2,15 +2,10 @@ package customizedAgent;
 
 import java.util.Collection;
 
-//import jason.architecture.AgArch;
+import jason.architecture.AgArch;
 import jason.asSyntax.Literal;
 
-//public class MyAgArch extends AgArch {
-
-import jacamo.infra.JaCaMoAgArch;
-
-public class MyAgArch extends JaCaMoAgArch {
-
+public class MyAgArch extends AgArch {
     private boolean first = true;
 
     @Override

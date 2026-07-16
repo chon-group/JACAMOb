@@ -21,8 +21,8 @@ mas jacamoProject {
         join: livingRoom
         focus: livingRoom.airConditioner
         roles: housekeeper in householdStaff
-      // ag-class: customizedAgent.MyAgent
-      //  ag-arch: customizedAgent.MyAgArch
+       ag-class: customizedAgent.MyAgent
+        ag-arch: customizedAgent.MyAgArch
     }
 
     workspace livingRoom {
