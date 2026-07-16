@@ -14,7 +14,7 @@ target/
 # Builds dos exemplos
 **/build/
 **/target/
-
+**/bin/
 
 # IntelliJ IDEA
 .idea/workspace.xml

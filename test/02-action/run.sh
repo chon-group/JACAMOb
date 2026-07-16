@@ -33,9 +33,18 @@ done
 echo "Starting the MAS!"
 cd MAS
 
-mvn -f ../../../pom.xml clean compile exec:java \
-  -Dexec.mainClass="jacamo.infra.JaCaMoLauncher" \
-  -Dexec.args="minimumJaCaMoProject.jcm"
+#mvn -f ../../../pom.xml clean compile exec:java \
+#  -Dexec.mainClass="jacamo.infra.JaCaMoLauncher" \
+#  -Dexec.args="minimumJaCaMoProject.jcm"
+
+HERE=`pwd`
+rm -rf JACAMOb.jar
+rm -rf target
+cd ../../../
+mvn clean package
+mv target/*-all.jar $HERE/JACAMOb.jar -v
+cd $HERE
+java -jar JACAMOb.jar *.jcm
 
 cd ..
 kill -9 $SIMULIDE_PID

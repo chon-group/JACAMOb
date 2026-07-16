@@ -25,6 +25,10 @@ mas jacamoProject {
         ag-arch: customizedAgent.MyAgArch
     }
 
+    body rosie {
+        apparatus vacuumRobot : neck.DefaultApparatus("/dev/USB0")
+    }
+    
     workspace livingRoom {
         artifact airConditioner : jetsons.home.AirConditioner()
         artifact light : jetsons.home.Light()
