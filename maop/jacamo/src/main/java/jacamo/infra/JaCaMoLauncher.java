@@ -341,6 +341,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
     /** create environment, agents, controller */
     @Override
     public void create() throws JasonException {
+        neck.util.CompilerLite.ensureProjectClassLoaderInstalled();
         createCustomPlatforms();
         createEnvironment();
         createOrganisation();
