@@ -102,7 +102,14 @@ public class AgArch implements Comparable<AgArch>, Serializable {
             // user custom arch
             if (!agArchClass.isEmpty() && !agArchClass.equals(AgArch.class.getName()) && !agArchClass.equals(LocalAgArch.class.getName())) {
                 try {
-                    AgArch a = (AgArch) Class.forName(agArchClass).getConstructor().newInstance();
+                    //AgArch a = (AgArch) Class.forName(agArchClass).getConstructor().newInstance();
+                    AgArch a = (AgArch) Class.forName(
+                                    agArchClass,
+                                    true,
+                                    Thread.currentThread().getContextClassLoader()
+                            )
+                            .getConstructor()
+                            .newInstance();
                     a.setTS(ts); // so a.init() can use TS
                     insertAgArch(a);
                     a.init();

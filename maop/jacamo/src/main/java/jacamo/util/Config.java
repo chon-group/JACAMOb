@@ -162,7 +162,8 @@ public class Config extends jason.util.Config {
     /** Set most important parameters with default values */
     @Override
     public void fix() {
-        tryToFixJarFileConf(JACAMO_JAR, "jacamo"); // this jar is required at runtime (e.g. for .include)
+        //tryToFixJarFileConf(JACAMO_JAR, "jacamo"); // this jar is required at runtime (e.g. for .include)
+        tryToFixJarFileConf(JACAMO_JAR, "JACAMOb"); // this jar is required at runtime (e.g. for .include)
         tryToFixJarFileConf(MOISE_JAR,  "moise");  // this jar is required at runtime (e.g. for .include)
         super.fix();
 
