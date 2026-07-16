@@ -131,7 +131,9 @@ public final class CompilerLite {
 //        }
 //    }
 
-
+    public static void ensureProjectClassLoaderInstalled() {
+        ensureEnvClassLoaderInstalled("src");
+    }
     public static void ensureEnvClassLoaderInstalled(String sourceDir) {
         if (INSTALLED_DIRS.contains(sourceDir)) return;
         synchronized (Workspace.class) {
@@ -139,17 +141,24 @@ public final class CompilerLite {
             try {
                 compileAndInstall(sourceDir);
 
-                Path out = Paths.get(TARGET_PATH + File.separator + sourceDir);
+                //Path out = Paths.get(TARGET_PATH + File.separator + sourceDir);
+                Path out = Paths.get(TARGET_PATH);
                 if (!Files.isDirectory(out)) return;
 
                 INSTALLED_DIRS.add(sourceDir);
 
                 java.util.List<URL> urls = new java.util.ArrayList<>();
 
-                // (a) diretórios já instalados (compilados)
-                for (String dir : INSTALLED_DIRS) {
-                    Path p = Paths.get(TARGET_PATH + File.separator + dir);
-                    if (Files.isDirectory(p)) urls.add(p.toUri().toURL());
+//                // (a) diretórios já instalados (compilados)
+//                for (String dir : INSTALLED_DIRS) {
+//                    Path p = Paths.get(TARGET_PATH + File.separator + dir);
+//                    if (Files.isDirectory(p)) urls.add(p.toUri().toURL());
+//                }
+
+                // classes compiladas
+                Path classesDir = Paths.get(TARGET_PATH);
+                if (Files.isDirectory(classesDir)) {
+                    urls.add(classesDir.toUri().toURL());
                 }
 
                 // (b) JARs da pasta lib/
@@ -204,7 +213,8 @@ public final class CompilerLite {
                 }
             }
 
-            Path out = Paths.get(TARGET_PATH + File.separator + path);
+            //Path out = Paths.get(TARGET_PATH + File.separator + path);
+            Path out = Paths.get(TARGET_PATH);
             Files.createDirectories(out);
 
             JavaCompiler jc = ToolProvider.getSystemJavaCompiler();

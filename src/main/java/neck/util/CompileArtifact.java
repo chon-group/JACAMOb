@@ -76,7 +76,8 @@ public class CompileArtifact {
 
     public Artifact makeArtifactCompiling(String template) throws UnknownArtifactTemplateException {
         try {
-            CompilerLite.ensureEnvClassLoaderInstalled("src"+System.getProperty("file.separator")+"env");
+            //CompilerLite.ensureEnvClassLoaderInstalled("src"+System.getProperty("file.separator")+"env");
+            CompilerLite.ensureProjectClassLoaderInstalled();
             String clsName = classNameOf(template);
             Object[] args = parseArgs(template);
 
