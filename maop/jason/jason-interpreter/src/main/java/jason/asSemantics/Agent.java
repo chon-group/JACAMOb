@@ -87,7 +87,15 @@ public class Agent implements Serializable, ToDOM {
      */
     public static Agent create(AgArch arch, String agClass, ClassParameters bbPars, String asSrc, Settings stts) throws Exception {
         //try {
-            Agent ag = (Agent) Class.forName(agClass).getConstructor().newInstance();
+            //Agent ag = (Agent) Class.forName(agClass).getConstructor().newInstance();
+
+            Agent ag = (Agent) Class.forName(
+                            agClass,
+                            true,
+                            Thread.currentThread().getContextClassLoader()
+                    )
+                    .getConstructor()
+                    .newInstance();
 
             new TransitionSystem(ag, null, stts, arch);
 
