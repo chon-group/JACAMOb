@@ -5,6 +5,7 @@ import jason.asSemantics.Unifier;
 import jason.asSyntax.Atom;
 import jason.asSyntax.Literal;
 import jason.asSyntax.parser.ParseException;
+import jason.JasonException;
 
 /**
  * Adds the functionality of checking if the Literal is logical consequence of another one.
@@ -28,7 +29,12 @@ public class VerifiableConsequenceLiteral extends LiteralDecorator {
 	 * Returns true when the instance of VerifiableConsequenceLiteral is logical consequence of "l"
 	 * @throws ParseException
 	 */
-	public boolean isLogicalConsequenceOf(Literal l){
+	public boolean isLogicalConsequenceOf(Literal l) throws JasonException {
+		/* Para quem possa interessar (Maiquel, Jomi, etc)...
+			pelo que entendi o SAI dependia de uma versão antiga do Jason e não compilava
+			eu adicionei esse "throws JasonException"
+			e funcionou agora com o Jason que importei do GitHub
+		* */
 		if(ag==null){
 			ag = new Agent();
 			ag.initAg();
