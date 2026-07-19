@@ -1,0 +1,146 @@
+
+apply plugin: 'java-library'
+apply plugin: 'antlr'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+
+
+version '0.5.4'
+
+group   'org.jacamo'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    maven { url "https://raw.githubusercontent.com/jacamo-lang/mvn-repo/master" }
+    maven { url 'https://repo.gradle.org/gradle/libs-releases' }
+
+}
+
+dependencies{
+   antlr "org.antlr:antlr4:4.12.0" // use ANTLR version 4
+   implementation group: 'org.jason'      , name: 'jason'   , version: '3.1' , changing: true	, transitive: false
+   implementation group: 'org.jacamo'     , name: 'moise'   , version: '1.1', changing: true, transitive: false
+   implementation group: 'org.jacamo',     name: 'npl' ,     version: '0.6.1', changing: false, transitive: false
+   implementation group: 'org.jacamo'     , name: 'cartago' , version: '3.1' , changing: true, transitive: false
+   implementation group: 'org.jacamo'     , name: 'jaca'    , version: '3.1' , changing: true, transitive: false
+   
+   // https://mvnrepository.com/artifact/javax.json/javax.json-api
+   implementation group: 'javax.json', name: 'javax.json-api', version: '1.1.4' //required  by jason.asSyntax.Literal
+
+
+   testImplementation 'junit:junit:4.12'
+}
+
+jar {
+    //baseName 'sai'
+     archiveBaseName.set('sai')
+}
+
+
+//task fixTab {
+//    ant.fixcrlf(eol: 'lf',  includes: '**/*.txt,**/*.bat, **/*.adoc', srcdir: '.')
+//    ant.fixcrlf(tab: 'remove', tablength: '4', javafiles: 'true', includes: '**/*.java,**/*.xml,**/*.xsl,**/*.xsd', srcdir: 'src')
+//    ant.fixcrlf(tab: 'remove', tablength: '4', javafiles: 'true', includes: '**/*.java,**/*.xml,**/*.xsl,**/*.xsd', srcdir: 'examples')
+//}
+
+
+// the following lines is used to avoid errors while generating javadoc
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+      tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+      }
+    }
+}
+
+task javadocJar (type: Jar, dependsOn: javadoc) {
+    //baseName 'sai'
+    //classifier = 'javadoc'
+    archiveBaseName.set('sai')
+    archiveClassifier.set('javadoc')  
+    from '${docsDir}/../../doc/api'
+}
+
+task sourceJar (type : Jar) {
+    //baseName 'sai'
+    //classifier = 'sources'
+    archiveBaseName.set('sai')
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            artifact javadocJar
+            artifactId 'sai'
+        }
+    }
+}
+
+
+task publishMavenGitHub(dependsOn: [ 'build', 'publishToMavenLocal']) {
+  doLast {
+    def wdir = System.getProperty("user.home")+'/.m2/repository/org/jacamo/sai'
+    def rdir = System.getProperty("user.home")+'/pro/mvn-repo'
+    exec {
+        commandLine 'git', 'pull'
+        workingDir rdir
+    }
+    copy {
+        from wdir
+        into rdir + '/org/jacamo/sai'
+    }
+    exec {
+        commandLine 'git', 'add', '*'
+        workingDir rdir
+    }
+    exec {
+        commandLine 'git', 'commit', '-a', '-m', 'new version of SAI '+project.version
+        workingDir rdir
+    }
+    exec {
+        commandLine 'git', 'push'
+        workingDir rdir
+    }
+  }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['--add-modules', 'jdk.httpserver']
+}
+
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += ['--add-modules', 'jdk.httpserver']
+}
+
+
+/*task publishMavenSF(dependsOn: [ 'jar', 'build', 'publishToMavenLocal', 'sourceJar', 'javadocJar']) {
+  doLast {
+    description 'transfer local maven artifact to our maven2 repository at sourceforge'
+
+    def wdir = System.getProperty("user.home")+'/.m2/repository/org/jacamo/sai'
+    def tdir = 'jomifred,jacamo@web.sf.net:/home/project-web/jacamo/htdocs/maven2/org/jacamo/sai'
+    exec {
+        commandLine 'scp', '-r', project.version, tdir
+        workingDir wdir
+    }
+    exec {
+        commandLine 'cp', 'maven-metadata-local.xml', 'maven-metadata.xml'
+        workingDir wdir
+    }
+    exec {
+        commandLine 'scp', 'maven-metadata.xml', tdir
+        workingDir wdir
+    }
+  }
+}*/
