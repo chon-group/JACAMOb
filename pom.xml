@@ -124,6 +124,24 @@
     </dependencies>
 
     <build>
+        <resources>
+
+            <!-- Recursos do JaCaMo -->
+            <resource>
+                <directory>maop/jacamo/src/main/resources</directory>
+            </resource>
+
+            <!-- Recursos do Moise -->
+            <resource>
+                <directory>maop/moise/src/main/resources</directory>
+            </resource>
+
+            <!-- Recursos do Jason -->
+            <resource>
+                <directory>maop/jason/jason-interpreter/src/main/resources</directory>
+            </resource>
+
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -5,12 +5,12 @@ import java.util.logging.Level;
 
 import neck.Apparatus;
 import neck.Body;
+import neck.model.BodyParameters;
 import neck.model.BodyResponse;
 import neck.util.CompilerLite;
 import neck.util.ReflectCall;
 import jaca.CAgentArch;
 import jacamo.project.JaCaMoAgentParameters;
-import jacamo.project.JaCaMoBodyParameters;
 import jacamo.project.JaCaMoWorkspaceParameters;
 import jason.RevisionFailedException;
 import jason.architecture.AgArch;
@@ -156,9 +156,9 @@ public class JaCaMoAgArch extends AgArch {
 
     private void createMyBody(){
         CompilerLite.ensureEnvClassLoaderInstalled("src/bdy");
-        Collection<JaCaMoBodyParameters> bodies = JaCaMoLauncher.getJaCaMoRunner().getJaCaMoProject().getBodies();
+        Collection<BodyParameters> bodies = JaCaMoLauncher.getJaCaMoRunner().getJaCaMoProject().getBodies();
 
-        for (JaCaMoBodyParameters b : bodies) {
+        for (BodyParameters b : bodies) {
             if(getAgName().equals(b.getName())){
                 for (var e : b.getApparatusEntries()) {
                     String name = e.getKey();
@@ -169,7 +169,7 @@ public class JaCaMoAgArch extends AgArch {
                         if (created instanceof Apparatus) {
                             if(getAgtBody().attachApparatus((Apparatus) created, name)){
                                 /* loading plans */
-                                ((Apparatus) created).loadPlansFromDevice();
+                                ((Apparatus) created).loadTacitKnowledge();
                                 Plan[] plans = ((Apparatus) created).getPlans();
                                 if (plans != null){
                                     for(int i=0; i< plans.length; i++){

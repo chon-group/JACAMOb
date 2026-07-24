@@ -1,0 +1,52 @@
+@startuml
+allowmixing
+
+actor Designer
+
+package "JACAMOb" {
+
+    package "JaCaMo" {
+
+        class "infra::JaCaMoLauncher" as JaCaMoLauncher {
+            + void main()
+        }
+    }
+
+    package "CArtAgO" {}
+    package "Jason" {}
+    package "Moise" {}
+    package "NPL" {}
+    package "SAI" {}
+    package "JaCa" {}
+    package "ORA4MAS" {}    
+
+    
+    package "NECK" {}
+    
+}
+
+Designer ..> JaCaMoLauncher : project.jcm
+
+JaCaMo ..> Jason
+JaCaMo ..> NECK
+JaCaMo ..> JaCa
+JaCaMo ..> CArtAgO
+
+JaCa ..> Jason
+JaCa ..> CArtAgO
+
+SAI ..> CArtAgO
+SAI ..> Jason
+
+
+NECK ..> Jason
+Moise ..> NPL
+
+ORA4MAS ..> CArtAgO
+ORA4MAS ..> Jason
+ORA4MAS ..> Moise
+ORA4MAS ..> NPL
+
+
+
+@enduml

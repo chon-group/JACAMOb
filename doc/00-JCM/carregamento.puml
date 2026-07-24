@@ -1,0 +1,96 @@
+/'
+Ferramenta:     sudo apt install plantuml
+Para executar:  plantuml -tpdf arquivo.puml
+Online:         https://www.planttext.com
+'/
+@startuml
+title Instanciação e incorporação de um agente em JACAMOb
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant Jason
+participant JaCa
+
+participant Moise
+
+participant CArtAgO
+
+Designer -> JaCaMo : JACAMOb.init(project.jcm)
+
+activate JaCaMo
+
+JaCaMo -> JaCaMo : JaCaMoLauncher.parseArgs()
+
+
+group Instanciação da Dimensão Ambiental
+JaCaMo -> JaCa : Cartago.init()
+activate JaCa
+JaCa -> CArtAgO : CartagoEnvironment.init()
+activate CArtAgO
+CArtAgO -> CArtAgO : Workspace.init()
+CArtAgO --> JaCa
+deactivate CArtAgO
+JaCa --> JaCaMo
+deactivate JaCa
+end
+
+
+group Instanciação da Dimensão Organizacional
+JaCaMo -> Moise : Moise.init()
+activate Moise
+Moise -> Moise : init()
+Moise -->> JaCaMo
+deactivate Moise
+end
+
+group Instanciação da Dimensão dos Agentes
+
+JaCaMo -> Jason : JaCaMoLauncher.createAgs()
+activate Jason
+Jason -> Jason : RunLocalMAS.createAgs()
+Jason -> Jason : LocalAgArch.createArchs()
+Jason -> Jason : Agent.initAg()
+Jason -> Jason : PlanLibrary.add()
+Jason -> JaCaMo : JaCaMoAgArch.init()
+
+
+group #FFF2CC Instanciação Corporal dos Agentes
+
+JaCaMo -> NECK : JaCaMoAgArch.embody()
+activate NECK
+NECK -> NECK : Body.init()
+NECK -> NECK : Body.attachApparatus()
+NECK -> NECK : Apparatus.init()
+NECK -> NECK : Apparatus.loadBodyActions()
+NECK -> Jason : Apparatus.loadTacitKnowledge()
+activate Jason
+Jason -> Jason : PlanLibrary.add()
+Jason --> NECK
+deactivate Jason
+NECK --> JaCaMo 
+deactivate NECK
+end
+
+
+JaCaMo --> Jason 
+Jason -> JaCa : AgArch.init()
+activate JaCa
+
+JaCa -> JaCa : CAgentArch.init()
+
+JaCa -> CArtAgO : CartagoEnvironment.startSession()
+activate CArtAgO
+CArtAgO -> CArtAgO : Workspace.makeArtifact()
+CArtAgO -> CArtAgO : ObsProperty.init()
+CArtAgO --> JaCa
+deactivate CArtAgO
+JaCa --> Jason
+deactivate JaCa
+Jason --> JaCaMo
+deactivate Jason
+end
+
+deactivate JaCaMo
+
+@enduml

@@ -8,10 +8,10 @@ PARSER_BEGIN(JaCaMoProjectParser)
 package jacamo.project.parser;
 
 import java.util.*;
-import java.io.*;
 import jacamo.project.*;
 import jason.mas2j.*;
 import jason.asSyntax.*;
+import neck.model.BodyParameters;
 //import jason.asSemantics.*;
 //import jason.jeditplugin.*;
 //import jason.asSyntax.ArithExpr.ArithmeticOp;
@@ -54,6 +54,8 @@ public class JaCaMoProjectParser {
     }
 
 }
+
+
 
 PARSER_END(JaCaMoProjectParser)
 
@@ -225,6 +227,7 @@ JaCaMoProject parse(String directory) :           { Token masId; String f = null
 
 void agent() :              { Token agType; Token agName; Token qty; Token opt; Token t; Object oval; String ns = null;
                               JaCaMoAgentParameters ag = new JaCaMoAgentParameters(project);
+                              BodyParameters bdy = new BodyParameters(project);
                               ClassParameters arch;
                               Literal l;
                               List<String> instances = new ArrayList<String>();
@@ -233,7 +236,8 @@ void agent() :              { Token agType; Token agName; Token qty; Token opt; 
                             }
 {
   <AGENT> agName = <ATOM>
-                            { ag.name = agName.image;
+                            { bdy.setName(agName.image);
+                              ag.name = agName.image;
                               agFile = agName.image+".asl";
                             }
   [ ":" agFile = fileName()
@@ -253,6 +257,7 @@ void agent() :              { Token agType; Token agName; Token qty; Token opt; 
                               | (LOOKAHEAD(4) opt=<ATOM>      (<EOL>|",")+       { instances.add(opt.image); }  )*
                               )
         //|  <NODE>        ":"  opt=<ATOM>                      (<EOL>)+           { ag.setHost(opt.image); }
+        |  <BODY>        ":"  (<EOL>)* (apparatus(bdy))+
         |  <AGARCH>      ":"  (LOOKAHEAD(4) arch = classDef() (<EOL>|",")+       { ag.insertArchClass(arch); })+
         |  <AGCLASS>     ":"  ag.agClass = classDef()         (<EOL>)+
         |  <AGBBCLASS>   ":"  ag.bbClass = classDef()         (<EOL>)+
@@ -293,30 +298,30 @@ void agent() :              { Token agType; Token agName; Token qty; Token opt; 
 }
 
 void body() :          { Token t;
-                              JaCaMoBodyParameters bds = new JaCaMoBodyParameters(project);
-                            }
+                  BodyParameters bdy = new BodyParameters(project);
+                }
 {
-  <BODY> t = <ATOM>    { bds.setName(t.image); }
+  <BODY> t = <ATOM>    { bdy.setName(t.image); }
   "{"  (<EOL>)*
     (
-      apparatus(bds)
+      apparatus(bdy)
     )*
   "}" (<EOL>)*
-                            { project.addBody(bds); }
+                            { project.addBody(bdy); }
 }
 
-void apparatus(JaCaMoBodyParameters bds) :
+void apparatus(BodyParameters bdy) :
                             { Token t; Token tns; Token a; String ns = null;
                               ClassParameters cp;
                             }
 {
-  <APPARATUS>  t = <ATOM> ":"  cp = classDef() { bds.addApparatus(t.image,cp); }
+  <APPARATUS>  t = <ATOM> ":"  cp = classDef() { bdy.addApparatus(t.image,cp); }
   ["{"  (<EOL>)*
 
    "}"
   ]
   (<EOL>)*
-                            { project.addBody(bds); }
+                            { project.addBody(bdy); }
 }
 
 void workspace() :          { Token t;

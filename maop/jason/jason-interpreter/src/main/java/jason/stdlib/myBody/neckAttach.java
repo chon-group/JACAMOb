@@ -134,7 +134,7 @@ public class neckAttach extends DefaultInternalAction {
                     return false;
                 }else{
                     if (this.response != null) un.unifies(this.response, ASSyntax.createAtom(newApparatus.getApparatusName()));
-                    newApparatus.loadPlansFromDevice();
+                    newApparatus.loadTacitKnowledge();
                     Plan[] plans = newApparatus.getPlans();
                     if(plans != null){
                         for(int i=0; i< plans.length; i++){

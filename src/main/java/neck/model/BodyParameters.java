@@ -17,7 +17,6 @@ public class BodyParameters implements Serializable {
     protected boolean debug = false;
 
     public BodyParameters(JaCaMoProject project) {
-        neck.util.Trace.logCAT1();
         this.project = project;
     }
 

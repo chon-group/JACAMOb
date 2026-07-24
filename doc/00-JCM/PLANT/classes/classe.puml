@@ -1,0 +1,26 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Livro {
+  - String titulo
+  - String autor
+  - int anoPublicacao
+  + void emprestar()
+  + void devolver()
+}
+
+class Usuario {
+  - String nome
+  - String matricula
+  + void solicitarLivro()
+}
+
+class Biblioteca {
+  + void adicionarLivro(Livro livro)
+}
+
+Usuario "1" --> "0..*" Livro : realiza empréstimo >
+Biblioteca "1" o-- "1..*" Livro : possui acervo >
+Biblioteca "1" *-- "1..*" Usuario : gerencia >
+
+@enduml

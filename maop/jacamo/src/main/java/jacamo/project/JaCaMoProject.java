@@ -6,6 +6,7 @@ import jason.mas2j.AgentParameters;
 import jason.mas2j.ClassParameters;
 import jason.mas2j.MAS2JProject;
 import jason.runtime.SourcePath;
+import neck.model.BodyParameters;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -18,7 +19,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
 
     protected static Logger logger = Logger.getLogger(JaCaMoProject.class.getName());
 
-    protected Map<String,JaCaMoBodyParameters> bodies = new HashMap<>();
+    protected Map<String, BodyParameters> bodies = new HashMap<>();
     protected Map<String,JaCaMoWorkspaceParameters> workspaces = new HashMap<>();
     protected List<JaCaMoOrgParameters>       orgs       = new ArrayList<>();
     protected List<JaCaMoInstParameters>      insts      = new ArrayList<>();
@@ -206,10 +207,10 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
     */
 
-    public void addBody(JaCaMoBodyParameters b) {
+    public void addBody(BodyParameters b) {
         bodies.put(b.getName(),b);
     }
-    public Collection<JaCaMoBodyParameters> getBodies() {
+    public Collection<BodyParameters> getBodies() {
         return bodies.values();
     }
 

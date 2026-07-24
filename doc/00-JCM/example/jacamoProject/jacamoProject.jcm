@@ -1,0 +1,30 @@
+mas jacamoProject.jcm{
+    agent rosie: agtDescription.asl {
+        beliefs: ecoMode(on)
+        goals: saveBattery
+        join: livingRoom
+        focus: livingRoom.airConditioner
+        focus: livingRoom.light
+        focus: jetsonsInstitution.jetsonsInstitution_art
+        roles: housekeeper in householdStaff
+  //      ag-class: customizedAgent.MyAgent
+  //      ag-arch: customizedAgent.MyAgArch
+    }
+    
+   workspace livingRoom {
+        artifact airConditioner : jetsons.home.AirConditioner()
+        artifact light : jetsons.home.Light()
+    }
+
+    institution jetsonsInstitution : jetsonsInst.sai {
+        workspaces: livingRoom
+    }
+
+    organisation jetsonsFamily : jetsons.xml {
+        group householdStaff : householdGroup {
+            responsible-for: cleanHouse
+        }
+        scheme cleanHouse : cleaningScheme
+        situated: jetsonsInstitution
+    }
+}

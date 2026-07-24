@@ -1,0 +1,11 @@
+mas ontologyExample {
+
+    agent coach : coach.asl {
+        focus: ontologyWS.teamOntology
+    }
+
+    workspace ontologyWS {
+        artifact teamOntology: ontology.OntologyArtifact("src/ontology/team.owl")
+    }
+
+}

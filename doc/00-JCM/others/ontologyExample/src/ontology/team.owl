@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/team#"
+     xml:base="http://www.example.org/team"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <!-- Ontologia -->
+    <owl:Ontology rdf:about="http://www.example.org/team"/>
+
+
+    <!-- =============================== -->
+    <!-- Classes                         -->
+    <!-- =============================== -->
+
+    <owl:Class rdf:about="http://www.example.org/team#Player"/>
+
+    <owl:Class rdf:about="http://www.example.org/team#Midfielder">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/team#Player"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/team#RightMidfielder">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/team#Midfielder"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.example.org/team#Goalkeeper">
+        <rdfs:subClassOf rdf:resource="http://www.example.org/team#Player"/>
+    </owl:Class>
+
+
+    <!-- =============================== -->
+    <!-- Individuals                     -->
+    <!-- =============================== -->
+
+    <!-- John é declarado SOMENTE como RightMidfielder -->
+    <owl:NamedIndividual rdf:about="http://www.example.org/team#john">
+        <rdf:type rdf:resource="http://www.example.org/team#RightMidfielder"/>
+    </owl:NamedIndividual>
+
+    <!-- Peter é declarado como Goalkeeper -->
+    <owl:NamedIndividual rdf:about="http://www.example.org/team#peter">
+        <rdf:type rdf:resource="http://www.example.org/team#Goalkeeper"/>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

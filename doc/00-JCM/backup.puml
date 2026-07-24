@@ -1,0 +1,104 @@
+/'
+Ferramenta:     sudo apt install plantuml
+Para executar:  plantuml -tpdf arquivo.puml
+Online:         https://www.planttext.com
+'/
+@startuml
+title Instanciação e incorporação de um agente em JACAMOb
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant Jason
+participant JaCa
+
+participant Moise
+participant ORA4MAS
+participant CArtAgO
+
+
+participant NPL
+
+activate JaCaMo
+
+
+
+group Iniciando Dimensão dos Agentes
+JaCaMo -> Jason : JaCaMoLauncher.startAgs()
+activate Jason
+Jason -> Jason : RunLocalMAS.startAgs()
+Jason -> Jason : RunLocalMAS.createAgsThreads()
+Jason -> Jason : LocalAgArch.run()
+
+== ddd ==
+
+Jason -> CArtAgO : joinWorkspace
+activate CArtAgO
+CArtAgO -> CArtAgO : AgentSessionArtifact.joinWorkspace()
+CArtAgO --> Jason
+deactivate CArtAgO
+
+Jason -> CArtAgO : focus
+activate CArtAgO
+CArtAgO -> CArtAgO : AgentBodyArtifact.focus()
+CArtAgO --> Jason
+deactivate CArtAgO
+
+== ddd ==
+
+Jason -> JaCa : TransitionSystem.sense()
+activate JaCa
+JaCa -> CArtAgO : CAgentArch.perceive()
+activate CArtAgO
+CArtAgO -> CArtAgO : ObsProperty.init() 
+CArtAgO --> JaCa
+deactivate CArtAgO
+JaCa -> Jason : CAgentArch.addObsPropertiesBel()
+activate Jason
+Jason -> Jason : BeliefBase.add()
+Jason --> JaCa
+deactivate Jason
+JaCa --> Jason
+deactivate JaCa
+
+
+
+Jason -> JaCaMo : TransitionSystem.sense()
+activate JaCaMo
+JaCaMo -> NECK : JaCaMoAgArch.perceive()
+
+activate NECK
+NECK -> NECK : Body.sense()
+NECK ->  NECK : Apparatus.loadDesires()
+NECK ->  NECK : Apparatus.loadPercepts()
+
+
+NECK ->  Jason : Body:updatePercepts()
+activate Jason
+Jason -> Jason : BeliefBase.add()
+Jason --> NECK
+deactivate Jason
+
+NECK -> Jason : Body.updateDesires()
+activate Jason
+Jason -> Jason : GoalListener.goalStarted()
+Jason --> NECK
+deactivate Jason
+NECK --> JaCaMo
+JaCaMo --> Jason
+deactivate JaCaMo
+
+activate Jason
+Jason -> Jason: AgArch.checkMail()
+
+
+Jason -> CArtAgO : TransitionSystem.act()
+CArtAgO -> CArtAgO : AgentSessionArtifact.joinWorkspace
+CArtAgO -> CArtAgO : AgentBodyArtifact.focus
+
+end
+
+
+deactivate JaCaMo
+
+@enduml

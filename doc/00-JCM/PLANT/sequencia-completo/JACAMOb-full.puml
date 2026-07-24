@@ -1,0 +1,454 @@
+ 
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+title Diagrama de Fluxo Temporal entre Componentes do JACAMOb
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant DEVICE
+participant RealWorld
+participant Jason
+participant JaCa
+participant CArtAgO
+participant ORA4MAS
+participant Moise
+participant NPL
+participant SAI
+
+
+
+
+
+
+Designer -> JaCaMo : JACAMOb(project.jcm)
+
+== parte 1: INTERPRETAÇÃO DO PROJETO DE SISTEMA MULTIAGENTE==
+    activate JaCaMo
+    JaCaMo -> JaCaMo : infra.JaCaMoLauncher.<init>
+
+    JaCaMo -> Jason: infra.JaCaMoRuntimeServices.<init>
+    activate Jason
+    Jason -> Jason: infra.local.RunLocalMAS.<init>
+    Jason -> Jason : infra.local.LocalRuntimeServices.<init>
+    Jason -> Jason : infra.local.BaseRuntimeServices.<init>
+    return
+
+
+
+    group infra.JaCaMoLauncher.init()
+        JaCaMo -> Jason : infra.JaCaMoLauncher.parseArgs()
+
+
+
+    activate Jason
+    Jason -> Jason : infra.local.RunLocalMAS.parseArgs()
+    return
+
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.<init>
+    JaCaMo -> Jason : project.parser.JaCaMoProjectParser.parse()
+
+    activate Jason
+    Jason -> Jason : mas2j.MAS2JProject.<init>
+    Jason -> Jason : mas2j.ClassParameters.<init>
+    return
+
+    group #faf6f1 Interpretação da Dimensão dos Agentes
+    JaCaMo -> Jason : project.JaCaMoProject.<init>
+    activate Jason
+    Jason -> Jason : mas2j.AgentParameters.<init>
+    Jason -> Jason : mas2j.AgentParameters.setupDefault()
+    return
+
+    group #f1d990 Interpretação da Especificação Corporal do Agente
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.<init>
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.agent()
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.apparatus()
+    JaCaMo -> NECK : project.JaCaMoProject.addBody()
+    activate NECK
+
+
+    NECK -> NECK   : model.BodyParameters.<init>
+    NECK -> NECK   : model.BodyParameters.addApparatus()
+    return
+
+    end
+
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addInitBel()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addInitGoal()
+
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addWorkspace()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addFocus()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addRole()
+
+    ' JaCaMo -> Jason : project.JaCaMoProject.addBody()
+    ' activate Jason
+    ' Jason -> Jason : mas2j.MAS2JProject.addAgent()
+    ' return
+    
+    end 
+
+    group #faf6f1 Interpretação da Especificação Ambiente
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.workspace()
+    JaCaMo -> JaCaMo : project.JaCaMoWorkspaceParameters.<init>
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.artifact()
+    JaCaMo -> JaCaMo : project.JaCaMoWorkspaceParameters.addArtifact()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.addWorkspace()
+    end
+
+    group #faf6f1 Interpretação da Especificação Organizacional
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.institution()
+    JaCaMo -> JaCaMo : project.JaCaMoInstParameters.<init>
+    JaCaMo -> JaCaMo : project.JaCaMoInstParameters.addParameter()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.addInstitution
+
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.organisation()
+    JaCaMo -> JaCaMo : project.JaCaMoOrgParameters.<init>
+
+    JaCaMo -> JaCaMo : project.JaCaMoWorkspaceParameters.<init>
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.group()
+    JaCaMo -> JaCaMo : project.JaCaMoGroupParameters.<init>
+    JaCaMo -> JaCaMo : project.JaCaMoGroupParameters.addResponsibleFor()
+    JaCaMo -> JaCaMo : project.JaCaMoOrgParameters.addGroup()
+
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.scheme()
+    JaCaMo -> JaCaMo : project.JaCaMoOrgParameters.addScheme()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.addOrg()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addWorkspace()
+    end
+
+    JaCaMo -> JaCaMo : jacamo.infra.JaCaMoLauncher.loadPackages()
+    end
+== FIM da parte 1 ==
+
+newpage
+== INCIO DO CARREGAMENTO O SISTEMA MULTIAGENTE ==
+
+    group infra.JaCaMoLauncher.create()
+
+        group #faf6f1 Dimensão Ambiental
+            JaCaMo -> JaCa : jacamo.platform.Cartago.init()
+            activate JaCa
+            JaCa -> CArtAgO : CartagoEnvironment.init()
+            activate CArtAgO
+            CArtAgO -> CArtAgO : WorkspaceId.<init>
+            CArtAgO -> CArtAgO : Workspace.makeArtifact()
+            return
+            return
+        end
+
+        group #faf6f1 Dimensão Organizacional
+
+            JaCaMo -> JaCaMo: platform.Moise.init()
+            JaCaMo -> JaCaMo: platform.Sai.init()
+        end
+
+        group #faf6f1 Instanciação da Dimensão dos Agentes
+
+        JaCaMo -> Jason : infra.JaCaMoLauncher.createAgs()
+        activate Jason
+        Jason -> Jason : infra.local.RunLocalMAS.createAgs()
+        Jason -> Jason : mas2j.AgentParameters.addArchClass()
+
+        Jason -> Jason : infra.local.LocalAgArch.<init>
+        
+
+        Jason -> Jason : infra.local.LocalAgArch.createArchs()
+        Jason -> Jason : asSemantics.Agent.<init>
+        Jason -> Jason : asSemantics.Agent.create()
+        Jason -> Jason : asSemantics.Agent.initAg()
+        Jason -> Jason : bb.DefaultBeliefBase.<init>
+        Jason -> Jason : pl.PlanLibrary.<init>
+        Jason -> Jason : pl.PlanLibrary.add()
+        Jason -> Jason : asSemantics.Agent.addInitBel()
+        Jason -> Jason : asSemantics.Agent.addInitialGoalsInTS()
+        return
+        
+        JaCaMo -> JaCaMo : infra.JaCaMoAgArch.<init>
+        
+
+        JaCaMo -> Jason : infra.JaCaMoAgArch.init()
+        activate Jason
+        Jason -> JaCa : architecture.AgArch.<init>
+        activate JaCa
+
+        JaCa -> JaCa : CAgentArch.<init>
+        JaCa -> JaCa : CAgentArch.initBridge()
+
+        JaCa -> CArtAgO : CartagoEnvironment.startSession()
+        activate CArtAgO
+
+        CArtAgO -> CArtAgO : ObsProperty.<init>
+        CArtAgO -> CArtAgO : Artifact.defineObsProperty()
+        return
+        return
+        return
+        
+
+    group #FFF2CC Instanciação Corporal dos Agentes
+
+        JaCaMo -> NECK : infra.JaCaMoAgArch.embody()
+        activate NECK
+        NECK -> NECK : Body.<init>
+        NECK -> NECK : Body.attachApparatus()
+        NECK -> NECK : DefaultApparatus.<init>
+        NECK -> NECK : Apparatus.<init>
+        NECK -> DEVICE : Apparatus.connect()
+        activate DEVICE
+        DEVICE -> DEVICE :  setup()
+        DEVICE -> DEVICE : Serial.begin(115200bps)
+        return
+        
+        
+        NECK -> DEVICE : Apparatus.loadBodyActions()
+        activate DEVICE
+        DEVICE -> DEVICE :  JSON_SLP.incoming()
+        DEVICE -> DEVICE : Apparatus.streamActions()
+        return
+
+        NECK -> DEVICE : Apparatus.loadTacitKnowledge()
+        activate DEVICE
+        DEVICE -> DEVICE :  JSON_SLP.incoming();
+        DEVICE -> DEVICE : Apparatus.streamKnowHow()
+        return
+        NECK -> Jason : Apparatus.addPlan()
+
+        activate Jason
+        Jason -> Jason : pl.PlanLibrary.add()
+        Jason --> NECK
+        deactivate Jason
+        NECK --> JaCaMo 
+        deactivate NECK
+        end
+        end
+
+        
+    end
+== FIM DO CARREGAMENTO O SISTEMA MULTIAGENTE ==
+
+newpage
+== INICIO DA INICIALIZAÇÃO DO SISTEMA ==
+group infra.JaCaMoLauncher.start()
+    group #faf6f1 Iniciando Organização
+
+    JaCaMo -> JaCaMo : project.JaCaMoProject.getInstitutions()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.getOrgPaths()
+    JaCaMo -> CArtAgO : platform.Sai.start()
+    activate CArtAgO
+    CArtAgO -> CArtAgO : Workspace.createWorkspace()
+    /'CArtAgO -> CArtAgO : WorkspaceId.<init>'/
+    CArtAgO -> CArtAgO : Workspace.joinWorkspace
+    CArtAgO -> CArtAgO : Workspace.makeArtifact()
+    
+    CArtAgO -> SAI : Artifact.doInit()
+    activate SAI
+    SAI -> SAI : bridges.jacamo.ConstitutiveArt.init()
+    SAI -> SAI : main.institution.SaiEngine.<init>
+    SAI -> SAI : main.institution.ConstitutiveReasoner.<init>
+    SAI -> SAI : util.reasoner.jason.JasonReasoner.assertRule()
+    SAI -> SAI : bridges.jacamo.RuleEngine.addInstitution()
+    
+    
+    /' TIREI PQ O SAI USA O JASON COMO MOTOR... ESSA CRENÇA É A CRENÇA NA MENTE DO AGENTE?
+    SAI -> Jason : util.reasoner.jason.JasonReasoner.assertRule()
+    activate Jason
+    Jason -> Jason : asSemantics.Agent.addBel()
+    return
+    '/
+
+    SAI -> SAI : bridges.jacamo.ConstitutiveArt.loadConstitutiveProgram()
+    return
+    
+
+    return
+
+    JaCaMo -> CArtAgO : platform.Moise.start()
+
+    activate CArtAgO
+        CArtAgO -> CArtAgO : Workspace.createWorkspace()
+        CArtAgO -> CArtAgO : Workspace.joinWorkspace()
+        CArtAgO -> CArtAgO : Workspace.makeArtifact()
+        
+            CArtAgO -> ORA4MAS : Artifact.doInit()
+            activate ORA4MAS
+            ORA4MAS -> Moise : nopl.OrgBoard.init()
+                activate Moise
+                Moise -> Moise : common.MoiseElement.<init>
+                Moise -> Moise : common.MoiseElement.setId()
+                return
+            return
+        
+    
+        CArtAgO -> ORA4MAS : Artifact.doOperation()
+        activate ORA4MAS
+        ORA4MAS -> ORA4MAS : nopl.OrgBoard.createScheme()
+        ORA4MAS -> ORA4MAS : nopl.OrgBoard.createGroup()
+        ORA4MAS -> ORA4MAS : nopl.GroupBoard.init()
+        ORA4MAS -> ORA4MAS : nopl.SchemeBoard.init()
+
+        ORA4MAS -> NPL : nopl.OrgArt.initNormativeEngine()
+            activate NPL
+            NPL -> NPL : parser.nplp.<init>
+            NPL -> NPL : parser.nplp.scope()
+            NPL -> NPL : parser.nplp.inference_rule()
+            NPL -> NPL : parser.nplp.norm()
+            NPL -> NPL : parser.nplp.deontic_operator()
+            NPL -> NPL : NPLInterpreter.init()
+            NPL -> NPL : NPLInterpreter.loadNP()
+            return
+        return
+    return
+    end
+
+
+    group #faf6f1 Iniciando o Ambiente
+    JaCaMo -> CArtAgO : Cartago.start()
+    activate CArtAgO
+    CArtAgO -> CArtAgO : Workspace.createWorkspace()
+    CArtAgO -> CArtAgO : Workspace.makeArtifact()
+    CArtAgO -> CArtAgO : Artifact.bind()
+    CArtAgO -> CArtAgO : Artifact.doInit()
+    CArtAgO --> JaCaMo
+    deactivate CArtAgO
+    end
+
+
+
+
+group Iniciando Dimensão dos Agentes
+JaCaMo -> Jason : infra.JaCaMoLauncher.startAgs()
+activate Jason
+Jason -> Jason : RunLocalMAS.startAgs()
+Jason -> Jason : jason.infra.local.RunLocalMAS.createAgsThreads()
+end
+end
+
+newpage
+
+Jason -> Jason : infra.local.LocalAgArch.run
+== Ciclo de vida dos agentes ==
+
+
+group jason.infra.local.LocalAgArch.reasoningCycle()
+
+    group jason.infra.local.LocalAgArch.sense
+        Jason -> JaCa : asSemantics.TransitionSystem.sense
+        activate Jason
+        activate JaCa
+        JaCa -> JaCa : CAgentArch.perceive
+        activate JaCa
+        JaCa -> JaCa : CAgentArch.perceiveActionSucceeded
+        JaCa -> JaCa : CAgentArch.perceiveActionFailed
+        JaCa -> JaCa : CAgentArch.perceiveDispose
+        JaCa -> JaCa : CAgentArch.perceiveSignal
+        JaCa -> JaCa : CAgentArch.perceivedChangedOP
+        JaCa -> JaCa : CAgentArch.perceiveAddedOP
+        JaCa -> JaCa : CAgentArch.perceiveRemovedOP
+        return
+        JaCa -> Jason : CAgentArch.addObsPropertiesBel
+        activate Jason
+        Jason -> Jason : bb.DefaultBeliefBase.add
+        return
+        return
+        
+        Jason -> JaCaMo : architecture.AgArch.perceive
+        activate JaCaMo
+        JaCaMo -> NECK : infra.JaCaMoAgArch.perceive
+        activate NECK
+        group #FFF2CC percepcao Corporal
+            NECK -> NECK : Body.sense
+            activate NECK
+            NECK -> DEVICE : Apparatus.sense
+            activate DEVICE
+            DEVICE -> DEVICE :  JSON_SLP.incoming()
+            DEVICE -> DEVICE : Apparatus.streamPercepts()
+            return
+
+            NECK -> Jason : Body.updatePercepts
+            activate Jason
+            Jason -> Jason : bb.DefaultBeliefBase.add
+            return
+
+            NECK -> Jason : Body.updateDesires
+            activate Jason
+            Jason -> Jason : asSemantics.Circumstance.addEvent
+            return
+            return
+        end
+        return
+        return
+
+        
+        Jason -> Jason : architecture.AgArch.checkMail
+        activate Jason
+        Jason -> Jason : asSemantics.Circumstance.addEvent
+        return
+        deactivate Jason
+
+    end
+
+    group deliberate
+    Jason -> Jason : asSemantics.TransitionSystem.deliberate
+    activate Jason
+        Jason -> Jason: asSemantics.TransitionSystem.applySelEv();
+        Jason -> Jason: asSemantics.TransitionSystem.applyRelPl();
+        Jason -> Jason: asSemantics.TransitionSystem.applyApplPl();
+        Jason -> Jason: asSemantics.TransitionSystem.applySelAppl();
+        Jason -> Jason: asSemantics.TransitionSystem.applyFindOp();
+        Jason -> Jason: asSemantics.TransitionSystem.applyAddIM();
+    return
+    end
+
+    group jason.infra.local.LocalAgArch.act
+    Jason -> Jason : infra.local.LocalAgArch.act
+    end
+
+
+
+end
+
+deactivate JaCaMo
+
+@enduml
+
+
+' group Iniciando Dimensão dos Agentes
+' JaCaMo -> Jason : JaCaMoLauncher.startAgs()
+' activate Jason
+' Jason -> Jason : RunLocalMAS.startAgs()
+' Jason -> Jason : RunLocalMAS.createAgsThreads()
+' Jason -> Jason : LocalAgArch.startThread()
+' Jason -> JaCaMo : TransitionSystem.sense()
+' activate JaCaMo
+' JaCaMo -> NECK : JaCaMoAgArch.perceive()
+
+' activate NECK
+' NECK -> NECK : Body.sense()
+' NECK ->  NECK : Apparatus.loadDesires()
+' NECK ->  NECK : Apparatus.loadPercepts()
+
+
+' NECK ->  Jason : Body:updatePercepts()
+' activate Jason
+' Jason -> Jason : BeliefBase.add()
+' Jason -> Jason : Circumstace.addEvent()
+' Jason --> NECK
+' deactivate Jason
+
+' NECK -> Jason : Body.updateDesires()
+' activate Jason
+' Jason -> Jason : GoalListener.goalStarted()
+' Jason --> NECK
+' deactivate Jason
+' NECK --> JaCaMo
+' deactivate JaCaMo
+' JaCaMo --> Jason
+
+' activate Jason
+' Jason -> Jason: AgArch.checkMail()
+
+' end

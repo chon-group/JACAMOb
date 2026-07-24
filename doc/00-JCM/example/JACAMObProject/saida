@@ -1,0 +1,194 @@
+[H[2J[3JThe computer has all required dependencies
+[?1049h[22;0;0t[1;43r(B[m[4l[?7h[?1h=[?1006;1000h[39;49m[?1h=[39;49m(B[m[H[2J[26d(B[0;1m[36m[44m[J[H[K[2d[K[3d[K[4d[K[5d[K[6d[K[7d[K[8d[K[9d[K[10d[K[11d[K[12d[K[13d[K[14d[K[15d[K[16d[K[17d[K[18;59H[1K (0[0;1m[37m[47mlqqqqqqqqqqqqqqqqqqq(B[0;1m[34m[47mJACAMOb(0[0;1m[37m[47mqqqqqqqqqqqqqqqqqqqqqq(0[0m[30m[47mk(B[0;1m[36m[44m[K[19;59H[1K (0[0;1m[37m[47mx(B[0m[30m[47m[48X[19;109H(0[0m[30m[47mx(B[0;1m[30m[40m  [36m[44m[K[20;59H[1K (0[0;1m[37m[47mx(B[0m[30m[47m[48X[20;109H(0[0m[30m[47mx(B[0;1m[30m[40m  [36m[44m[K[21;59H[1K (0[0;1m[37m[47mx(B[0m[30m[47m[48X[21;109H(0[0m[30m[47mx(B[0;1m[30m[40m  [36m[44m[K[22;59H[1K (0[0;1m[37m[47mtqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq(0[0m[30m[47mu(B[0;1m[30m[40m  [36m[44m[K[23;59H[1K (0[0;1m[37m[47mx(B[0m[30m[47m             <(B[0;1m[30m[47m (B[0m[31m[47mS(B[0;1m[30m[47mim (B[0m[30m[47m>       (B[0;1m[37m[44m<[33m[44m [37m[44mN[33m[44mão [37m[44m>(B[0m[30m[47m[14X[23;109H(0[0m[30m[47mx(B[0;1m[30m[40m  [36m[44m[K[24;59H[1K (0[0;1m[37m[47mm(0[0m[30m[47mqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqj(B[0;1m[30m[40m  [36m[44m[K[25;61H[1K [30m[40m[50X[25;112H[36m[44m[K[23;90H[39;49m(B[m[19;62H[30m[47mDo you want to recompile JACAMOb.jar?[23;90H[39;49m(B[m[23;74H(B[0;1m[37m[44m<[33m[44m [37m[44mS[33m[44mim [37m[44m>[88G(B[0m[30m[47m<(B[0;1m[30m[47m (B[0m[31m[47mN(B[0;1m[30m[47mão (B[0m[30m[47m>[23;76H[39;49m(B[m[25;111H[?1006;1000l[43;1H[?1049l[23;0;0t[?1l>[H[2J[3JCompiling JACAMOb
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< group.chon:JACAMOb >-------------------------
+[INFO] Building JACAMOb 0.2.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ JACAMOb ---
+[INFO] Deleting /home/nilson/chonGroup/JACAMOb/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ JACAMOb ---
+[INFO] Copying 68 resources from maop/jacamo/src/main/resources to target/classes
+[INFO] Copying 24 resources from maop/moise/src/main/resources to target/classes
+[INFO] Copying 52 resources from maop/jason/jason-interpreter/src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ JACAMOb ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 868 source files with javac [debug target 21] to target/classes
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/manual/syntax/Structure.java:[206,16] deprecated item is not annotated with @Deprecated
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/manual/parser/SimpleCharStream.java:[209,14] deprecated item is not annotated with @Deprecated
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/manual/parser/SimpleCharStream.java:[218,14] deprecated item is not annotated with @Deprecated
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jason/asSyntax/Literal.java:[65,27] deprecated item is not annotated with @Deprecated
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[512,33] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[515,33] Double(double) in java.lang.Double has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[605,45] Boolean(boolean) in java.lang.Boolean has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[607,45] Boolean(boolean) in java.lang.Boolean has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[654,33] Byte(byte) in java.lang.Byte has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[657,33] Short(short) in java.lang.Short has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[660,33] Integer(int) in java.lang.Integer has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[663,33] Long(long) in java.lang.Long has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[666,33] Float(float) in java.lang.Float has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[669,33] Double(double) in java.lang.Double has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[956,36] Float(float) in java.lang.Float has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[961,36] Float(float) in java.lang.Float has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/jaca/JavaLibrary.java:[966,36] Double(double) in java.lang.Double has been deprecated and marked for removal
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/sai/bridges/jacamo/SaiPAV4JacamoArt.java:[103,58] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/sai/bridges/jacamo/SaiPAV4JacamoArt.java:[150,68] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /home/nilson/chonGroup/JACAMOb/src/main/java/sai/bridges/jacamo/SaiPAV4JacamoArt.java:[171,51] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[INFO] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/CartagoEnvironment.java: Some input files use or override a deprecated API.
+[INFO] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/CartagoEnvironment.java: Recompile with -Xlint:deprecation for details.
+[INFO] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/Artifact.java: Some input files use unchecked or unsafe operations.
+[INFO] /home/nilson/chonGroup/JACAMOb/src/main/java/cartago/Artifact.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ JACAMOb ---
+[INFO] skip non existing resourceDirectory /home/nilson/chonGroup/JACAMOb/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ JACAMOb ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:2.17:test (default-test) @ JACAMOb ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ JACAMOb ---
+[INFO] Building jar: /home/nilson/chonGroup/JACAMOb/target/JACAMOb-0.2.0.jar
+[INFO] 
+[INFO] --- shade:3.6.0:shade (default) @ JACAMOb ---
+[INFO] Including org.antlr:antlr4:jar:4.12.0 in the shaded jar.
+[INFO] Including org.antlr:antlr4-runtime:jar:4.12.0 in the shaded jar.
+[INFO] Including org.antlr:antlr-runtime:jar:3.5.3 in the shaded jar.
+[INFO] Including org.antlr:ST4:jar:4.3.4 in the shaded jar.
+[INFO] Including org.abego.treelayout:org.abego.treelayout.core:jar:1.0.3 in the shaded jar.
+[INFO] Including com.ibm.icu:icu4j:jar:71.1 in the shaded jar.
+[INFO] Including io.vertx:vertx-core:jar:3.7.0 in the shaded jar.
+[INFO] Including io.netty:netty-common:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-buffer:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-transport:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-handler:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-handler-proxy:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec-socks:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec-http:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec-http2:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-resolver:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-resolver-dns:jar:4.1.30.Final in the shaded jar.
+[INFO] Including io.netty:netty-codec-dns:jar:4.1.30.Final in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-core:jar:2.9.8 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-databind:jar:2.9.8 in the shaded jar.
+[INFO] Including com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0 in the shaded jar.
+[INFO] Including io.vertx:vertx-web-client:jar:3.7.0 in the shaded jar.
+[INFO] Including io.vertx:vertx-web-common:jar:3.7.0 in the shaded jar.
+[INFO] Including io.vertx:vertx-web:jar:3.7.0 in the shaded jar.
+[INFO] Including io.vertx:vertx-auth-common:jar:3.7.0 in the shaded jar.
+[INFO] Including io.vertx:vertx-bridge-common:jar:3.7.0 in the shaded jar.
+[INFO] Including org.gradle:gradle-tooling-api:jar:8.10 in the shaded jar.
+[INFO] Including org.slf4j:slf4j-api:jar:1.7.36 in the shaded jar.
+[INFO] Including guru.nidi:graphviz-java:jar:0.7.0 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-rasterizer:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-svgrasterizer:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-parser:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-codec:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-awt-util:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-bridge:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-anim:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-ext:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-css:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-dom:jar:1.10 in the shaded jar.
+[INFO] Including xalan:xalan:jar:2.7.2 in the shaded jar.
+[INFO] Including xalan:serializer:jar:2.7.2 in the shaded jar.
+[INFO] Including xml-apis:xml-apis:jar:1.3.04 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-gvt:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-script:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-svg-dom:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-xml:jar:1.10 in the shaded jar.
+[INFO] Including xml-apis:xml-apis-ext:jar:1.3.04 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-transcoder:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-svggen:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-util:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-constants:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:batik-i18n:jar:1.10 in the shaded jar.
+[INFO] Including org.apache.xmlgraphics:xmlgraphics-commons:jar:2.3 in the shaded jar.
+[INFO] Including commons-io:commons-io:jar:2.6 in the shaded jar.
+[INFO] Including net.arnx:nashorn-promise:jar:0.1.1 in the shaded jar.
+[INFO] Including com.eclipsesource.j2v8:j2v8_macosx_x86_64:jar:4.6.0 in the shaded jar.
+[INFO] Including com.eclipsesource.j2v8:j2v8_linux_x86_64:jar:4.6.0 in the shaded jar.
+[INFO] Including com.eclipsesource.j2v8:j2v8_win32_x86_64:jar:4.6.0 in the shaded jar.
+[INFO] Including com.eclipsesource.j2v8:j2v8_win32_x86:jar:4.6.0 in the shaded jar.
+[INFO] Including org.apache.commons:commons-exec:jar:1.3 in the shaded jar.
+[INFO] Including com.google.code.findbugs:jsr305:jar:3.0.2 in the shaded jar.
+[INFO] Including org.slf4j:jcl-over-slf4j:jar:1.7.25 in the shaded jar.
+[INFO] Including org.slf4j:jul-to-slf4j:jar:1.7.25 in the shaded jar.
+[INFO] Including org.glassfish:javax.json:jar:1.1.4 in the shaded jar.
+[INFO] Including net.sf.ingenias:jade:jar:4.3 in the shaded jar.
+[INFO] Including org.slf4j:slf4j-simple:jar:1.7.36 in the shaded jar.
+[INFO] Including com.fazecast:jSerialComm:jar:2.11.4 in the shaded jar.
+[INFO] Including org.json:json:jar:20251224 in the shaded jar.
+[WARNING] batik-anim-1.10.jar, batik-awt-util-1.10.jar, batik-bridge-1.10.jar, batik-codec-1.10.jar, batik-constants-1.10.jar, batik-css-1.10.jar, batik-dom-1.10.jar, batik-ext-1.10.jar, batik-gvt-1.10.jar, batik-i18n-1.10.jar, batik-parser-1.10.jar, batik-rasterizer-1.10.jar, batik-script-1.10.jar, batik-svg-dom-1.10.jar, batik-svggen-1.10.jar, batik-svgrasterizer-1.10.jar, batik-transcoder-1.10.jar, batik-util-1.10.jar, batik-xml-1.10.jar, jackson-annotations-2.9.0.jar, jackson-core-2.9.8.jar, jackson-databind-2.9.8.jar, xmlgraphics-commons-2.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/LICENSE
+[WARNING] netty-buffer-4.1.30.Final.jar, netty-codec-4.1.30.Final.jar, netty-codec-dns-4.1.30.Final.jar, netty-codec-http-4.1.30.Final.jar, netty-codec-http2-4.1.30.Final.jar, netty-codec-socks-4.1.30.Final.jar, netty-common-4.1.30.Final.jar, netty-handler-4.1.30.Final.jar, netty-handler-proxy-4.1.30.Final.jar, netty-resolver-4.1.30.Final.jar, netty-resolver-dns-4.1.30.Final.jar, netty-transport-4.1.30.Final.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/io.netty.versions.properties
+[WARNING] xml-apis-1.3.04.jar, xml-apis-ext-1.3.04.jar define 5 overlapping resources: 
+[WARNING]   - license/LICENSE
+[WARNING]   - license/LICENSE.dom-documentation.txt
+[WARNING]   - license/LICENSE.dom-software.txt
+[WARNING]   - license/NOTICE
+[WARNING]   - license/README.dom.txt
+[WARNING] jSerialComm-2.11.4.jar, json-20251224.jar define 1 overlapping classes: 
+[WARNING]   - META-INF.versions.9.module-info
+[WARNING] batik-anim-1.10.jar, batik-awt-util-1.10.jar, batik-bridge-1.10.jar, batik-codec-1.10.jar, batik-constants-1.10.jar, batik-css-1.10.jar, batik-dom-1.10.jar, batik-ext-1.10.jar, batik-gvt-1.10.jar, batik-i18n-1.10.jar, batik-parser-1.10.jar, batik-rasterizer-1.10.jar, batik-script-1.10.jar, batik-svg-dom-1.10.jar, batik-svggen-1.10.jar, batik-svgrasterizer-1.10.jar, batik-transcoder-1.10.jar, batik-util-1.10.jar, batik-xml-1.10.jar, jackson-core-2.9.8.jar, jackson-databind-2.9.8.jar, xmlgraphics-commons-2.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/NOTICE
+[WARNING] JACAMOb-0.2.0.jar, ST4-4.3.4.jar, antlr-runtime-3.5.3.jar, antlr4-4.12.0.jar, antlr4-runtime-4.12.0.jar, batik-anim-1.10.jar, batik-awt-util-1.10.jar, batik-bridge-1.10.jar, batik-codec-1.10.jar, batik-constants-1.10.jar, batik-css-1.10.jar, batik-dom-1.10.jar, batik-ext-1.10.jar, batik-gvt-1.10.jar, batik-i18n-1.10.jar, batik-parser-1.10.jar, batik-rasterizer-1.10.jar, batik-script-1.10.jar, batik-svg-dom-1.10.jar, batik-svggen-1.10.jar, batik-svgrasterizer-1.10.jar, batik-transcoder-1.10.jar, batik-util-1.10.jar, batik-xml-1.10.jar, commons-exec-1.3.jar, commons-io-2.6.jar, gradle-tooling-api-8.10.jar, graphviz-java-0.7.0.jar, icu4j-71.1.jar, j2v8_linux_x86_64-4.6.0.jar, j2v8_macosx_x86_64-4.6.0.jar, j2v8_win32_x86-4.6.0.jar, j2v8_win32_x86_64-4.6.0.jar, jSerialComm-2.11.4.jar, jackson-annotations-2.9.0.jar, jackson-core-2.9.8.jar, jackson-databind-2.9.8.jar, jade-4.3.jar, javax.json-1.1.4.jar, jcl-over-slf4j-1.7.25.jar, json-20251224.jar, jsr305-3.0.2.jar, jul-to-slf4j-1.7.25.jar, nashorn-promise-0.1.1.jar, netty-buffer-4.1.30.Final.jar, netty-codec-4.1.30.Final.jar, netty-codec-dns-4.1.30.Final.jar, netty-codec-http-4.1.30.Final.jar, netty-codec-http2-4.1.30.Final.jar, netty-codec-socks-4.1.30.Final.jar, netty-common-4.1.30.Final.jar, netty-handler-4.1.30.Final.jar, netty-handler-proxy-4.1.30.Final.jar, netty-resolver-4.1.30.Final.jar, netty-resolver-dns-4.1.30.Final.jar, netty-transport-4.1.30.Final.jar, org.abego.treelayout.core-1.0.3.jar, serializer-2.7.2.jar, slf4j-api-1.7.36.jar, slf4j-simple-1.7.36.jar, vertx-auth-common-3.7.0.jar, vertx-bridge-common-3.7.0.jar, vertx-core-3.7.0.jar, vertx-web-3.7.0.jar, vertx-web-client-3.7.0.jar, vertx-web-common-3.7.0.jar, xalan-2.7.2.jar, xml-apis-1.3.04.jar, xml-apis-ext-1.3.04.jar, xmlgraphics-commons-2.3.jar define 1 overlapping resource: 
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] j2v8_linux_x86_64-4.6.0.jar, j2v8_macosx_x86_64-4.6.0.jar, j2v8_win32_x86-4.6.0.jar, j2v8_win32_x86_64-4.6.0.jar define 77 overlapping classes: 
+[WARNING]   - com.eclipsesource.v8.JavaCallback
+[WARNING]   - com.eclipsesource.v8.JavaVoidCallback
+[WARNING]   - com.eclipsesource.v8.LibraryLoader
+[WARNING]   - com.eclipsesource.v8.NodeJS
+[WARNING]   - com.eclipsesource.v8.NodeJS$1
+[WARNING]   - com.eclipsesource.v8.NodeJS$2
+[WARNING]   - com.eclipsesource.v8.ReferenceHandler
+[WARNING]   - com.eclipsesource.v8.Releasable
+[WARNING]   - com.eclipsesource.v8.V8
+[WARNING]   - com.eclipsesource.v8.V8$1
+[WARNING]   - 67 more...
+[WARNING] commons-exec-1.3.jar, commons-io-2.6.jar define 2 overlapping resources: 
+[WARNING]   - META-INF/LICENSE.txt
+[WARNING]   - META-INF/NOTICE.txt
+[WARNING] batik-ext-1.10.jar, xml-apis-1.3.04.jar define 8 overlapping classes: 
+[WARNING]   - org.w3c.dom.events.DocumentEvent
+[WARNING]   - org.w3c.dom.events.Event
+[WARNING]   - org.w3c.dom.events.EventException
+[WARNING]   - org.w3c.dom.events.EventListener
+[WARNING]   - org.w3c.dom.events.EventTarget
+[WARNING]   - org.w3c.dom.events.MouseEvent
+[WARNING]   - org.w3c.dom.events.MutationEvent
+[WARNING]   - org.w3c.dom.events.UIEvent
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] Attaching shaded artifact.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.618 s
+[INFO] Finished at: 2026-07-24T20:29:57-03:00
+[INFO] ------------------------------------------------------------------------
+renomeado 'target/JACAMOb-0.2.0-all.jar' -> '/home/nilson/chonGroup/JACAMOb/doc/00-JCM/example/JACAMObProject/JACAMOb.jar'
+
+Starting the MAS!
+Runtime Services (RTS) is running at 127.0.1.1:42539
+Agent mind inspector is running at http://127.0.1.1:3272
+CArtAgO Http Server running on http://127.0.1.1:3273
+MAS Stopped!

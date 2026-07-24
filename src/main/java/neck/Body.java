@@ -103,7 +103,7 @@ public class Body {
     }
 
     public void updatePercepts(TransitionSystem ts) {
-        logger.info("Body update percepts, starting...");
+        logger.fine("Body update percepts, starting...");
         try {
             // 1) Novas percepções (já com as anotações source(i|p|e))
             List<Literal> incoming = sense(ts);
@@ -159,7 +159,7 @@ public class Body {
         } catch (JasonException e) {
             throw new RuntimeException(e);
         }
-        logger.info("Body update percepts, finished...");
+        logger.fine("Body update percepts, finished...");
     }
 
     /** Chave canônica: crença + termos + source(type,apparatus)*/
