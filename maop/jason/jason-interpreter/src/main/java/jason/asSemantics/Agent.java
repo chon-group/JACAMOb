@@ -75,6 +75,7 @@ public class Agent implements Serializable, ToDOM {
     protected transient Logger logger = Logger.getLogger(Agent.class.getName());
 
     public Agent() {
+        neck.util.Trace.logCAT2();
         checkCustomSelectOption();
     }
 
@@ -86,6 +87,7 @@ public class Agent implements Serializable, ToDOM {
      * Creates the belief base for the agent.
      */
     public static Agent create(AgArch arch, String agClass, ClassParameters bbPars, String asSrc, Settings stts) throws Exception {
+        neck.util.Trace.logCAT2();
         //try {
             //Agent ag = (Agent) Class.forName(agClass).getConstructor().newInstance();
 
@@ -124,6 +126,7 @@ public class Agent implements Serializable, ToDOM {
 
     /** Initialises the TS and other components of the agent */
     public void initAg() {
+        neck.util.Trace.logCAT2();
         if (bb == null) bb = new DefaultBeliefBase();
         if (pl == null) pl = new PlanLibrary();
 
@@ -150,6 +153,7 @@ public class Agent implements Serializable, ToDOM {
 
     /** parse and load the initial agent code + kqml plans + project bels and goals, asSrc may be null */
     public void loadInitialAS(String asSrc) throws Exception {
+        neck.util.Trace.logCAT2();
         loadAS(asSrc);
 
         addInitialBelsFromProjectInBB();
@@ -494,6 +498,7 @@ public class Agent implements Serializable, ToDOM {
 
     /** add the initial beliefs in BB and produce the corresponding events */
     public void addInitialBelsInBB() throws JasonException {
+        neck.util.Trace.logCAT2();
         // Once beliefs are stored in a Stack in the BB, insert them in inverse order
         for (int i=initialBels.size()-1; i >=0; i--)
             addInitBel(initialBels.get(i));
@@ -512,6 +517,7 @@ public class Agent implements Serializable, ToDOM {
     }
 
     private void addInitBel(Literal b) throws JasonException {
+        neck.util.Trace.logCAT2();
         // if l is not a rule and has free vars (like l(X)), convert it into a rule like "l(X) :- true."
         if (!b.isRule() && !b.isGround())
             b = new Rule(b,Literal.LTrue);
@@ -530,6 +536,7 @@ public class Agent implements Serializable, ToDOM {
 
     /** goal g will be stored to be included as an initial goal when the agent will start running */
     public void addInitialGoal(Literal g) {
+        neck.util.Trace.logCAT2();
         initialGoals.add(g);
     }
 
@@ -539,6 +546,7 @@ public class Agent implements Serializable, ToDOM {
 
     /** includes all initial goals in the agent reasoner */
     public void addInitialGoalsInTS() {
+        neck.util.Trace.logCAT2();
         for (Literal g: initialGoals) {
             g.makeVarsAnnon();
             if (! g.hasSource())
@@ -549,6 +557,7 @@ public class Agent implements Serializable, ToDOM {
     }
 
     protected void addInitialGoalsFromProjectInBB() {
+        neck.util.Trace.logCAT2();
         String sGoals = getTS().getSettings().getUserParameter(Settings.INIT_GOALS);
         if (sGoals != null) {
             try {
@@ -1082,11 +1091,13 @@ public class Agent implements Serializable, ToDOM {
      * <code>source(self)</code>. (the belief is not cloned!)
      */
     public boolean addBel(Literal bel) throws RevisionFailedException {
+        neck.util.Trace.logCAT2();
         if (!bel.hasSource()) {
             bel.addAnnot(BeliefBase.TSelf);
         }
         List<Literal>[] result = brf(bel, null, Intention.EmptyInt);
         if (result != null && ts != null) {
+            neck.util.Trace.log("AGT?");
             ts.updateEvents(result, Intention.EmptyInt);
             return true;
         } else {
@@ -1238,6 +1249,7 @@ public class Agent implements Serializable, ToDOM {
      */
     @Deprecated
     public void initAg(String asSrc) throws Exception {
+        neck.util.Trace.log("AGT");
         initAg();
         loadInitialAS(asSrc);
     }
@@ -1270,6 +1282,7 @@ public class Agent implements Serializable, ToDOM {
     @Deprecated
     public TransitionSystem initAg(AgArch arch, BeliefBase bb, String asSrc, Settings stts) throws JasonException {
         try {
+            neck.util.Trace.log("AGT");
             if (bb != null)
                 setBB(bb);
             new TransitionSystem(this, null, stts, arch);

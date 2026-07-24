@@ -35,10 +35,12 @@ public class MoiseElement implements Serializable, Identifiable, Comparable {
     private static int lastId = 0;
 
     public MoiseElement() {
+        neck.util.Trace.log("ORG");
         id = "autoId_"+(lastId++);
     }
 
     public MoiseElement(String id) {
+        neck.util.Trace.log("ORG");
         this.id = id;
     }
 
@@ -48,6 +50,7 @@ public class MoiseElement implements Serializable, Identifiable, Comparable {
 
 
     public void setId(String s) {
+        neck.util.Trace.stack("MoiseElement.setId()");
         if (s != null && s.length() == 0) {
             MoiseException e = new MoiseException("Id should not be empty!");
             e.printStackTrace();

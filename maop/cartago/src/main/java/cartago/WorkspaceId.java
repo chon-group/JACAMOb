@@ -36,7 +36,7 @@ public class WorkspaceId implements Serializable {
 	/* this is the unique identifier of the wsp */
 	private UUID uuid;
 	
-	WorkspaceId(){}
+	WorkspaceId(){neck.util.Trace.logCAT1();}
 	
 	/**
 	 * Workspace identifier for Local environment.
@@ -46,6 +46,7 @@ public class WorkspaceId implements Serializable {
 	 * 
 	 */
 	public WorkspaceId(String fullName, UUID wspId) throws InvalidWorkspaceNameException {
+		neck.util.Trace.logCAT1();
 		this.fullName = fullName;
 		this.uuid = wspId;
 		int index = fullName.lastIndexOf('/');

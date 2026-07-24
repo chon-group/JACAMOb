@@ -24,6 +24,7 @@ public class JasonReasoner implements IReasoner {
 	
 	
 	public JasonReasoner(){
+		neck.util.Trace.log("carregou o reasoner");
 		//this(new BasicReasonerHttpGUI(8001));
 		agent = new Agent();
 		agent.initAg();
@@ -55,6 +56,7 @@ public class JasonReasoner implements IReasoner {
 	
 
 	private synchronized void assertRule(String value) throws ParseException, RevisionFailedException{
+		neck.util.Trace.log("carregando papel");
 		Literal fHead = parseLiteral(value.substring(0,value.indexOf(":-")));
 		LogicalFormula fBody = parseFormula(value.substring(value.indexOf(":-")+2));
 		Rule rule = createRule(fHead, fBody);

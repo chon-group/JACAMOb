@@ -42,6 +42,7 @@ public class DefaultBeliefBase extends BeliefBase implements Serializable {
     protected Set<Literal> percepts = new HashSet<>();
 
     public DefaultBeliefBase() {
+        neck.util.Trace.logCAT2();
         nameSpaces.put(Literal.DefaultNS, belsMapDefaultNS);
     }
 
@@ -138,6 +139,7 @@ public class DefaultBeliefBase extends BeliefBase implements Serializable {
     }
 
     protected boolean add(Literal l, boolean addInEnd) throws JasonException {
+        neck.util.Trace.stack("add da DefaultBB");
         if (!l.canBeAddedInBB()) {
             throw new JasonException("Error: '"+l+"' can not be added in the belief base.");
         }

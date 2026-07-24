@@ -59,6 +59,7 @@ public class Intention implements Serializable, Comparable<Intention>, Iterable<
     //static private Logger logger = Logger.getLogger(Intention.class.getName());
 
     public Intention() {
+        neck.util.Trace.stack("INtention");
         id = idCount.incrementAndGet();
     }
 

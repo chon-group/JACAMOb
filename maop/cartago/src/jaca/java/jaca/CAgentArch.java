@@ -111,7 +111,7 @@ public class CAgentArch extends AgArch implements cartago.ICartagoListener, Seri
 	
 	public CAgentArch() {
 		super();
-		
+		neck.util.Trace.log("JaCa");
 		pendingActions = new ConcurrentHashMap<>();
 		currentWspIntentionMap = new ConcurrentHashMap<>();
 		pendingJoinWsp = new ConcurrentHashMap<>();
@@ -475,6 +475,7 @@ public class CAgentArch extends AgArch implements cartago.ICartagoListener, Seri
 			return super.perceive();
 
 		try {
+			neck.util.Trace.log("ENVIRONMENT?");
 			CartagoEvent evt = envSession.fetchNextPercept();
 			while (evt != null) {
 				nbAcumEvents++;
@@ -968,6 +969,7 @@ public class CAgentArch extends AgArch implements cartago.ICartagoListener, Seri
 					Trigger te = new Trigger(TEOperator.add, TEType.belief, l.copy());
 					getTS().updateEvents(new Event(te, Intention.EmptyInt));
 					// logger.info("AGENT: "+getTS().getUserAgArch().getAgName()+" NEW BELIEF FOR OBS PROP: "+l1);
+					neck.util.Trace.log("newBelief of:"+l);
 				}
 			}
 		} catch (Exception ex) {

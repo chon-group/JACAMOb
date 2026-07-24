@@ -22,6 +22,8 @@ public class JaCaMoWorkspaceParameters implements Serializable {
     protected WorkspaceId wId = null; // the workspace id for the created workspace
 
     public JaCaMoWorkspaceParameters(JaCaMoProject project) {
+        neck.util.Trace.logCAT1();
+        neck.util.Trace.stack("JaCaMoWorkspaceParameters");
         this.project = project;
     }
 
@@ -32,6 +34,7 @@ public class JaCaMoWorkspaceParameters implements Serializable {
     public WorkspaceId getWId() { return this.wId; }
     
     public void addArtifact(String name, ClassParameters className) {
+        neck.util.Trace.logCAT1();
         artifacts.put(name,className);
     }
 

@@ -38,6 +38,7 @@ public class ObsProperty implements java.io.Serializable {
 	private List<Object> annots = null;
 	
 	ObsProperty(ObsPropMap container, long id, String fullId, String name, Object... values){
+		neck.util.Trace.log("ENV");
     	this.name = name;
     	this.values = values;
     	backup = new Object[values.length];
@@ -65,12 +66,14 @@ public class ObsProperty implements java.io.Serializable {
 	}
 	
 	public void addAnnot(Object o) {
+		neck.util.Trace.log("CARTAGO");
 		if (annots == null) 
 			annots = new ArrayList<Object>();
 		annots.add(o);
 	}
 	
 	public List<Object> getAnnots() {
+		neck.util.Trace.log("CARTAGO");
 		return annots;
 	}
 	
@@ -134,6 +137,7 @@ public class ObsProperty implements java.io.Serializable {
 	 * @return
 	 */
 	public String stringValue(int index){
+		neck.util.Trace.log("CARTAGO");
 		return values[index].toString();
 	}
 	
@@ -276,6 +280,7 @@ public class ObsProperty implements java.io.Serializable {
 	 * @param value
 	 */
 	public void updateValue(Object value){
+		neck.util.Trace.log("CARTAGO");
 		if (!modified){
 			modified = true;
 			for (int i = 0; i < values.length; i++){
@@ -305,6 +310,7 @@ public class ObsProperty implements java.io.Serializable {
 	 * @param value
 	 */
 	public void updateValue(int index, Object value){
+		neck.util.Trace.log("CARTAGO");
 		if (!modified){
 			modified = true;
 			for (int i = 0; i < values.length; i++){

@@ -143,6 +143,7 @@ public class SchemeBoard extends OrgArt {
      * @throws MoiseException  if schType was not specified
      */
     public void init(String osFile, final String schType) throws ParseException, MoiseException {
+        neck.util.Trace.log("ORGGGGGG?????");
         osFile = OrgArt.fixOSFile(osFile);
         final OS os = OS.loadOSFromURI(osFile);
         spec = os.getFS().findScheme(schType);
@@ -575,6 +576,7 @@ public class SchemeBoard extends OrgArt {
     }
 
     @LINK protected void updateRolePlayers(final String grId, final Collection<Player> rp) throws NormativeFailureException, CartagoException {
+        neck.util.Trace.log("ORA4MAS");
         ora4masOperationTemplate(new Operation() {
             public void exec() throws NormativeFailureException, Exception {
                 Group g = new Group(grId);
@@ -630,6 +632,7 @@ public class SchemeBoard extends OrgArt {
     }
 
     protected void updateGoalArgsObsProp() {
+        neck.util.Trace.log("ORA4MAS");
         while (hasObsProperty("goalArgument"))
             removeObsProperty("goalArgument");
 

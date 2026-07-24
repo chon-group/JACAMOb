@@ -75,6 +75,7 @@ public class my_name extends DefaultInternalAction {
     @Override
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
         checkArguments(args);
+        neck.util.Trace.stack("acao");
         return un.unifies(args[0], new Atom(ts.getAgArch().getAgName()));
     }
 }

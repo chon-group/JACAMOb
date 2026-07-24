@@ -94,6 +94,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
      * the TS.
      */
     public void createArchs(List<String> agArchClasses, String agClass, ClassParameters bbPars, String asSrc, Settings stts) throws Exception {
+        neck.util.Trace.log("!!!!!!!!!!!!");
         try {
             Agent.create(this, agClass, bbPars, asSrc, stts);
             insertAgArch(this);
@@ -215,16 +216,19 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
     }
 
     protected void sense() {
+        neck.util.Trace.log("AGTARCH?");
         TransitionSystem ts = getTS();
 
         int i = 0;
         do {
             ts.sense(); // must run at least once, so that perceive() is called
         } while (running && ++i < cyclesSense && !ts.canSleepSense());
+        neck.util.Trace.log("AGTARCH?");
     }
 
     //int sumDel = 0; int nbDel = 0;
     protected void deliberate() {
+
         TransitionSystem ts = getTS();
         int i = 0;
         while (running && i++ < cyclesDeliberate && !ts.canSleepDeliberate()) {
@@ -232,11 +236,13 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
         }
         //sumDel += i; nbDel++;
         //System.out.println("running del "+(sumDel/nbDel)+"/"+cyclesDeliberate);
+
     }
 
     /** the act as step of reasoning cycle */
     //int sumAct = 0; int nbAct = 0;
     protected void act() {
+        neck.util.Trace.log("AGTARCH?");
         TransitionSystem ts = getTS();
 
         int i = 0;
@@ -251,6 +257,8 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
         }
         //sumAct += i; nbAct++;
         //System.out.println("running act "+(sumAct/nbAct)+"/"+ca);
+        neck.util.Trace.log("AGTARCH?");
+
     }
 
     protected void reasoningCycle() {
@@ -264,6 +272,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
     }
 
     public void run() {
+        neck.util.Trace.log("RUNNING????????");
         TransitionSystem ts = getTS();
         while (running) {
             if (ts.getSettings().isSync()) {
@@ -342,6 +351,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
     // Default perception assumes Complete and Accurate sensing.
     @Override
     public Collection<Literal> perceive() {
+        neck.util.Trace.log("Perceive????");
         super.perceive();
         if (infraEnv == null) return null;
         Collection<Literal> percepts = infraEnv.getUserEnvironment().getPercepts(getAgName());

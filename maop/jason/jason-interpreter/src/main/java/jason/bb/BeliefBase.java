@@ -44,7 +44,10 @@ public abstract class BeliefBase implements Iterable<Literal>, Cloneable, ToDOM 
      *     <code>agent BeliefBaseClass(1,bla);</code><br>
      * the init args will be ["1", "bla"].
      */
-    public void init(Agent ag, String[] args) {}
+    public void init(Agent ag, String[] args) {
+        neck.util.Trace.logCAT2();
+        neck.util.Trace.stack("init da BB");
+    }
 
     /** Called just before the end of MAS execution */
     public void stop() {}
@@ -66,11 +69,15 @@ public abstract class BeliefBase implements Iterable<Literal>, Cloneable, ToDOM 
      *  p[b] to produce the event +p[b], since only the annotation b is changed
      *  in the BB. */
     public boolean add(Literal l) throws JasonException {
+        neck.util.Trace.logCAT2();
+        neck.util.Trace.stack("add da BB");
         return false;
     }
 
     /** Adds a belief in the BB at <i>index</i> position, returns true if succeed */
     public boolean add(int index, Literal l) throws JasonException {
+        neck.util.Trace.logCAT2();
+        neck.util.Trace.stack("add da BB");
         return false;
     }
 

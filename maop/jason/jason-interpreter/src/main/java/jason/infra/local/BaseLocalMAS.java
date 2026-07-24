@@ -86,6 +86,7 @@ public abstract class BaseLocalMAS extends NotificationBroadcasterSupport {
     }
 
     public void addAg(LocalAgArch ag) {
+        neck.util.Trace.stack("BaseLocalMAS.addAg()");
         ags.put(ag.getAgName(), ag);
         ag.setMASRunner(this);
     }

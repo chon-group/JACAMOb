@@ -10,6 +10,7 @@ public class JaCaMoSchemeParameters extends JaCaMoOrgParameters {
 
     public JaCaMoSchemeParameters(JaCaMoProject project) {
         super(project);
+        neck.util.Trace.logCAT1();
     }
 
     public void setType(String t) { type = t; }

@@ -26,6 +26,7 @@ public class Moise extends DefaultPlatformImpl {
 
     @Override
     public void init(String[] args) throws CartagoException {
+        neck.util.Trace.log("ORG?");
         // if agent source path contains CRPrefix, adds it also for moise
         if (project.getSourcePaths().getPaths().contains(SourcePath.CRPrefix)) {
             project.getOrgPaths().addPath(SourcePath.CRPrefix);
@@ -34,9 +35,11 @@ public class Moise extends DefaultPlatformImpl {
     
     @Override
     public void start() {
-        cartago.CartagoEnvironment cenv = cartago.CartagoEnvironment.getInstance(); 
+        neck.util.Trace.log("ORG?");
+        cartago.CartagoEnvironment cenv = cartago.CartagoEnvironment.getInstance();
+        neck.util.Trace.log("ORG?");
         Workspace main = cenv.getRootWSP().getWorkspace();
-        
+        neck.util.Trace.log("ORG?");
         for (JaCaMoOrgParameters o: project.getOrgs()) {
             try {
                 // fix path for org
@@ -102,6 +105,8 @@ public class Moise extends DefaultPlatformImpl {
     }
 
     protected void createGroup(ArtifactId orgB, JaCaMoGroupParameters parent, JaCaMoGroupParameters g, JaCaMoOrgParameters org, ICartagoContext cartagoCtx) {
+        neck.util.Trace.log("ORG");
+        neck.util.Trace.stack("createGroup(ArtifactId orgB, JaCaMoGroupParameters parent, JaCaMoGroupParameters g, JaCaMoOrgParameters org, ICartagoContext cartagoCtx)");
         String m = g.getName()+": "+g.getType()+" using artifact ora4mas.nopl.GroupBoard";
 
         try {
@@ -148,9 +153,12 @@ public class Moise extends DefaultPlatformImpl {
     }
 
     protected void createScheme(ArtifactId orgB, JaCaMoSchemeParameters s, JaCaMoOrgParameters org, ICartagoContext cartagoCtx) {
+        neck.util.Trace.log("ORG");
+        neck.util.Trace.stack("createScheme(ArtifactId orgB, JaCaMoSchemeParameters s, JaCaMoOrgParameters org, ICartagoContext cartagoCtx)");
         String m = s.getName()+": "+s.getType()+" using artifact SchemeBoard";
 
         try {
+            neck.util.Trace.log("ORG");
             OpFeedbackParam<ArtifactId> fb = new OpFeedbackParam<>();
             cartagoCtx.doAction(1, orgB.getName(), new Op("createScheme", new Object[] { s.getName(), s.getType(), fb} ), null, -1);
             ArtifactId aid = fb.get();

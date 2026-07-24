@@ -5,6 +5,7 @@ import static jason.asSyntax.ASSyntax.createVar;
 import static jason.asSyntax.ASSyntax.parseFormula;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Pred;
+import jason.infra.local.LocalRuntimeServices;
 import sai.main.exception.StatusFunctionNotFoundException;
 import sai.main.lang.parser.FormulaAdapter;
 import sai.main.lang.semantics.constitutiveRule.ConstitutiveRule;
@@ -33,6 +34,7 @@ public class InstProgram_Reasoner extends InstProgram{
 
 	public InstProgram_Reasoner(IReasoner reasoner){
 		super();
+		neck.util.Trace.logSuper("super xxxxxxxxxxxx: "+ LocalRuntimeServices.class.getSuperclass().getName());
 		//setReasoner(reasoner);
 		this.reasoner = reasoner;
 

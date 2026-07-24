@@ -26,12 +26,14 @@ public class Cartago extends DefaultPlatformImpl {
 
     @Override
     public void init(String[] args) throws CartagoException {
+        neck.util.Trace.log("ENV");
         env = new CartagoEnvironment();
         env.init( args );
     }
 
     @Override
     public void start() {
+        neck.util.Trace.log("ENV");
         cartago.CartagoEnvironment cenv = cartago.CartagoEnvironment.getInstance();
         Workspace main = cenv.getRootWSP().getWorkspace();
         for (JaCaMoWorkspaceParameters wp : project.getWorkspaces()) {

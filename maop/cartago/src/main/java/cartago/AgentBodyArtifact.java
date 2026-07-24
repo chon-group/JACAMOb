@@ -21,6 +21,7 @@ public class AgentBodyArtifact extends Artifact {
 	 * @param aid the artifact id
 	 */
 	@OPERATION void focus(ArtifactId aid){
+		neck.util.Trace.log("Focus????????????????????");
 		focus(aid,null);
 		/*AgentId userId = this.getCurrentOpAgentId();
 		OpExecutionFrame opFrame = this.getOpFrame();

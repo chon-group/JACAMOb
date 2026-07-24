@@ -5,14 +5,12 @@ import java.util.logging.Level;
 
 import neck.Apparatus;
 import neck.Body;
-import neck.model.BodyResponse;
 import neck.util.CompilerLite;
 import neck.util.ReflectCall;
 import jaca.CAgentArch;
 import jacamo.project.JaCaMoAgentParameters;
-import jacamo.project.JaCaMoBodyParameters;
+import neck.model.BodyParameters;
 import jacamo.project.JaCaMoWorkspaceParameters;
-import jason.RevisionFailedException;
 import jason.architecture.AgArch;
 import jason.asSemantics.Intention;
 import jason.asSyntax.*;
@@ -36,6 +34,7 @@ public class JaCaMoAgArch extends AgArch {
 
     @Override
     public void init() throws Exception {
+
         JaCaMoAgentParameters ap = null;
         try {
             ap = (JaCaMoAgentParameters)getTS().getSettings().getUserParameters().get(Settings.PROJECT_PARAMETER);
@@ -129,10 +128,11 @@ public class JaCaMoAgArch extends AgArch {
         }
 
         // CHON
-        createMyBody();
+        embody();
     }
 
     protected CAgentArch getCartagoArch() {
+        neck.util.Trace.log("??????????????????????");
         AgArch arch = getTS().getAgArch().getFirstAgArch();
         while (arch != null) {
             if (arch instanceof CAgentArch) {
@@ -145,6 +145,7 @@ public class JaCaMoAgArch extends AgArch {
 
     @Override
     public Collection<Literal> perceive() {
+        neck.util.Trace.log("Outro perceive???");
         if (body != null) {
             body.updatePercepts(getTS());
             return null;
@@ -154,11 +155,12 @@ public class JaCaMoAgArch extends AgArch {
     }
 
 
-    private void createMyBody(){
+    private void embody(){
+        neck.util.Trace.log("BDY");
         CompilerLite.ensureEnvClassLoaderInstalled("src/bdy");
-        Collection<JaCaMoBodyParameters> bodies = JaCaMoLauncher.getJaCaMoRunner().getJaCaMoProject().getBodies();
+        Collection<BodyParameters> bodies = JaCaMoLauncher.getJaCaMoRunner().getJaCaMoProject().getBodies();
 
-        for (JaCaMoBodyParameters b : bodies) {
+        for (BodyParameters b : bodies) {
             if(getAgName().equals(b.getName())){
                 for (var e : b.getApparatusEntries()) {
                     String name = e.getKey();
@@ -169,7 +171,7 @@ public class JaCaMoAgArch extends AgArch {
                         if (created instanceof Apparatus) {
                             if(getAgtBody().attachApparatus((Apparatus) created, name)){
                                 /* loading plans */
-                                ((Apparatus) created).loadPlansFromDevice();
+                                ((Apparatus) created).loadTacitKnowledge();
                                 Plan[] plans = ((Apparatus) created).getPlans();
                                 if (plans != null){
                                     for(int i=0; i< plans.length; i++){
@@ -181,10 +183,6 @@ public class JaCaMoAgArch extends AgArch {
                             }else{
                                 System.out.println("deu bode");
                             }
-
-
-                            //System.out.println("carregar os planos...");
-                            //System.out.println(getTS().getAg().getPL().toString());
                         }
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
@@ -192,12 +190,9 @@ public class JaCaMoAgArch extends AgArch {
                 }
             }
         }
+        neck.util.Trace.log("aqui terminou de criar o corpo");
     }
 
-   /*rivate void loadPlans(){
-        Agent ag = ts.getAg();
-        PlanLibrary pl = ag.getPL();
-    }*/
     public Body getAgtBody(){
         if(this.body == null) this.body = new Body(getAgName());
         return this.body;

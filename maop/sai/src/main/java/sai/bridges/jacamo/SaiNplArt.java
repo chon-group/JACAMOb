@@ -94,6 +94,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 	 * @param constitutiveProgram: path of the file
 	 */
 	public void init(String id, String constitutiveProgram){
+		neck.util.Trace.logCAT3();
 		this.id = id;
 		try {			
 			internalAddConstitutiveProgram(constitutiveProgram);
@@ -116,6 +117,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 	
 	@OPERATION
     public void setInstitution(SaiEngine institution){
+		neck.util.Trace.logCAT3();
     	this.institution = institution;
     	institution.addNormativeEngine(this.npl2sai);
     }
@@ -306,7 +308,8 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 
 	class NplFactsHandler implements HttpHandler {
 		@Override
-		public void handle(HttpExchange t) throws IOException {	
+		public void handle(HttpExchange t) throws IOException {
+			neck.util.Trace.logCAT3();
 			String response = "<html><font size=\"2\" face=\"arial\" color=\"green\">Facts</font><br><font face=\"arial\">";
 			Iterator<Literal> it = nengine.getFacts().iterator(); 
 			while(it.hasNext()){
@@ -324,6 +327,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 	class HistoryHandler implements HttpHandler {
 		@Override
 		public void handle(HttpExchange t) throws IOException {
+			neck.util.Trace.logCAT3();
 			String response = "<html><font face=\"arial\" color=\"green\">NormativeHistory</font><br><font face=\"arial\">";
 			String last = "";			
 			String color = "blue";
@@ -351,6 +355,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 
 	@Override
 	public void created(NormInstance o) {
+		neck.util.Trace.logCAT3();
 		o.delAnnot(o.getAnnot("created"));		
 		execInternalOp("internal_created", o);
 		if(!obligationsToShow.contains(o)){
@@ -361,6 +366,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 
 	@INTERNAL_OPERATION
 	void internal_created(Structure o){
+		neck.util.Trace.logCAT3();
 		defineObsProperty(o.getFunctor().toString(), o.getTerm(0), o.getTerm(1), o.getTerm(2), o.getTerm(3));
 		//log("defining property " + o.getFunctor().toString() + "(" + o.getTerm(0) + "," + o.getTerm(1) + "," +o.getTerm(2) + "," +o.getTerm(3) + "," +")");
 		StatusFunction sf = instProgram.getStatusFunctionByName(o.getTerm(2).toString());
@@ -397,6 +403,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 
 	@INTERNAL_OPERATION
 	void internal_fulfilled(NormInstance o){
+		neck.util.Trace.logCAT3();
 		removeObsPropertyByTemplate("obligation", o.getTerm(0), o.getTerm(1), o.getTerm(2), o.getTerm(3));
 		defineObsProperty(o.getFunctor(), o.getTerms());		
 	}
@@ -409,6 +416,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 
 	@INTERNAL_OPERATION
 	void internal_unfulfilled(NormInstance o){
+		neck.util.Trace.logCAT3();
 		removeObsPropertyByTemplate("obligation", o.getTerm(0), o.getTerm(1), o.getTerm(2), o.getTerm(3));
 		defineObsProperty(o.getFunctor(), o.getTerms());		
 	}
@@ -502,6 +510,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 
 	@OPERATION
 	public void loadNplProgram(String fileName){
+		neck.util.Trace.logCAT3();
 		try {
 			NormativeProgram p = new NormativeProgram();
 			//new nplp(new StringReader(getFileContent(fileName))).program(p, null);
@@ -524,6 +533,7 @@ public class SaiNplArt extends Artifact implements npl.NormativeListener  {
 	}
 	
 	private void addToHistory(String s){
+		neck.util.Trace.logCAT3();
 		history.add(new SimpleDateFormat("[yyyy/MM/dd_HH:mm:ss] ").format(Calendar.getInstance().getTime()) + s);
 	}
 }

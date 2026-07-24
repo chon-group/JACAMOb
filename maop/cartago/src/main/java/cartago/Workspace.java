@@ -104,7 +104,7 @@ public class Workspace {
 	 * @param name logic name of the environment
 	 */
 	public Workspace(WorkspaceId id, WorkspaceDescriptor desc, ICartagoLogger logger){
-		
+		neck.util.Trace.logCAT1();
 		this.id = id;
 		this.desc = desc;
 		
@@ -191,6 +191,7 @@ public class Workspace {
 	 * @return
 	 */
 	public synchronized WorkspaceDescriptor createWorkspace(String name) throws CartagoException {
+		neck.util.Trace.logCAT1();
 		return this.createWorkspace(name, (ICartagoLogger) null);
 	}
 
@@ -225,7 +226,8 @@ public class Workspace {
 	 */
 	public synchronized WorkspaceDescriptor createWorkspace(String name, ICartagoLogger log) throws CartagoException {
 			Optional<WorkspaceDescriptor> res = this.resolveWSP(name);
-			if (!res.isPresent()){	
+			if (!res.isPresent()){
+				neck.util.Trace.log("criando workspace?");
 				String envName = CartagoEnvironment.getInstance().getName();
 				UUID envId = CartagoEnvironment.getInstance().getInstance().getId();
 				WorkspaceId wid = new WorkspaceId(desc.getId().getFullName() + "/" + name); 
@@ -837,10 +839,14 @@ public class Workspace {
 	}
 
 	private Artifact makeArtifact(String template) throws UnknownArtifactTemplateException {
+		neck.util.Trace.logCAT1();
 			synchronized (artifactFactories){
 				for (ArtifactFactory factory: artifactFactories){
 					try {
-						return factory.createArtifact(template);
+						//return factory.createArtifact(template);   <--- original
+						Artifact at = factory.createArtifact(template);
+						neck.util.Trace.log("MAKEARIFACT");
+						return  at;
 					} catch (Exception ex){
 						try{
 							CompileArtifact env = new CompileArtifact();

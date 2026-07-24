@@ -21,6 +21,7 @@ public class JaCaMoOrgParameters extends JaCaMoWorkspaceParameters {
 
     public JaCaMoOrgParameters(JaCaMoProject project) {
         super(project);
+        neck.util.Trace.logCAT1();
     }
 
     public void addParameter(String k, String v) {
@@ -41,6 +42,7 @@ public class JaCaMoOrgParameters extends JaCaMoWorkspaceParameters {
     }
 
     public void addGroup(JaCaMoGroupParameters g) {
+        neck.util.Trace.logCAT1();
         groups.add(g);
     }
     public List<JaCaMoGroupParameters> getGroups() {
@@ -58,6 +60,7 @@ public class JaCaMoOrgParameters extends JaCaMoWorkspaceParameters {
     }
 
     public void addScheme(JaCaMoSchemeParameters s) {
+        neck.util.Trace.logCAT1();
         schemes.add(s);
     }
     public List<JaCaMoSchemeParameters> getSchemes() {

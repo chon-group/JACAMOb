@@ -13,6 +13,7 @@ public abstract class BaseRuntimeServices implements RuntimeServices {
     private Collection<String> defaultAgArchs = new ArrayList<>();
 
     public BaseRuntimeServices(BaseLocalMAS masRunner) {
+        neck.util.Trace.logCAT1();
         this.masRunner = masRunner;
     }
 

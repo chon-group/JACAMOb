@@ -11,9 +11,10 @@ public class JaCaMoRuntimeServices extends LocalRuntimeServices {
 
     public JaCaMoRuntimeServices(BaseLocalMAS masRunner) {
         super(masRunner);
-
+        neck.util.Trace.logSuper("super: "+LocalRuntimeServices.class.getSuperclass().getName());
         // register jacamo archs
         registerDefaultAgArch(CAgentArch.class.getName());
         registerDefaultAgArch(JaCaMoAgArch.class.getName());
+        neck.util.Trace.logCAT1();
     }
 }

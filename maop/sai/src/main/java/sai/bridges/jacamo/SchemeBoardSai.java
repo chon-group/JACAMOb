@@ -44,13 +44,15 @@ public class SchemeBoardSai extends SchemeBoard implements IScheme2SaiListener{
 
 	@Override
 	public void init(final String osFile, final String schType) throws ParseException, MoiseException {
-		super.init(osFile, schType);        
+		neck.util.Trace.logCAT3();
+		super.init(osFile, schType);
 		this.npl2sai = new NOpl2Sai(getNormativeEngine());
 		this.npl2sai.addSchemeListener(this);       		
 		launchCommitmentChecker();
 	}
 	
 	protected void launchCommitmentChecker() {
+		neck.util.Trace.logCAT3();
 		commitmentChecker  = new CommitmentChecker();
 		commitmentChecker.start();
 	}
@@ -64,6 +66,7 @@ public class SchemeBoardSai extends SchemeBoard implements IScheme2SaiListener{
 	 */
 	@OPERATION
 	public void setInstitution(SaiEngine institution){
+		neck.util.Trace.logCAT3();
 		this.institution = institution;
 		this.institution.addNormativeEngine(getNormEngine());
 	}
@@ -113,6 +116,7 @@ public class SchemeBoardSai extends SchemeBoard implements IScheme2SaiListener{
 
 
 	public void sai_committed(String agent, String mission, String scheme) {
+		neck.util.Trace.logCAT3();
 		if(getSchState().getId().replaceAll("\"", "").equals(scheme.replaceAll("\"", ""))){
 			synchronized (commitmentsList) {
 				Commitment c = new Commitment(agent, mission);
@@ -215,7 +219,8 @@ public class SchemeBoardSai extends SchemeBoard implements IScheme2SaiListener{
 	protected class CommitmentChecker extends Thread{
 
 		@Override
-		public void run() {         
+		public void run() {
+			neck.util.Trace.logCAT3();
 			ArrayList<Commitment> added = new ArrayList<>();
 			ArrayList<Goal> addedAchievement = new ArrayList<>();
 			while(true){            

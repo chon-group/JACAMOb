@@ -27,6 +27,7 @@ public class LocalRuntimeServices extends BaseRuntimeServices {
 
     public LocalRuntimeServices(BaseLocalMAS masRunner) {
         super(masRunner);
+        neck.util.Trace.logSuper("super: "+LocalRuntimeServices.class.getSuperclass().getName());
     }
 
     @Override public boolean isRunning() {
@@ -41,6 +42,7 @@ public class LocalRuntimeServices extends BaseRuntimeServices {
 
     @Override
     public String createAgent(String agName, String agSource, String agClass, List<String> archClasses, ClassParameters bbPars, Settings stts, Agent father) throws Exception {
+        neck.util.Trace.log("AGT");
         if (!isRunning())
             return "system.not.running";
 

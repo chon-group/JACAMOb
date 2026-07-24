@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.time.LocalDateTime;
 
+import jason.infra.local.LocalRuntimeServices;
 import sai.main.lang.semantics.InstProgram;
 import sai.main.lang.semantics.InstProgram_Reasoner;
 import sai.main.lang.semantics.statusFunction.AgentStatusFunction;
@@ -28,7 +29,8 @@ public class SaiEngine/* implements Observer */{
 	private ConstitutiveReasoner envHandler;
 
 
-	public SaiEngine(){		
+	public SaiEngine(){
+		neck.util.Trace.log("????????????????????????????????????????????????????????");
 		envHandler = new ConstitutiveReasoner(environmentQueue);
 		this.program = new InstProgram_Reasoner(envHandler.getReasoner());
 		//this.program.addObserver(this);

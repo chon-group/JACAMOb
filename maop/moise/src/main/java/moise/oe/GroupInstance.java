@@ -56,6 +56,7 @@ public class GroupInstance extends MoiseElement implements ToXML {
 
     /** create a new group instance identified by id */
     protected GroupInstance(String id, Group spec) throws MoiseConsistencyException {
+        neck.util.Trace.log("ORG?");
         try {
             //numberId = grCount.get();
             setId(id);
@@ -97,6 +98,7 @@ public class GroupInstance extends MoiseElement implements ToXML {
     }*/
 
     protected void setOE(OE oe) {
+        neck.util.Trace.log("ORG?");
         this.oe = oe;
     }
 

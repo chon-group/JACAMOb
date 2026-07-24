@@ -17,12 +17,14 @@ public class JaCaMoGroupParameters extends JaCaMoOrgParameters {
     
     public JaCaMoGroupParameters(JaCaMoProject project) {
         super(project);
+        neck.util.Trace.logCAT1();
     }
 
     public void setType(String t) { type = t; }
     public String getType()       { return type; }
 
     public void addSubGroup(JaCaMoGroupParameters sg) {
+        neck.util.Trace.logCAT1();
         subGroups.add(sg);
     }
     public List<JaCaMoGroupParameters> getSubGroups() {
@@ -30,10 +32,12 @@ public class JaCaMoGroupParameters extends JaCaMoOrgParameters {
     }
 
     public void addResponsibleFor(String s) {
+        neck.util.Trace.logCAT1();
         responsibleFor.add(s);
     }
     
     public List<String> getResponsibleFor() {
+        neck.util.Trace.logCAT1();
         return responsibleFor;
     }
 

@@ -62,9 +62,11 @@ public class Group extends CollectiveOE implements ToProlog {
 
     public Group(String id) {
         super(id);
+        neck.util.Trace.log("ORA4MAS");
     }
 
     public void addResponsibleForScheme(String s) {
+        neck.util.Trace.log("ORA4MAS");
         schemes.add(s);
         schemesAsLiteralList.add(createLiteral(responsiblePI.getFunctor(), termId, createAtom(s)));
     }

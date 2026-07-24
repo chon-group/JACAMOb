@@ -21,10 +21,12 @@ public class SchemeBoardSaiJaCaMo extends SchemeBoardSai {
 
 	@Override
 	public void init(final String osFile, final String schType) throws ParseException, MoiseException {
+		neck.util.Trace.logCAT3();
 		super.init(osFile, schType);
 	}
 
 	protected void launchCommitmentChecker() {
+		neck.util.Trace.logCAT3();
 		commitmentChecker  = new CommitmentCheckerJaCamo();
 		commitmentChecker.start();
 	}
@@ -35,7 +37,8 @@ public class SchemeBoardSaiJaCaMo extends SchemeBoardSai {
 	private class CommitmentCheckerJaCamo extends CommitmentChecker{
 
 		@Override
-		public void run() {         
+		public void run() {
+			neck.util.Trace.logCAT3();
 			ArrayList<Commitment> added = new ArrayList<>();
 			ArrayList<Goal> addedAchievement = new ArrayList<>();
 			cartago.CartagoEnvironment cenv = cartago.CartagoEnvironment.getInstance(); 

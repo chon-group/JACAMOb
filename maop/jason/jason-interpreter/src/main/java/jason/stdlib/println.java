@@ -63,7 +63,7 @@ public class println extends DefaultInternalAction {
         } else {
             System.out.print(sout.toString() + getNewLine());
         }
-
+        neck.util.Trace.stack("printou");
         return true;
     }
 

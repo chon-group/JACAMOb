@@ -23,6 +23,7 @@ public class Sai extends DefaultPlatformImpl {
 
     @Override
     public void init(String[] args) throws CartagoException {
+        neck.util.Trace.logCAT1();
         // if agent source path contains CRPrefix, adds it also for SAI
         if (project.getSourcePaths().getPaths().contains(SourcePath.CRPrefix)) {
             project.getOrgPaths().addPath(SourcePath.CRPrefix);
@@ -31,6 +32,7 @@ public class Sai extends DefaultPlatformImpl {
     
     @Override
     public void start() {
+        neck.util.Trace.logCAT1();
         cartago.CartagoEnvironment cenv = cartago.CartagoEnvironment.getInstance(); 
         Workspace main = cenv.getRootWSP().getWorkspace();
         

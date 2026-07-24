@@ -37,11 +37,13 @@ public class AgentParameters implements Serializable {
     protected String               host      = null;
 
     public AgentParameters() {
+        neck.util.Trace.logCAT1();
         setupDefault();
     }
 
     public AgentParameters(AgentParameters a) {
         this();
+        neck.util.Trace.logCAT1();
         a.copyTo(this);
     }
 
@@ -99,11 +101,13 @@ public class AgentParameters implements Serializable {
 
 
     public void setAgClass(String c) {
+        neck.util.Trace.logCAT1();
         if (c != null && !c.isEmpty())
             agClass = new ClassParameters(c);
     }
 
     public void addArchClass(String... cs) {
+        neck.util.Trace.logCAT1();
         if (cs == null)
             return;
         for (String c: cs) {
@@ -113,18 +117,21 @@ public class AgentParameters implements Serializable {
         }
     }
     public void addArchClass(Collection<String> cs) {
+        neck.util.Trace.logCAT1();
         if (cs == null)
             return;
         for (String c: cs)
             addArchClass(c);
     }
     public void addArchClass(ClassParameters... cps) {
+        neck.util.Trace.logCAT1();
         if (cps == null)
             return;
         for (ClassParameters c: cps)
             archClasses.add(c);
     }
     public void insertArchClass(ClassParameters... cps) {
+        neck.util.Trace.logCAT1();
         if (cps == null)
             return;
         for (ClassParameters c: cps)
@@ -142,6 +149,7 @@ public class AgentParameters implements Serializable {
 
 
     public void setBB(ClassParameters c) {
+        neck.util.Trace.logCAT1();
         if (c != null) bbClass = c;
     }
 

@@ -49,6 +49,7 @@ public class OE extends Event implements Cloneable, ToXML {
 
 
     public OE(GoalInstance purpose, OS os) throws MoiseConsistencyException {
+        neck.util.Trace.log("ORG");
         if (os == null) {
             throw new MoiseConsistencyException("OS can not be null!");
         }
@@ -69,6 +70,7 @@ public class OE extends Event implements Cloneable, ToXML {
      * @return an OE object representing this new entity
      */
     public static OE createOE(String purpose, String OSxmlURI) throws MoiseConsistencyException {
+        neck.util.Trace.log("ORG");
         OS os = OS.loadOSFromURI(OSxmlURI);
         if (os != null) {
             Goal gs = new Goal(purpose);

@@ -71,6 +71,8 @@ public class OrgBoard extends Artifact {
      * @throws OperationException if parentGroupId doesn't exit
      */
     public void init(String osFile) throws ParseException, MoiseException, OperationException {
+        neck.util.Trace.log("ORA4MAS");
+        neck.util.Trace.stack("OrgBoard.init()");
         osFile = OrgArt.fixOSFile(osFile);
         this.osFile = osFile;
         OS os = OS.loadOSFromURI(osFile);
@@ -100,6 +102,7 @@ public class OrgBoard extends Artifact {
     }
 
     public String specToStr(ToXML spec, Transformer transformer) throws Exception {
+        neck.util.Trace.log("ORG?");
         StringWriter so = new StringWriter();
         InputSource si = new InputSource(new StringReader(DOMUtils.dom2txt(spec)));
         transformer.transform(new DOMSource(getParser().parse(si)), new StreamResult(so));
@@ -108,12 +111,14 @@ public class OrgBoard extends Artifact {
 
     private DocumentBuilder parser;
     public DocumentBuilder getParser() throws ParserConfigurationException {
+        neck.util.Trace.log("ORG?");
         if (parser == null)
             parser = DOMUtils.getParser();
         return parser;
     }
 
     @OPERATION public void createGroup(String id, String type, OpFeedbackParam<ArtifactId> gaid) throws OperationException {
+        neck.util.Trace.log("ORA4MAS");
         ArtifactId aid;
         try {
             aid = lookupArtifact(id);
@@ -129,10 +134,12 @@ public class OrgBoard extends Artifact {
     }
 
     protected String getGroupBoardClass() {
+        neck.util.Trace.log("ORG?");
         return GroupBoard.class.getName();
     }
     
     protected ArtifactConfig getGroupConfig(String type) {
+        neck.util.Trace.log("ORG?");
         return new ArtifactConfig(osFile, type);
     }
     
@@ -158,6 +165,7 @@ public class OrgBoard extends Artifact {
     }
 
     @OPERATION public void createScheme(String id, String type, OpFeedbackParam<ArtifactId> said) throws OperationException {
+        neck.util.Trace.log("ORA4MAS");
         ArtifactId aid;
         try {
             aid = lookupArtifact(id);
@@ -203,6 +211,7 @@ public class OrgBoard extends Artifact {
     }
 
     @OPERATION public void createNormativeBoard(String id, OpFeedbackParam<ArtifactId> said) throws OperationException {
+        neck.util.Trace.log("ORG?");
         ArtifactId aid;
         try {
             aid = lookupArtifact(id);

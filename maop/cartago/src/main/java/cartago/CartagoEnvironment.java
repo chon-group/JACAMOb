@@ -95,6 +95,7 @@ public class CartagoEnvironment {
 	 * @throws CartagoException
 	 */
 	public void init() throws CartagoException {
+		neck.util.Trace.log("ENV");
 		this.init(DEFAULT_MAS_NAME, (ICartagoLogger) null);
 	}
 

@@ -30,6 +30,7 @@ public class IntendedMeans implements Serializable, ToDOM {
     protected Unifier  triggerUnif   = null; // unif when the IM was created (used to check goal condition and g-plan scope vars)
 
     public IntendedMeans(Option opt, Trigger te) {
+        neck.util.Trace.stack("IntendedMeans");
         plan     = opt.getPlan();
         planBody = plan.getBody();
         unif     = opt.getUnifier();
@@ -44,7 +45,9 @@ public class IntendedMeans implements Serializable, ToDOM {
     }
 
     // used by clone
-    private IntendedMeans() {  }
+    private IntendedMeans() {
+        neck.util.Trace.stack("IntendedMeans");
+    }
 
     /** removes the current action of the IM and returns the term of the body */
     public Term removeCurrentStep() {

@@ -89,6 +89,7 @@ public class printf extends println {
         } else {
             System.out.print(sout.toString() + getNewLine());
         }
+        neck.util.Trace.stack("printou...");
 
         return true;
     }

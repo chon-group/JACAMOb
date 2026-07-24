@@ -66,6 +66,7 @@ public class RunJadeMAS extends RunLocalMAS {
         r.init(args);
         r.registerInRMI();
         r.registerWebMindInspector();
+        neck.util.Trace.log("JADE?");
         r.create();
         r.start();
         r.waitEnd();

@@ -1662,6 +1662,7 @@ public class TransitionSystem implements Serializable {
     }
 
     public void sense() {
+        neck.util.Trace.log("SENSE...");
         try {
             if (logger.isLoggable(Level.FINE)) logger.fine("Start sense");
 
@@ -1704,6 +1705,7 @@ public class TransitionSystem implements Serializable {
     }
 
     public void deliberate() {
+        neck.util.Trace.stack("Deliberate..");
         try {
             C.resetDeliberate();
 

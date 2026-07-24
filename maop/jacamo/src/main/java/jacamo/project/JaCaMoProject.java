@@ -6,6 +6,7 @@ import jason.mas2j.AgentParameters;
 import jason.mas2j.ClassParameters;
 import jason.mas2j.MAS2JProject;
 import jason.runtime.SourcePath;
+import neck.model.BodyParameters;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -18,7 +19,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
 
     protected static Logger logger = Logger.getLogger(JaCaMoProject.class.getName());
 
-    protected Map<String,JaCaMoBodyParameters> bodies = new HashMap<>();
+    protected Map<String, BodyParameters> bodies = new HashMap<>();
     protected Map<String,JaCaMoWorkspaceParameters> workspaces = new HashMap<>();
     protected List<JaCaMoOrgParameters>       orgs       = new ArrayList<>();
     protected List<JaCaMoInstParameters>      insts      = new ArrayList<>();
@@ -37,6 +38,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     protected Map<String,String> packages = new HashMap<>();
 
     public JaCaMoProject() {
+        neck.util.Trace.stack("JAcamoProject");
         // default asl-path
         addSourcePath(".");
         addSourcePath("src/agt");
@@ -54,6 +56,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
 
     public JaCaMoProject(MAS2JProject project) {
         this();
+        neck.util.Trace.logCAT1();
         this.setSocName(project.getSocName());
         this.setProjectFile(project.getProjectFile());
         this.setDirectory( project.getDirectory());
@@ -61,6 +64,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public SourcePath getOrgPaths() {
+        neck.util.Trace.logCAT1();
         return orgPaths;
     }
     public void addOrgSourcePath(String s) {
@@ -74,6 +78,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public void importProject(String directory, String fileName) throws ParseException {
+        neck.util.Trace.logCAT1();
         // import project
         try {
               if (! fileName.endsWith(".jcm")) fileName = fileName+".jcm";
@@ -89,6 +94,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public void importProject(MAS2JProject project) {
+        neck.util.Trace.logCAT1();
         // import from mas2j project
         // COPY all other parameters from project to this
         getSourcePaths().addAll(project.getSourcePaths());
@@ -157,6 +163,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     */
 
     public void addAgFocus(String agId, String nameSpace, String artId, JaCaMoWorkspaceParameters wks) {
+        neck.util.Trace.logCAT1();
         if (agId.equals("*")) {
             for (AgentParameters ap: getAgents()) {
                 JaCaMoAgentParameters jap = (JaCaMoAgentParameters)ap;
@@ -174,6 +181,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public JaCaMoWorkspaceParameters getArtifactWorkspace(String artId) {
+        neck.util.Trace.logCAT1();
         for (JaCaMoWorkspaceParameters w: workspaces.values()) {
             if (w.getArtifact(artId) != null)
                 return w;
@@ -206,20 +214,25 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
     */
 
-    public void addBody(JaCaMoBodyParameters b) {
+    public void addBody(BodyParameters b) {
+        neck.util.Trace.logCAT1();
         bodies.put(b.getName(),b);
     }
-    public Collection<JaCaMoBodyParameters> getBodies() {
+    public Collection<BodyParameters> getBodies() {
+        neck.util.Trace.logCAT1();
         return bodies.values();
     }
 
     public void addWorkspace(JaCaMoWorkspaceParameters w) {
+        neck.util.Trace.logCAT1();
         workspaces.put(w.getName(),w);
     }
     public Collection<JaCaMoWorkspaceParameters> getWorkspaces() {
+        neck.util.Trace.logCAT1();
         return workspaces.values();
     }
     public JaCaMoWorkspaceParameters getWorkspace(String wid) {
+        neck.util.Trace.logCAT1();
         JaCaMoWorkspaceParameters w = workspaces.get(wid);
         if (w == null) {
             for (JaCaMoOrgParameters o: orgs) {
@@ -231,6 +244,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public void addOrg(JaCaMoOrgParameters o) {
+        neck.util.Trace.logCAT1();
         orgs.add(o);
     }
     public Collection<JaCaMoOrgParameters> getOrgs() {
@@ -246,12 +260,15 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
 
 
     public void addInstitution(JaCaMoInstParameters o) {
+        neck.util.Trace.logCAT1();
         insts.add(o);
     }
     public Collection<JaCaMoInstParameters> getInstitutions() {
+        neck.util.Trace.logCAT1();
         return insts;
     }
     public JaCaMoInstParameters getInstitution(String iId) {
+        neck.util.Trace.logCAT1();
         for (JaCaMoInstParameters o: insts) {
             if (o.getName().equals(iId))
                 return o;
@@ -260,6 +277,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public void addAgWorkspace(String agId, JaCaMoWorkspaceParameters w) {
+        neck.util.Trace.logCAT1();
         if (agId.equals("*")) {
             for (AgentParameters ap: getAgents()) {
                 JaCaMoAgentParameters jap = (JaCaMoAgentParameters)ap;
@@ -276,6 +294,7 @@ public class JaCaMoProject extends MAS2JProject implements Serializable {
     }
 
     public void addAgRole(String agId, JaCaMoOrgParameters org, JaCaMoGroupParameters group, String role) {
+        neck.util.Trace.logCAT1();
         JaCaMoAgentParameters ap = (JaCaMoAgentParameters)getAg(agId);
         if (ap == null) {
             logger.warning("Agent "+agId+" was not declared and so cannot play role "+role);

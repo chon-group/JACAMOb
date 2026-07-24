@@ -95,6 +95,7 @@ public class OEAgent extends MoiseElement implements ToXML {
      * @throws MoiseCardinalityException  the number of roleId players already has the max value in gr
      */
     public RolePlayer adoptRole(String roleId, GroupInstance gr) throws MoiseConsistencyException, MoiseCardinalityException {
+        neck.util.Trace.log("ROLE");
         logger.fine(getId() + " trying to play "+roleId+" in "+gr);
 
         Role role = oe.getOS().getSS().getRoleDef(roleId);
@@ -344,6 +345,7 @@ public class OEAgent extends MoiseElement implements ToXML {
      * @throws MoiseCardinalityException
      */
     public MissionPlayer commitToMission(String missionId, SchemeInstance sch) throws MoiseConsistencyException, MoiseCardinalityException {
+        neck.util.Trace.log("MISSAO");
         if (MoiseElement.getPrefix(missionId) == null) {
             missionId = sch.getSpec().getId()+"."+ missionId;
         }
@@ -656,6 +658,7 @@ public class OEAgent extends MoiseElement implements ToXML {
      *     the rp is obligated to commit to m.
     */
     public Collection<Permission> getObligations() {
+        neck.util.Trace.log("Obligation");
         // for all roles
         //    for all schemes where responsible group includes my roles group
         //        for all missions in the scheme that the role is obligated and this agent is not yet committed to

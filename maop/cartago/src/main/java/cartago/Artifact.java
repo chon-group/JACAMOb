@@ -65,6 +65,7 @@ public abstract class Artifact {
 	protected double observabilityRadius;
 	
 	void bind(ArtifactId id, AgentId creatorId, Workspace env) throws CartagoException {
+		neck.util.Trace.stack("doInit");
 		this.id = id;
 		this.creatorId = creatorId;
 		this.wsp = env;
@@ -298,6 +299,7 @@ public abstract class Artifact {
 	}
 
 	private void doInit(ArtifactConfig cfg) throws CartagoException {
+		neck.util.Trace.stack("doInit");
 		try {
 			lock.lock();
 			Method m = getMethodInHierarchy2("init", cfg.getTypes());

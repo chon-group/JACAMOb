@@ -65,6 +65,7 @@ public class PlanLibrary implements Iterable<Plan>, Serializable, ToDOM {
     private Lock plLock;
 
     public PlanLibrary() {
+        neck.util.Trace.logCAT2();
         plLock = new ReentrantLock();
     }
 
@@ -152,6 +153,7 @@ public class PlanLibrary implements Iterable<Plan>, Serializable, ToDOM {
         p.setScope(this);
         plLock.lock();
         try {
+            neck.util.Trace.log("AGT?********");
             // test p.label
             if (p.getLabel() != null && planLabels.containsKey( getStringForLabel(p.getLabel()))) {
                 // test if the new plan is equal, in this case, just add a source

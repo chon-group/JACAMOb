@@ -36,6 +36,8 @@ public class MAS2JProject implements Serializable {
     private Map<String,String> directiveClasses = new HashMap<String,String>();
 
     public static MAS2JProject parse(String file) {
+        neck.util.Trace.logCAT1();
+        neck.util.Trace.stack("MAS2JProject");
         try {
             jason.mas2j.parser.mas2j parser = new jason.mas2j.parser.mas2j(new FileReader(file));
             return parser.mas();
@@ -109,6 +111,7 @@ public class MAS2JProject implements Serializable {
         agents = new ArrayList<AgentParameters>();
     }
     public void addAgent(AgentParameters a) {
+        neck.util.Trace.logCAT1();
         agents.add(a);
     }
     public AgentParameters getAg(String name) {

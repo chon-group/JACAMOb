@@ -25,7 +25,8 @@ public class send_sai extends send {
 	private Workspace main = cenv.getRootWSP().getWorkspace();
 
 	@Override
-	public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {		
+	public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
+		neck.util.Trace.logCAT3();
 		ListTerm list = (ListTerm) args[args.length-1]; //get the list of institutions
 		notifyInstitutions(args[0],args[1],args[2], list,ts.getUserAgArch().getAgName());
 		Term[] argsSend = new Term[args.length-1];
@@ -35,6 +36,7 @@ public class send_sai extends send {
 
 
 	private void notifyInstitutions( Term target,Term performative, Term message, ListTerm institutions, String sender ) {
+		neck.util.Trace.logCAT3();
 		System.out.println("[send_sai] notifyIntitutions " + target +" - " + performative.toString() + ", " + message.toString() + "," + institutions);
 		for(Term inst : institutions) {
 			if(workspaces.get(inst.toString())==null)

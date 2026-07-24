@@ -16,6 +16,7 @@ import jason.runtime.MASConsoleGUI;
 import jason.runtime.MASConsoleLogHandler;
 import jason.runtime.RuntimeServicesFactory;
 import jason.runtime.SourcePath;
+import neck.util.Trace;
 
 import javax.swing.*;
 import java.io.File;
@@ -49,7 +50,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
     public static String defaultProjectFileName = "default.jcm";
 
     public static void main(String[] args) throws JasonException {
-
+        neck.util.Trace.logCAT1();
         for (int i=0; i<args.length; i++) {
             String arg = args[i].trim();
             if ("-h".equals(arg)) {
@@ -68,11 +69,21 @@ public class JaCaMoLauncher extends RunLocalMAS {
         runner = r;
         RuntimeServicesFactory.set( new JaCaMoRuntimeServices(runner) );
         r.init(args);
+        neck.util.Trace.log("Aqui termina o init(args)");
         r.registerMBean();
         r.registerInRMI();
         r.registerWebMindInspector();
+
+
+        neck.util.Trace.log("AQUI COMECA O carregamento");
         r.create();
+        neck.util.Trace.log("AQUI COMECA O PROCESSO DE START DO SMA");
+
+
         r.start();
+        neck.util.Trace.log("AQUI TERMINA O PROCESSO DE START DO SMA");
+
+        neck.util.Trace.log("JCM");
         r.waitEnd();
         r.finish(0, true, 0);
     }
@@ -90,6 +101,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
 
     @Override
     public int init(String[] args) {
+        neck.util.Trace.logCAT1();
         parseArgs(args);
         String projectFileName = null;
         if (RunLocalMAS.class.getResource("/"+defaultProjectFileName) != null) {
@@ -226,6 +238,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
     
     @Override
     protected void parseArgs(String[] args) {
+        neck.util.Trace.logCAT1();
         super.parseArgs(args);
         if (args.length > 0) {
             String la = "";
@@ -243,7 +256,8 @@ public class JaCaMoLauncher extends RunLocalMAS {
         boolean einsp = false;
         Platform p = null;
         for (String pId: getJaCaMoProject().getCustomPlatforms()) {
-            try {               
+            try {
+                neck.util.Trace.log("JCM");
                 p = (Platform)Class.forName(pId).getConstructor().newInstance();
                 p.setJcmProject(getJaCaMoProject());
                 p.init( getJaCaMoProject().getPlatformParameters(pId) );
@@ -268,6 +282,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
 
     /** get packages from the project and add them into Config (map from pkg id -> file), used by .include */
     public void loadPackages() {
+        neck.util.Trace.logCAT1();
         var pkgs = getJaCaMoProject().getPackages();
         for (String k: pkgs.keySet()) {
             var ok = false;
@@ -341,12 +356,17 @@ public class JaCaMoLauncher extends RunLocalMAS {
     /** create environment, agents, controller */
     @Override
     public void create() throws JasonException {
+        neck.util.Trace.log("JCM");
         neck.util.CompilerLite.ensureProjectClassLoaderInstalled();
         createCustomPlatforms();
+        neck.util.Trace.log("JCM");
         createEnvironment();
+        neck.util.Trace.log("JCM");
         createOrganisation();
         createInstitution();
+        neck.util.Trace.log("JCM");
         createAgs();
+        neck.util.Trace.log("AQUI TERMINOU O PROCESSO DE CRIAÇÃO DO SMA");
         //createController();        
     }
 
@@ -354,11 +374,14 @@ public class JaCaMoLauncher extends RunLocalMAS {
     public void start() {
         for (Platform p: platforms) {
             try {
+                neck.util.Trace.log("JCM");
                 p.start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }        
+        }
+        neck.util.Trace.importantPoint();
+        neck.util.Trace.ENABLED = true;
         super.start(); // start agents after platforms
     }
 
@@ -366,6 +389,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
         Cartago p = new Cartago();
         p.setJcmProject(getJaCaMoProject());
         try {
+            neck.util.Trace.log("ENV");
             p.init(getJaCaMoProject().getPlatformParameters("cartago") );
             platforms.add(Math.min(platforms.size(), 2), p);
         } catch (Exception e) {
@@ -374,10 +398,12 @@ public class JaCaMoLauncher extends RunLocalMAS {
     }
 
     protected void createInstitution() {
+        neck.util.Trace.logCAT1();
         if (!getJaCaMoProject().getInstitutions().isEmpty()) {
             Sai p = new Sai();
             p.setJcmProject(getJaCaMoProject());
             try {
+                neck.util.Trace.log("JCM~");
                 p.init(getJaCaMoProject().getPlatformParameters("moise") );
                 platforms.add(1,p);
             } catch (Exception e) {
@@ -389,9 +415,11 @@ public class JaCaMoLauncher extends RunLocalMAS {
 
     protected void createOrganisation() {
         if (!getJaCaMoProject().getOrgs().isEmpty()) {
+            neck.util.Trace.log("ORG");
             Moise p = new Moise();
             p.setJcmProject(getJaCaMoProject());
             try {
+                neck.util.Trace.log("JCM");
                 p.init(getJaCaMoProject().getPlatformParameters("moise") );
                 platforms.add(1,p);
             } catch (Exception e) {
@@ -402,6 +430,7 @@ public class JaCaMoLauncher extends RunLocalMAS {
         
     @Override
     public void createAgs() throws JasonException {
+        neck.util.Trace.log("AQUI COMEÇOU O CREATEAGS()");
         // add jacamo archs
         List<AgentParameters> lags = new ArrayList<>();
         for (AgentParameters ap: getJaCaMoProject().getAgents()) {
@@ -440,10 +469,13 @@ public class JaCaMoLauncher extends RunLocalMAS {
         } else {
             super.createAgs();
         }
+        neck.util.Trace.log("AQUI TERMINOU O CREATEAGS()");
     }
 
     @Override
     protected void startAgs() {
+        neck.util.Trace.stack("JaCaMoLaucher.startAgs()");
+        neck.util.Trace.log("AGT");
         if (!getProject().isJade()) {
             super.startAgs();
         }

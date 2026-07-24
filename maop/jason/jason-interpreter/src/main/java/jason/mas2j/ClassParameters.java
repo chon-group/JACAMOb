@@ -25,11 +25,15 @@ public class ClassParameters implements Serializable {
     private List<String> parameters = new ArrayList<>();
     private String host;
 
-    public ClassParameters() {}
+    public ClassParameters() {
+        neck.util.Trace.stack("Carregou ClassParameters()");
+    }
     public ClassParameters(String className) {
         this.className = className;
+        neck.util.Trace.stack("Carregou ClassParameters(String className)");
     }
     public ClassParameters(Structure s) {
+        neck.util.Trace.stack("Carregou ClassParameters(Structure s)");
         className = s.getFunctor();
         if (s.getArity() > 0) {
             for (Term t: s.getTerms()) {

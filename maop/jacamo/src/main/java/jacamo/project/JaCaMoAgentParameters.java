@@ -15,6 +15,7 @@ import jason.asSyntax.Literal;
 import jason.asSyntax.Term;
 import jason.asSyntax.parser.ParseException;
 import jason.bb.DefaultBeliefBase;
+import jason.infra.local.LocalRuntimeServices;
 import jason.mas2j.AgentParameters;
 import jason.mas2j.ClassParameters;
 import jason.runtime.Settings;
@@ -29,15 +30,18 @@ public class JaCaMoAgentParameters extends AgentParameters {
     protected JaCaMoProject  project;
 
     public JaCaMoAgentParameters(JaCaMoProject project) {
+        neck.util.Trace.log("??????????????");
         this.project = project;
     }
 
     public JaCaMoAgentParameters(JaCaMoProject project, AgentParameters a) {
         super(a);
+        neck.util.Trace.logSuper("super: "+ LocalRuntimeServices.class.getSuperclass().getName());
         this.project = project;
     }
 
     public void addInitBel(Literal l) {
+        neck.util.Trace.logCAT1();
         String op = getOption(Settings.INIT_BELS);
         if (op == null)
             op = "";
@@ -48,6 +52,7 @@ public class JaCaMoAgentParameters extends AgentParameters {
     }
 
     public void addInitGoal(Literal l) {
+        neck.util.Trace.logCAT1();
         String op = getOption(Settings.INIT_GOALS);
         if (op == null)
             op = "";
@@ -72,6 +77,7 @@ public class JaCaMoAgentParameters extends AgentParameters {
     }
 
     public void addWorkspace(String w) {
+        neck.util.Trace.logCAT1();
         wks.add(w);
     }
     public Collection<String> getWorkspaces() {
@@ -87,9 +93,11 @@ public class JaCaMoAgentParameters extends AgentParameters {
 
 
     public void addRole(String org, String g, String r) {
+        neck.util.Trace.logCAT1();
         roles.add(new String[] { org, g, r });
     }
     public void addRole(String g, String r) {
+        neck.util.Trace.logCAT1();
         int pdot = g.indexOf(".");
         if (pdot > 0) {
             String orgId = g.substring(0,pdot);
@@ -101,10 +109,12 @@ public class JaCaMoAgentParameters extends AgentParameters {
     }
 
     public List<String[]> getRoles() {
+        neck.util.Trace.logCAT1();
         return roles;
     }
 
     public void addFocus(String artId, String namespace, String w) {
+        neck.util.Trace.logCAT1();
         if (namespace == null)
             namespace = Literal.DefaultNS.toString();
         if (w != null && !wks.contains(w))
@@ -113,6 +123,7 @@ public class JaCaMoAgentParameters extends AgentParameters {
     }
 
     public void addFocus(String artId, String namespace) {
+        neck.util.Trace.logCAT1();
         int pdot = artId.indexOf(".");
         if (pdot > 0) {
             String workspaceId = artId.substring(0,pdot);

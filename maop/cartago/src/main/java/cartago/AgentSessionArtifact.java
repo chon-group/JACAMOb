@@ -54,7 +54,8 @@ public class AgentSessionArtifact extends Artifact {
 	 * @param res output parameter: workspace id
 	 */
 	@OPERATION void joinWorkspace(String wspRef, OpFeedbackParam<WorkspaceId> res) {
-		try {			
+		neck.util.Trace.log("JOIN");
+		try {
 			// wspRef must be absolute: /...
 			
 			wspRef = removeRelativePath(wspRef);

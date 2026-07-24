@@ -1,5 +1,7 @@
 package jacamo.project;
 
+import jason.infra.local.LocalRuntimeServices;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +18,11 @@ public class JaCaMoInstParameters extends JaCaMoWorkspaceParameters {
             
     public JaCaMoInstParameters(JaCaMoProject project) {
         super(project);
+        neck.util.Trace.logSuper("super: "+ LocalRuntimeServices.class.getSuperclass().getName());
     }
 
     public void addParameter(String k, String v) {
+        neck.util.Trace.logCAT1();
         parameters.put(k, v);
     }
     public String getParameter(String k) {
@@ -26,6 +30,7 @@ public class JaCaMoInstParameters extends JaCaMoWorkspaceParameters {
     }
 
     public void addWorkspace(String wId) {
+        neck.util.Trace.logCAT1();
         wrks.add(wId);
     }
     public List<String> getWorkspaces() {

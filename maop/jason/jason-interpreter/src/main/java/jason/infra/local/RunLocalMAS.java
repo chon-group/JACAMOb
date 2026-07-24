@@ -55,6 +55,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
     public RunLocalMAS() {
         super();
+        neck.util.Trace.logSuper("super: "+LocalRuntimeServices.class.getSuperclass().getName());
         try {
             if (RuntimeServicesFactory.get() == null || !RuntimeServicesFactory.get().isRunning()) {
                 RuntimeServicesFactory.set(new LocalRuntimeServices(this));
@@ -74,12 +75,14 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
     }
 
     public static void main(String[] args) throws JasonException {
+        neck.util.Trace.logCAT1();
         RunLocalMAS r = new RunLocalMAS();
         runner = r;
         r.init(args);
         r.registerMBean();
         r.registerInRMI();
         r.registerWebMindInspector();
+        neck.util.Trace.log("JCM?");
         r.create();
         r.start();
         r.waitEnd();
@@ -117,6 +120,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
     }
 
     public int init(String[] args) {
+        neck.util.Trace.log("AGT?");
         parseArgs(args);
 
         String projectFileName = null;
@@ -226,6 +230,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
     }
 
     protected void parseArgs(String[] args) {
+        neck.util.Trace.logCAT1();
         if (args.length > 0) {
             String la = "";
             for (String arg: args) {
@@ -325,6 +330,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
     /** create environment, agents, controller */
     public void create() throws JasonException {
+        neck.util.Trace.stack("RunLocalMAS.create()");
         createEnvironment();
         createAgs();
         createController();
@@ -332,6 +338,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
     /** start agents, .... */
     public void start() {
+        neck.util.Trace.stack("RunLocalMAS.start()");
         isRunning = true;
         startAgs();
         startSyncMode();
@@ -532,6 +539,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
 
     protected void createEnvironment() throws JasonException {
+        neck.util.Trace.log("??????????");
         if (project.getEnvClass() != null && !project.getEnvClass().getClassName().equals(jason.environment.Environment.class.getName())) {
             logger.fine("Creating environment " + project.getEnvClass());
             env = new LocalEnvironment(project.getEnvClass(), this);
@@ -540,6 +548,8 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
 
     protected void createAgs() throws JasonException {
+        neck.util.Trace.log("AGT");
+        neck.util.Trace.stack("RunLocalMAS.createAgs()");
         RConf generalConf = RConf.fromString(project.getInfrastructure().getParameter(0));
 
         int nbAg = 0;
@@ -648,6 +658,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
     }
 
     protected void startAgs() {
+        neck.util.Trace.log("AGT");
         // run the agents
         if (project.getInfrastructure().hasParameter("pool") || project.getInfrastructure().hasParameter("synch_scheduled") || project.getInfrastructure().hasParameter("asynch") || project.getInfrastructure().hasParameter("asynch_shared")) {
             createThreadPool();
@@ -658,7 +669,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
     /** creates one thread per agent */
     private void createAgsThreads() {
-
+        neck.util.Trace.stack("RunLocalMAS.createAgsThreads()");
         int cyclesSense      = 1;
         int cyclesDeliberate = 1;
         int cyclesAct        = 1;
@@ -706,6 +717,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
 
     /** creates a pool of threads shared by all agents */
     private void createThreadPool() {
+        neck.util.Trace.stack("RunLocalMAS.createThreadPool");
         sleepingAgs = Collections.synchronizedSet(new HashSet<>());
 
         int maxthreads = 10;
@@ -938,6 +950,7 @@ public class RunLocalMAS extends BaseLocalMAS implements RunLocalMASMBean {
         if (control != null) {
             // start the execution, if it is controlled
             try {
+                neck.util.Trace.log("JCM?");
                 Thread.sleep(500); // gives a time to agents enter in wait
                 control.informAllAgsToPerformCycle(0);
             } catch (Exception e) {

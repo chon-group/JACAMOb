@@ -49,6 +49,7 @@ public class SimOE {
     //private static String binURI = "./";
 
     public static void main(String[] args) {
+        neck.util.Trace.log("ORG?");
         //String binDir = ".";
         String file = null;
 

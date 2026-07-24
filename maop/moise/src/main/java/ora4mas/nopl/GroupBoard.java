@@ -120,6 +120,7 @@ public class GroupBoard extends OrgArt {
      * @throws OperationException if parentGroupId doesn't exit
      */
     public void init(String osFile, final String grType) throws ParseException, MoiseException, OperationException {
+        neck.util.Trace.log("ORGGGGGG?????");
         osFile = OrgArt.fixOSFile(osFile);
 
         final String grId = getId().getName();
@@ -331,6 +332,7 @@ public class GroupBoard extends OrgArt {
      * @param schId                        the scheme Id being added
      */
     @OPERATION public void addScheme(final String schId) {
+        neck.util.Trace.log("ORGGGGGG?????");
         ora4masOperationTemplate(new Operation() {
             public void exec() throws NormativeFailureException, Exception {
                 ArtifactId schAr = lookupArtifact(schId);
@@ -562,6 +564,7 @@ public class GroupBoard extends OrgArt {
     }
 
     @OPERATION public void addRole(String roleId) throws MoiseException, ParseException {
+        neck.util.Trace.log("ORGGGGGG?????");
         if (!isUserAllowed()) {
             failed("Error: agent '"+getOpUserName()+"' is not allowed to add roles","reason",new JasonTermWrapper("not_allowed_to_start(addRole)"));
         } else {

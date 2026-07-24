@@ -34,6 +34,7 @@ public class CartagoEnvironment extends Environment {
 	static Logger logger = Logger.getLogger(CartagoEnvironment.class.getName());
 
 	public void init(String[] args) {
+		neck.util.Trace.log("JaCa");
 		logger.setLevel(Level.WARNING);
 		wspName = cartago.CartagoEnvironment.ROOT_WSP_DEFAULT_NAME;
 		
@@ -241,6 +242,7 @@ public class CartagoEnvironment extends Environment {
 	 * @throws Exception
 	 */
 	public IAgentSession startSession(String agName, CAgentArch arch) throws Exception {
+		neck.util.Trace.log("JaCa");
 		if (wspAddress == null){ 
 			IAgentSession context = cartago.CartagoEnvironment.getInstance().startSession(wspName,new cartago.AgentIdCredential(agName),arch);
 			logger.info("NEW AGENT JOINED: "+agName);

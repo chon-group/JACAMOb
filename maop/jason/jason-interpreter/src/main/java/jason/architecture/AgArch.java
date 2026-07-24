@@ -45,6 +45,7 @@ public class AgArch implements Comparable<AgArch>, Serializable {
     private int cycleNumber = 0;
 
     public AgArch() {
+        neck.util.Trace.log("AGT");
         firstArch = this;
     }
 
@@ -163,6 +164,7 @@ public class AgArch implements Comparable<AgArch>, Serializable {
      *  The returned list will be modified by Jason.
      */
     public Collection<Literal> perceive() {
+        neck.util.Trace.log("Perceive ******");
         if (successor == null)
             return null;
         else
@@ -172,6 +174,7 @@ public class AgArch implements Comparable<AgArch>, Serializable {
     /** Reads the agent's mailbox and adds messages into
         the agent's circumstance */
     public void checkMail() {
+        neck.util.Trace.stack("CheckMAil");
         if (successor != null)
             successor.checkMail();
     }

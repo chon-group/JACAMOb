@@ -65,7 +65,8 @@ public class SaiNormArt extends Artifact implements ISAINormativeListener{
 	private ArrayList<String> history = new ArrayList<String>();
 
 	
-	void init(String id){		
+	void init(String id){
+		neck.util.Trace.logCAT3();
 		this.id = id;
 		this.nEngine.addSaiNormativeReasonerListener(this); //become a listener to be aware about the current normative state
 	
@@ -85,6 +86,7 @@ public class SaiNormArt extends Artifact implements ISAINormativeListener{
 	}
 	
 	void init(String id, String constitutiveProgram, String normativeProgramPath){
+		neck.util.Trace.logCAT3();
 		this.init(id);
 		this.constProgram = new InstProgram();
 		try {
@@ -102,11 +104,13 @@ public class SaiNormArt extends Artifact implements ISAINormativeListener{
 	
 	
 	@OPERATION
-	void addNormativeProgram(String fileName) throws IOException{		
+	void addNormativeProgram(String fileName) throws IOException{
+		neck.util.Trace.logCAT3();
 		this.internalAddNormativeProgram(fileName);
 	}
 	
 	private void internalAddNormativeProgram(String fileName) throws IOException{
+		neck.util.Trace.logCAT3();
 		InputStream is = new FileInputStream(fileName);			
 		ANTLRInputStream input = new ANTLRInputStream(is);			
 		sai_normativeLexer lexer = new sai_normativeLexer(input);		
@@ -121,6 +125,7 @@ public class SaiNormArt extends Artifact implements ISAINormativeListener{
 	
 	
 	private void internalAddConstitutiveProgram(String fileName) throws IOException{
+		neck.util.Trace.logCAT3();
 		InputStream is = new FileInputStream(fileName);
 		ANTLRInputStream input = new ANTLRInputStream(is);
 		sai_constitutiveLexer constLexer = new sai_constitutiveLexer(input);		
@@ -140,10 +145,12 @@ public class SaiNormArt extends Artifact implements ISAINormativeListener{
 
 	@Override @OPERATION
 	public void addNormInstance(NormInstance instance) {
+		neck.util.Trace.logCAT3();
 		execInternalOp("internal_addNormInstance", instance);
 	}
 	
 	@INTERNAL_OPERATION public void internal_addNormInstance(NormInstance instance){
+		neck.util.Trace.logCAT3();
 		defineObsProperty(instance.getDeontic().toString(), instance.getAttribute(), ((StatusFunction)instance.getAim()).getId(), instance.getDeadline());
 		if(!normsToShow.contains(instance)){			
 			normsToShow.add(instance);
@@ -205,6 +212,7 @@ public class SaiNormArt extends Artifact implements ISAINormativeListener{
 
 	
 	private void addToHistory(String s){
+		neck.util.Trace.logCAT3();
 		history.add(new SimpleDateFormat("[yyyy/MM/dd_HH:mm:ss] ").format(Calendar.getInstance().getTime()) + s);
 	}
 	

@@ -62,6 +62,7 @@ public class OSBuilder {
     }
 
     public Scheme addScheme(String id, String rootGoal) {
+        neck.util.Trace.log("ORG");
         Scheme s = new Scheme(id, os.getFS());
         os.getFS().addScheme(s);
         s.setRoot(new Goal(rootGoal));
@@ -88,6 +89,7 @@ public class OSBuilder {
     }
 
     public Goal addGoal(String schemeId, String goalId, String plan) throws MoiseConsistencyException {
+        neck.util.Trace.log("ORG");
         Scheme sch = os.getFS().findScheme(schemeId);
         Goal g = sch.getGoal(goalId);
         if (g == null) {
@@ -127,6 +129,7 @@ public class OSBuilder {
     }
 
     public String getXMLSpec() throws TransformerException {
+        neck.util.Trace.log("ORG");
         return DOMUtils.dom2txt(os);
     }
 

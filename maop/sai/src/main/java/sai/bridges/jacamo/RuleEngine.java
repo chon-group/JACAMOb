@@ -14,6 +14,7 @@ import java.util.Map;
 
 import static java.time.LocalDateTime.now;
 
+
 import sai.main.institution.SaiEngine;
 import cartago.AbstractWSPRuleEngine;
 import cartago.AgentId;
@@ -45,6 +46,7 @@ public class RuleEngine extends AbstractWSPRuleEngine {
 
 	public RuleEngine() {
 		super();
+		neck.util.Trace.logSuper("super: "+ jason.infra.local.LocalRuntimeServices.class.getSuperclass().getName());
 	}
 
 
@@ -54,6 +56,7 @@ public class RuleEngine extends AbstractWSPRuleEngine {
 	 * @param institution
 	 */
 	public void addInstitution(SaiEngine institution){
+		neck.util.Trace.stack("addInstitution(SaiEngine institution)");
 		this.institutions.add(institution);
 	}
 
@@ -139,6 +142,7 @@ public class RuleEngine extends AbstractWSPRuleEngine {
 	
 	
 	private String Op2Pred(Op op){
+		neck.util.Trace.logCAT3();
 		Object[] o = op.getParamValues();
 		String term;
 
@@ -331,6 +335,7 @@ public class RuleEngine extends AbstractWSPRuleEngine {
 	}
 
 	public void executeOp(String artifactName, Op op){
+		neck.util.Trace.logCAT3();
 		try {            
 			execOp(this.getArtifact(artifactName), op );
 			//}
@@ -402,6 +407,7 @@ public class RuleEngine extends AbstractWSPRuleEngine {
 
 
 	private String adaptAgentId(String agent) {
+		neck.util.Trace.logCAT3();
 		if(agent.charAt(0)>='A' & agent.charAt(0)<='Z')
 			return "agent_"+agent;
 		return agent;
@@ -420,7 +426,8 @@ public class RuleEngine extends AbstractWSPRuleEngine {
 	 * Add an artifact name to the list of ignored artifacts
 	 * @param artifactName
 	 */
-	public void addArtifactToIgnore(String artifactName) {		
+	public void addArtifactToIgnore(String artifactName) {
+		neck.util.Trace.logCAT3();
 		toIgnoreArt.put(artifactName, artifactName);
 	}
 	

@@ -16,7 +16,9 @@ public class mas2j implements mas2jConstants {
 
 /* Configuration Grammar */
   final public 
-MAS2JProject mas() throws ParseException {Token soc;
+MAS2JProject mas() throws ParseException {
+      neck.util.Trace.logCAT1();
+      Token soc;
     jj_consume_token(MAS);
     soc = jj_consume_token(ASID);
 project = new MAS2JProject();
@@ -34,7 +36,9 @@ project = new MAS2JProject();
     throw new Error("Missing return statement in function");
 }
 
-  final public void infra() throws ParseException {ClassParameters infra;
+  final public void infra() throws ParseException {
+      neck.util.Trace.logCAT1();
+      ClassParameters infra;
     switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
     case INFRA:{
       jj_consume_token(INFRA);
@@ -49,7 +53,9 @@ project.setInfrastructure(infra);
     }
 }
 
-  final public void agents() throws ParseException {project.initAgMap();
+  final public void agents() throws ParseException {
+      neck.util.Trace.logCAT1();
+      project.initAgMap();
     switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
     case AGS:{
       jj_consume_token(AGS);
@@ -75,7 +81,9 @@ project.setInfrastructure(infra);
     }
 }
 
-  final public void agent() throws ParseException {Token agName;
+  final public void agent() throws ParseException {
+      neck.util.Trace.logCAT1();
+      Token agName;
                               Token qty; Token value;
                               Token host;
                               AgentParameters ag = new AgentParameters();
@@ -444,7 +452,9 @@ opts.put(opt.image,oval.image);
     throw new Error("Missing return statement in function");
 }
 
-  final public void environment() throws ParseException {Token host = null; ClassParameters envClass = null;
+  final public void environment() throws ParseException {
+      neck.util.Trace.logCAT1();
+      Token host = null; ClassParameters envClass = null;
     switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
     case ENV:{
       jj_consume_token(ENV);
@@ -616,6 +626,7 @@ project.addDirectiveClass(directiveId.image, directiveClass);
   }
   /** Constructor with InputStream and supplied encoding */
   public mas2j(java.io.InputStream stream, String encoding) {
+      neck.util.Trace.logCAT1();
 	 try { jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
 	 token_source = new mas2jTokenManager(jj_input_stream);
 	 token = new Token();
@@ -640,6 +651,7 @@ project.addDirectiveClass(directiveId.image, directiveClass);
 
   /** Constructor. */
   public mas2j(java.io.Reader stream) {
+      neck.util.Trace.logCAT1();
 	 jj_input_stream = new SimpleCharStream(stream, 1, 1);
 	 token_source = new mas2jTokenManager(jj_input_stream);
 	 token = new Token();
@@ -668,6 +680,7 @@ project.addDirectiveClass(directiveId.image, directiveClass);
 
   /** Constructor with generated Token Manager. */
   public mas2j(mas2jTokenManager tm) {
+      neck.util.Trace.logCAT1();
 	 token_source = tm;
 	 token = new Token();
 	 jj_ntk = -1;

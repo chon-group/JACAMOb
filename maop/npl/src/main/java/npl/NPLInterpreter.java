@@ -50,6 +50,8 @@ public class NPLInterpreter implements ToDOM, DynamicFactsProvider {
     public final static PredicateIndicator CSANCTION = new PredicateIndicator("sanction", 2);
 
     public void init() {
+        neck.util.Trace.log("NPL");
+        neck.util.Trace.stack("NPLInterpreter.init()");
         if (ag == null) {
             ag = new Agent();
             ag.initAg();

@@ -69,6 +69,7 @@ public class ConstitutiveArt extends Artifact implements ConstitutiveListener{
 
 
     void init(String id, String constitutiveProgramPath) {
+        neck.util.Trace.logCAT3();
         defineObsProperty("institution", createAtom(id));        
         this.ruleEngine = new RuleEngine();
         sai = new SaiEngine();
@@ -141,6 +142,7 @@ public class ConstitutiveArt extends Artifact implements ConstitutiveListener{
     
     @OPERATION
     void loadConstitutiveProgram(String fileName) throws IOException{
+        neck.util.Trace.logCAT3();
         this.internalLoadConstitutiveProgram(fileName);
     }
 
@@ -152,7 +154,8 @@ public class ConstitutiveArt extends Artifact implements ConstitutiveListener{
      */
     @OPERATION
     public void addNormativeEngine(INormativeEngine normativeEngine){
-        this.sai.addNormativeEngine(normativeEngine);       
+        neck.util.Trace.logCAT3();
+        this.sai.addNormativeEngine(normativeEngine);
     }
     
 
@@ -167,6 +170,7 @@ public class ConstitutiveArt extends Artifact implements ConstitutiveListener{
 
 
     private void internalLoadConstitutiveProgram(String fileName) throws IOException{
+        neck.util.Trace.logCAT3();
         InputStream is = new FileInputStream(fileName);
         ANTLRInputStream input = new ANTLRInputStream(is);
         sai_constitutiveLexer constLexer = new sai_constitutiveLexer(input);        
@@ -299,6 +303,7 @@ public class ConstitutiveArt extends Artifact implements ConstitutiveListener{
     class MyHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange t) throws IOException {
+            neck.util.Trace.logCAT3();
             String response = "<html><font face=\"arial\"></font>";
             response = response + "<html><font face=\"arial\">SAI Constitutive State <br></font>";
             response = response + "<iframe src=\""+ getContext() + "/assignments\"align=top width=\"100%\" height=\"40%\"></iframe>";

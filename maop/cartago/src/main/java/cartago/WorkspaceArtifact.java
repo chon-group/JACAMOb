@@ -47,6 +47,7 @@ public class WorkspaceArtifact extends Artifact {
 	 * @param name name of the workspace
 	 */
 	@OPERATION void createWorkspace(String name){
+		neck.util.Trace.log("ENV");
 		try {
 			wsp.createWorkspace(name);
 			defineObsProperty("childWsp",name);
@@ -61,6 +62,7 @@ public class WorkspaceArtifact extends Artifact {
 	 * @param name name of the workspace
 	 */
 	@OPERATION void createWorkspace(String name, String address){
+		neck.util.Trace.log("ENV");
 		try {
 			wsp.createWorkspaceOnRemoteNode(name, address, CartagoEnvironment.getInstance().getDefaultInfrastructureLayer(), null);
 			defineObsProperty("childWsp",name);
@@ -303,6 +305,7 @@ public class WorkspaceArtifact extends Artifact {
 	 * </ul></p>
 	 */	
 	@OPERATION @LINK void makeArtifact(String artifactName, String templateName){
+		neck.util.Trace.log("ENV");
 		try {
 			ArtifactId id = wsp.makeArtifact(this.getCurrentOpAgentId(),artifactName,templateName,ArtifactConfig.DEFAULT_CONFIG);
 			// signal("new_artifact_created",artifactName,templateName,id);

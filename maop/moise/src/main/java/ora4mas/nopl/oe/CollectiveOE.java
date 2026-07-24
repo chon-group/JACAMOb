@@ -64,6 +64,7 @@ public abstract class CollectiveOE implements Serializable, DynamicFactsProvider
     abstract PredicateIndicator getExPlayerPI();
 
     public Player addPlayer(String ag, String obj) {
+        neck.util.Trace.log("ORA4MAS");
         Player p = new Player(ag,obj);
         players.add(p);
         playersAsLiteralList.add(getPlayerLiteral(p));

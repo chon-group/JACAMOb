@@ -80,6 +80,7 @@ public class JasonBridgeArch extends AgArch {
     @SuppressWarnings("unchecked")
     @Override
     public Collection<Literal> perceive() {
+        neck.util.Trace.log("Outro ?????");
         var fromSuper = super.perceive();
         if (!isRunning()) return null;
 

@@ -71,6 +71,8 @@ public class NormativeBoard extends OrgArt {
      * Initialises the normative artifact
      */
     public void init() {
+        neck.util.Trace.log("ORGGGGGG?????");
+        neck.util.Trace.stack("NormativeBoard.init()");
         oeId = getCreatorId().getWorkspaceId().getName();
         String nbId = getId().getName();
 

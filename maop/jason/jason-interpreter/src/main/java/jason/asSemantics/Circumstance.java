@@ -130,7 +130,7 @@ public class Circumstance implements Serializable, ToDOM {
     /** Events */
 
     public void addEvent(Event ev) {
-
+        neck.util.Trace.stack("ADD evento?");
         if (ev.isAtomic())
             AE = ev;
         else

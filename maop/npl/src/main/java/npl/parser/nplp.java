@@ -75,7 +75,9 @@ this.dfp  = dfp;
     jj_consume_token(0);
 }
 
-  final public void scope(NormativeProgram np, Scope superScope) throws ParseException, Exception {Literal scopeId; Rule ir; INorm n; Scope scope; ISanctionRule sr;
+  final public void scope(NormativeProgram np, Scope superScope) throws ParseException, Exception {
+      neck.util.Trace.logCAT1();
+        Literal scopeId; Rule ir; INorm n; Scope scope; ISanctionRule sr;
     jj_consume_token(SCOPE);
     scopeId = literal();
 scope = new Scope(scopeId, np);
@@ -146,7 +148,9 @@ scope.addSanctionRule(sr);
     jj_consume_token(36);
 }
 
-  final public Rule inference_rule() throws ParseException {Literal h; Object b = Literal.LTrue;
+  final public Rule inference_rule() throws ParseException {
+      neck.util.Trace.logCAT1();
+        Literal h; Object b = Literal.LTrue;
     h = literal();
     switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
     case 37:{
@@ -162,7 +166,9 @@ scope.addSanctionRule(sr);
     throw new Error("Missing return statement in function");
 }
 
-  final public INorm norm() throws ParseException {Literal h; Object b; Token id; INorm n;
+  final public INorm norm() throws ParseException {
+      neck.util.Trace.logCAT1();
+        Literal h; Object b; Token id; INorm n;
     jj_consume_token(NORM);
     id = jj_consume_token(ATOM);
     jj_consume_token(38);
@@ -192,7 +198,9 @@ if (b.toString().equals("true"))  b = Literal.LTrue;
     throw new Error("Missing return statement in function");
 }
 
-  final public ISanctionRule sanction_rule() throws ParseException {Literal h; Object b = null; Literal id; Term t; List args = new ArrayList(); ISanctionRule n;
+  final public ISanctionRule sanction_rule() throws ParseException {
+      neck.util.Trace.logCAT1();
+        Literal h; Object b = null; Literal id; Term t; List args = new ArrayList(); ISanctionRule n;
     jj_consume_token(SANCTION);
     id = literal();
     switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
@@ -337,8 +345,11 @@ r = ASSyntax.createLiteral(NormativeProgram.FailFunctor, t);
     throw new Error("Missing return statement in function");
 }
 
-  final public Literal deontic_operator() throws ParseException {Token k; Term a, m, g, d = null; Literal r; Object o;
-    switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
+  final public Literal deontic_operator() throws ParseException {
+      neck.util.Trace.logCAT1();
+      Token k; Term a, m, g, d = null; Literal r; Object o;
+      neck.util.Trace.log("NPL");
+      switch ((jj_ntk==-1)?jj_ntk_f():jj_ntk) {
     case OBLIGATION:{
       k = jj_consume_token(OBLIGATION);
 r = ASSyntax.createLiteral(NormativeProgram.OblFunctor);
@@ -1125,6 +1136,7 @@ u = k.image;
   }
   /** Constructor with InputStream and supplied encoding */
   public nplp(java.io.InputStream stream, String encoding) {
+      neck.util.Trace.logCAT1();
      try { jj_input_stream = new SimpleCharStream(stream, encoding, 1, 1); } catch(java.io.UnsupportedEncodingException e) { throw new RuntimeException(e); }
      token_source = new nplpTokenManager(jj_input_stream);
      token = new Token();
@@ -1149,6 +1161,7 @@ u = k.image;
 
   /** Constructor. */
   public nplp(java.io.Reader stream) {
+      neck.util.Trace.logCAT1();
      jj_input_stream = new SimpleCharStream(stream, 1, 1);
      token_source = new nplpTokenManager(jj_input_stream);
      token = new Token();

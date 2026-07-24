@@ -25,6 +25,7 @@ public class LocalEnvironment implements EnvironmentInfraTier {
     private static Logger logger = Logger.getLogger(LocalEnvironment.class.getName());
 
     public LocalEnvironment(ClassParameters userEnvArgs, BaseLocalMAS masRunner) throws JasonException {
+        neck.util.Trace.log("AGT");
         this.masRunner = masRunner;
         if (userEnvArgs != null) {
             try {

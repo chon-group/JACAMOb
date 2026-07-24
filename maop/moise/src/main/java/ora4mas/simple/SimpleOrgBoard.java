@@ -42,6 +42,7 @@ public class SimpleOrgBoard extends OrgBoard {
      * @throws OperationException if parentGroupId doesn't exit
      */
     public void init() throws ParseException, MoiseException, OperationException {
+        neck.util.Trace.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         if (! "false".equals(Config.get().getProperty(Config.START_WEB_OI))) {
             WebInterface w = WebInterface.get();

@@ -60,6 +60,7 @@ public class SchemeInstance extends MoiseElement implements ToXML {
     private static AtomicInteger schCount = new AtomicInteger(0);
 
     protected SchemeInstance(String id, Scheme sch) throws MoiseConsistencyException {
+        neck.util.Trace.log("ORG");
         if (sch == null) {
             throw new MoiseConsistencyException("Scheme specification can not be null!");
         }
