@@ -1,4 +1,4 @@
-package jason.stdlib.myBody;
+package neck.internalActions;
 
 import jacamo.infra.JaCaMoAgArch;
 import jason.JasonException;
@@ -15,7 +15,7 @@ import neck.model.BodyResponse;
 import java.util.logging.Logger;
 
 
-public class act extends DefaultInternalAction {
+public class Act extends DefaultInternalAction {
 
     private BodyResponse bodyResponse    = null;
     private Term    actionTerm          = null;

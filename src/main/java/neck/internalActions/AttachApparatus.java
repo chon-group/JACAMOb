@@ -1,4 +1,4 @@
-package jason.stdlib.myBody;
+package neck.internalActions;
 
 import jacamo.infra.JaCaMoAgArch;
 import jason.JasonException;
@@ -11,7 +11,7 @@ import neck.Apparatus;
 import neck.Body;
 import neck.DefaultApparatus;
 
-public class neckAttach extends DefaultInternalAction {
+public class AttachApparatus extends DefaultInternalAction {
 
     private Term appName = null;
     private Term appAddress = null;

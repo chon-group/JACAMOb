@@ -1,13 +1,13 @@
-package jacamo.project;
+package neck.model;
 
 import java.io.Serializable;
 import java.util.*;
 
-import jason.mas2j.AgentParameters;
+import jacamo.project.JaCaMoProject;
 import jason.mas2j.ClassParameters;
 
 
-public class JaCaMoBodyParameters implements Serializable {
+public class BodyParameters implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -16,7 +16,7 @@ public class JaCaMoBodyParameters implements Serializable {
     protected Map<String,ClassParameters> apparatus = new HashMap<>();
     protected boolean debug = false;
 
-    public JaCaMoBodyParameters(JaCaMoProject project) {
+    public BodyParameters(JaCaMoProject project) {
         neck.util.Trace.logCAT1();
         this.project = project;
     }
@@ -27,7 +27,6 @@ public class JaCaMoBodyParameters implements Serializable {
     public void addApparatus(String apparatusName, ClassParameters className) {
         neck.util.Trace.logCAT1();
         apparatus.put(apparatusName,className);
-        //System.out.println("ATENCAO: addApparatus("+name+","+apparatusName+","+className+")");
     }
 
      public Integer getApparatusCount() {

@@ -6,14 +6,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import jason.JasonException;
-import jason.RevisionFailedException;
 import jason.asSemantics.Event;
 import jason.asSemantics.Intention;
 import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.*;
-import jason.pl.PlanLibrary;
 import neck.model.BodyResponse;
-import org.json.JSONObject;
 
 import java.util.*;
 
@@ -78,13 +75,13 @@ public class Body {
         return false;
     }
 
-    private List<Literal> getPercepts(TransitionSystem ts){
+    private List<Literal> sense(TransitionSystem ts){
         List<Literal> list = new ArrayList<>();
         for(int i = 0; i < attachedAppName.size(); i++){
             if(!apparatus[i].getStatus()) logger.log(Level.SEVERE,"Apparatus ["+apparatus[i].getApparatusName()+"] is "+apparatus[i].getConnectionStatus());
-            apparatus[i].bodyPerception();
+            apparatus[i].sense();
             list.addAll(apparatus[i].getAllPerceptions());
-            addDesires(ts, apparatus[i].getDesires());
+            updateDesires(ts, apparatus[i].getDesires());
         }
         return list;
     }
@@ -97,7 +94,7 @@ public class Body {
         ts.updateEvents(ev);
     }*/
 
-    public void addDesires(TransitionSystem ts, List<Literal> desires) {
+    public void updateDesires(TransitionSystem ts, List<Literal> desires) {
         for (Literal lit : desires) {
             Trigger trigger = new Trigger(Trigger.TEOperator.add, Trigger.TEType.achieve, lit); // +!lit
             Event ev = new Event(trigger);
@@ -109,7 +106,7 @@ public class Body {
         logger.info("Body update percepts, starting...");
         try {
             // 1) Novas percepções (já com as anotações source(i|p|e))
-            List<Literal> incoming = getPercepts(ts);
+            List<Literal> incoming = sense(ts);
             Set<String> incomingKeys = new HashSet<>();
             for (Literal lit : incoming) {
                 incomingKeys.addAll(keysFor(lit));

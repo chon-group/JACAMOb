@@ -1,8 +1,6 @@
 package neck;
 
 import jason.asSyntax.*;
-import jason.asSyntax.parser.ParseException;
-import jason.pl.PlanLibrary;
 import neck.model.BodyResponse;
 import neck.model.PerceptionType;
 import neck.model.SerialPortStatus;
@@ -10,7 +8,6 @@ import neck.util.SerialComm;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -39,7 +36,7 @@ public abstract class Apparatus {
         this.logger = Logger.getLogger("NECK");
         this.serialComm = serial;
         connect();
-        if(getStatus()) loadApparatusInfo();
+        if(getStatus()) loadBodyActions();
     }
     //public Apparatus(String address) {setAddress(address);}
     private void connect(){
@@ -147,7 +144,7 @@ public abstract class Apparatus {
         return list;
     }
 
-    public void bodyPerception() {
+    public void sense() {
         JSONObject bodyResponse = perceive();
         loadConnectionInfo(bodyResponse);
         loadPercepts(bodyResponse);
@@ -268,7 +265,7 @@ public abstract class Apparatus {
         }
     }
 
-    private void loadApparatusInfo() {
+    private void loadBodyActions() {
         JSONObject jsonObject = this.serialComm.sendMsg("getActions");
 
         this.hwAppName = jsonObject.optString("apparatus", "unknown");
@@ -292,7 +289,8 @@ public abstract class Apparatus {
         }
     }
 
-    private void loadPlans(){
+    public void loadTacitKnowledge(){
+        this.apparatusPlans.clear();
         JSONObject jsonObject = this.serialComm.sendMsg("getKnowHow");
 
         if (jsonObject.has("knowHow")) {
@@ -321,11 +319,6 @@ public abstract class Apparatus {
                 }
             }
         }
-    }
-
-    public void loadPlansFromDevice(){
-        this.apparatusPlans.clear();
-        loadPlans();
     }
 
     public Plan[] getPlans(){

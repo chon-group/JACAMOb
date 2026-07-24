@@ -1,4 +1,4 @@
-package jason.stdlib.myBody;
+package neck.internalActions;
 
 import jacamo.infra.JaCaMoAgArch;
 import jason.JasonException;
@@ -6,12 +6,11 @@ import jason.architecture.AgArch;
 import jason.asSemantics.DefaultInternalAction;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
-import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Plan;
 import jason.asSyntax.Term;
 import neck.Body;
 
-public class neckDetach extends DefaultInternalAction {
+public class DetachApparatus extends DefaultInternalAction {
     private Term appName = null;
 
     @Override
