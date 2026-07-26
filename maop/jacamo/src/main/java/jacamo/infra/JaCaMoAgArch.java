@@ -6,13 +6,11 @@ import java.util.logging.Level;
 import neck.Apparatus;
 import neck.Body;
 import neck.model.BodyParameters;
-import neck.model.BodyResponse;
 import neck.util.CompilerLite;
 import neck.util.ReflectCall;
 import jaca.CAgentArch;
 import jacamo.project.JaCaMoAgentParameters;
 import jacamo.project.JaCaMoWorkspaceParameters;
-import jason.RevisionFailedException;
 import jason.architecture.AgArch;
 import jason.asSemantics.Intention;
 import jason.asSyntax.*;
@@ -129,7 +127,7 @@ public class JaCaMoAgArch extends AgArch {
         }
 
         // CHON
-        createMyBody();
+        embody();
     }
 
     protected CAgentArch getCartagoArch() {
@@ -154,7 +152,7 @@ public class JaCaMoAgArch extends AgArch {
     }
 
 
-    private void createMyBody(){
+    private void embody(){
         CompilerLite.ensureEnvClassLoaderInstalled("src/bdy");
         Collection<BodyParameters> bodies = JaCaMoLauncher.getJaCaMoRunner().getJaCaMoProject().getBodies();
 

@@ -15,13 +15,13 @@ import neck.model.BodyResponse;
 import java.util.*;
 
 public class Body {
-    Logger logger;
+    private Logger logger;
     //String[] apparatusAvailables;
-    List<String> attachedAppAddress = new ArrayList<>();
-    List<String> attachedAppName = new ArrayList<>();
+    private List<String> attachedAppAddress = new ArrayList<>();
+    private List<String> attachedAppName = new ArrayList<>();
     //Integer apparatusAvailablesInt = 0;
-    Apparatus[] apparatus = new Apparatus[128];
-    String bodyName;
+    private Apparatus[] apparatus = new Apparatus[128];
+    private String bodyName;
     public static final Atom BODY_NAMESPACE = ASSyntax.createAtom("myBody");
     private static final String SOURCE_FUNCTOR = "source";
 

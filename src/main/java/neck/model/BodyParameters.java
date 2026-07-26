@@ -11,10 +11,10 @@ public class BodyParameters implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    protected JaCaMoProject project;
-    protected String name;
-    protected Map<String,ClassParameters> apparatus = new HashMap<>();
-    protected boolean debug = false;
+    private JaCaMoProject project;
+    private String name;
+    private Map<String,ClassParameters> apparatus = new HashMap<>();
+    private boolean debug = false;
 
     public BodyParameters(JaCaMoProject project) {
         this.project = project;
