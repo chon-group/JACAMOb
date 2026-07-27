@@ -37,7 +37,8 @@ Designer -> JaCaMo : JACAMOb(project.jcm)
     
 
 
-    group infra.JaCaMoLauncher.init()
+    
+        JaCaMo -> JaCaMo: infra.JaCaMoLauncher.init()
         JaCaMo -> Jason : infra.JaCaMoLauncher.parseArgs()
 
 
@@ -58,7 +59,7 @@ Designer -> JaCaMo : JACAMOb(project.jcm)
     Jason -> Jason : mas2j.AgentParameters.setupDefault()
     return
 
-    group #f1d990 Interpretação da Especificação Corporal do Agente
+    group #f19890 Interpretação da Especificação Corporal dos Agentes
     
     JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.agent()
     JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.apparatus()
@@ -83,14 +84,14 @@ Designer -> JaCaMo : JACAMOb(project.jcm)
     
     end 
 
-    group #faf6f1 Interpretação da Especificação Ambiente
+    group #faf6f1 Interpretação da Dimensal Ambiental
     JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.workspace()
     JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.artifact()
     JaCaMo -> JaCaMo : project.JaCaMoWorkspaceParameters.addArtifact()
     JaCaMo -> JaCaMo : project.JaCaMoProject.addWorkspace()
     end
 
-    group #faf6f1 Interpretação da Especificação Organizacional
+    group #faf6f1 Interpretação da Dimensal Organizacional
     JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.institution()
     JaCaMo -> JaCaMo : project.JaCaMoInstParameters.addParameter()
     JaCaMo -> JaCaMo : project.JaCaMoProject.addInstitution()
@@ -109,14 +110,14 @@ Designer -> JaCaMo : JACAMOb(project.jcm)
     end
 
     JaCaMo -> JaCaMo : jacamo.infra.JaCaMoLauncher.loadPackages()
-    end
+
 
 newpage
 == CARREGAMENTO O SISTEMA MULTIAGENTE ==
 
-    group infra.JaCaMoLauncher.create()
+    JaCaMo -> JaCaMo: infra.JaCaMoLauncher.create()
 
-        group #faf6f1 Dimensão Ambiental
+        group #faf6f1 Instanciação da Dimensão Ambiental
             JaCaMo -> JaCa : jacamo.platform.Cartago.init()
             activate JaCa
             JaCa -> CArtAgO : CartagoEnvironment.init()
@@ -161,7 +162,7 @@ newpage
         return
         
 
-    group #FFF2CC Instanciação Corporal dos Agentes
+    group #f19890 Instanciação Corporal dos Agentes
 
         JaCaMo -> NECK : infra.JaCaMoAgArch.embody()
         activate NECK
@@ -182,7 +183,7 @@ newpage
         end
 
         
-    end
+    
 
 deactivate JaCaMo
 
