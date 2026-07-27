@@ -1,0 +1,190 @@
+ 
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+' scale max 1900 width
+' scale max 2700 height
+
+' skinparam defaultFontSize 8
+' skinparam Padding 2
+
+' skinparam sequence {
+'     ParticipantPadding 6
+'     BoxPadding 3
+'     MessageAlign center
+'     ArrowThickness 1
+'     LifeLineBorderThickness 1
+'     LifeLineBackgroundColor white
+' }
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant Jason
+participant JaCa
+participant CArtAgO
+participant DEVICE
+
+
+Designer -> JaCaMo : JACAMOb(project.jcm)
+
+== INTERPRETAÇÃO DO PROJETO DE SISTEMA MULTIAGENTE==
+    activate JaCaMo
+    
+
+
+    group infra.JaCaMoLauncher.init()
+        JaCaMo -> Jason : infra.JaCaMoLauncher.parseArgs()
+
+
+
+    activate Jason
+    Jason -> Jason : infra.local.RunLocalMAS.parseArgs()
+    return
+
+    
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.parse()
+
+    
+
+    group #faf6f1 Interpretação da Dimensão dos Agentes
+    JaCaMo -> Jason : project.JaCaMoProject.<init>
+    activate Jason
+    
+    Jason -> Jason : mas2j.AgentParameters.setupDefault()
+    return
+
+    group #f1d990 Interpretação da Especificação Corporal do Agente
+    
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.agent()
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.apparatus()
+    JaCaMo -> NECK : project.JaCaMoProject.addBody()
+    activate NECK
+
+
+    
+    NECK -> NECK   : model.BodyParameters.addApparatus()
+    return
+
+    end
+
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addInitBel()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addInitGoal()
+
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addWorkspace()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addFocus()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addRole()
+
+
+    
+    end 
+
+    group #faf6f1 Interpretação da Especificação Ambiente
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.workspace()
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.artifact()
+    JaCaMo -> JaCaMo : project.JaCaMoWorkspaceParameters.addArtifact()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.addWorkspace()
+    end
+
+    group #faf6f1 Interpretação da Especificação Organizacional
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.institution()
+    JaCaMo -> JaCaMo : project.JaCaMoInstParameters.addParameter()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.addInstitution()
+
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.organisation()
+    
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.group()
+
+    JaCaMo -> JaCaMo : project.JaCaMoGroupParameters.addResponsibleFor()
+    JaCaMo -> JaCaMo : project.JaCaMoOrgParameters.addGroup()
+
+    JaCaMo -> JaCaMo : project.parser.JaCaMoProjectParser.scheme()
+    JaCaMo -> JaCaMo : project.JaCaMoOrgParameters.addScheme()
+    JaCaMo -> JaCaMo : project.JaCaMoProject.addOrg()
+    JaCaMo -> JaCaMo : project.JaCaMoAgentParameters.addWorkspace()
+    end
+
+    JaCaMo -> JaCaMo : jacamo.infra.JaCaMoLauncher.loadPackages()
+    end
+
+newpage
+== CARREGAMENTO O SISTEMA MULTIAGENTE ==
+
+    group infra.JaCaMoLauncher.create()
+
+        group #faf6f1 Dimensão Ambiental
+            JaCaMo -> JaCa : jacamo.platform.Cartago.init()
+            activate JaCa
+            JaCa -> CArtAgO : CartagoEnvironment.init()
+            activate CArtAgO
+            CArtAgO -> CArtAgO : Workspace.makeArtifact()
+            return
+            return
+        end
+
+        group #faf6f1 Dimensão Organizacional
+
+            JaCaMo -> JaCaMo: platform.Moise.init()
+            JaCaMo -> JaCaMo: platform.Sai.init()
+        end
+
+        group #faf6f1 Instanciação da Dimensão dos Agentes
+
+        JaCaMo -> Jason : infra.JaCaMoLauncher.createAgs()
+        activate Jason
+        Jason -> Jason : infra.local.RunLocalMAS.createAgs()
+        Jason -> Jason : mas2j.AgentParameters.addArchClass()
+        Jason -> Jason : infra.local.LocalAgArch.createArchs()
+        Jason -> Jason : asSemantics.Agent.create()
+        Jason -> Jason : asSemantics.Agent.initAg()
+        Jason -> Jason : pl.PlanLibrary.add()
+        Jason -> Jason : asSemantics.Agent.addInitBel()
+        Jason -> Jason : asSemantics.Agent.addInitialGoalsInTS()
+        return
+        
+        
+        
+
+        JaCaMo -> JaCa : infra.JaCaMoAgArch.init()
+        activate JaCa
+
+        JaCa -> JaCa : CAgentArch.initBridge()
+
+        JaCa -> CArtAgO : CartagoEnvironment.startSession()
+        activate CArtAgO
+        CArtAgO -> CArtAgO : Artifact.defineObsProperty()
+        return
+        return
+        
+
+    group #FFF2CC Instanciação Corporal dos Agentes
+
+        JaCaMo -> NECK : infra.JaCaMoAgArch.embody()
+        activate NECK
+        NECK -> NECK : Body.attachApparatus()
+        NECK -> DEVICE : defaults.SerialApparatus.attach()
+        activate DEVICE
+        DEVICE -> DEVICE :  setup()
+        DEVICE -> DEVICE : Serial.begin(115200bps)
+        return
+        
+        
+        
+        
+        
+        NECK --> JaCaMo 
+        deactivate NECK
+        end
+        end
+
+        
+    end
+
+deactivate JaCaMo
+
+@enduml
+

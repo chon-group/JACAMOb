@@ -45,6 +45,6 @@
 //     .print("Rosie assumiu o papel housekeeper.").
 
 
-//!blink; 
+!blink.
 
-//+!blink <-  .myBody.act(blinkOperation(true),Reply); .print("Action:",Reply).
++!blink <-  .myBody.act(blinkOperation(true),Reply); .print("Action:",Reply).

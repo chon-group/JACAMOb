@@ -1,2 +1,6 @@
-!fala.
-+!fala <- .send(rosie,achieve,stop).
+!teste.
++!teste <- 
+.print("fuga");
+.stopMAS;
+//.send(rosie,achieve,stop).
+.

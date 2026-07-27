@@ -1,0 +1,237 @@
+@startuml
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle folder
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+
+' ============================================================
+' JASON
+' ============================================================
+
+  package "jason.mas2j" as pkg_mas2j {
+      class "MAS2JProject" as MAS2JProject
+    
+  }
+
+
+  package "jason.architecture" as pkg_architecture {
+      class "AgArch" as AgArch
+  }
+
+
+
+
+' ============================================================
+' JACAMO
+' ============================================================
+package jacamo {
+
+  package "jacamo.project" as pkg_project {
+
+    class "JaCaMoProject" as JaCaMoProject extends MAS2JProject {
+
+        # workspaces : Map<String, jacamo.project.JaCaMoWorkspaceParameters>
+        # orgs : List<jacamo.project.JaCaMoOrgParameters>
+        # insts : List<jacamo.project.JaCaMoInstParameters>
+        # <color:red>bodies : Map<String, neck.model.BodyParameters></color>
+
+        + JaCaMoProject()
+        + JaCaMoProject(project : jason.mas2j.MAS2JProject)
+
+        + addAgFocus(agId : String, nameSpace : String, artId : String, wks : JaCaMoWorkspaceParameters) : void
+        + getArtifactWorkspace(artId : String) : JaCaMoWorkspaceParameters
+        + getGroupOrg(gId : String) : JaCaMoOrgParameters
+
+        + addWorkspace(w : JaCaMoWorkspaceParameters) : void
+        + getWorkspaces() : Collection<JaCaMoWorkspaceParameters>
+        + getWorkspace(wid : String) : JaCaMoWorkspaceParameters
+
+        + addOrg(o : JaCaMoOrgParameters) : void
+        + getOrgs() : Collection<JaCaMoOrgParameters>
+        + getOrg(oid : String) : JaCaMoOrgParameters
+
+        + addInstitution(o : JaCaMoInstParameters) : void
+        + getInstitutions() : Collection<JaCaMoInstParameters>
+        + getInstitution(iId : String) : JaCaMoInstParameters
+
+        + addAgWorkspace(agId : String, w : JaCaMoWorkspaceParameters) : void
+        + addAgRole(agId : String, org : JaCaMoOrgParameters, group : JaCaMoGroupParameters, role : String) : void
+
+        + <color:red>addBody(b : neck.model.BodyParameters) : void</color>
+    }
+  }
+
+
+  package "jacamo.project.parser" as pkg_parser {
+
+      class "JaCaMoProjectParser" as JaCaMoProjectParser {
+
+          ~ project : jacamo.project.JaCaMoProject
+
+          + parse(directory : String) : jacamo.project.JaCaMoProject
+          + classDef() : jason.mas2j.ClassParameters
+
+          + organisation() : void
+          + group(org : jacamo.project.JaCaMoOrgParameters) : jacamo.project.JaCaMoGroupParameters
+          + scheme(org : jacamo.project.JaCaMoOrgParameters) : void
+          + institution() : void
+
+          + workspace() : void
+          + artifact(wks : jacamo.project.JaCaMoWorkspaceParameters) : void
+
+          + <color:darkorange>agent() : void</color>
+          + <color:red>apparatus(bdy : neck.model.BodyParameters) : void</color>
+      }
+  }
+
+
+  package "jacamo.infra" as pkg_infra {
+
+      class "JaCaMoAgArch" as JaCaMoAgArch extends AgArch {
+
+          - <color:red>body : neck.Body = null</color>
+
+          + <color:darkorange>init() : void</color>
+          - <color:red>embody() : void</color>
+      }
+  }
+}
+
+' ============================================================
+' NECK
+' ============================================================
+
+package "neck" as pkg_neck {
+
+  class "Body" as Body #MistyRose {
+
+      - apparatus : neck.Apparatus[]
+      - bodyName : String
+
+      + Body(bodyName : String)
+
+      + attachApparatus(implementation : neck.Apparatus) : boolean
+      + attachApparatus(implementation : neck.Apparatus, apparatusName : String) : boolean
+      + detachApparatusByName(apparatusName : String) : boolean
+
+      - getApparatusByName(appName : jason.asSyntax.Atom) : neck.Apparatus
+  }
+
+
+  abstract class "Apparatus" as Apparatus #MistyRose {
+
+      - apparatusName : String
+      - hwAppName : String
+      - hwAppID : Long
+
+      # Apparatus()
+
+      # initializeApparatus() : void
+
+      # attach() : void
+      + detach() : void
+
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+
+      + embody() : JSONObject
+
+      + getHwAppName() : String
+      + getApparatusName() : String
+      + setApparatusName(apparatusName : String) : void
+
+  }
+  
+  package "neck.model" as pkg_model {
+
+    class "BodyParameters" as BodyParameters #MistyRose {
+
+        - project : jacamo.project.JaCaMoProject
+        - name : String
+        - apparatus : Map<String, jason.mas2j.ClassParameters>
+
+        + BodyParameters(project : jacamo.project.JaCaMoProject)
+
+        + addApparatus(apparatusName : String, className : jason.mas2j.ClassParameters) : void
+        + setName(n : String) : void
+        + getName() : String
+        + getApparatusEntries() : Set<Map.Entry<String, jason.mas2j.ClassParameters>>
+    }
+  }
+
+  package "neck.defaults" as pkg_defaults {
+
+      class "SerialApparatus" as SerialApparatus #MistyRose {
+
+          - serialComm : neck.util.SerialComm
+
+          + SerialApparatus(address : String)
+
+          # attach() : void
+          + detach() : void
+
+          + getStatus() : boolean
+          + getConnectionStatus() : String
+          + getAddress() : String
+          
+          + embody() : JSONObject
+
+          - request(message : String, args : Object[]) : JSONObject
+          - prepareRequest(message : String, args : Object[]) : JSONObject
+          - parseResponse(records : List<JSONObject>) : JSONObject
+      }
+  }
+
+  
+}
+
+
+
+
+' ============================================================
+' RELAÇÕES
+' ============================================================
+
+JaCaMoProjectParser --> JaCaMoProject 
+
+JaCaMoProject "1" *-- "0..*" BodyParameters 
+
+JaCaMoAgArch ..> BodyParameters 
+
+JaCaMoAgArch "1" --> "0..1" Body 
+
+Body "1" o-- "0..*" Apparatus 
+
+SerialApparatus --|> Apparatus
+
+
+
+
+
+' ============================================================
+' ORGANIZAÇÃO VISUAL
+' ============================================================
+
+' ' Coluna de interpretação/configuração
+' MAS2JProject -[hidden]down-> JaCaMoProject
+' JaCaMoProject -[hidden]down-> JaCaMoProjectParser
+' JaCaMoProjectParser -[hidden]down-> BodyParameters
+
+' ' Coluna de execução corporal
+' jason.architecture.AgArch -[hidden]down-> JaCaMoAgArch
+' JaCaMoAgArch -[hidden]down-> Body
+' Body -[hidden]down-> Apparatus
+' Apparatus -[hidden]down-> SerialApparatus
+' SerialApparatus -[hidden]down-> SerialComm
+
+' ' Mantém as duas grandes colunas próximas
+' JaCaMoProject -[hidden]right-> JaCaMoAgArch
+' BodyParameters -[hidden]right-> Body
+
+@enduml

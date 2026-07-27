@@ -1,11 +1,9 @@
 package neck.util;
 
 import com.fazecast.jSerialComm.SerialPort;
-import jason.NoValueException;
 import jason.asSyntax.*;
 import neck.Apparatus;
-import neck.DefaultApparatus;
-import neck.model.BodyResponse;
+import neck.defaults.SerialApparatus;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,8 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
-
-import static neck.util.CompilerLite.logger;
 
 public class Util {
     private static Logger logger = Logger.getLogger("NECK");
@@ -129,13 +125,13 @@ public class Util {
         String[] availablePorts = getAvailableSerialPorts();
         for(int i=0; i<availablePorts.length; i++){
             Apparatus tempApparatus = null;
-            tempApparatus = new DefaultApparatus(availablePorts[i]);
+            tempApparatus = new SerialApparatus(availablePorts[i]);
             if (tempApparatus.getStatus() && apparatusName.toString().equals(tempApparatus.getHwAppName())){
-                tempApparatus.disconnect();
+                tempApparatus.detach();
                 logger.info("Apparatus "+apparatusName.toString()+" found at "+availablePorts[i]);
                 return ASSyntax.createString(availablePorts[i]);
             }
-            tempApparatus.disconnect();
+            tempApparatus.detach();
         }
         logger.severe("Apparatus "+apparatusName.toString()+" not found!");
         return null;

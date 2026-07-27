@@ -1,6 +1,6 @@
 package neck.model;
 
-public enum SerialPortStatus {
+public enum SerialCommStatus {
     ON,
     OFF,
     TIMEOUT,

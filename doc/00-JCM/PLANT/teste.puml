@@ -1,5 +1,0 @@
-@start uml
-JaCaMoLauncher -> JaCaMoLauncher : init()
-JaCaMoLauncher -> Workspace : createEnvironment()
-Workspace -> Workspace : makeArtifact()
-@enduml

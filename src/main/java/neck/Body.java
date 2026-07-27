@@ -323,7 +323,7 @@ public class Body {
         int n = attachedAppName.size();
         for (int i = 0; i < n; i++) {
             if (apparatus[i] != null && apparatusName.equals(apparatus[i].getApparatusName())) {
-                apparatus[i].disconnect();
+                apparatus[i].detach();
                 attachedAppName.remove(i);
                 attachedAppAddress.remove(i);
                 int newSize = attachedAppName.size();

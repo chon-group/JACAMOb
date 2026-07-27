@@ -9,8 +9,7 @@ import jason.asSemantics.Unifier;
 import jason.asSyntax.*;
 import neck.Apparatus;
 import neck.Body;
-import neck.DefaultApparatus;
-import neck.util.Util;
+import neck.defaults.SerialApparatus;
 
 public class neckAttach extends DefaultInternalAction {
 
@@ -110,18 +109,18 @@ public class neckAttach extends DefaultInternalAction {
 
         try {
             if(currentAgtBody(ts) != null){
-                Apparatus newApparatus = new DefaultApparatus(getAppAddressAsString());
+                Apparatus newApparatus = new SerialApparatus(getAppAddressAsString());
 
                 if (!newApparatus.getStatus()){
                     ts.getLogger().severe("Apparatus is not ready, skipping...");
-                    newApparatus.disconnect();
+                    newApparatus.detach();
                     newApparatus = null;
                     return false;
                 }
 
                 if(forceName && !newApparatus.getHwAppName().equals(this.appName.toString())){
                     ts.getLogger().severe("The apparatus device hasn't the expected apparatus name");
-                    newApparatus.disconnect();
+                    newApparatus.detach();
                     newApparatus = null;
                     return false;
                 }

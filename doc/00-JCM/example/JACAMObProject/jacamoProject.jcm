@@ -1,17 +1,22 @@
-mas jacamoProject.jcm{
-    agent rosie: agtDescription.asl {
-        body:
-            apparatus ap1 : neck.DefaultApparatus("/dev/ttyACM0")
-        beliefs: ecoMode(on)
-        goals: saveBattery
+mas jacamoProject{
+    agent rosie {
+        body :
+            apparatus ap2 : neck.defaults.SerialApparatus("/dev/ttyACM0")
         join: livingRoom
         focus: livingRoom.airConditioner
         focus: livingRoom.light
+        beliefs: ecoMode(on)
+        goals: saveBattery
+
         focus: jetsonsInstitution.jetsonsInstitution_art
         roles: housekeeper in householdStaff
   //      ag-class: customizedAgent.MyAgent
   //      ag-arch: customizedAgent.MyAgArch
     }
+
+   /* body rosie {
+        //apparatus ap1 : neck.defaults.SerialApparatus("/dev/ttyACM0")
+    }*/
     
    workspace livingRoom {
         artifact airConditioner : jetsons.home.AirConditioner()
@@ -29,5 +34,6 @@ mas jacamoProject.jcm{
         scheme cleanHouse : cleaningScheme
         situated: jetsonsInstitution
     }
+    
     
 }
