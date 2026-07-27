@@ -1,0 +1,27 @@
+<circuit version="1.1.0-SR1" rev="2069" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Subcircuit" CircId="Uno-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-1504,-920" rotation="-270" hflip="1" vflip="1" label="duster" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="duster.hex" Auto_Load="false" saveEepr="true" MainMcu="false" SerialMon="-1" />
+</item>
+
+<item itemtype="Subcircuit" CircId="Uno-3" mainComp="false" Show_id="true" Show_Val="false" Pos="-1504,-328" rotation="90" hflip="1" vflip="1" label="locomotion" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="locomotion.hex" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
+</item>
+
+<item itemtype="SerialPort" CircId="SerialPort-4" mainComp="false" ShowProp="Baudrate" Show_id="true" Show_Val="true" Pos="-1104,-592" rotation="0" hflip="1" vflip="1" label="serialPort0" idLabPos="-20,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" Auto="true" Port="/dev/ttyExogenous0" Baudrate="9600 _Bd" DataBits="8 _bits" StopBits="1 _bits" SerialMon="false" />
+
+<item itemtype="SerialPort" CircId="SerialPort-5" mainComp="false" ShowProp="Baudrate" Show_id="true" Show_Val="true" Pos="-1100,-532" rotation="0" hflip="1" vflip="1" label="SerialPort1" idLabPos="-20,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" Auto="true" Port="/dev/ttyExogenous1" Baudrate="9600 _Bd" DataBits="8 _bits" StopBits="1 _bits" SerialMon="false" />
+
+<item itemtype="Image" CircId="Image-11" mainComp="false" Show_id="false" Show_Val="false" Pos="-948,-592" rotation="-180" hflip="-1" vflip="-1" label="Image-11" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="200 _px" V_size="200 _px" Border="0 _px" Z_Value="1" Color="#a0a0a4" Opacity="0" Image_File=".files/rpi.png" />
+
+<item itemtype="Image" CircId="Image-6" mainComp="false" Show_id="false" Show_Val="false" Pos="-1116,-504" rotation="0" hflip="1" vflip="1" label="Image-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="845 _px" V_size="1196 _px" Border="2 _px" Z_Value="-1" Color="#a0a0a4" Opacity="1" Image_File=".files/rosie.png" />
+
+<item itemtype="Connector" uid="Connector-28" startpinid="Uno-2-0" endpinid="SerialPort-4-pin0" pointList="-1328,-880,-1144,-880,-1144,-600" />
+
+<item itemtype="Connector" uid="Connector-41" startpinid="SerialPort-4-pin1" endpinid="Uno-2-1" pointList="-1144,-584,-1164,-584,-1164,-904,-1336,-904,-1336,-880" />
+
+<item itemtype="Connector" uid="Connector-53" startpinid="SerialPort-5-pin0" endpinid="Uno-3-0" pointList="-1140,-540,-1164,-540,-1164,-360,-1328,-360,-1328,-288" />
+
+<item itemtype="Connector" uid="Connector-55" startpinid="SerialPort-5-pin1" endpinid="Uno-3-1" pointList="-1140,-524,-1176,-524,-1176,-368,-1336,-368,-1336,-288" />
+
+</circuit>

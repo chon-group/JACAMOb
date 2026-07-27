@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="https://moise-lang.github.io/xml/os.xsl" type="text/xsl"?>
+
+<organisational-specification
+    id="jetsonsFamily"
+    os-version="0.8"
+    xmlns="http://moise.sourceforge.net/os"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://moise.sourceforge.net/os
+        https://moise-lang.github.io/xml/os.xsd">
+
+    <structural-specification>
+        <role-definitions>
+            <role id="housekeeper"/>
+        </role-definitions>
+
+        <group-specification id="householdGroup">
+            <roles>
+                <role id="housekeeper" min="1" max="1"/>
+            </roles>
+        </group-specification>
+    </structural-specification>
+
+    <functional-specification>
+        <scheme id="cleaningScheme">
+            <goal id="cleanHouse">
+                <plan operator="sequence">
+                    <goal
+                        id="prepareCleaning"
+                        ds="Prepare the house for cleaning"/>
+
+                    <goal
+                        id="cleanLivingRoom"
+                        ds="Clean the living room"/>
+
+                    <goal
+                        id="finishCleaning"
+                        ds="Finish the house-cleaning task"/>
+                </plan>
+            </goal>
+
+            <mission id="cleaningMission" min="1" max="1">
+                <goal id="prepareCleaning"/>
+                <goal id="cleanLivingRoom"/>
+                <goal id="finishCleaning"/>
+            </mission>
+
+        </scheme>
+    </functional-specification>
+
+    <normative-specification>
+        <norm
+            id="housekeeperObligation"
+            type="obligation"
+            role="housekeeper"
+            mission="cleaningMission"/>
+    </normative-specification>
+</organisational-specification>
