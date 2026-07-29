@@ -1,0 +1,22 @@
+--- # Devices
+- device_id: duster
+  className: embedded.mas.bridges.jacamo.JSONWatcherDevice
+  microcontroller: 
+      id: arduino1
+      className: Arduino4EmbeddedMas
+      serial: "/dev/ttyEmulatedPort0"
+      baudRate: 9600       
+  serialActions:
+      - actionName: none
+        actuationName: NONE
+- device_id: locomotion
+  className: embedded.mas.bridges.jacamo.JSONWatcherDevice
+  microcontroller: 
+      id: arduino2
+      className: Arduino4EmbeddedMas
+      serial: "/dev/ttyEmulatedPort1"
+      baudRate: 9600       
+  serialActions:
+      - actionName: none
+        actuationName: NONE
+      
