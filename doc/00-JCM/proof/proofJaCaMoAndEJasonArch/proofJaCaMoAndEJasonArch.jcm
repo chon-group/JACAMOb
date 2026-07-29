@@ -1,0 +1,29 @@
+mas proofJaCaMoAndEJasonArch {
+
+  agent rosie{
+    goals: helloWorld
+    join: livingRoom
+    focus: livingRoom.airConditioner
+    focus: livingRoom.light
+    ag-arch: EJasonArch
+  }
+
+  workspace livingRoom {
+    artifact airConditioner : jetsons.home.AirConditioner()
+    artifact light : jetsons.home.Light()
+  }
+
+  institution jetsonsInstitution : jetsonsInst.sai {
+    workspaces: livingRoom
+  }
+
+  organisation jetsonsFamily : jetsons.xml {
+    group householdStaff : householdGroup {
+        responsible-for: cleanHouse
+    }
+    scheme cleanHouse : cleaningScheme
+    situated: jetsonsInstitution
+  }
+    
+
+}
