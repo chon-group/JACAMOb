@@ -15,18 +15,28 @@
 mas proofJaCaMoAndJavino {
 
   agent rosie{
+  
+    /* initial mental state */
+    beliefs: ecoMode(on)
     goals: helloWorld
-    join: livingRoom
-    focus: livingRoom.airConditioner
-    focus: livingRoom.light
+
+    /* initial environment relationship */
     join: body
     focus: body.duster
     focus: body.locomotion
+
+    join: livingRoom
+    focus: livingRoom.presenceSensor
+    focus: livingRoom.airConditioner
+
+    /* initial organizational relationship */
+    focus: jetsonsInstitution.jetsonsInstitution_art
+    roles: housekeeper in householdStaff
   }
 
   workspace livingRoom {
+    artifact presenceSensor : jetsons.home.PresenceSensor()
     artifact airConditioner : jetsons.home.AirConditioner()
-    artifact light : jetsons.home.Light()
   }
 
   workspace body {
@@ -40,11 +50,13 @@ mas proofJaCaMoAndJavino {
   }
 
   organisation jetsonsFamily : jetsons.xml {
-    group householdStaff : householdGroup {
-        responsible-for: cleanHouse
-    }
-    scheme cleanHouse : cleaningScheme
-    situated: jetsonsInstitution
+      group householdStaff : householdGroup {
+          responsible-for: greetPeople
+      }
+
+      scheme greetPeople : greetingScheme
+
+      situated: jetsonsInstitution
   }
 
 }

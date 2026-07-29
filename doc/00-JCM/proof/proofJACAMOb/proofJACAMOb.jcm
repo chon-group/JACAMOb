@@ -1,31 +1,27 @@
-/*
-    proofJACAMOb
-    ---------------------------
-
-    JaCaMo Application File
-
-    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
-
-    (see jacamo/doc/jcm.html for more information about what can be defined in this file)
-
-    JaCaMo 1.3.0
-    julho 27, 2026 - 15:16:45
-*/
-
 mas proofJACAMOb {
   agent rosie{
-    goals: helloWorld
-    join: livingRoom
-    focus: livingRoom.airConditioner
-    focus: livingRoom.light
+    /* initial body state */
     body :
       apparatus duster     : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort0")
       apparatus locomotion : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort1")
+
+    /* initial mental state */
+    beliefs: ecoMode(on)
+    goals: helloWorld
+
+    /* initial environment relationship */
+    join: livingRoom
+    focus: livingRoom.presenceSensor
+    focus: livingRoom.airConditioner
+
+    /* initial organizational relationship */
+    focus: jetsonsInstitution.jetsonsInstitution_art
+    roles: housekeeper in householdStaff
   }
 
   workspace livingRoom {
+    artifact presenceSensor : jetsons.home.PresenceSensor()
     artifact airConditioner : jetsons.home.AirConditioner()
-    artifact light : jetsons.home.Light()
   }
 
   institution jetsonsInstitution : jetsonsInst.sai {
@@ -33,11 +29,12 @@ mas proofJACAMOb {
   }
 
   organisation jetsonsFamily : jetsons.xml {
-    group householdStaff : householdGroup {
-        responsible-for: cleanHouse
-    }
-    scheme cleanHouse : cleaningScheme
-    situated: jetsonsInstitution
-  }
+      group householdStaff : householdGroup {
+          responsible-for: greetPeople
+      }
 
+      scheme greetPeople : greetingScheme
+
+      situated: jetsonsInstitution
+  }
 }
