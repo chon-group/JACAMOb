@@ -1,4 +1,3 @@
---- # Devices
 - device_id: duster
   className: embedded.mas.bridges.jacamo.JSONWatcherDevice
   microcontroller: 
@@ -19,4 +18,3 @@
   serialActions:
       - actionName: none
         actuationName: NONE
-      
