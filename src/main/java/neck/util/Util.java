@@ -7,6 +7,7 @@ import neck.defaults.SerialApparatus;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,6 +63,9 @@ public class Util {
         */
         if (args != null){
             for (int i = 0; i < args.length(); i++) {
+                //Log...
+                //Object obj = args.get(i);
+                //System.out.println("ARG >>> value=" + obj + " class=" + obj.getClass().getName());
                 literal.addTerm(jsonObjectToTerm(args.get(i)));
             }
         }
@@ -192,6 +196,7 @@ public class Util {
                 case Integer i -> {return ASSyntax.createNumber(i);}
                 case Long    l -> {return ASSyntax.createNumber(l);}
                 case Double  d -> {return ASSyntax.createNumber(d);}
+                case BigDecimal bd -> {return ASSyntax.createNumber(bd.doubleValue());} /* tratando BigDecimal como Double */
                 case String  s -> {
                     s = s.trim();
                     if (!s.isEmpty() && s.matches("[a-z][a-zA-Z0-9_]*")) {

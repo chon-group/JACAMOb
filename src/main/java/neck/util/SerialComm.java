@@ -233,6 +233,8 @@ public class SerialComm {
             }
 
             String jsonText = readUntilJsonEnd();
+            //Log..
+            //System.out.println("SERIAL RAW >>> " + jsonText);
 
             if (jsonText == null || jsonText.isBlank()) {
                 continue;
