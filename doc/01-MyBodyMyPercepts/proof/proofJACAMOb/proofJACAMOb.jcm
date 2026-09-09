@@ -1,0 +1,40 @@
+mas proofJACAMOb {
+  agent rosie{
+    /* initial body state */
+    body :
+      apparatus duster     : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort0")
+      //apparatus locomotion : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort1")
+
+    /* initial mental state */
+    beliefs: ecoMode(on)
+    goals: helloWorld
+
+    /* initial environment relationship */
+    join: livingRoom
+    focus: livingRoom.presenceSensor
+    focus: livingRoom.airConditioner
+
+    /* initial organizational relationship */
+    focus: jetsonsInstitution.jetsonsInstitution_art
+    roles: housekeeper in householdStaff
+  }
+
+  workspace livingRoom {
+    artifact presenceSensor : jetsons.home.PresenceSensor()
+    artifact airConditioner : jetsons.home.AirConditioner()
+  }
+
+  institution jetsonsInstitution : jetsonsInst.sai {
+    workspaces: livingRoom
+  }
+
+  organisation jetsonsFamily : jetsons.xml {
+      group householdStaff : householdGroup {
+          responsible-for: greetPeople
+      }
+
+      scheme greetPeople : greetingScheme
+
+      situated: jetsonsInstitution
+  }
+}
