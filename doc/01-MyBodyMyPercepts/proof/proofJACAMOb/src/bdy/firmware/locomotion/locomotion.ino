@@ -1,7 +1,10 @@
 #include <NECK.hpp>   /* https://github.com/chon-group/neck2arduino */
 unsigned long lastCicle = 0;
 
-Apparatus(locomotion);
+Apparatus(locomotion){
+	Element(tempSensor);
+	Element(anotherTempSensor);
+}
 
 void setup() {
   pinMode(13, OUTPUT);
@@ -9,10 +12,13 @@ void setup() {
 }
 
 void loop() {
-  locomotion.sense();
+  locomotion.embody();
 
-  if (locomotion.getLastSense() > lastCicle) {
+  if (locomotion.getLastPresence() > lastCicle) {
     digitalWrite(13, !digitalRead(13));
     lastCicle = millis();
   }
 }
+
+Percept(tempSensor,temperature,INTEROCEPTION){return 20;}
+Percept(anotherTempSensor,temperature,EXTEROCEPTION){return 20;}

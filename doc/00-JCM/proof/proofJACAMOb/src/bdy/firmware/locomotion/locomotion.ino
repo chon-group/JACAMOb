@@ -1,7 +1,7 @@
 #include <NECK.hpp>   /* https://github.com/chon-group/neck2arduino */
 unsigned long lastCicle = 0;
 
-Apparatus(locomotion);
+Apparatus(locomotion){}
 
 void setup() {
   pinMode(13, OUTPUT);
@@ -9,9 +9,9 @@ void setup() {
 }
 
 void loop() {
-  locomotion.sense();
+  locomotion.embody();
 
-  if (locomotion.getLastSense() > lastCicle) {
+  if (locomotion.getLastPresence() > lastCicle) {
     digitalWrite(13, !digitalRead(13));
     lastCicle = millis();
   }

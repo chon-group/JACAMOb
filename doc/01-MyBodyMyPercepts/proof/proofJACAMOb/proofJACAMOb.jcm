@@ -3,7 +3,7 @@ mas proofJACAMOb {
     /* initial body state */
     body :
       apparatus duster     : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort0")
-      //apparatus locomotion : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort1")
+      apparatus locomotion : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort1")
 
     /* initial mental state */
     beliefs: ecoMode(on)

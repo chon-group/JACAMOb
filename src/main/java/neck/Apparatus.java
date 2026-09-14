@@ -183,33 +183,31 @@ public abstract class Apparatus {
 
     public void sense() {
         JSONObject bodyResponse = perceive();
-
-        if (bodyResponse == null) {
-            return;
-        }
-
+        if (bodyResponse == null) {return;}
         loadConnectionInfo(bodyResponse);
         loadPercepts(bodyResponse);
         loadDesires(bodyResponse);
     }
 
 
-    private Literal getLiteralWithSourceBBAnnotation(
-            Literal literal,
-            PerceptionType type
-    ) {
-
-        Literal out = Literal.parseLiteral(
-                Body.BODY_NAMESPACE + "::" + literal
-        );
-
+    private Literal getLiteralWithSourceBBAnnotation(Literal literal, PerceptionType perceptionType, String element) {
+        Literal out = Literal.parseLiteral(Body.BODY_NAMESPACE + "::" + literal);
         out.addAnnot(
                 ASSyntax.createStructure(
                         "source",
-                        ASSyntax.createAtom(type.getKey()),
-                        ASSyntax.createAtom(apparatusName)
+                        ASSyntax.createAtom(perceptionType.getKey())
                 )
         );
+
+        if (element != null && !element.isBlank()){
+            out.addAnnot(
+                    ASSyntax.createStructure(
+                            "element",
+                            ASSyntax.createAtom(getApparatusName()),
+                            ASSyntax.createAtom(element)
+                    )
+            );
+        }
 
         return out;
     }
@@ -262,11 +260,7 @@ public abstract class Apparatus {
 
 
     private void loadPercepts(JSONObject bodyResponse) {
-
-        if (!bodyResponse.has("percepts")
-                || bodyResponse.isNull("percepts")) {
-            return;
-        }
+        if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) {return;}
 
         JSONObject percepts = bodyResponse.getJSONObject("percepts");
 
@@ -287,68 +281,36 @@ public abstract class Apparatus {
     }
 
 
-    private void addPerceptsByPerceptionsType(
-            JSONObject perceptions,
-            PerceptionType perceptionType
-    ) {
+    private void addPerceptsByPerceptionsType(JSONObject bodyResponse, PerceptionType perceptionType) {
+        if (!bodyResponse.has(perceptionType.getKey())) {return;}
 
-        if (!perceptions.has(perceptionType.getKey())) {
-            return;
-        }
-
-        JSONArray filteredPerceptionsByType =
-                perceptions.getJSONArray(perceptionType.getKey());
-
+        JSONArray filteredPerceptionsByType = bodyResponse.getJSONArray(perceptionType.getKey());
         for (int i = 0; i < filteredPerceptionsByType.length(); i++) {
+            JSONObject jsonObject = filteredPerceptionsByType.getJSONObject(i);
+            if (!jsonObject.has("percept") || !jsonObject.has("element")) {continue;}
+            if (jsonObject.isNull("percept") || jsonObject.isNull("element")) {continue;}
 
-            JSONObject jsonObject =
-                    filteredPerceptionsByType.getJSONObject(i);
-
-            if (!jsonObject.has("percept")) {
-                continue;
+            /* crença */
+            Literal belief = neck.util.Util.JSONObjectToLiteral(jsonObject,"percept");
+            if (jsonObject.has("args") && !jsonObject.isNull("args")) {
+                JSONArray termsArgs = jsonObject.getJSONArray("args");
+                belief = neck.util.Util.addJSONArrayAsTermsInLiteral(belief,termsArgs);
             }
 
-            Literal belief =
-                    neck.util.Util.JSONObjectToLiteral(
-                            jsonObject,
-                            "percept"
-                    );
+            /* elemento do apparatus */
+            String elementName = jsonObject.getString("element");
 
-            if (jsonObject.has("args")) {
-
-                JSONArray termsArgs =
-                        jsonObject.getJSONArray("args");
-
-                belief =
-                        neck.util.Util.addJSONArrayAsTermsInLiteral(
-                                belief,
-                                termsArgs
-                        );
-            }
-
-            addPercept(belief, perceptionType);
+            addPercept(belief, perceptionType, elementName);
         }
     }
 
 
-    private void addPercept(
-            Literal literal,
-            PerceptionType type
-    ) {
-
-        Literal annotated =
-                getLiteralWithSourceBBAnnotation(literal, type);
-
+    private void addPercept(Literal literal, PerceptionType type, String element) {
+        Literal annotated = getLiteralWithSourceBBAnnotation(literal, type, element);
         switch (type) {
-
-            case EXTEROCEPTION ->
-                    exteroceptions.add(annotated);
-
-            case INTEROCEPTION ->
-                    interoceptions.add(annotated);
-
-            case PROPRIOCEPTION ->
-                    proprioceptions.add(annotated);
+            case EXTEROCEPTION  -> exteroceptions.add(annotated);
+            case INTEROCEPTION  -> interoceptions.add(annotated);
+            case PROPRIOCEPTION -> proprioceptions.add(annotated);
         }
     }
 
@@ -415,7 +377,8 @@ public abstract class Apparatus {
 
         addPercept(
                 litINFO,
-                PerceptionType.INTEROCEPTION
+                PerceptionType.INTEROCEPTION,
+                null
         );
     }
 
@@ -424,7 +387,7 @@ public abstract class Apparatus {
        DESIRES / TRIEBS
        ============================================================ */
 
-    public List<Literal> getDesires() {
+    public List<Literal> getAllDesires() {
         return desires;
     }
 

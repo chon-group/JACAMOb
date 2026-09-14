@@ -144,7 +144,7 @@ public class JaCaMoAgArch extends AgArch {
     @Override
     public Collection<Literal> perceive() {
         if (body != null) {
-            body.updatePercepts(getTS());
+            body.perceive(getTS());
             return null;
         }else {
             return null;

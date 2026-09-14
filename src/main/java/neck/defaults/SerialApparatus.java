@@ -117,6 +117,8 @@ public class SerialApparatus extends Apparatus {
 
     @Override
     public JSONObject perceive() {
+        //Log...
+        //System.out.println("\n PERCEIVE");
         return request("getPercepts", null);
     }
 
@@ -155,6 +157,8 @@ public class SerialApparatus extends Apparatus {
 
         List<JSONObject> records =
                 serialComm.transact(request);
+        //Log...
+        //System.out.println(records.toString());
 
         return parseResponse(records);
     }

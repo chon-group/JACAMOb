@@ -1,7 +1,7 @@
 #include <NECK.hpp>   /* https://github.com/chon-group/neck2arduino */
 unsigned long lastCicle = 0;
 
-Apparatus(duster);
+Apparatus(duster){}
 
 void setup() {
   pinMode(13, OUTPUT);
@@ -9,9 +9,9 @@ void setup() {
 }
 
 void loop() {
-  duster.sense();
+  duster.embody();
 
-  if (duster.getLastSense() > lastCicle) {
+  if (duster.getLastPresence() > lastCicle) {
     digitalWrite(13, !digitalRead(13));
     lastCicle = millis();
   }

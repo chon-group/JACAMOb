@@ -1,7 +1,7 @@
 <circuit version="1.1.0-SR1" rev="2069" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
 
 <item itemtype="Subcircuit" CircId="Uno-3" mainComp="false" Show_id="true" Show_Val="false" Pos="-408,-32" rotation="90" hflip="1" vflip="1" label="locomotion" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="locomotion.hex" Auto_Load="false" saveEepr="true" MainMcu="false" SerialMon="-1" />
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="locomotion.hex" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
 </item>
 
 <item itemtype="SerialPort" CircId="SerialPort-4" mainComp="false" ShowProp="Baudrate" Show_id="true" Show_Val="true" Pos="4,-320" rotation="0" hflip="1" vflip="1" label="serialPort0" idLabPos="-20,-32" labelrot="0" valLabPos="-16,20" valLabRot="0" Auto="true" Port="/dev/ttyExogenous0" Baudrate="115200 _Bd" DataBits="8 _bits" StopBits="1 _bits" SerialMon="false" />
@@ -15,7 +15,7 @@
 <item itemtype="Image" CircId="Image-26" mainComp="false" Show_id="false" Show_Val="false" Pos="-524,-388" rotation="0" hflip="1" vflip="1" label="Image-26" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="150 _px" V_size="100 _px" Border="5 _px" Z_Value="1000" Color="#a0a0a4" Opacity="1" Image_File=".files/tempSensor.jpg" />
 
 <item itemtype="Subcircuit" CircId="Uno-92" mainComp="false" Show_id="false" Show_Val="false" Pos="-388,-656" rotation="-270" hflip="1" vflip="1" label="Uno-92" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="duster.hex" Auto_Load="false" saveEepr="true" MainMcu="true" SerialMon="-1" />
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="duster.hex" Auto_Load="false" saveEepr="true" MainMcu="false" SerialMon="-1" />
 </item>
 
 <item itemtype="Servo" CircId="Servo-150" mainComp="false" Show_id="false" Show_Val="false" Pos="-544,-520" rotation="0" hflip="-1" vflip="1" label="Servo-150" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Speed="0.2 _s/60º" MinPulse="1000 _µs" MaxPulse="2000 _µs" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1000 MΩ" />
