@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import jason.JasonException;
 import jason.asSemantics.Event;
+import jason.asSemantics.Intention;
 import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.*;
 import neck.model.BodyResponse;
@@ -114,17 +115,9 @@ public class Body {
         }
         return out;
     }
-    /*public void updateDesires(TransitionSystem ts){
 
-        Literal lit = Literal.parseLiteral("desejo");
-        Trigger trigger = new Trigger(Trigger.TEOperator.add, Trigger.TEType.achieve, lit);
-        Event ev = new Event(trigger);
-        ts.updateEvents(ev);
-    }*/
-
-
-    public void perceive(TransitionSystem ts) {
-        logger.info("Body update percepts, starting...");
+    public void perceive(TransitionSystem transitionSystem) {
+        logger.fine("Body update percepts, starting...");
 
         List<Literal> listOfPerceptions = new ArrayList<>();
         List<Literal> listOfDesires = new ArrayList<>();
@@ -139,235 +132,102 @@ public class Body {
                 listOfDesires.addAll(apparatus[i].getAllDesires());
             }
         }
+
+        /* unifica as percepcoes de difentes apparatus */
         listOfPerceptions = mergePerceptions(listOfPerceptions);
-        //System.out.println("incoming: " + listOfPerceptions);
 
         // Lista as crenças atuais de myBody::
         List<Literal> currentBodyBB = new ArrayList<>();
-        for (Literal belief : ts.getAg().getBB()) {
-            if (belief.getNS() == BODY_NAMESPACE) currentBodyBB.add(belief);
-        }
-        //Log...
-        //System.out.println("current: " + currentBodyBB);
-        List<Literal> oldPerceptions = onlyOldPerceptions(currentBodyBB, listOfPerceptions);
-        List<Literal> partialOldPerceptions = partialOldPerceptions(currentBodyBB,listOfPerceptions);
-        List<Literal> newPerceptions = onlyNewPerceptions(currentBodyBB, listOfPerceptions);
-        currentBodyBB = null;
-        listOfPerceptions = null;
+        for (Literal b : transitionSystem.getAg().getBB()) if (b.getNS() == BODY_NAMESPACE) currentBodyBB.add(b);
 
-
-        for (Literal lit : oldPerceptions) {
-            ts.getAg().getBB().remove(lit);
-            logger.info(" [HARD removed] \t" + lit);
+        /* Percorre a lista de crenças myBody:: na BB, atualizando */
+        for (Literal literalInBB : currentBodyBB){
+            if(removeOldPerceptions(literalInBB, listOfPerceptions, transitionSystem)) continue;
+            else if(removePartOfOldPerceptions(literalInBB,listOfPerceptions, transitionSystem)) continue;
         }
-        oldPerceptions = null;
 
-        for (Literal lit : partialOldPerceptions) {
-            ts.getAg().getBB().remove(lit);
-            logger.info(" [HARD partially removed] \t" + lit);
-        }
-        partialOldPerceptions = null;
+        /* Percorre a lista de percepcoes advindas do corpo - adiciona as novas*/
+        for(Literal perception : listOfPerceptions){
+            if(addNewPerceptions(currentBodyBB, perception)){
+                try {
+                    logger.fine(" +" + perception.toString());
+                    transitionSystem.getAg().getBB().add(perception);
 
-        for (Literal lit : newPerceptions) {
-            try {ts.getAg().getBB().add(lit);}
-            catch (JasonException e) {throw new RuntimeException(e);}
-            logger.info(" [HARD added] \t " + lit);
+                    Trigger te = new Trigger(Trigger.TEOperator.add, Trigger.TEType.belief, perception);
+                    Event ev = new Event(te, Intention.EmptyInt);
+                    transitionSystem.getC().addEvent(ev);
+                }
+                catch (JasonException e) {throw new RuntimeException(e);}
+            }
         }
-        newPerceptions = null;
 
         for (Literal desire : listOfDesires) {
             Trigger trigger = new Trigger(Trigger.TEOperator.add, Trigger.TEType.achieve, desire);
             Event ev = new Event(trigger);
-            ts.updateEvents(ev);
-            logger.info("\t NEW desire..." + ev.toString());
+            transitionSystem.updateEvents(ev);
+            logger.fine("\t NEW desire..." + ev.toString());
         }
         listOfDesires = null;
 
-        logger.info("Body update percepts, finished...");
+       logger.fine("Body update percepts, finished...");
     }
 
-    private List<Literal> partialOldPerceptions(List<Literal> current, List<Literal> incoming) {
-        List<Literal> out = new ArrayList<>();
-        for (Literal belief : current) {
-            Literal beliefBase = belief.copy().clearAnnots();
-            for (Literal perception : incoming) {
-                Literal perceptionBase = perception.copy().clearAnnots();
-                // Só interessa se for a mesma crença-base
-                if (!beliefBase.equals(perceptionBase)) {
-                    continue;
-                }
-                // Cria a crença-base que receberá somente
-                // as annotations que desapareceram
-                Literal partial = belief.copy().clearAnnots();
-
-                for (Term annot : belief.getAnnots()) {
-
-                    if (!perception.hasAnnot(annot)) {
-                        partial.addAnnot(annot);
-                    }
-                }
-
-                // Só inclui se alguma annotation desapareceu
-                if (partial.hasAnnot()) {
-                    out.add(partial);
-                }
-
-                break;
-            }
-        }
-
-        return out;
-    }
-
-    private List<Literal> onlyOldPerceptions(List<Literal> current, List<Literal> incoming) {
-        List<Literal> out = new ArrayList<>();
-        for (Literal belief : current) {
-            Literal beliefBase = belief.copy().clearAnnots();
-            boolean exists = false;
-            for (Literal perception : incoming) {
-                Literal perceptionBase = perception.copy().clearAnnots();
-
-                if (beliefBase.equals(perceptionBase)) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                out.add(belief);
-            }
-        }
-
-        return out;
-    }
-
-    private List<Literal> onlyNewPerceptions(List<Literal> current, List<Literal> incoming) {
-        List<Literal> out = new ArrayList<>();
+    private boolean removePartOfOldPerceptions(Literal beliefInBB, List<Literal> incoming, TransitionSystem transitionSystem) {
+        //List<Literal> out = new ArrayList<>();
+        Literal beliefBase = beliefInBB.copy().clearAnnots();
         for (Literal perception : incoming) {
             Literal perceptionBase = perception.copy().clearAnnots();
-            boolean exists = false;
-            for (Literal belief : current) {
-                Literal beliefBase = belief.copy().clearAnnots();
-                if (perceptionBase.equals(beliefBase)) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {out.add(perception);}
-        }
-        return out;
-    }
 
-//    public void updatePercepts(TransitionSystem ts) {
-//        logger.info("Body update percepts, starting...");
-//        try {
-//            // 1) Novas percepções (já com as anotações source(i|p|e))
-//            List<Literal> incoming = sense(ts);
-//            //Log...
-//            System.out.println("incoming.toString(): "+incoming.toString());
-//            Set<String> incomingKeys = new HashSet<>();
-//            for (Literal lit : incoming) {
-//                incomingKeys.addAll(keysFor(lit));
-//            }
-//
-//            // 2) Coleta crenças atuais com source(i|p|e) e identifica as que devem sair
-//            List<Literal> toDelete = new ArrayList<>();
-//            Set<String> currentKeys = new HashSet<>();
-//            for (Literal belief : ts.getAg().getBB()) {
-//                if(!isFomBodyNS(belief)){continue;}
-//                Set<String> ks = keysFor(belief);
-//                currentKeys.addAll(ks);
-//                for (String k : ks) {
-//                    if (!incomingKeys.contains(k)) {
-//                        //toDelete.add(literalFromKey(belief, k));
-//                        toDelete.add(belief);
-//                    }
-//                }
-//            }
-//
-//            System.out.println("toDelete.toString(): "+toDelete.toString());
-//            // 3) Remove as que sumiram/mudaram
-//            for (Literal b : toDelete) {
-//                /* soft removing */
-//                //ts.getAg().delBel(b);
-//                //logger.info("\t removed..."+b.toString());
-//                 //HARD REMOVING...
-//                ts.getAg().getBB().remove(b);
-//                Trigger te = new Trigger(Trigger.TEOperator.del, Trigger.TEType.belief, b);
-//                Event ev = new Event(te, Intention.EmptyInt);
-//                ts.getC().addEvent(ev);
-//                logger.info("\t HARD removed..."+b.toString());
-//
-//            }
-//
-//            // 4) Adiciona apenas o que é novo
-//            for (Literal lit : incoming) {
-//                String k = keyFor(lit);
-//                if (!currentKeys.contains(k)) {
-//                    /* soft believe addition */
-//                   // ts.getAg().addBel(lit);
-//                  //  logger.info("\t added..."+lit.toString());
-//                    /* hard believe addition */
-//                    ts.getAg().getBB().add(lit);
-//                    Trigger te = new Trigger(Trigger.TEOperator.add, Trigger.TEType.belief, lit);
-//                    Event ev = new Event(te, Intention.EmptyInt);
-//                    ts.getC().addEvent(ev);
-//                    logger.info("\t HARD added..."+lit.toString());
-//                }
-//            }
-//
-//        } catch (JasonException e) {
-//            throw new RuntimeException(e);
-//        }
-//        logger.info("Body update percepts, finished...");
-//    }
+            // Só interessa se for a mesma crença-base
+            if (!beliefBase.equals(perceptionBase)) continue;
 
-    /** Chave canônica: crença + termos + source(type,apparatus)*/
-    private String keyFor(Literal l) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(l.getFunctor()).append('(');
-        for (int i = 0; i < l.getArity(); i++) {
-            if (i > 0) sb.append(',');
-            sb.append(l.getTerm(i).toString());
-        }
-        sb.append(')');
-        sb.append("#src=").append(extractSource(l));
-        sb.append("#app=").append(extractApparatus(l));
-        return sb.toString();
-    }
+            // Cria a crença-base que receberá somente as annotations que desapareceram
+            Literal partial = beliefInBB.copy().clearAnnots();
 
+            for (Term annot : beliefInBB.getAnnots()) if (!perception.hasAnnot(annot)) partial.addAnnot(annot);
 
-    /** Pega o literal source(Type). */
-     private String extractSource(Literal l) {
-        for (Term ann : l.getAnnots()) {
-            if (ann.isLiteral()) {
-                Literal a = (Literal) ann;
-                if (SOURCE_FUNCTOR.equals(a.getFunctor())
-                        && a.getArity() == 1) {
-                    return a.getTerm(0).toString();
-                }
+            // Só inclui se alguma annotation desapareceu
+            if (partial.hasAnnot()){
+                logger.fine(" -" + partial.toString()) ;
+                transitionSystem.getAg().getBB().remove(partial);
+
+                Trigger te = new Trigger(Trigger.TEOperator.del, Trigger.TEType.belief, partial);
+                Event ev = new Event(te, Intention.EmptyInt);
+                transitionSystem.getC().addEvent(ev);
+                return true;
             }
         }
-
-        throw new IllegalStateException(
-                "Percept sem annotation source(Type): " + l
-        );
+        return false;
     }
 
-    private String extractApparatus(Literal l) {
-        for (Term ann : l.getAnnots()) {
-            if (ann.isLiteral()) {
-                Literal a = (Literal) ann;
+    /* crença não existe mais no corpo */
+    private boolean removeOldPerceptions(Literal beliefInBB, List<Literal> incoming, TransitionSystem transitionSystem) {
+        Literal inPerceptionIncomming = null;
+        Literal inBeliefBase = beliefInBB.copy().clearAnnots();
 
-                if ("apparatus".equals(a.getFunctor())
-                        && a.getArity() == 1) {
-                    return a.getTerm(0).toString();
-                }
-            }
+        for (Literal perception : incoming) {
+            inPerceptionIncomming= perception.copy().clearAnnots();
+            if (inBeliefBase.equals(inPerceptionIncomming)) return false;
         }
 
-        throw new IllegalStateException(
-                "Percept sem annotation apparatus(App): " + l
-        );
+        logger.fine(" -" + beliefInBB.toString());
+        transitionSystem.getAg().getBB().remove(beliefInBB);
+
+        Trigger te = new Trigger(Trigger.TEOperator.del, Trigger.TEType.belief, beliefInBB);
+        Event ev = new Event(te, Intention.EmptyInt);
+        transitionSystem.getC().addEvent(ev);
+
+        return true;
+    }
+
+    private boolean addNewPerceptions(List<Literal> current, Literal perception) {
+        Literal beliefInBB = null;
+        Literal perceptionBase = perception.copy().clearAnnots();
+        for (Literal belief : current) {
+            beliefInBB = belief.copy().clearAnnots();
+            if (perceptionBase.equals(beliefInBB)) return false;
+        }
+        return true;
     }
 
 
@@ -380,22 +240,6 @@ public class Body {
         if(apparatus == null) return BodyResponse.UNKNOWN;
 
         return apparatus.act(actionTerm);
-    }
-
-
-    private Set<String> keysFor(Literal l) {
-        String base = baseKey(l); // functor(termos...)
-
-        Set<String> keys = new LinkedHashSet<>();
-        for (SrcApp sa : extractSourcePairs(l)) {
-            keys.add(base + "#src=" + sa.src + "#app=" + sa.app);
-        }
-
-        // fallback de segurança (se não tiver source/2 por algum motivo)
-        if (keys.isEmpty()) {
-            keys.add(base + "#src=unknown#app=unknown");
-        }
-        return keys;
     }
 
     private static class SrcApp {

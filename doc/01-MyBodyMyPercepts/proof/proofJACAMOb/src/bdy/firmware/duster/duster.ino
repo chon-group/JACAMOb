@@ -10,7 +10,6 @@
 Apparatus(duster){
 	Element(broom);
 	Element(tempSensor);
-	Element(anotherTempSensor);
 	Element(alertLeds);
 }
 
@@ -43,7 +42,6 @@ void loop() {duster.embody();}
 /* min= 20ºC - max=120ºC */
 Sensing(tempSensor){temperature = 20.0 + (analogRead(PinSensor) / 1023.0) * 100.0;}
 Percept(tempSensor,temperature, INTEROCEPTION) {return temperature;}
-Percept(anotherTempSensor,temperature, INTEROCEPTION) {return 20;}
 
 
 Behaving(alertLeds){
@@ -58,7 +56,8 @@ Behaving(alertLeds){
 }
 
 
-Percept(broom, powerStatus, PROPRIOCEPTION){return digitalRead(PinLed) ? "on" : "off";}
+Percept(broom, powerStatus, PROPRIOCEPTION){return digitalRead(PinLed) ? "On" : "Off";}
+
 Act (broom,dusterOn){
   if(cleanning) return ALREADY;
   digitalWrite(PinLed, HIGH);
@@ -66,6 +65,7 @@ Act (broom,dusterOn){
   servoMotor.write(anguloEsq);
   return EXECUTED;  
 }
+
 Act (broom,dusterOff){
   if(!cleanning) return ALREADY;
   digitalWrite(PinLed, LOW);    

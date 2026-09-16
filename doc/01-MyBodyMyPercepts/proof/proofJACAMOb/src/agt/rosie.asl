@@ -15,40 +15,22 @@
     !startWork;
 .
 
-+!startWork <- .myBody.act(dusterOn); .wait(3000); .stopMAS; !!monitorTemp.
++constitutive_rule(rosie, robotic_worker, true, true) <- .print(">>> INSTITUTION: The constitutive rule recognizes Rosie as a robotic worker.").
 
-//+!stopMAS <-     .random(R); .wait(5000*R); .stopMAS.
++!startWork <- .myBody.act(dusterOn); !!monitorTemp.
 
-+constitutive_rule(rosie, robotic_worker, true, true) <-
-    .print(">>> INSTITUTION: The constitutive rule recognizes Rosie as a robotic worker.").
++!monitorTemp <- !decide; .wait(500); !monitorTemp.
 
-+!monitorTemp <-
-   !decide;
-   .wait(100);
-   !monitorTemp;
-.
-
--!monitorTemp <- .print("ERRO"); .stopMAS.
-
-
-+!decide: myBody::temperature(T)[source(interoception)] & T > 60 <-
-    .print("The robot burned out!");
-//    .stopMAS
-.
++!decide: myBody::temperature(T)[source(interoception)] & T > 100 <- 
+    .print("The robot burned out! -- FAIL!!!"); .stopMAS.
     
-+!decide: myBody::temperature(T)[source(interoception)] & T > 50 & myBody::powerStatus(P)[source(proprioception)] & P=="on" <- 
++!decide: myBody::temperature(T)[source(interoception)] & T > 90 
+& myBody::powerStatus(P)[source(proprioception)] & P=="On" <- 
     .print("[ALERT] The robot is overheated (",T,") Status is... ",P);
-    .myBody.act(powerOff);
-  .
+    .myBody.act(dusterOff);
+    .print("SUCESS!!!"); .stopMAS.
 
-+!decide: myBody::temperature(T)[source(proprioception,duster)] & T <=50 & myBody::powerStatus(P)[source(proprioception,duster)] & P=="on" <-
-    .print("[INFO] Temperatura is ",T," Status is... ",P).
++!decide: myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] <- 
+    .print("[INFO] Temperature is ",T," powerStatus is... ",P).
 
-//+myBody::powerStatus(off)[source(proprioception,duster)] <- .print("FUNCIONANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO").
-+myBody::powerStatus(off)[source(proprioception)] <- .print("FUNCIONANDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO").
-
-/* myBody::
-port(on,"/dev/ttyEmulatedPort0",duster,778922378)[source(interoception,duster)]
-powerStatus(off)[source(proprioception,duster)]
-temperature(20)[source(interoception,duster)]
-*/
+-!decide.

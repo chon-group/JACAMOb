@@ -2,23 +2,16 @@
 unsigned long lastCicle = 0;
 
 Apparatus(locomotion){
-	Element(tempSensor);
-	Element(anotherTempSensor);
+	Element(led);
 }
 
-void setup() {
-  pinMode(13, OUTPUT);
-  lastCicle = millis();
-}
+unsigned long previousBlink = 0;
+void setup() {pinMode(13, OUTPUT);}
+void loop() {locomotion.embody();}
 
-void loop() {
-  locomotion.embody();
-
-  if (locomotion.getLastPresence() > lastCicle) {
-    digitalWrite(13, !digitalRead(13));
-    lastCicle = millis();
+Behaving(led) {
+  if (millis() - previousBlink >= 250) {
+      previousBlink = millis();
+      digitalWrite(13, !digitalRead(13));
   }
 }
-
-Percept(tempSensor,temperature,INTEROCEPTION){return 20;}
-Percept(anotherTempSensor,temperature,EXTEROCEPTION){return 20;}

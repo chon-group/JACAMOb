@@ -24,7 +24,6 @@ public class BodyParameters implements Serializable {
     public String getName()       { return name; }
 
     public void addApparatus(String apparatusName, ClassParameters className) {
-        neck.util.Trace.logCAT1();
         apparatus.put(apparatusName,className);
     }
 

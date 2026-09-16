@@ -8,8 +8,8 @@ public class AirConditioner extends Artifact {
 
     void init() {
        // neck.util.Trace.log("INICIOU O ARTEFATO EXEMPLO");
-        defineObsProperty("status", "on");
-        defineObsProperty("temperature", 17);
+        defineObsProperty("status", "On");
+        defineObsProperty("temperature", 22);
     }
 
     @OPERATION
