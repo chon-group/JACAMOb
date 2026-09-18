@@ -1,0 +1,19 @@
+institution_id : jetsonsInstitution.
+
+status_functions:
+    states: work, eco_mode, play(A, R, G).
+    agents: lead_cleaner, robotic_worker.
+    events: task_finished.
+
+constitutive_rules:
+    /* 1. O esquema de limpeza conta como o estado de trabalho */
+    1: cleanOnly count-as work.
+
+    /* 2. A luz desligada conta como modo econômico */
+    2: light("off") count-as eco_mode while true.
+
+    /* 3. Rosie conta como uma trabalhadora robótica perante a instituição */
+    3: rosie count-as robotic_worker.
+
+    /* 4. O término da tarefa gera o evento institucional */
+    4: count-as task_finished when finishCleaning[sai__agent(Agent)].

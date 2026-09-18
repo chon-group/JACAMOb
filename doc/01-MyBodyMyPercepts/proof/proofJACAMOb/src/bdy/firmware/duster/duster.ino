@@ -58,19 +58,10 @@ Behaving(alertLeds){
 
 Percept(broom, powerStatus, PROPRIOCEPTION){return digitalRead(PinLed) ? "On" : "Off";}
 
-Act (broom,dusterOn){
-  if(cleanning) return ALREADY;
-  digitalWrite(PinLed, HIGH);
-  cleanning = true;
-  servoMotor.write(anguloEsq);
-  return EXECUTED;  
-}
-
-Act (broom,dusterOff){
-  if(!cleanning) return ALREADY;
-  digitalWrite(PinLed, LOW);    
-  cleanning = false;
-  servoMotor.write(anguloDescanso);
+Act (broom,tooglePower){
+  if(digitalRead)
+  digitalWrite(PinLed, !digitalRead(PinLed));
+  cleanning = !cleanning;
   return EXECUTED;  
 }
 

@@ -1,0 +1,52 @@
+/*
+  Dependences...
+  Add it in your root build.gradle at the end of repositories:
+  repositories {
+      maven { url "https://raw.github.com/embedded-mas/embedded-mas-mvn-repo/master" } // <-- new repo
+  }
+  dependencies {
+      implementation "embedded-mas:embedded-mas:0.061-SNAPSHOT"  // <-- new dependence
+  }
+*/
+
+mas proofJaCaMoAndJasonROS {
+
+  agent rosie{
+    ag-class: embedded.mas.bridges.jacamo.CyberPhysicalAgent      
+    ag-arch: embedded.mas.bridges.jacamo.DefaultEmbeddedAgArch
+
+    // initial mental state 
+    beliefs: ecoMode(on)
+    goals: helloWorld
+
+    // initial environment relationship 
+    join: livingRoom
+    focus: livingRoom.presenceSensor
+    focus: livingRoom.airConditioner
+
+    // initial organizational relationship 
+    focus: jetsonsInstitution.jetsonsInstitution_art
+    roles: housekeeper in householdStaff
+
+  }
+
+  workspace livingRoom {
+    artifact presenceSensor : jetsons.home.PresenceSensor()
+    artifact airConditioner : jetsons.home.AirConditioner()
+  }
+
+  institution jetsonsInstitution : jetsonsInst.sai {
+    workspaces: livingRoom
+  }
+
+  organisation jetsonsFamily : jetsons.xml {
+      group householdStaff : householdGroup {
+          responsible-for: greetPeople
+      }
+
+      scheme greetPeople : greetingScheme
+
+      situated: jetsonsInstitution
+  }
+
+}

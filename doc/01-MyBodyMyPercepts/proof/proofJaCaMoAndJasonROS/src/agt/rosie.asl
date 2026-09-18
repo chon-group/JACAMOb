@@ -3,7 +3,6 @@
 { include("$jacamo/templates/common-moise.asl") }
 { include("$moise/asl/org-obedient.asl") }
 
-
 /* Plans */
 +!helloWorld <- .print("hello world.").
 
@@ -17,17 +16,20 @@
 
 +constitutive_rule(rosie, robotic_worker, true, true) <- .print(">>> INSTITUTION: The constitutive rule recognizes Rosie as a robotic worker.").
 
-+!startWork <- .myBody.act(tooglePower); !!monitorTemp.
++!startWork <- embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("duster","togglePower",[]); !!monitorTemp.
 
-+!monitorTemp <- !decide; .wait(500); !monitorTemp.
++!monitorTemp <- .wait(500); !decide; !monitorTemp.
    
-+!decide: myBody::temperature(T)[source(interoception)] & T > 70 & myBody::powerStatus(P)[source(proprioception)] & P=="On" <- 
-    .print("[ALERT] The robot is overheated (",T,") Status is... ",P); .myBody.act(tooglePower).
++!decide: temperature(T)[source(percept)] & T > 70 & powerStatus(P)[source(percept)] & P=="On" <- 
+    .print("My mind: temperature(",T,") + powerStatus(",P,")"); embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("duster","togglePower",[]).
 
-+!decide: myBody::temperature(T)[source(interoception)] & T > 60 & myBody::powerStatus(P)[source(proprioception)] & P=="Off" <- 
++!decide: temperature(T)[source(percept)] & T > 60 & powerStatus(P)[source(percept)] & P=="Off" <- 
     .print("Waiting for decreasing temperature... SUCCESS!"); .stopMAS.
-
-+!decide: myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] <- 
-    .print("[INFO] Temperature is ",T," powerStatus is... ",P).
+    
++!decide: temperature(T)[source(percept)] & powerStatus(P)[source(percept)] <- 
+    .print("My mind: temperature(",T,") + powerStatus(",P,")").
 
 -!decide.
+
+/* helpers */
++status("burnt") <- .print("The robot burned out! temperature > 100ºC -- FAIL!!!"); .stopMAS.
