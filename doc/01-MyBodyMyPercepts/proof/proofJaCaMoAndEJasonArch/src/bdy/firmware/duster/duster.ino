@@ -31,33 +31,34 @@ void setup() {
   pinMode(servoPin,  OUTPUT);      
   servoMotor.attach(servoPin);
   servoMotor.write(anguloDescanso);  
+  javino.act["tooglePower"]  = tooglePower;
+  javino.perceive(getExogenousPerceptions);
   javino.start(9600);
 }
 
-void loop() {
+void tooglePower(){
+	if(digitalRead(PinLed)){
+		digitalWrite(PinLed, LOW);    
+		cleanning = false;
+		servoMotor.write(anguloDescanso);
+	}else{
+		digitalWrite(PinLed, HIGH);
+		cleanning = true;
+		servoMotor.write(anguloEsq);
+	}		
+}
 
-	if (javino.availableMsg()) {
-    	String msg = javino.getMsg();
-		if (msg == "togglePower"){
-			if(digitalRead(PinLed)){
-				digitalWrite(PinLed, LOW);    
-				cleanning = false;
-				servoMotor.write(anguloDescanso);
-			}else{
-				digitalWrite(PinLed, HIGH);
-				cleanning = true;
-				servoMotor.write(anguloEsq);
-			}		
-		}
-	    else if (msg == "TEMPINFO") {javino.sendMsg(String(temperature));}
-	    else if (msg == "POWERINFO") {
-			if(digitalRead(PinLed)){
-				javino.sendMsg("On");
-			}else{
-				javino.sendMsg("Off");
-			}
-		}
-	}
+void getExogenousPerceptions(){ 
+	if(temperature > 100){javino.addPercept("status(\"burnt\")");}
+	
+    javino.addPercept("temperature("+String(temperature)+")");
+
+	if(digitalRead(PinLed)){javino.addPercept("powerStatus(\"On\")");}
+	else{javino.addPercept("powerStatus(\"Off\")");}
+}
+
+void loop() {
+	javino.run();
 
 	/* every cycle */
 	temperature = 20.0 + (analogRead(PinSensor) / 1023.0) * 100.0;
