@@ -20,6 +20,8 @@
 
 -!decide.
 
++status("burnt") <- .print("The robot burned out! temperature > 100ºC -- FAIL!!!"); .stopMAS.
+
 /* new code */
 +!togglePower <- togglePower.
  

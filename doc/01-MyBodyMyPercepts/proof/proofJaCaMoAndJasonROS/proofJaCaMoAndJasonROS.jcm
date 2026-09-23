@@ -12,22 +12,12 @@
 mas proofJaCaMoAndJasonROS {
 
   agent rosie{
-    ag-class: embedded.mas.bridges.jacamo.CyberPhysicalAgent      
-    ag-arch: embedded.mas.bridges.jacamo.DefaultEmbeddedAgArch
-
-    // initial mental state 
-    beliefs: ecoMode(on)
-    goals: helloWorld
-
-    // initial environment relationship 
     join: livingRoom
     focus: livingRoom.presenceSensor
     focus: livingRoom.airConditioner
-
-    // initial organizational relationship 
-    focus: jetsonsInstitution.jetsonsInstitution_art
     roles: housekeeper in householdStaff
-
+    ag-class: embedded.mas.bridges.jacamo.CyberPhysicalAgent      
+    ag-arch: embedded.mas.bridges.jacamo.DefaultEmbeddedAgArch
   }
 
   workspace livingRoom {
@@ -35,18 +25,10 @@ mas proofJaCaMoAndJasonROS {
     artifact airConditioner : jetsons.home.AirConditioner()
   }
 
-  institution jetsonsInstitution : jetsonsInst.sai {
-    workspaces: livingRoom
-  }
-
   organisation jetsonsFamily : jetsons.xml {
-      group householdStaff : householdGroup {
-          responsible-for: greetPeople
-      }
-
-      scheme greetPeople : greetingScheme
-
-      situated: jetsonsInstitution
+    group householdStaff : householdGroup {
+    responsible-for: cleaning
+    }
+    scheme cleaning : cleaningScheme
   }
-
 }

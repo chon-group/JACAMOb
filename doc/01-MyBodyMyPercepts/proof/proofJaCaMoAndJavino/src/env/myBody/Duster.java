@@ -41,7 +41,7 @@ public class Duster extends Artifact {
             if (DATA != null) {
                 try{
                     double t = Double.parseDouble(DATA);
-                    if (t > 100){System.out.println("[ARTIFACT] The robot burned out! temperature > 100ºC -- FAIL!!!"); System.exit(1);}
+                    if (t > 100){defineObsProperty("status", "burnt"); System.out.println("[ARTIFACT] The robot burned out! temperature > 100ºC -- FAIL!!!");}
                     getObsProperty("temperature").updateValue(t);    
                 }catch(Exception ex){
 

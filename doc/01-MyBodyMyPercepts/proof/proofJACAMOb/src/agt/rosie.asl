@@ -20,6 +20,8 @@
 
 -!decide.
 
++status("burnt") <- .print("The robot burned out! temperature > 100ºC -- FAIL!!!"); .stopMAS.
+
 /* new code */
 +!togglePower <- .myBody.act(tooglePower).
   
@@ -31,3 +33,5 @@
 
 +!decide: myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] <- 
     .print("[INFO] Temperature is ",T," powerStatus is... ",P).
+
++myBody::temperature(T)[source(interoception)]: T>100 <- +status("burnt").
