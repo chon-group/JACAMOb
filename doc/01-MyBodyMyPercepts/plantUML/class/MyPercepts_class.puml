@@ -1,0 +1,244 @@
+@startuml
+
+' top to bottom direction
+
+ skinparam classAttributeIconSize 0
+ skinparam packageStyle folder
+ skinparam linetype ortho
+ skinparam nodesep 35
+' skinparam ranksep 45
+
+
+package org{
+  package json{
+    class JSONObject
+  }
+}
+
+' ============================================================
+' JASON
+' ============================================================
+package jason {
+
+  package "asSemantics" as pkg_jason_semantics {
+
+    class "TransitionSystem" as TransitionSystem {
+        + getAg() : Agent
+        + getC() : Circumstance
+    }
+
+    class "Agent" as Agent {
+        + getBB() : BeliefBase
+    }
+
+    class "Circumstance" as Circumstance {
+        + addEvent(ev : Event) : void
+    }
+
+    class "Event" as Event
+
+
+  }
+
+  package "bb" as pkg_jason_bb {
+
+    abstract "BeliefBase" as BeliefBase {
+         + add(l : Literal) : boolean
+         + remove(l : Literal) : boolean
+    }
+  }
+
+  package "asSyntax" as pkg_jason_syntax {
+
+    class "Literal" as Literal {
+        ' + getAnnots() : List<Term>
+        ' + addAnnot(annot : Term) : boolean
+        ' + hasAnnot(annot : Term) : boolean
+        ' + clearAnnots() : Literal
+    }
+
+
+    
+
+    
+    
+  }
+
+    TransitionSystem --> Agent 
+    TransitionSystem --> Circumstance
+
+    Circumstance o-- "0..*" Event 
+
+    Agent --> BeliefBase 
+    BeliefBase --> "0..*" Literal 
+
+
+
+
+}
+
+
+
+
+
+' ============================================================
+' JACAMO
+' ============================================================
+package jacamo {
+
+
+
+  package "infra" as pkg_infra {
+    class "JaCaMoAgArch" as JaCaMoAgArch {
+        - body : neck.Body = null
+
+        + init() : void
+        - embody() : void
+        + <color:orange><b>perceive() : Collection<Literal></b></color>
+    }
+  }
+
+}
+
+' ============================================================
+' NECK
+' ============================================================
+
+package "neck" as pkg_neck {
+
+     
+        package "model" as pkg_model {
+
+        enum "PerceptionType" as PerceptionType #MistyRose {
+            <color:red><b>INTEROCEPTION</b></color>
+            <color:red><b>PROPRIOCEPTION</b></color>
+            <color:red><b>EXTEROCEPTION</b></color>
+
+            + <color:red><b>getKey() : String</b></color>
+        }
+    }
+
+  class "Body" as Body {
+
+      - apparatus : neck.Apparatus[]
+      - bodyName : String
+
+      + Body(bodyName : String)
+
+      + attachApparatus(implementation : neck.Apparatus, apparatusName : String) : boolean
+      + detachApparatusByName(apparatusName : String) : boolean
+      + <color:red><b>perceive(transitionSystem : TransitionSystem) : void</b></color>
+
+      - getApparatusByName(appName : jason.asSyntax.Atom) : neck.Apparatus
+      - <color:red><b>bodyPerceptionRevisonFuncion(List<Literal> incoming) : List<Literal></b></color>
+      - <color:red><b>removeOldPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void</b></color>
+      - <color:red><b>addNewPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void</b></color>
+  }
+
+  Body ..> TransitionSystem 
+  Body ..> Literal
+  Apparatus ..> Literal
+
+
+
+
+abstract class "Apparatus" as Apparatus {
+
+    - apparatusName : String
+    - hwAppName : String
+    - hwAppID : Long
+    - <color:red><b>interoceptions : List<Literal></b></color>
+    - <color:red><b>exteroceptions : List<Literal></b></color>
+    - <color:red><b>proprioceptions : List<Literal></b></color>
+
+    # Apparatus()
+    + attach() : void
+    + detach() : void
+    + embody() : JSONObject
+    + <color:red><b>sense() : void</b></color>
+
+    # init() : void
+    # <color:red><b>requestPercepts() : JSONObject</b></color>
+
+    + <color:red><b>getAllPerceptions() : List<Literal></b></color>
+    + getStatus() : boolean
+    + getConnectionStatus() : String
+    + getAddress() : String
+    + getHwAppName() : String
+    + getApparatusName() : String
+    + setApparatusName(apparatusName : String) : void
+
+    
+    
+  }
+  
+  
+
+
+  package "defaults" as pkg_defaults {
+    class "SerialApparatus" as SerialApparatus {
+
+    - serialComm : neck.util.SerialComm
+
+    + SerialApparatus(address : String)
+
+    + attach() : void
+    + detach() : void
+    + embody() : JSONObject
+    # <color:red><b>requestPercepts() : JSONObject</b></color>
+
+    + getStatus() : boolean
+    + getConnectionStatus() : String
+    + getAddress() : String
+    
+    - request(message : String, args : Object[]) : JSONObject
+    - prepareRequest(message : String, args : Object[]) : JSONObject
+    - parseResponse(records : List<JSONObject>) : JSONObject
+    }
+
+    SerialApparatus ..> JSONObject
+  }
+
+  
+}
+
+
+
+
+
+' ============================================================
+' RELAÇÕES
+' ============================================================
+
+Apparatus ..> PerceptionType
+
+JaCaMoAgArch "1" --> "0..1" Body 
+
+ 
+Body "1" o-- "1..*" Apparatus
+
+SerialApparatus --|> Apparatus
+
+
+@enduml
+
+' ============================================================
+' ORGANIZAÇÃO VISUAL
+' ============================================================
+
+' ' Coluna de interpretação/configuração
+' MAS2JProject -[hidden]down-> JaCaMoProject
+' JaCaMoProject -[hidden]down-> JaCaMoProjectParser
+' JaCaMoProjectParser -[hidden]down-> BodyParameters
+
+' ' Coluna de execução corporal
+' jason.architecture.AgArch -[hidden]down-> JaCaMoAgArch
+' JaCaMoAgArch -[hidden]down-> Body
+' Body -[hidden]down-> Apparatus
+' Apparatus -[hidden]down-> SerialApparatus
+' SerialApparatus -[hidden]down-> SerialComm
+
+' ' Mantém as duas grandes colunas próximas
+' JaCaMoProject -[hidden]right-> JaCaMoAgArch
+' BodyParameters -[hidden]right-> Body
+

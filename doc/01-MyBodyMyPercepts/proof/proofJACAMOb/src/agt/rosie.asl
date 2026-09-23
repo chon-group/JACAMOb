@@ -1,26 +1,28 @@
-// Agent rosie in project proofJACAMOb
+// Agent rosie in project proofJaCaMoAndJavino
 { include("$jacamo/templates/common-cartago.asl") }
 { include("$jacamo/templates/common-moise.asl") }
 { include("$moise/asl/org-obedient.asl") }
 
 
 /* Plans */
-+!helloWorld <- .print("hello world.").
++!cleanLivingRoom[scheme(cleaning)] <- 
+    .print("Starting to clean the living room..."); 
+    !startWork.
 
-+!greetPeople[scheme(greetPeople)] : humans("no") <- .print("Nobody is in the living room."); !stopMAS.
-+!greetPeople[scheme(greetPeople)] : humans("yes") & .date(Y,M,D) & .time(H,Min,S) <-
-    if (H < 12) {.print("Good morning!");} 
-    elif (H < 18) {.print("Good afternoon!");} 
-    else {.print("Good evening!");};
-    !startWork;
-.
++!startWork <- 
+    !togglePower; 
+    !!monitorBodyTemp.
 
-+constitutive_rule(rosie, robotic_worker, true, true) <- .print(">>> INSTITUTION: The constitutive rule recognizes Rosie as a robotic worker.").
++!monitorBodyTemp <- 
+    !decide; 
+    .wait(500); 
+    !monitorBodyTemp.
 
-+!startWork <- .myBody.act(tooglePower); !!monitorTemp.
+-!decide.
 
-+!monitorTemp <- !decide; .wait(500); !monitorTemp.
-   
+/* new code */
++!togglePower <- .myBody.act(tooglePower).
+  
 +!decide: myBody::temperature(T)[source(interoception)] & T > 70 & myBody::powerStatus(P)[source(proprioception)] & P=="On" <- 
     .print("[ALERT] The robot is overheated (",T,") Status is... ",P); .myBody.act(tooglePower).
 
@@ -29,5 +31,3 @@
 
 +!decide: myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] <- 
     .print("[INFO] Temperature is ",T," powerStatus is... ",P).
-
--!decide.

@@ -7,12 +7,6 @@
 #define PinSensor  A0   // Temp sensor
 #define servoPin   3		// Servo Motor
 
-Apparatus(duster){
-	Element(broom);
-	Element(tempSensor);
-	Element(alertLeds);
-}
-
 Servo servoMotor; 
 float temperature = 0;
 int extraTemp = 0;
@@ -26,7 +20,14 @@ const unsigned long intervaloMovimento = 200;
 unsigned long ultimoMovimento = 0;
 bool movimentoEsquerda = true;
 
-void setup() {
+
+Apparatus(duster){
+	Element(broom);
+	Element(tempSensor);
+	Element(alertLeds);
+}
+
+Preparation{
   pinMode(PinLed, OUTPUT);
   pinMode(PinGreen, OUTPUT);
   pinMode(PinYellow, OUTPUT);
@@ -36,7 +37,7 @@ void setup() {
   servoMotor.write(anguloDescanso);  
 }
 
-void loop() {duster.embody();}
+
 
 /* ****************************************** */
 /* min= 20ºC - max=120ºC */

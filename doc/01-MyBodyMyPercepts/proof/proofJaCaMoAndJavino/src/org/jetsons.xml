@@ -27,13 +27,13 @@
 
     <functional-specification>
 
-    <scheme id="greetingScheme">
+    <scheme id="cleaningScheme">
 
-        <goal id="greetPeople"/>
+    <goal id="cleanLivingRoom"/>
 
-        <mission id="greetingMission" min="1" max="1">
-            <goal id="greetPeople"/>
-        </mission>
+    <mission id="cleaningMission" min="1" max="1">
+        <goal id="cleanLivingRoom"/>
+    </mission>
 
     </scheme>
 
@@ -42,11 +42,11 @@
 
     <normative-specification>
 
-        <norm
-            id="housekeeperObligation"
-            type="obligation"
-            role="housekeeper"
-            mission="greetingMission"/>
+    <norm
+        id="housekeeperObligation"
+        type="obligation"
+        role="housekeeper"
+        mission="cleaningMission"/>
 
     </normative-specification>
 

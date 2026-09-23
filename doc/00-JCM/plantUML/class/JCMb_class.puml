@@ -206,7 +206,7 @@ JaCaMoAgArch ..> BodyParameters
 
 JaCaMoAgArch "1" --> "0..1" Body 
 
-Body "1" o-- "0..*" Apparatus 
+Body "1" o-- "1..*" Apparatus 
 
 SerialApparatus --|> Apparatus
 

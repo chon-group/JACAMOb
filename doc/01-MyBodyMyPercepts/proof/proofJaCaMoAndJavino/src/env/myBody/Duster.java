@@ -25,7 +25,7 @@ public class Duster extends Artifact {
 	}
 
 	@OPERATION
-	void togglePower() {javino.sendCommand(this.serialPort,"togglePower");}
+	void togglePower() {javino.sendCommand(this.serialPort,"togglePower"); System.out.println("[ARTIFACT] TOOGLEPOWER");}
 
  	@INTERNAL_OPERATION
     void getBodyInfo() throws Exception {

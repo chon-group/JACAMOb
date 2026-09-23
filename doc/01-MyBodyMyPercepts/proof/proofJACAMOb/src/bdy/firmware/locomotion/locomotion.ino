@@ -1,13 +1,15 @@
 #include <NECK.hpp>   /* https://github.com/chon-group/neck2arduino */
 unsigned long lastCicle = 0;
+unsigned long previousBlink = 0;
 
 Apparatus(locomotion){
 	Element(led);
 }
 
-unsigned long previousBlink = 0;
-void setup() {pinMode(13, OUTPUT);}
-void loop() {locomotion.embody();}
+
+Preparation{
+	pinMode(13, OUTPUT);
+}
 
 Behaving(led) {
   if (millis() - previousBlink >= 250) {

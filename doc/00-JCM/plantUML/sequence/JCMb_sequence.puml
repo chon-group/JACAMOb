@@ -163,18 +163,20 @@ newpage
         
 
     group #f19890 Instanciação Corporal dos Agentes
+        
+        activate DEVICE
+        DEVICE -> DEVICE : Preparation()
+        DEVICE -> DEVICE : Serial.begin(115200bps)
 
         JaCaMo -> NECK : infra.JaCaMoAgArch.embody()
         activate NECK
+        
         NECK -> NECK : Body.attachApparatus()
         NECK -> DEVICE : defaults.SerialApparatus.attach()
         activate DEVICE
-        DEVICE -> DEVICE :  setup()
-        DEVICE -> DEVICE : Serial.begin(115200bps)
+        DEVICE -> DEVICE :  NECKApparatus.embody()
+        
         return
-        
-        
-        
         
         
         NECK --> JaCaMo 

@@ -192,18 +192,9 @@ public class JaCaMoAgArch extends AgArch {
         }
     }
 
-   /*rivate void loadPlans(){
-        Agent ag = ts.getAg();
-        PlanLibrary pl = ag.getPL();
-    }*/
     public Body getAgtBody(){
         if(this.body == null) this.body = new Body(getAgName());
         return this.body;
     }
 
-    //@Override
-    /*public BodyResponse realWorldAct(Term term, String apparatusName){
-        if(this.body == null) this.body = new Body(getAgName());
-        return body.act(term, apparatusName);
-    }*/
 }

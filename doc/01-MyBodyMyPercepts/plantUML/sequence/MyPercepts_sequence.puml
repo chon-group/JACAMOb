@@ -1,0 +1,114 @@
+ 
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant Jason
+participant JaCa
+participant CArtAgO
+participant DEVICE
+
+activate DEVICE
+activate JaCaMo
+
+group #faf6f1 Iniciando Dimensão dos Agentes
+JaCaMo -> Jason : infra.JaCaMoLauncher.startAgs()
+activate Jason
+Jason -> Jason : RunLocalMAS.startAgs()
+Jason -> Jason : jason.infra.local.RunLocalMAS.createAgsThreads()
+Jason -> Jason : infra.local.LocalAgArch.run
+end
+
+
+
+== CICLO DE RACIOCÍNIO DO AGENTE ==
+
+
+group #faf6f1 jason.infra.local.LocalAgArch.reasoningCycle()
+
+    group #faf6f1 jason.infra.local.LocalAgArch.sense
+        Jason -> JaCa : asSemantics.TransitionSystem.sense
+        activate Jason
+        activate JaCa
+        JaCa -> CArtAgO : CAgentArch.perceive
+        activate CArtAgO
+        CArtAgO -> CArtAgO: AgentSession.fetchNextPercept()
+        return
+        
+        JaCa -> Jason : CAgentArch.addObsPropertiesBel
+        activate Jason
+        Jason -> Jason : bb.DefaultBeliefBase.add
+        return
+        return
+        
+        Jason -> JaCaMo : architecture.AgArch.perceive
+        activate JaCaMo
+        JaCaMo -> NECK : infra.JaCaMoAgArch.perceive
+        activate NECK
+        group #f19890 Percepção Corporal do Agente
+            NECK -> NECK : Body.perceive()
+            activate NECK
+            
+            
+            NECK -> NECK : Apparatus.sense()
+            activate NECK
+            NECK -> DEVICE : Apparatus.requestPercepts()
+            activate DEVICE
+            DEVICE -> DEVICE : NECKApparatus.inhabitance()
+            activate DEVICE
+            DEVICE -> DEVICE : NECKApparatus.streamPercepts()
+            activate DEVICE
+            DEVICE -> DEVICE : NECKElement.percept() 
+            return
+            return
+            return
+            return
+            
+
+            
+            NECK -> NECK : Body.bodyPerceptionRevisionFuntion()
+            activate NECK
+            NECK -> Jason : Body.removeOldPerceptions()
+            activate Jason
+            Jason -> Jason : bb.DefaultBeliefBase.remove()
+            Jason -> Jason : asSemantics.Circumstance.addEvent()
+            return
+
+            NECK -> Jason : Body.addNewPerceptions()
+            activate Jason
+            Jason -> Jason : bb.DefaultBeliefBase.add()
+            Jason -> Jason : asSemantics.Circumstance.addEvent()
+            return
+            
+
+            return
+        
+        return
+        end
+        return
+        return
+
+        
+        Jason -> Jason : architecture.AgArch.checkMail
+        activate Jason
+        Jason -> Jason : asSemantics.Circumstance.addEvent
+        return
+        deactivate Jason
+
+    end
+
+
+
+end
+
+deactivate JaCaMo
+
+@enduml
+

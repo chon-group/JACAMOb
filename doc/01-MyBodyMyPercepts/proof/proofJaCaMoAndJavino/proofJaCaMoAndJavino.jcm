@@ -13,51 +13,30 @@
 */
 
 mas proofJaCaMoAndJavino {
+ agent rosie{
+  join: livingRoom
+  focus: livingRoom.presenceSensor
+  focus: livingRoom.airConditioner
+  roles: housekeeper in householdStaff
+  join: myBody
+  focus: myBody.duster
+  focus: myBody.locomotion
+ }
 
-  agent rosie{
-  
-    /* initial mental state */
-    beliefs: ecoMode(on)
-    goals: helloWorld
+ workspace livingRoom {
+  artifact presenceSensor : jetsons.home.PresenceSensor()
+  artifact airConditioner : jetsons.home.AirConditioner()
+ }
 
-    /* initial environment relationship */
-    join: livingRoom
-    focus: livingRoom.presenceSensor
-    focus: livingRoom.airConditioner
+ workspace myBody {
+  artifact duster     : myBody.Duster("/dev/ttyEmulatedPort0") 
+  artifact locomotion : myBody.Locomotion("/dev/ttyEmulatedPort1") 
+ }
 
-    join: myBody
-    focus: myBody.duster
-    focus: myBody.locomotion
-
-
-    /* initial organizational relationship */
-    focus: jetsonsInstitution.jetsonsInstitution_art
-    roles: housekeeper in householdStaff
+ organisation jetsonsFamily : jetsons.xml {
+  group householdStaff : householdGroup {
+   responsible-for: cleaning
   }
-
-  workspace livingRoom {
-    artifact presenceSensor : jetsons.home.PresenceSensor()
-    artifact airConditioner : jetsons.home.AirConditioner()
-  }
-
-  workspace myBody {
-    artifact duster     : myBody.Duster("/dev/ttyEmulatedPort0") 
-    artifact locomotion : myBody.Locomotion("/dev/ttyEmulatedPort1") 
-  }
-
-
-  institution jetsonsInstitution : jetsonsInst.sai {
-    workspaces: livingRoom
-  }
-
-  organisation jetsonsFamily : jetsons.xml {
-      group householdStaff : householdGroup {
-          responsible-for: greetPeople
-      }
-
-      scheme greetPeople : greetingScheme
-
-      situated: jetsonsInstitution
-  }
-
+  scheme cleaning : cleaningScheme
+ }
 }

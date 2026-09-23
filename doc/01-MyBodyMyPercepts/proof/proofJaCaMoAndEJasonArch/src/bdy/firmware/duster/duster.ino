@@ -31,12 +31,12 @@ void setup() {
   pinMode(servoPin,  OUTPUT);      
   servoMotor.attach(servoPin);
   servoMotor.write(anguloDescanso);  
-  javino.act["tooglePower"]  = tooglePower;
+  javino.act["togglePower"]  = togglePower;
   javino.perceive(getExogenousPerceptions);
   javino.start(9600);
 }
 
-void tooglePower(){
+void togglePower(){
 	if(digitalRead(PinLed)){
 		digitalWrite(PinLed, LOW);    
 		cleanning = false;

@@ -82,7 +82,7 @@ public class SerialApparatus extends Apparatus {
        ============================================================ */
 
     @Override
-    protected JSONObject getActions() {
+    protected JSONObject requestActions() {
         return request("getActions", null);
     }
 
@@ -106,7 +106,7 @@ public class SerialApparatus extends Apparatus {
        ============================================================ */
 
     @Override
-    protected JSONObject getKnowHow() {
+    protected JSONObject requestKnowHow() {
         return request("getKnowHow", null);
     }
 
@@ -116,7 +116,7 @@ public class SerialApparatus extends Apparatus {
        ============================================================ */
 
     @Override
-    public JSONObject perceive() {
+    public JSONObject requestPercepts() {
         //Log...
         //System.out.println("\n PERCEIVE");
         return request("getPercepts", null);
@@ -129,12 +129,7 @@ public class SerialApparatus extends Apparatus {
 
     @Override
     public JSONObject embody() {
-
-        /*
-         * Atualmente o protocolo serial não exige uma
-         * operação específica durante a incorporação.
-         */
-        return null;
+        return request("embody", null);
     }
 
 

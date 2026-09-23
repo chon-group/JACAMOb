@@ -1,16 +1,16 @@
 #include <NECK.hpp>   /* https://github.com/chon-group/neck2arduino */
 unsigned long lastCicle = 0;
 
-Apparatus(duster){}
+Apparatus(duster){
+	Element(led);
+}
 
-void setup() {
+Preparation{
   pinMode(13, OUTPUT);
   lastCicle = millis();
 }
 
-void loop() {
-  duster.embody();
-
+Behaving(led){
   if (duster.getLastPresence() > lastCicle) {
     digitalWrite(13, !digitalRead(13));
     lastCicle = millis();

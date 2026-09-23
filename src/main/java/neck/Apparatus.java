@@ -85,19 +85,19 @@ public abstract class Apparatus {
     /**
      * Obtém a descrição das ações disponibilizadas pelo apparatus.
      */
-    protected abstract JSONObject getActions();
+    protected abstract JSONObject requestActions();
 
 
     /**
      * Obtém o know-how disponibilizado pelo apparatus.
      */
-    protected abstract JSONObject getKnowHow();
+    protected abstract JSONObject requestKnowHow();
 
 
     /**
      * Obtém as percepções produzidas pelo apparatus.
      */
-    public abstract JSONObject perceive();
+    protected abstract JSONObject requestPercepts();
 
 
     /**
@@ -141,7 +141,7 @@ public abstract class Apparatus {
 
 
     private void loadBodyActions() {
-        JSONObject jsonObject = getActions();
+        JSONObject jsonObject = requestActions();
 
         if (jsonObject == null) {
             return;
@@ -182,15 +182,15 @@ public abstract class Apparatus {
        ============================================================ */
 
     public void sense() {
-        JSONObject bodyResponse = perceive();
+        JSONObject bodyResponse = requestPercepts();
         if (bodyResponse == null) {return;}
         loadConnectionInfo(bodyResponse);
-        loadPercepts(bodyResponse);
+        loadPerceptsToList(bodyResponse);
         loadDesires(bodyResponse);
     }
 
 
-    private Literal getLiteralWithSourceBBAnnotation(Literal literal, PerceptionType perceptionType, String element) {
+    private Literal addAnnotationInPercept(Literal literal, PerceptionType perceptionType, String elementName) {
         Literal out = Literal.parseLiteral(Body.BODY_NAMESPACE + "::" + literal);
         out.addAnnot(
                 ASSyntax.createStructure(
@@ -199,12 +199,12 @@ public abstract class Apparatus {
                 )
         );
 
-        if (element != null && !element.isBlank()){
+        if (elementName != null && !elementName.isBlank()){
             out.addAnnot(
                     ASSyntax.createStructure(
                             "element",
                             ASSyntax.createAtom(getApparatusName()),
-                            ASSyntax.createAtom(element)
+                            ASSyntax.createAtom(elementName)
                     )
             );
         }
@@ -259,25 +259,14 @@ public abstract class Apparatus {
     }
 
 
-    private void loadPercepts(JSONObject bodyResponse) {
+    private void loadPerceptsToList(JSONObject bodyResponse) {
         if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) {return;}
 
         JSONObject percepts = bodyResponse.getJSONObject("percepts");
+        addPerceptsByPerceptionsType(percepts,PerceptionType.EXTEROCEPTION);
+        addPerceptsByPerceptionsType(percepts,PerceptionType.INTEROCEPTION);
+        addPerceptsByPerceptionsType(percepts,PerceptionType.PROPRIOCEPTION);
 
-        addPerceptsByPerceptionsType(
-                percepts,
-                PerceptionType.EXTEROCEPTION
-        );
-
-        addPerceptsByPerceptionsType(
-                percepts,
-                PerceptionType.INTEROCEPTION
-        );
-
-        addPerceptsByPerceptionsType(
-                percepts,
-                PerceptionType.PROPRIOCEPTION
-        );
     }
 
 
@@ -300,13 +289,13 @@ public abstract class Apparatus {
             /* elemento do apparatus */
             String elementName = jsonObject.getString("element");
 
-            addPercept(belief, perceptionType, elementName);
+            addPerceptOnList(belief, perceptionType, elementName);
         }
     }
 
 
-    private void addPercept(Literal literal, PerceptionType type, String element) {
-        Literal annotated = getLiteralWithSourceBBAnnotation(literal, type, element);
+    private void addPerceptOnList(Literal literal, PerceptionType type, String element) {
+        Literal annotated = addAnnotationInPercept(literal, type, element);
         switch (type) {
             case EXTEROCEPTION  -> exteroceptions.add(annotated);
             case INTEROCEPTION  -> interoceptions.add(annotated);
@@ -375,7 +364,7 @@ public abstract class Apparatus {
         litINFO.addTerm(apparatus);
         litINFO.addTerm(apparatusID);
 
-        addPercept(
+        addPerceptOnList(
                 litINFO,
                 PerceptionType.INTEROCEPTION,
                 null
@@ -444,7 +433,7 @@ public abstract class Apparatus {
 
         apparatusPlans.clear();
 
-        JSONObject jsonObject = getKnowHow();
+        JSONObject jsonObject = requestKnowHow();
 
         if (jsonObject == null
                 || !jsonObject.has("knowHow")) {

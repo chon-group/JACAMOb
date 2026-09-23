@@ -1,0 +1,137 @@
+@startuml
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle folder
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+package "neck2arduino" {
+
+    ' ============================================================
+    ' LIBS
+    ' ============================================================
+
+    package "libs" {
+
+        package "ArduinoJson" {
+            class "JsonDocument" as JsonDocument 
+        }
+
+        package "JsonOverSLP" {
+            class "JSON_SLP" as JSON_SLP {
+            }
+        }
+    }
+
+
+    ' ============================================================
+    ' NECK
+    ' ============================================================
+
+    package "NECK" as NECK_CPP {
+
+        class "Apparatus" as Apparatus #MistyRose {
+            - _jslp : JSON_SLP
+            - _percepts : PerceptionEntry*
+
+            + Apparatus(name : const char*)
+
+            + inhabitance() : void
+            + streamPercepts() : void
+
+            + addPerception(elementName : const char*, perceptName : const char*, type : PerceptionType, fn : PerceptionFn) : void
+        }
+
+
+        ' PRECISA SER REVISADO ISSO... 
+        ' class "ElementDef" as ElementDef <<struct>> #MistyRose {
+        '     + name : const char*
+        '     + apparatus : Apparatus*
+
+        '     + ElementDef(n : const char*, a : Apparatus*)
+        ' }
+
+
+        class "PerceptionEntry" as CppPerceptionEntry <<struct>> #MistyRose {
+            + elementName : const char*
+            + perceptName : const char*
+            + type : PerceptionType
+            + fn : PerceptionFn
+            + next : PerceptionEntry*
+        }
+
+
+        enum "PerceptionType" as CppPerceptionType #MistyRose {
+            INTEROCEPTION
+            PROPRIOCEPTION
+            EXTEROCEPTION
+        }
+
+
+        class "PerceptReturn" as CppPerceptReturn <<struct>> #MistyRose {
+            + status : PerceptionResponse
+            + hasArgs : bool
+            + args : NECKArgs
+        }
+
+
+        enum "PerceptionResponse" as CppPerceptionResponse #MistyRose {
+            PERCEPTED
+            UNAVAILABLE
+            UNCHANGED
+        }
+
+        class "PerceptionFn" as PerceptionFn <<typedef>> #MistyRose {
+            PerceptReturn (*)()
+        }
+
+        class "NECKArgs" as NECKArgs  #MistyRose{
+            + MAX : uint8_t = 8
+
+            + NECKArgs()
+            + clear() : void
+            + size() : uint8_t
+
+            + add(x : bool) : bool
+            + add(x : int32_t) : bool
+            + add(x : uint32_t) : bool
+            + add(x : float) : bool
+            + add(x : const char*) : bool
+            + add(x : String&) : bool
+        }
+
+
+        ' ========================================================
+        ' RELACIONAMENTOS INTERNOS
+        ' ========================================================
+
+     
+        ' Apparatus "1" <-- ElementDef
+
+        Apparatus "1" *-- "0..*" CppPerceptionEntry
+
+        CppPerceptionEntry --> CppPerceptionType 
+
+
+        CppPerceptionEntry --> PerceptionFn
+        PerceptionFn ..> CppPerceptReturn  
+        CppPerceptReturn *-- NECKArgs 
+        CppPerceptReturn --> CppPerceptionResponse 
+        
+    }
+
+
+    ' ============================================================
+    ' DEPENDÊNCIAS EXTERNAS
+    ' ============================================================
+ 
+
+    Apparatus *-- JSON_SLP
+    JSON_SLP ..> JsonDocument
+}
+
+@enduml
+

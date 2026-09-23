@@ -16,12 +16,12 @@
 
 +constitutive_rule(rosie, robotic_worker, true, true) <- .print(">>> INSTITUTION: The constitutive rule recognizes Rosie as a robotic worker.").
 
-+!startWork <- ext::tooglePower; !!monitorTemp.
++!startWork <- ext::togglePower; !!monitorTemp.
 
 +!monitorTemp <- .wait(1500); !decide; !monitorTemp.
    
 +!decide: temperature(T)[source(percept)] & T > 70 & powerStatus(P)[source(percept)] & P=="On" <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")"); ext::tooglePower.
+    .print("My mind: temperature(",T,") + powerStatus(",P,")"); ext::togglePower.
 
 +!decide: temperature(T)[source(percept)] & T > 60 & powerStatus(P)[source(percept)] & P=="Off" <- 
     .print("Waiting for decreasing temperature... SUCCESS!"); .stopMAS.
