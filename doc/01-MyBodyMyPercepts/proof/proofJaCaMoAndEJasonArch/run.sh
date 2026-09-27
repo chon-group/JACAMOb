@@ -27,7 +27,7 @@ else
     echo "The computer has all required dependencies"
 fi
 
-clear
+
 
 echo "Python ENV"
 cd src/bdy/

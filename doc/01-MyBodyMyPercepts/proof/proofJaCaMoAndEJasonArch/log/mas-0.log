@@ -1,0 +1,360 @@
+The computer has all required dependencies
+Python ENV
+[PythonBridgeBody] Preparing environment...
+Starting the Simulation!
+Warning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+
+------------------------------------------------- 
+                   NEW CIRCUIT                    
+ 
+
+ "    Loading Compilers at:" 
+ "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+ 
+"        Found Compiler: " "AScript" 
+"        Found Compiler: " "Arduino" 
+"        Found Compiler: " "Avrgcc" 
+"        Found Compiler: " "Dummy C" 
+"        Found Compiler: " "GcBasic" 
+"        Found Compiler: " "Make_avrgcc" 
+"        Found Compiler: " "Mplabx_xc8" 
+"        Found Compiler: " "Mplabx_xc8_12F" 
+"        Found Compiler: " "Mplabx_xc8_16Fe" 
+"        Found Compiler: " "SDCC-PIC" 
+"        Found Compiler: " "SDCC" 
+
+ "    Loading Compilers at:" 
+ "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+ 
+"        Found Compiler: " "Asem-51" 
+"        Found Compiler: " "Avra" 
+"        Found Compiler: " "Avrasm2" 
+"        Found Compiler: " "Avrgcc-asm" 
+"        Found Compiler: " "Gavrasm" 
+"        Found Compiler: " "GpAsm" 
+"        Found Compiler: " "sdas8051(SDCC)" 
+"        Found Compiler: " "SDCC_asm" 
+"        Found Compiler: " "SjASMPlus" 
+"        Found Compiler: " "Vasm-6502" 
+
+ "    Loading Component sets at:" 
+ "/opt/group.chon/simulide/data" 
+ 
+"        Loaded Component set:           " "arduinos.xml" 
+"        Loaded Component set:           " "avr.xml" 
+"        Loaded Component set:           " "dig_pot.xml" 
+"        Loaded Component set:           " "i51.xml" 
+"        Loaded Component set:           " "ic74.xml" 
+"        Loaded Component set:           " "icCD.xml" 
+"        Loaded Component set:           " "keys.xml" 
+"        Loaded Component set:           " "led_display.xml" 
+"        Loaded Component set:           " "mcs65.xml" 
+"        Loaded Component set:           " "pics.xml" 
+"        Loaded Component set:           " "scripted.xml" 
+"        Loaded Component set:           " "shields.xml" 
+"        Loaded Component set:           " "ternary.xml" 
+"        Loaded Component set:           " "tools.xml" 
+"        Loaded Component set:           " "unsorted.xml" 
+"        Loaded Component set:           " "ussr.xml" 
+"        Loaded Component set:           " "z80.xml" 
+
+ 
+
+------------------------------------------------- 
+                   NEW CIRCUIT                    
+ 
+        Initializing "3@mega328-109" 
+        "3@mega328-109" Initialized 
+ 
+Loading hex file:
+ "/home/nilson/chonGroup/JACAMOb/doc/01-MyBodyMyPercepts/proof/proofJaCaMoAndEJasonArch/src/bdy/simulation/locomotion.hex" 
+ 
+Firmware successfully loaded
+ 
+        Initializing "92@mega328-109" 
+        "92@mega328-109" Initialized 
+ 
+Loading hex file:
+ "/home/nilson/chonGroup/JACAMOb/doc/01-MyBodyMyPercepts/proof/proofJaCaMoAndEJasonArch/src/bdy/simulation/duster.hex" 
+ 
+Firmware successfully loaded
+ 
+        Initializing "242@m328 TQFP-269" 
+        "242@m328 TQFP-269" Initialized 
+ 
+Loading hex file:
+ "/home/nilson/chonGroup/JACAMOb/doc/01-MyBodyMyPercepts/proof/proofJaCaMoAndEJasonArch/src/bdy/simulation/tempEmulator.hex" 
+ 
+Firmware successfully loaded
+ 
+Circuit Loaded:  
+"rosie.sim1" 
+PLEASE, start the execution in simulIDE. After, press ENTER to continue
+Starting Circuit Simulation...
+ 
+Connected to "/dev/ttyExogenous0" 
+Connected to "/dev/ttyExogenous1" 
+    Simulation Running... 
+ 
+
+PLEASE, start the execution in simulIDE. After, press ENTER to continue
+PLEASE, start the execution in simulIDE. After, press ENTER to continue
+Connecting the simulated body
+Waiting for Rosie's body...
+[PythonBridgeBody] Connecting Rosie's body...
+[PythonBridgeBody] Starting Rosie's body...
+[PythonBridgeBody] Connecting locomotion at /dev/ttyEmulatedPort1...
+[PythonBridgeBody] locomotion connected.
+[PythonBridgeBody] Connecting duster at /dev/ttyEmulatedPort0...
+[PythonBridgeBody] duster connected.
+[PythonBridgeBody] Waiting for EJasonArch at localhost:6969...
+Rosie's body is ready!
+Starting the MAS!
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :buildJCMDeps
+reading from file proofJaCaMoAndEJasonArch.jcm ...
+file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+
+JCM packages dependencies updated at .jcm-deps.gradle
+
+BUILD SUCCESSFUL in 149ms
+2 actionable tasks: 1 executed, 1 up-to-date
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+[PythonBridgeBody] EJasonArch connected from ('127.0.0.1', 43090)
+[PythonBridgeBody] Agent: rosie
+[PythonBridgeBody] Ready.
+
+> Task :run
+Runtime Services (RTS) is running at 127.0.1.1:35613
+Agent mind inspector is running at http://127.0.1.1:3272
+CArtAgO Http Server running on http://127.0.1.1:3273
+[Connecting to socket...]
+[Connection established]
+Moise Http Server running on http://127.0.1.1:3271
+[Moise] OrgBoard jetsonsFamily created.
+[Moise] scheme created: cleaning: cleaningScheme using artifact SchemeBoard
+[Moise] group created: householdStaff: householdGroup using artifact ora4mas.nopl.GroupBoard
+[Cartago] Workspace livingRoom created.
+[Cartago] artifact airConditioner: jetsons.home.AirConditioner() at livingRoom created.
+[Cartago] artifact presenceSensor: jetsons.home.PresenceSensor() at livingRoom created.
+[rosie] join workspace /main/jetsonsFamily: done
+[rosie] join workspace /main/livingRoom: done
+[rosie] focusing on artifact presenceSensor (at workspace /main/livingRoom) using namespace default
+[rosie] focus on presenceSensor: done
+[rosie] focusing on artifact airConditioner (at workspace /main/livingRoom) using namespace default
+[rosie] focus on airConditioner: done
+[rosie] focusing on artifact householdStaff (at workspace /main/jetsonsFamily) using namespace default
+[rosie] focus on householdStaff: done
+[rosie] focusing on artifact jetsonsFamily (at workspace /main/jetsonsFamily) using namespace default
+[rosie] focus on jetsonsFamily: done
+[rosie] I am obliged to commit to cleaningMission on cleaning... doing so
+[rosie] Starting to clean the living room...
+[EJasonArch] togglePower
+[rosie] My mind: temperature(20.68) + powerStatus(On)
+[rosie] My mind: temperature(26.35) + powerStatus(On)
+[rosie] My mind: temperature(26.35) + powerStatus(On)
+[rosie] My mind: temperature(26.35) + powerStatus(On)
+[rosie] My mind: temperature(32.32) + powerStatus(On)
+[rosie] My mind: temperature(32.32) + powerStatus(On)
+[rosie] My mind: temperature(32.32) + powerStatus(On)
+[rosie] My mind: temperature(32.32) + powerStatus(On)
+[rosie] My mind: temperature(38.28) + powerStatus(On)
+[rosie] My mind: temperature(38.28) + powerStatus(On)
+[rosie] My mind: temperature(38.28) + powerStatus(On)
+[rosie] My mind: temperature(40.53) + powerStatus(On)
+[rosie] My mind: temperature(40.53) + powerStatus(On)
+[rosie] My mind: temperature(40.53) + powerStatus(On)
+[rosie] My mind: temperature(46.1) + powerStatus(On)
+[rosie] My mind: temperature(46.1) + powerStatus(On)
+[rosie] My mind: temperature(46.1) + powerStatus(On)
+[rosie] My mind: temperature(46.1) + powerStatus(On)
+[rosie] My mind: temperature(51.38) + powerStatus(On)
+[rosie] My mind: temperature(51.38) + powerStatus(On)
+[rosie] My mind: temperature(51.38) + powerStatus(On)
+[rosie] My mind: temperature(57.73) + powerStatus(On)
+[rosie] My mind: temperature(57.73) + powerStatus(On)
+[rosie] My mind: temperature(57.73) + powerStatus(On)
+[rosie] My mind: temperature(61.74) + powerStatus(On)
+[rosie] My mind: temperature(61.74) + powerStatus(On)
+[rosie] My mind: temperature(61.74) + powerStatus(On)
+[rosie] My mind: temperature(68.78) + powerStatus(On)
+[rosie] My mind: temperature(68.78) + powerStatus(On)
+[rosie] My mind: temperature(68.78) + powerStatus(On)
+[rosie] My mind: temperature(68.78) + powerStatus(On)
+[rosie] My mind: temperature(75.91) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(75.91) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(75.72) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(79.53) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(79.04) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(82.66) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(78.06) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(82.76) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(78.65) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(83.73) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(81.29) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(83.34) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(82.37) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(87.74) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(82.46) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(85.2) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(81.09) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(85.79) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(82.46) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(86.47) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(85.4) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(89.21) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(82.85) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(90.77) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(87.25) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(94.78) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(86.96) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(95.37) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(87.94) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(94.49) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(92.04) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(92.73) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(90.28) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(95.46) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(94.29) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(95.17) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(92.92) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(97.52) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(92.83) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(98.79) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(96.44) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(99.67) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(95.95) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(97.81) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(98.3) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(98.59) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] My mind: temperature(96.25) + powerStatus(On)
+[EJasonArch] togglePower
+[rosie] The robot burned out! temperature > 100ºC -- FAIL!!!
+[SchemeBoard] rosie has quit, mission cleaningMission removed by the platform!
+[GroupBoard] rosie has quit, role housekeeper removed by the platform!
+cartago.CartagoException: User not in workspace.
+        at cartago.Workspace.quitAgent(Workspace.java:692)
+        at cartago.AgentBody.quit(AgentBody.java:90)
+        at cartago.AgentSession.closeSession(AgentSession.java:199)
+        at jaca.CAgentArch.stop(CAgentArch.java:154)
+        at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+        at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+        at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+        at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+        at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+        at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+        at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+        at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+        at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+        at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+        at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+        at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+cartago.CartagoException: User not in workspace.
+        at cartago.Workspace.quitAgent(Workspace.java:692)
+        at cartago.AgentBody.quit(AgentBody.java:90)
+        at cartago.AgentSession.closeSession(AgentSession.java:199)
+        at jaca.CAgentArch.stop(CAgentArch.java:154)
+        at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+        at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+        at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+        at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+        at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+        at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+        at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+        at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+        at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+        at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+        at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+        at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+cartago.CartagoException: User not in workspace.
+        at cartago.Workspace.quitAgent(Workspace.java:692)
+        at cartago.AgentBody.quit(AgentBody.java:90)
+        at cartago.AgentSession.closeSession(AgentSession.java:199)
+        at jaca.CAgentArch.stop(CAgentArch.java:154)
+        at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+        at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+        at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+        at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+        at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+        at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+        at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+        at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+        at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+        at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+        at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+        at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+cartago.ArtifactNotAvailableException
+        at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+        at cartago.Workspace.lookupArtifact(Workspace.java:948)
+        at cartago.Workspace.closeSession(Workspace.java:453)
+        at cartago.AgentSession.closeSession(AgentSession.java:206)
+        at jaca.CAgentArch.stop(CAgentArch.java:154)
+        at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+        at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+        at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+        at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+        at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+        at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+        at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+        at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+        at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+        at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+        at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+        at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+BUILD SUCCESSFUL in 1m 37s
+2 actionable tasks: 1 executed, 1 up-to-date
+MAS Stopped!
+Stopping the Python (PID: 43206)...
+Stopping the Simulation (PID: 43186)...

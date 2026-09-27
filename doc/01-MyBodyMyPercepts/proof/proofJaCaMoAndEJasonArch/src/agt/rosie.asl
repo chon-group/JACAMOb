@@ -11,25 +11,23 @@
 
 +!startWork <- 
     !togglePower; 
+    .wait(2000);
     !!monitorBodyTemp.
 
-+!monitorBodyTemp <- 
-    !decide; 
-    .wait(500); 
-    !monitorBodyTemp.
-
--!decide.
++!monitorBodyTemp <-  !decide; .wait(250); !monitorBodyTemp.
 
 +status("burnt") <- .print("The robot burned out! temperature > 100ºC -- FAIL!!!"); .stopMAS.
 
 /* new code */
 +!togglePower <- ext::togglePower.
   
-+!decide: default::temperature(T)[source(percept)] & T > 70 & default::powerStatus(P)[source(percept)] & P=="On" <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")"); !togglePower.
++!decide: default::temperature(T)[source(percept)] & default::powerStatus(P)[source(percept)] 
+& P=="On" & T > 70 <- 
+    .print("My mind: temperature(",T,") + powerStatus(",P,")"); -+current(T); !togglePower.
 
-+!decide: default::temperature(T)[source(percept)] & T > 60 & default::powerStatus(P)[source(percept)] & P=="Off" <- 
++!decide: default::temperature(T)[source(percept)] & default::powerStatus(P)[source(percept)] 
+& current(C)[source(self)] & P=="Off" & T < C <- 
     .print("Waiting for decreasing temperature... SUCCESS!"); .stopMAS.
     
 +!decide: default::temperature(T)[source(percept)] & default::powerStatus(P)[source(percept)] <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")").
+    .print("My mind: temperature(",T,") + powerStatus(",P,")"); -+current(T).

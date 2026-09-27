@@ -74,7 +74,7 @@ public class EJasonArch extends AgArch {
     //System.out.println(action.toString());
     if(action.getActionTerm().getNS().toString().equals("ext")){
       waitingConfirmList.put(action,actionToString(action));
-      System.out.println(actionToString(action));
+      System.out.println("[EJasonArch] "+actionToString(action));
       boolean done = bulb.bulbSend(encodeAction(actionToString(action)));
 
       if(!done){
