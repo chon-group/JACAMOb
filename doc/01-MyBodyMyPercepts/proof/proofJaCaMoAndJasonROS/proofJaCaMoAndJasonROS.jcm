@@ -20,6 +20,8 @@ mas proofJaCaMoAndJasonROS {
     ag-arch: embedded.mas.bridges.jacamo.DefaultEmbeddedAgArch
   }
 
+  //agent bob
+
   workspace livingRoom {
     artifact presenceSensor : jetsons.home.PresenceSensor()
     artifact airConditioner : jetsons.home.AirConditioner()

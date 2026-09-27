@@ -15,21 +15,21 @@
 
 +!monitorBodyTemp <- 
     !decide; 
-    .wait(500); 
+    .wait(250); 
     !monitorBodyTemp.
-
--!decide.
 
 +status("burnt") <- .print("The robot burned out! temperature > 100ºC -- FAIL!!!"); .stopMAS.
 
-/* new code */
-+!togglePower <- embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("duster","togglePower",[]).
-   
-+!decide: default::temperature(T)[source(percept)] & T > 70 & default::powerStatus(P)[source(percept)] & P=="On" <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")"); !togglePower.
+/* new code */ 
++!decide: default::temperature(T)[source(percept),device(duster)] & default::powerStatus(P)[source(percept),device(duster)] 
+& P=="On" & T > 70 <- 
+    .print("My mind: temperature(",T,") + powerStatus(",P,") \n togglePower"); !togglePower; -+current(T).
 
-+!decide: default::temperature(T)[source(percept)] & T > 60 & default::powerStatus(P)[source(percept)] & P=="Off" <- 
++!decide: default::temperature(T)[source(percept),device(duster)] & default::powerStatus(P)[source(percept),device(duster)] 
+& current(C)[source(self)] & P=="Off" & T < C <- 
     .print("Waiting for decreasing temperature... SUCCESS!"); .stopMAS.
     
-+!decide: default::temperature(T)[source(percept)] & default::powerStatus(P)[source(percept)] <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")").
++!decide: default::temperature(T)[source(percept),device(duster)] & default::powerStatus(P)[source(percept),device(duster)] <- 
+    .print("My mind: temperature(",T,") + powerStatus(",P,")"); -+current(T).
+
++!togglePower <- embedded.mas.bridges.jacamo.defaultEmbeddedInternalAction("duster","togglePower",[]).

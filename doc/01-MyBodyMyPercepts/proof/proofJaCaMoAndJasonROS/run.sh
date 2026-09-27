@@ -3,7 +3,7 @@ JACAMO="/usr/bin/jacamo"
 SIMULIDE="/usr/bin/chonos-simulide"
 HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $HERE
-clear
+
 
 if [[ ! -f "$JACAMO" || ! -f "$SIMULIDE" ]]
 then
@@ -20,14 +20,14 @@ else
 fi
 
 
-clear
+
 echo "Starting the Simulation!"
 cd src/bdy/simulation/
 chonos-simulide rosie.sim1 &
 SIMULATOR_PID=$!
 cd ../../../
 sleep 3
-clear
+
 until read -r -t 2 -p "PLEASE, start the execution in simulIDE. After, press ENTER to continue"
 do
     echo "" 
