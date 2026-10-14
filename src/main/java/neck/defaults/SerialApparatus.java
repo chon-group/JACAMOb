@@ -2,7 +2,7 @@ package neck.defaults;
 
 import jason.asSyntax.Term;
 import neck.Apparatus;
-import neck.model.BodyResponse;
+import neck.model.ApparatusResponse;
 import neck.model.SerialCommStatus;
 import neck.util.SerialComm;
 import neck.util.Util;
@@ -59,9 +59,7 @@ public class SerialApparatus extends Apparatus {
 
     @Override
     public boolean getStatus() {
-
-        return serialComm.getPortStatus()
-                == SerialCommStatus.ON;
+        return serialComm.getPortStatus() == SerialCommStatus.ON;
     }
 
 
@@ -88,14 +86,14 @@ public class SerialApparatus extends Apparatus {
 
 
     @Override
-    public BodyResponse act(Term actionTerm) {
+    public ApparatusResponse act(Term actionTerm) {
 
         JSONObject response = request(
                 Util.getFunctor(actionTerm),
                 Util.argsOfTermToObjects(actionTerm)
         );
 
-        return BodyResponse.jsonObjectToBodyResponse(
+        return ApparatusResponse.toApparatusResponse(
                 response
         );
     }
@@ -129,7 +127,7 @@ public class SerialApparatus extends Apparatus {
 
     @Override
     public JSONObject embody() {
-        return request("embody", null);
+        return request("getPercepts", null);
     }
 
 
@@ -268,11 +266,11 @@ public class SerialApparatus extends Apparatus {
                 );
             }
 
-            if (record.has("bodyResponse")) {
+            if (record.has("response")) {
 
                 meta.put(
-                        "bodyResponse",
-                        record.get("bodyResponse")
+                        "response",
+                        record.get("response")
                 );
             }
 

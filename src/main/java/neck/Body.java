@@ -1,15 +1,17 @@
 package neck;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jason.JasonException;
 import jason.asSemantics.Event;
+import jason.asSemantics.IntendedMeans;
 import jason.asSemantics.Intention;
 import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.*;
-import neck.model.BodyResponse;
+import neck.model.ApparatusResponse;
 
 public class Body {
     private Logger logger;
@@ -34,7 +36,7 @@ public class Body {
         String address = implementation.getAddress();
 
         try{
-            if (!"executed".equals(implementation.embody().getString("bodyResponse"))) {
+            if (!"executed".equals(implementation.embody().getString("response"))) {
                 logger.severe("Failed to embody Apparatus [" + apparatusName + "]");
                 return false;
             }
@@ -120,28 +122,23 @@ public class Body {
         }
 
         /* função de revisão de percepções */
-        bodyPerceptionRevisionFuntion(transitionSystem,listOfPerceptions);
+        bodyPerceptionRevisionFunction(transitionSystem,listOfPerceptions);
 
-        for (Literal desire : listOfDesires) {
-            Trigger trigger = new Trigger(Trigger.TEOperator.add, Trigger.TEType.achieve, desire);
-            Event ev = new Event(trigger);
-            transitionSystem.updateEvents(ev);
-            logger.fine("\t NEW desire..." + ev.toString());
-        }
-        listOfDesires = null;
+        /* função de revisão de desejos */
+        bodyDesireRevisionFunction(transitionSystem, listOfDesires);
 
-       logger.fine("Body update percepts, finished...");
+        logger.fine("Body update percepts, finished...");
     }
 
 
 
-    public BodyResponse act(Term actionTerm, Atom apparatusName){
+    public ApparatusResponse act(Term actionTerm, Atom apparatusName){
         Apparatus apparatus = null;
 
         if(apparatusName == null) apparatus = getApparatusBySupportedAction(actionTerm);
         else apparatus = getApparatusByName(apparatusName);
 
-        if(apparatus == null) return BodyResponse.UNKNOWN;
+        if(apparatus == null) return ApparatusResponse.UNKNOWN;
 
         return apparatus.act(actionTerm);
     }
@@ -250,7 +247,7 @@ public class Body {
     }
 
     /* helpers */
-    private void bodyPerceptionRevisionFuntion(TransitionSystem transitionSystem, List<Literal> listOfPerceptions){
+    private void bodyPerceptionRevisionFunction(TransitionSystem transitionSystem, List<Literal> listOfPerceptions){
 
         // Lista as crenças atuais de myBody::
         List<Literal> currentBodyBB = new ArrayList<>();
@@ -373,5 +370,48 @@ public class Body {
             if (perceptionBase.equals(beliefInBB)) return false;
         }
         return true;
+    }
+
+    /* desejos*/
+    private void bodyDesireRevisionFunction(TransitionSystem transitionSystem, List<Literal> listOfDesires){
+        for (Literal desire : listOfDesires) {
+            if(!isDesireAlreadyIntentioned(desire, transitionSystem.getC().getAllIntentions())
+                    && !isDesireAlreadyEvent(desire, transitionSystem.getC().getEvents().iterator())){
+                Trigger trigger = new Trigger(Trigger.TEOperator.add, Trigger.TEType.achieve, desire);
+                Event ev = new Event(trigger);
+                transitionSystem.updateEvents(ev);
+                logger.fine("\t NEW desire..." + ev.toString());
+            }
+        }
+    }
+
+    private boolean isSameDesire(Literal desire, Literal intention){
+        return (desire.getNS().equals(intention.getNS())
+                && desire.getFunctor().equals(intention.getFunctor())
+                && desire.getAnnots("element").equals(intention.getAnnots("element")));
+    }
+
+    private boolean isDesireAlreadyIntentioned(Literal desire, Iterator<Intention> intentions ){
+        while (intentions.hasNext()) {
+            for (IntendedMeans im : intentions.next()) {
+                if (isSameDesire(desire, im.getTrigger().getLiteral())){
+                    //System.out.println("JÁ É INTENÇÃO: "+desire.toString());
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isDesireAlreadyEvent(Literal desire, Iterator<Event> events) {
+        while (events.hasNext()) {
+            Event event = events.next();
+            Literal eventDesire = event.getTrigger().getLiteral();
+            if (isSameDesire(desire, eventDesire)) {
+                //System.out.println("JÁ É EVENTO: "+desire.toString());
+                return true;
+            }
+        }
+        return false;
     }
 }

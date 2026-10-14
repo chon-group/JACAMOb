@@ -1,82 +1,86 @@
+#include <Servo.h> // https://docs.arduino.cc/libraries/servo/ 
+const byte Led = 13, Green = 10, Yellow = 11, Red = 12; 
+const byte TempSensor = A0, servoPin = 3; 
+
+Servo servoMotor;
+const int leftAngle = 20, rightAngle = 220, restAngle = 90;
+
+const int movementInterval = 200;
+unsigned long lastMovement = 0;
+float temp = 0;
+bool cleaning = false, movingLeft = true;
+
+// TogglePower
+void togglePower(){
+    cleaning = !cleaning;
+    digitalWrite(Led, cleaning);
+    servoMotor.write(cleaning ? leftAngle : restAngle);
+}
+
+// Temperature normalized between 20 and 120 degrees
+void getTemp(){
+    temp = 20.0 + (analogRead(TempSensor) / 1023.0) * 100.0;
+}
+// Broom-arm movement
+void broomArmMovement(){
+    if (!cleaning || temp >= 110) return;
+
+    unsigned long now = millis();
+    if ((now - lastMovement) < movementInterval) return;
+
+    servoMotor.write(movingLeft ? leftAngle : rightAngle);
+    lastMovement = now;
+    movingLeft = !movingLeft;
+}
+
+// Temperature indicator LEDs
+void manageLeds(){
+ if (temp > 100 && !digitalRead(Red)){setLeds(LOW, LOW, HIGH);}
+ else if (temp > 70 && !digitalRead(Yellow)){setLeds(LOW, HIGH, LOW);}
+ else if (temp <= 70 && !digitalRead(Green)){setLeds(HIGH, LOW, LOW);}
+}
+void setLeds(bool greenValue, bool yellowValue, bool redValue){
+    digitalWrite(Green, greenValue);
+    digitalWrite(Yellow, yellowValue);
+    digitalWrite(Red, redValue);
+}
+
+/*new*/
 #include <Javino.h>   /* https://github.com/chon-group/javino2arduino */
-#include <Servo.h>    /* https://docs.arduino.cc/libraries/servo/ */
-#define PinLed 	   13	// Led 
-#define PinGreen   10	// Alert
-#define PinYellow  11	// Alert
-#define PinRed     12	// Alert
-#define PinSensor  A0   // Temp sensor
-#define servoPin   3		// Servo Motor
-
 Javino javino;
-Servo servoMotor; 
-float temperature = 0;
-int extraTemp = 0;
-bool cleanning = false; 
-
-const int anguloEsq = 20;   // ajuste conforme posição esquerda
-const int anguloDir = 220;  // ajuste conforme posição direita
-const int anguloDescanso = 90;
-
-const unsigned long intervaloMovimento = 200;
-unsigned long ultimoMovimento = 0;
-bool movimentoEsquerda = true;
 
 void serialEvent(){javino.readSerial();}
 
 void setup() {
-  pinMode(PinLed, OUTPUT);
-  pinMode(PinGreen, OUTPUT);
-  pinMode(PinYellow, OUTPUT);
-  pinMode(PinRed, OUTPUT);
+  pinMode(Led, OUTPUT);
+  pinMode(Green, OUTPUT);
+  pinMode(Yellow, OUTPUT);
+  pinMode(Red, OUTPUT);
   pinMode(servoPin,  OUTPUT);      
   servoMotor.attach(servoPin);
-  servoMotor.write(anguloDescanso);  
+  servoMotor.write(restAngle);  
   javino.start(9600);
 }
 
 void loop() {
+  getTemp();
+  broomArmMovement();
+	manageLeds();
+  javinoRun();
+}
 
-	if (javino.availableMsg()) {
-    	String msg = javino.getMsg();
-		if (msg == "togglePower"){
-			if(digitalRead(PinLed)){
-				digitalWrite(PinLed, LOW);    
-				cleanning = false;
-				servoMotor.write(anguloDescanso);
-			}else{
-				digitalWrite(PinLed, HIGH);
-				cleanning = true;
-				servoMotor.write(anguloEsq);
-			}		
-		}
-	    else if (msg == "TEMPINFO") {javino.sendMsg(String(temperature));}
-	    else if (msg == "POWERINFO") {
-			if(digitalRead(PinLed)){
-				javino.sendMsg("On");
-			}else{
-				javino.sendMsg("Off");
-			}
-		}
-	}
 
-	/* every cycle */
-	temperature = 20.0 + (analogRead(PinSensor) / 1023.0) * 100.0;
-	
-	 if(temperature > 100 & !digitalRead(PinRed)){digitalWrite(PinGreen,LOW); digitalWrite(PinYellow,LOW); digitalWrite(PinRed,HIGH);}
-	 else if(temperature > 70 & !digitalRead(PinYellow)){digitalWrite(PinGreen,LOW); digitalWrite(PinYellow,HIGH); digitalWrite(PinRed,LOW);}
-	 else if(temperature <= 70 & !digitalRead(PinGreen)){digitalWrite(PinGreen,HIGH); digitalWrite(PinYellow,LOW); digitalWrite(PinRed,LOW);}
-	
-	
-	if(cleanning & temperature < 110){
-	 unsigned long agora = millis();
-	 if (agora - ultimoMovimento >= intervaloMovimento) {
-	  ultimoMovimento = agora;
-	  if (movimentoEsquerda) {
-	    servoMotor.write(anguloEsq);
-	  } else {
-	    servoMotor.write(anguloDir);
-	  }
-	 movimentoEsquerda = !movimentoEsquerda;
-	 }
-	}
+void javinoRun(){
+  if (javino.availableMsg()) {
+      String msg = javino.getMsg();
+    if (msg == "togglePower"){togglePower();}
+      else if (msg == "TEMPINFO") {javino.sendMsg(String(temp));}
+      else if (msg == "POWERINFO") {
+      if(digitalRead(Led)){
+        javino.sendMsg("On");
+      }else{
+        javino.sendMsg("Off");
+      }
+    }
+  }
 }

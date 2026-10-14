@@ -1,0 +1,88 @@
+PLEASE, start the execution in simulIDE. After, press ENTER to continue
+Starting the MAS!
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :buildJCMDeps
+reading from file proofJaCaMoAndJavino.jcm ...
+file proofJaCaMoAndJavino.jcm parsed successfully!
+
+JCM packages dependencies updated at .jcm-deps.gradle
+
+BUILD SUCCESSFUL in 133ms
+2 actionable tasks: 1 executed, 1 up-to-date
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :run
+Runtime Services (RTS) is running at 127.0.1.1:46467
+Agent mind inspector is running at http://127.0.1.1:3272
+CArtAgO Http Server running on http://127.0.1.1:3273
+Moise Http Server running on http://127.0.1.1:3271
+[Moise] OrgBoard jetsonsFamily created.
+[Moise] scheme created: cleaning: cleaningScheme using artifact SchemeBoard
+[Moise] group created: householdStaff: householdGroup using artifact ora4mas.nopl.GroupBoard
+[Cartago] Workspace myBody created.
+[Javino] Using version 1.6.7 https://javino.chon.group/
+[Cartago] artifact duster: myBody.Duster("/dev/ttyEmulatedPort0") at myBody created.
+[JAVINO] Starting: /dev/ttyEmulatedPort0
+[Javino] Using version 1.6.7 https://javino.chon.group/
+[Cartago] artifact locomotion: myBody.Locomotion("/dev/ttyEmulatedPort1") at myBody created.
+[JAVINO] Starting: /dev/ttyEmulatedPort1
+[Cartago] Workspace livingRoom created.
+[Cartago] artifact airConditioner: jetsons.home.AirConditioner() at livingRoom created.
+[Cartago] artifact presenceSensor: jetsons.home.PresenceSensor() at livingRoom created.
+[rosie] join workspace /main/jetsonsFamily: done
+[rosie] join workspace /main/livingRoom: done
+[rosie] join workspace /main/myBody: done
+[rosie] focusing on artifact presenceSensor (at workspace /main/livingRoom) using namespace default
+[rosie] focus on presenceSensor: done
+[rosie] focusing on artifact airConditioner (at workspace /main/livingRoom) using namespace default
+[rosie] focus on airConditioner: done
+[rosie] focusing on artifact duster (at workspace /main/myBody) using namespace body
+[rosie] focus on duster: done
+[rosie] focusing on artifact locomotion (at workspace /main/myBody) using namespace body
+[rosie] focus on locomotion: done
+[rosie] focusing on artifact householdStaff (at workspace /main/jetsonsFamily) using namespace default
+[rosie] focus on householdStaff: done
+[rosie] focusing on artifact jetsonsFamily (at workspace /main/jetsonsFamily) using namespace default
+[rosie] focus on jetsonsFamily: done
+[rosie] I am obliged to commit to cleaningMission on cleaning... doing so
+[rosie] Starting to clean the living room...
+[ARTIFACT] TOOGLEPOWER
+[rosie] Mind: temp(20) + powerStatus(Off)
+[rosie] Mind: temp(20.1) + powerStatus(On)
+[rosie] Mind: temp(22.64) + powerStatus(On)
+[rosie] Mind: temp(25.96) + powerStatus(On)
+[rosie] Mind: temp(27.82) + powerStatus(On)
+[rosie] Mind: temp(30.75) + powerStatus(On)
+[rosie] Mind: temp(33.2) + powerStatus(On)
+[rosie] Mind: temp(36.42) + powerStatus(On)
+[rosie] Mind: temp(36.32) + powerStatus(On)
+[rosie] Mind: temp(40.14) + powerStatus(On)
+[rosie] Mind: temp(41.51) + powerStatus(On)
+[rosie] Mind: temp(42.78) + powerStatus(On)
+[rosie] Mind: temp(45.42) + powerStatus(On)
+[rosie] Mind: temp(46.88) + powerStatus(On)
+[rosie] Mind: temp(51.96) + powerStatus(On)
+[rosie] Mind: temp(53.14) + powerStatus(On)
+[rosie] Mind: temp(56.46) + powerStatus(On)
+[rosie] Mind: temp(57.63) + powerStatus(On)
+[rosie] Mind: temp(62.52) + powerStatus(On)
+[rosie] Mind: temp(61.25) + powerStatus(On)
+[rosie] Mind: temp(68.09) + powerStatus(On)
+[rosie] Mind: temp(68.88) + powerStatus(On)
+[rosie] Mind: temp(68.78) + powerStatus(On)
+[rosie] Mind: temp(72.1) + powerStatus(On)
+[ARTIFACT] TOOGLEPOWER
+[rosie] Mind: temp(76.7) + powerStatus(Off)
+[rosie] Decreasing temp(72.79)... SUCCESS!
+[SchemeBoard] rosie has quit, mission cleaningMission removed by the platform!
+[GroupBoard] rosie has quit, role housekeeper removed by the platform!
+
+BUILD SUCCESSFUL in 32s
+2 actionable tasks: 1 executed, 1 up-to-date
+MAS Stopped!
+Stopping the Simulation (PID: 44074)...

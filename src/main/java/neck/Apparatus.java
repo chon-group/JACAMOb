@@ -1,7 +1,7 @@
 package neck;
 
 import jason.asSyntax.*;
-import neck.model.BodyResponse;
+import neck.model.ApparatusResponse;
 import neck.model.PerceptionType;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -103,7 +103,7 @@ public abstract class Apparatus {
     /**
      * Executa uma ação no mundo físico.
      */
-    public abstract BodyResponse act(Term actionTerm);
+    public abstract ApparatusResponse act(Term actionTerm);
 
 
     /**
@@ -143,23 +143,16 @@ public abstract class Apparatus {
     private void loadBodyActions() {
         JSONObject jsonObject = requestActions();
 
-        if (jsonObject == null) {
-            return;
-        }
+        if (jsonObject == null) {return;}
 
         this.hwAppName = jsonObject.optString("apparatus", "unknown");
         this.hwAppID = jsonObject.optLong("apparatusID", 0L);
 
-        logger.fine(
-                "hwApparatusName: " + this.hwAppName
-                        + " hwApparatusID: " + this.hwAppID
-        );
+        logger.fine("hwApparatusName: " + this.hwAppName+ " hwApparatusID: " + this.hwAppID);
 
         supportedActions.clear();
 
-        if (!jsonObject.has("actions")) {
-            return;
-        }
+        if (!jsonObject.has("actions")) {return;}
 
         JSONArray actions = jsonObject.getJSONArray("actions");
 
@@ -182,11 +175,11 @@ public abstract class Apparatus {
        ============================================================ */
 
     public void sense() {
-        JSONObject bodyResponse = requestPercepts();
-        if (bodyResponse == null) {return;}
-        loadConnectionInfo(bodyResponse);
-        loadPerceptsToList(bodyResponse);
-        loadDesires(bodyResponse);
+        JSONObject apparatusResponse = requestPercepts();
+        if (apparatusResponse == null) {return;}
+        loadConnectionInfo(apparatusResponse);
+        loadPerceptsToList(apparatusResponse);
+        loadDesires(apparatusResponse);
     }
 
 
@@ -259,10 +252,10 @@ public abstract class Apparatus {
     }
 
 
-    private void loadPerceptsToList(JSONObject bodyResponse) {
-        if (!bodyResponse.has("percepts") || bodyResponse.isNull("percepts")) {return;}
+    private void loadPerceptsToList(JSONObject apparatusResponse) {
+        if (!apparatusResponse.has("percepts") || apparatusResponse.isNull("percepts")) {return;}
 
-        JSONObject percepts = bodyResponse.getJSONObject("percepts");
+        JSONObject percepts = apparatusResponse.getJSONObject("percepts");
         addPerceptsByPerceptionsType(percepts,PerceptionType.EXTEROCEPTION);
         addPerceptsByPerceptionsType(percepts,PerceptionType.INTEROCEPTION);
         addPerceptsByPerceptionsType(percepts,PerceptionType.PROPRIOCEPTION);
@@ -270,10 +263,10 @@ public abstract class Apparatus {
     }
 
 
-    private void addPerceptsByPerceptionsType(JSONObject bodyResponse, PerceptionType perceptionType) {
-        if (!bodyResponse.has(perceptionType.getKey())) {return;}
+    private void addPerceptsByPerceptionsType(JSONObject apparatusResponse, PerceptionType perceptionType) {
+        if (!apparatusResponse.has(perceptionType.getKey())) {return;}
 
-        JSONArray filteredPerceptionsByType = bodyResponse.getJSONArray(perceptionType.getKey());
+        JSONArray filteredPerceptionsByType = apparatusResponse.getJSONArray(perceptionType.getKey());
         for (int i = 0; i < filteredPerceptionsByType.length(); i++) {
             JSONObject jsonObject = filteredPerceptionsByType.getJSONObject(i);
             if (!jsonObject.has("percept") || !jsonObject.has("element")) {continue;}
@@ -308,7 +301,7 @@ public abstract class Apparatus {
        CONNECTION / INTEROCEPTION
        ============================================================ */
 
-    private void loadConnectionInfo(JSONObject bodyResponse) {
+    private void loadConnectionInfo(JSONObject apparatusResponse) {
 
         /*
          * Compatibility with the current serial protocol.
@@ -316,7 +309,7 @@ public abstract class Apparatus {
          * Other concrete Apparatus implementations are not required
          * to provide the "port" field.
          */
-        if (!bodyResponse.has("port")) {
+        if (!apparatusResponse.has("port")) {
             return;
         }
 
@@ -324,7 +317,7 @@ public abstract class Apparatus {
 
         Term portStatus =
                 ASSyntax.createAtom(
-                        bodyResponse.getString("port")
+                        apparatusResponse.getString("port")
                 );
 
         Term portAddress =
@@ -337,17 +330,17 @@ public abstract class Apparatus {
         Term apparatus;
         Term apparatusID;
 
-        if (bodyResponse.has("apparatus")
-                && bodyResponse.has("apparatusID")) {
+        if (apparatusResponse.has("apparatus")
+                && apparatusResponse.has("apparatusID")) {
 
             apparatus =
                     neck.util.Util.stringToAtom(
-                            bodyResponse.getString("apparatus")
+                            apparatusResponse.getString("apparatus")
                     );
 
             apparatusID =
                     ASSyntax.createNumber(
-                            bodyResponse.getLong("apparatusID")
+                            apparatusResponse.getLong("apparatusID")
                     );
 
         } else {
@@ -381,45 +374,28 @@ public abstract class Apparatus {
     }
 
 
-    private void loadDesires(JSONObject bodyResponse) {
-
+    private void loadDesires(JSONObject apparatusResponse) {
         desires.clear();
-
-        if (!bodyResponse.has("triebs")
-                || bodyResponse.isNull("triebs")) {
-            return;
-        }
-
-        JSONArray bodyDesires =
-                bodyResponse.getJSONArray("triebs");
-
+        if (!apparatusResponse.has("triebs") || apparatusResponse.isNull("triebs")) {return;}
+        JSONArray bodyDesires = apparatusResponse.getJSONArray("triebs");
         for (int i = 0; i < bodyDesires.length(); i++) {
+            JSONObject desire = bodyDesires.getJSONObject(i);
+            if (!desire.has("trieb")) {continue;}
+            Literal newDesire = Literal.parseLiteral(Body.BODY_NAMESPACE + "::" + desire.getString("trieb"));
 
-            JSONObject desire =
-                    bodyDesires.getJSONObject(i);
-
-            if (!desire.has("trieb")) {
-                continue;
+            if (desire.has("drang")) {
+                newDesire.addTerm(neck.util.Util.jsonObjectToTerm(desire.get("drang")));
             }
+            if (desire.has("element")) {
+                newDesire.addAnnot(
+                        ASSyntax.createStructure(
+                                "element",
+                                ASSyntax.createAtom(getApparatusName()),
+                                ASSyntax.createAtom(desire.get("element").toString())
+                        )
+                );
 
-            Literal newDesire =
-                    neck.util.Util.JSONObjectToLiteral(
-                            desire,
-                            "trieb"
-                    );
-
-            if (desire.has("args")) {
-
-                JSONArray argsDesire =
-                        desire.getJSONArray("args");
-
-                newDesire =
-                        neck.util.Util.addJSONArrayAsTermsInLiteral(
-                                newDesire,
-                                argsDesire
-                        );
             }
-
             desires.add(newDesire);
         }
     }

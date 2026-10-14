@@ -4,7 +4,7 @@ import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Term;
 import org.json.JSONObject;
 
-public enum BodyResponse {
+public enum ApparatusResponse {
     EXECUTED,       // The action was successfully executed and caused a state change in the body.
     UNABLE,         // The action was understood and attempted, but could not be completed due to physical, contextual, or operational constraints.
     ALREADY,        // The action was valid, but the body was already in the requested state, therefore no state change was necessary.
@@ -15,18 +15,18 @@ public enum BodyResponse {
     UNAVAILABLE,    // The perception could not be obtained (e.g., sensor failure).
     UNCHANGED;      // The perception was successfully obtained, but its value is the same as in the previous perception cycle.
 
-    public static BodyResponse stringToBodyResponse(String bodyResponse) {
-        if (bodyResponse == null) return null;
+    public static ApparatusResponse toApparatusResponse(String apparatusResponse) {
+        if (apparatusResponse == null) return null;
         try {
-            return BodyResponse.valueOf(bodyResponse.trim().toUpperCase());
+            return ApparatusResponse.valueOf(apparatusResponse.trim().toUpperCase());
         } catch (IllegalArgumentException ex) {
             return null;
         }
     }
 
-    public static BodyResponse jsonObjectToBodyResponse(JSONObject jsonObject){
-        if(jsonObject.has("bodyResponse")){
-            return stringToBodyResponse(jsonObject.get("bodyResponse").toString());
+    public static ApparatusResponse toApparatusResponse(JSONObject jsonObject){
+        if(jsonObject.has("response")){
+            return toApparatusResponse(jsonObject.get("response").toString());
         }
         return null;
     }

@@ -1,14 +1,8 @@
 package myBody;
 
+/*https://github.com/chon-group/Javino#how-to-import*/
+import group.chon.javino.Javino; 
 import cartago.*;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import group.chon.javino.Javino;
-
 
 public class Duster extends Artifact {
     private Javino javino;
@@ -17,22 +11,40 @@ public class Duster extends Artifact {
     void init(String port) {
         defineObsProperty("temperature", 0.00);
         defineObsProperty("powerStatus", "unknown");
+        initJavino(port);
+        execInternalOp("getBodyInfo");
+	}
+    
+    @Override
+    public void dispose() {
+        javino.closePort();
+        super.dispose();
+    }
+
+    private void initJavino(String port) {
         this.serialPort = port;
         javino = new Javino();
         javino.infoPortStatus(false);
         javino.timeout(1000);
-        execInternalOp("getBodyInfo");
 	}
 
-	@OPERATION
-	void togglePower() {javino.sendCommand(this.serialPort,"togglePower"); System.out.println("[ARTIFACT] TOOGLEPOWER");}
+    private String requesting(String DATA){
+        if(javino.requestData(this.serialPort,DATA)) 
+            return javino.getData();
+        return null;
+    }
+
+    @OPERATION
+	void togglePowerOperation() {
+        javino.sendCommand(this.serialPort,"togglePower"); 
+        System.out.println("[ARTIFACT] TOOGLEPOWER");
+    }
 
  	@INTERNAL_OPERATION
     void getBodyInfo() throws Exception {
         System.out.println("[JAVINO] Starting: "+serialPort);
         while(true){
             String DATA = requesting("POWERINFO");
-            
             if(DATA != null){
                 getObsProperty("powerStatus").updateValue(DATA);
             }
@@ -41,29 +53,17 @@ public class Duster extends Artifact {
             if (DATA != null) {
                 try{
                     double t = Double.parseDouble(DATA);
-                    if (t > 100){defineObsProperty("status", "burnt"); System.out.println("[ARTIFACT] The robot burned out! temperature > 100ºC -- FAIL!!!");}
+                    if (t > 100){
+                        defineObsProperty("status", "burnt"); 
+                        System.out.println("[ARTIFACT] Burned!");
+                        System.exit(0);
+                    }
                     getObsProperty("temperature").updateValue(t);    
                 }catch(Exception ex){
-
+                    ex.printStackTrace();
                 } 
             }         
             await_time(200);
         }    
     }
-
-	
-    @Override
-    public void dispose() {
-        javino.closePort();
-        super.dispose();
-    }
-
-
-    private String requesting(String DATA){
-        if(javino.requestData(this.serialPort,DATA)){
-            return javino.getData();
-        }
-        return null;
-    }
 }
-

@@ -1,3 +1,8 @@
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
 @startuml
 
 ' top to bottom direction
@@ -6,7 +11,8 @@
  skinparam packageStyle folder
  skinparam linetype ortho
  skinparam nodesep 35
-' skinparam ranksep 45
+ 'skinparam ranksep 45
+ skinparam ranksep 60
 
 
 package org{
@@ -14,6 +20,8 @@ package org{
     class JSONObject
   }
 }
+
+
 
 ' ============================================================
 ' JASON
@@ -69,9 +77,8 @@ package jason {
 
     Circumstance o-- "0..*" Event 
 
-    Agent --> BeliefBase 
-    BeliefBase --> "0..*" Literal 
-
+    Literal <-- BeliefBase
+    BeliefBase <-- Agent
 
 
 
@@ -110,12 +117,25 @@ package "neck" as pkg_neck {
         package "model" as pkg_model {
 
         enum "PerceptionType" as PerceptionType #MistyRose {
-            <color:red><b>INTEROCEPTION</b></color>
-            <color:red><b>PROPRIOCEPTION</b></color>
-            <color:red><b>EXTEROCEPTION</b></color>
+            INTEROCEPTION
+            PROPRIOCEPTION
+            EXTEROCEPTION
 
-            + <color:red><b>getKey() : String</b></color>
+            + getKey() : String
         }
+
+
+        enum "ApparatusResponse" as ApparatusResponse #MistyRose {
+            EXECUTED
+            PERCEPTED
+            UNAVAILABLE
+            UNCHANGED
+            --
+            {static} + toApparatusResponse(jsonObject : JSONObject): ApparatusResponse
+            {static} + toApparatusResponse(bodyResponse : String): ApparatusResponse
+            + toTerm(): Term
+        }
+
     }
 
   class "Body" as Body {
@@ -130,7 +150,7 @@ package "neck" as pkg_neck {
       + <color:red><b>perceive(transitionSystem : TransitionSystem) : void</b></color>
 
       - getApparatusByName(appName : jason.asSyntax.Atom) : neck.Apparatus
-      - <color:red><b>bodyPerceptionRevisonFuncion(List<Literal> incoming) : List<Literal></b></color>
+      - <color:red><b>bodyPerceptionRevisionFunction(List<Literal> incoming) : List<Literal></b></color>
       - <color:red><b>removeOldPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void</b></color>
       - <color:red><b>addNewPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void</b></color>
   }
@@ -141,69 +161,69 @@ package "neck" as pkg_neck {
 
 
 
-
-abstract class "Apparatus" as Apparatus {
-
-    - apparatusName : String
-    - hwAppName : String
-    - hwAppID : Long
-    - <color:red><b>interoceptions : List<Literal></b></color>
-    - <color:red><b>exteroceptions : List<Literal></b></color>
-    - <color:red><b>proprioceptions : List<Literal></b></color>
-
-    # Apparatus()
-    + attach() : void
-    + detach() : void
-    + embody() : JSONObject
-    + <color:red><b>sense() : void</b></color>
-
-    # init() : void
-    # <color:red><b>requestPercepts() : JSONObject</b></color>
-
-    + <color:red><b>getAllPerceptions() : List<Literal></b></color>
-    + getStatus() : boolean
-    + getConnectionStatus() : String
-    + getAddress() : String
-    + getHwAppName() : String
-    + getApparatusName() : String
-    + setApparatusName(apparatusName : String) : void
-
-    
-    
-  }
-  
-  
+  Apparatus ..> ApparatusResponse
 
 
-  package "defaults" as pkg_defaults {
-    class "SerialApparatus" as SerialApparatus {
 
-    - serialComm : neck.util.SerialComm
+  abstract class "Apparatus" as Apparatus {
 
-    + SerialApparatus(address : String)
+      - apparatusName : String
+      - hwAppName : String
+      - hwAppID : Long
+      - <color:red><b>interoceptions : List<Literal></b></color>
+      - <color:red><b>exteroceptions : List<Literal></b></color>
+      - <color:red><b>proprioceptions : List<Literal></b></color>
 
-    + attach() : void
-    + detach() : void
-    + embody() : JSONObject
-    # <color:red><b>requestPercepts() : JSONObject</b></color>
+      # Apparatus()
+      + attach() : void
+      + detach() : void
+      + embody() : JSONObject
+      + <color:red><b>sense() : void</b></color>
 
-    + getStatus() : boolean
-    + getConnectionStatus() : String
-    + getAddress() : String
-    
-    - request(message : String, args : Object[]) : JSONObject
-    - prepareRequest(message : String, args : Object[]) : JSONObject
-    - parseResponse(records : List<JSONObject>) : JSONObject
+      # init() : void
+      # <color:red><b>requestPercepts() : JSONObject</b></color>
+
+      + <color:red><b>getAllPerceptions() : List<Literal></b></color>
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+      + getHwAppName() : String
+      + getApparatusName() : String
+      + setApparatusName(apparatusName : String) : void
+
+      
+      
     }
+    
+    
 
-    SerialApparatus ..> JSONObject
-  }
+
+    package "defaults" as pkg_defaults {
+      class "SerialApparatus" as SerialApparatus {
+
+      - serialComm : neck.util.SerialComm
+
+      + SerialApparatus(address : String)
+
+      + attach() : void
+      + detach() : void
+      + embody() : JSONObject
+      # <color:red><b>requestPercepts() : JSONObject</b></color>
+
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+      
+      - request(message : String, args : Object[]) : JSONObject
+      - prepareRequest(message : String, args : Object[]) : JSONObject
+      - parseResponse(records : List<JSONObject>) : JSONObject
+      }
+
+      
+    }
 
   
 }
-
-
-
 
 
 ' ============================================================
@@ -214,12 +234,24 @@ Apparatus ..> PerceptionType
 
 JaCaMoAgArch "1" --> "0..1" Body 
 
- 
 Body "1" o-- "1..*" Apparatus
 
 SerialApparatus --|> Apparatus
 
+JSONObject <..SerialApparatus
 
+' ============================================================
+' ORGANIZAÇÃO VISUAL
+' ============================================================
+
+' Model à esquerda do Apparatus
+ApparatusResponse -[hidden]right- Apparatus
+
+' Jason abaixo do NECK
+Apparatus -[hidden]down- Literal
+
+' JaCaMo acima do NECK
+JaCaMoAgArch -[hidden]down- Body
 @enduml
 
 ' ============================================================
@@ -237,6 +269,7 @@ SerialApparatus --|> Apparatus
 ' Body -[hidden]down-> Apparatus
 ' Apparatus -[hidden]down-> SerialApparatus
 ' SerialApparatus -[hidden]down-> SerialComm
+'JSONObject <.. SerialApparatus
 
 ' ' Mantém as duas grandes colunas próximas
 ' JaCaMoProject -[hidden]right-> JaCaMoAgArch

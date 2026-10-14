@@ -10,14 +10,14 @@ import jason.asSyntax.ASSyntax;
 import jason.asSyntax.Atom;
 import jason.asSyntax.Term;
 import neck.Body;
-import neck.model.BodyResponse;
+import neck.model.ApparatusResponse;
 
 import java.util.logging.Logger;
 
 
 public class Act extends DefaultInternalAction {
 
-    private BodyResponse bodyResponse    = null;
+    private ApparatusResponse apparatusResponse = null;
     private Term    actionTerm          = null;
     private Atom    apparatusName       = null;
     private Term    replyRequested      = null;
@@ -87,24 +87,23 @@ public class Act extends DefaultInternalAction {
         /* PORÉM VÁRIOS ELEMENTOS NO MESMO APARATUS PODEM EXECUTAR A MESMA AÇÃO */
         checkArguments(args);
 
-        bodyResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
+        apparatusResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
 
 
-        if (bodyResponse != null){
+        if (apparatusResponse != null){
             if (replyRequested != null){
-                un.unifies(replyRequested,bodyResponse.toTerm());
-                ts.getLogger().info("UNIFIES: Action "+this.actionTerm+" replied "+bodyResponse);
+                un.unifies(replyRequested, apparatusResponse.toTerm());
+                ts.getLogger().info("UNIFIES: Action "+this.actionTerm+" replied "+ apparatusResponse);
                 return true;
             }
-
-            if (bodyResponse == BodyResponse.EXECUTED){
-                ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
+            if (apparatusResponse == ApparatusResponse.EXECUTED){
+                ts.getLogger().info("Action "+this.actionTerm+" replied "+ apparatusResponse);
                 return true;
-            }else if (bodyResponse == BodyResponse.ALREADY){
-                ts.getLogger().info("Action "+this.actionTerm+" replied "+bodyResponse);
+            }else if (apparatusResponse == ApparatusResponse.ALREADY){
+                ts.getLogger().info("Action "+this.actionTerm+" replied "+ apparatusResponse);
                 return true;
             }else {
-                ts.getLogger().severe("severe Action "+this.actionTerm+" replied "+bodyResponse);
+                ts.getLogger().severe("severe Action "+this.actionTerm+" replied "+ apparatusResponse);
                 return false;
             }
         }

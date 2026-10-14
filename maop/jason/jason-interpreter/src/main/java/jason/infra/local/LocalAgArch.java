@@ -215,6 +215,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
     }
 
     protected void sense() {
+        if (logger.isLoggable(Level.FINE)) logger.fine("Start sense");
         TransitionSystem ts = getTS();
 
         int i = 0;
@@ -225,6 +226,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
 
     //int sumDel = 0; int nbDel = 0;
     protected void deliberate() {
+        if (logger.isLoggable(Level.FINE)) logger.fine("Starting plan");
         TransitionSystem ts = getTS();
         int i = 0;
         while (running && i++ < cyclesDeliberate && !ts.canSleepDeliberate()) {
@@ -237,6 +239,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
     /** the act as step of reasoning cycle */
     //int sumAct = 0; int nbAct = 0;
     protected void act() {
+        if (logger.isLoggable(Level.FINE)) logger.fine("Starting act");
         TransitionSystem ts = getTS();
 
         int i = 0;
@@ -254,6 +257,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
     }
 
     protected void reasoningCycle() {
+        if (logger.isLoggable(Level.FINE)) logger.fine("BDI Cycle: Starting");
         getFirstAgArch().reasoningCycleStarting();
 
         sense();
@@ -261,6 +265,7 @@ public class LocalAgArch extends AgArch implements Runnable, Serializable {
         act();
 
         getFirstAgArch().reasoningCycleFinished();
+        if (logger.isLoggable(Level.FINE)) logger.fine("BDI Cycle: Finishing");
     }
 
     public void run() {

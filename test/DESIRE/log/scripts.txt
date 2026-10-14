@@ -1,0 +1,142 @@
+#CONTAR CICLOS TOTAIS:
+echo "Ciclos TOtais"
+cat mas-0.log | grep "BDI Cycle: Starting" | nl | tail -1 | xargs | cut -d " " -f 1 | xargs
+
+#CONTAR CICLOS VAZIOS não incorporado:
+echo "Ciclos vazios"
+perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log
+
+
+#SENSE....
+#CONTAR SENSE VAZIOS não incorporado (PRECISA DESCONTAR OS CICLOS COMPLETAMENTE FAZIOS DO CALCULO..):
+a=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Starting plan\n/mg), "\n"' mas-0.log)
+b=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+echo "Ciclos SENSE VAZIOS"
+echo $((a-b))
+
+
+
+#CONTAR CICLOS TOTAIS:
+cat mas-0.log | grep "BDI Cycle: Starting" | nl | tail -1 | xargs | cut -d " " -f 1 | xargs
+
+
+#CONTAR CICLOS VAZIOS INCORPORADO:
+perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Body update percepts, starting...\n\1 Body update percepts, finished...\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log
+
+
+#CONTAR SENSE VAZIOS INCORPORADO (PRECISA DESCONTAR OS CICLOS COMPLETAMENTE FAZIOS DO CALCULO..):
+a=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Body update percepts, starting...\n\1 Body update percepts, finished...\n\1 Starting plan\n/mg), "\n"' mas-0.log)
+b=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Body update percepts, starting...\n\1 Body update percepts, finished...\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+echo $((a-b))
+
+
+
+#CONTANDO adições de crenças
+a=$(grep -c "]  +myBody::" mas-0.log); b=$(grep -c "] Added event +" mas-0.log); echo $((a+b))
+
+CONTANDO as remoções de crenças
+a=$(grep -c "]  -myBody::" mas-0.log); b=$(grep -c "] Added event -" mas-0.log); echo $((a+b))
+
+Plan....
+
+#CONTAR PLAN VAZIO NÃO INCORPORADO
+a=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) Starting plan\n\1 Starting act\n/mg), "\n"' mas-0.log)
+b=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+echo $((a-b))
+
+#CONTAR PLAN VAZIO INCORPORADO
+a=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) Starting plan\n\1 Starting act\n/mg), "\n"' mas-0.log)
+b=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Body update percepts, starting...\n\1 Body update percepts, finished...\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+echo $((a-b))
+
+
+
+CONTANDO SELEÇÃO DE EVENTO
+    grep -c "] Selected event +" mas-0.log   REVER
+
+
+eventos=$(grep -c '^\[[^]]*\] Selected event ' plan1.log)
+sucesso=$(grep -c ' | .* succeeded ' plan1.log)
+falha=$(grep -c ' | .* failed ' plan1.log)
+echo -n "Selected Events (SE) " 
+echo $eventos
+echo -n "Context Succeeded " 
+echo $sucesso
+echo -n "Context Failed " 
+echo $falha
+echo -n "Context Evaluations (CE) = succeeded + failed "
+echo $((sucesso+falha))
+
+
+
+Act..
+#CONTAR ACT VAZIO não incorporado
+a=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+b=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+echo $((a-b))
+
+
+#CONTAR ACT VAZIO INCORPORADO
+a=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+b=$(perl -0ne 'print scalar(() = /^(\[[^\]]+\]) BDI Cycle: Starting\n\1 Start sense\n\1 Body update percepts, starting...\n\1 Body update percepts, finished...\n\1 Starting plan\n\1 Starting act\n\1 BDI Cycle: Finishing\n/mg), "\n"' mas-0.log)
+echo $((a-b))
+
+
+for f in act_*.log; do
+    total=$(grep -c '^\[[^]]*\] Starting act' "$f")
+    si=$(grep -c '^\[[^]]*\] Selected intention ' "$f")
+
+    echo "$f"
+    echo "  ACT Total:              $total"
+    echo "  Selected Intentions:    $si"
+    echo "  ACT without selection:  $((total-si))"
+    echo
+done
+
+
+nilson@debian:~/chonGroup/JACAMOb/test/DESIRE/log$ for d in unbodied onlyBelief onlyDesire desireAndBelief beliefAndRules; do
+    f="$d/mas-0.log"
+
+    echo "========================================"
+    echo "$d"
+    echo "========================================"
+
+    awk '
+    /^\[[^]]+\] Starting act/ {
+        phase = "ACT"
+        next
+    }
+
+    /^\[[^]]+\] BDI Cycle: Finishing/ {
+        phase = ""
+        next
+    }
+
+    phase == "ACT" {
+        if ($0 ~ /^\[[^]]+\] Added event \+/ &&
+            $0 !~ /Added event \+!/)
+            belief_add++
+
+        if ($0 ~ /^\[[^]]+\] Added event -/ &&
+            $0 !~ /Added event -!/)
+            belief_del++
+
+        if ($0 ~ /Action .* replied EXECUTED/)
+            action_executed++
+
+        if ($0 ~ /Action .* replied UNABLE/)
+            action_unable++
+
+        if ($0 ~ /internal action .* executed/)
+            ia_executed++
+
+        if ($0 ~ /internal action .* failed/)
+            ia_failed++
+    }
+
+    END {
+        print "Belief additions:         ", belief_add+0
+        print "Belief removals:          ", belief_del+0
+        print "Actions EXECUTED:         ", action_executed+0
+        print "Actions UNABLE:           ", action_unable+0
+doneechof"int "Internal actions failed:  ", ia_failed+0+0

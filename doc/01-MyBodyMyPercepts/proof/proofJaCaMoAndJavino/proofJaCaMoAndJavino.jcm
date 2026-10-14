@@ -19,8 +19,8 @@ mas proofJaCaMoAndJavino {
   focus: livingRoom.airConditioner
   roles: housekeeper in householdStaff
   join: myBody
-  focus: myBody.duster
-  focus: myBody.locomotion
+  focus: body::myBody.duster
+  focus: body::myBody.locomotion
  }
 
  workspace livingRoom {

@@ -1,0 +1,46 @@
+PLEASE, start the execution in simulIDE. After, press ENTER to continue
+Starting the MAS!
+Runtime Services (RTS) is running at 127.0.1.1:42597
+Agent mind inspector is running at http://127.0.1.1:3272
+CArtAgO Http Server running on http://127.0.1.1:3273
+[rosie] Embodying...
+[rosie] Apparatus [duster] was attached!
+[rosie] Apparatus [locomotion] was attached!
+Moise Http Server running on http://127.0.1.1:3271
+[Moise] OrgBoard jetsonsFamily created.
+[Moise] scheme created: cleaning: cleaningScheme using artifact SchemeBoard
+[Moise] group created: householdStaff: householdGroup using artifact ora4mas.nopl.GroupBoard
+[Cartago] Workspace livingRoom created.
+[Cartago] artifact airConditioner: jetsons.home.AirConditioner() at livingRoom created.
+[Cartago] artifact presenceSensor: jetsons.home.PresenceSensor() at livingRoom created.
+[rosie] join workspace /main/jetsonsFamily: done
+[rosie] join workspace /main/livingRoom: done
+[rosie] focusing on artifact presenceSensor (at workspace /main/livingRoom) using namespace default
+[rosie] focus on presenceSensor: done
+[rosie] focusing on artifact airConditioner (at workspace /main/livingRoom) using namespace default
+[rosie] focus on airConditioner: done
+[rosie] focusing on artifact householdStaff (at workspace /main/jetsonsFamily) using namespace default
+[rosie] focus on householdStaff: done
+[rosie] focusing on artifact jetsonsFamily (at workspace /main/jetsonsFamily) using namespace default
+[rosie] focus on jetsonsFamily: done
+[rosie] I am obliged to commit to cleaningMission on cleaning... doing so
+[rosie] Starting to clean the living room...
+[rosie] Action tooglePower replied EXECUTED
+[rosie] [INFO] Temperature is 21.85728 powerStatus is... On
+[rosie] [INFO] Temperature is 27.13588 powerStatus is... On
+[rosie] [INFO] Temperature is 32.70772 powerStatus is... On
+[rosie] [INFO] Temperature is 37.88857 powerStatus is... On
+[rosie] [INFO] Temperature is 41.40762 powerStatus is... On
+[rosie] [INFO] Temperature is 46.68622 powerStatus is... On
+[rosie] [INFO] Temperature is 53.33334 powerStatus is... On
+[rosie] [INFO] Temperature is 58.02541 powerStatus is... On
+[rosie] [INFO] Temperature is 63.01075 powerStatus is... On
+[rosie] [INFO] Temperature is 68.3871 powerStatus is... On
+[rosie] [ALERT] The robot is overheated (72.59042) Status is... On
+[rosie] Action tooglePower replied EXECUTED
+[rosie] [INFO] Temperature is 73.47018 powerStatus is... Off
+[rosie] Waiting for decreasing temperature... SUCCESS!
+[SchemeBoard] rosie has quit, mission cleaningMission removed by the platform!
+[GroupBoard] rosie has quit, role housekeeper removed by the platform!
+MAS Stopped!
+Stopping the Simulation (PID: 7500)...

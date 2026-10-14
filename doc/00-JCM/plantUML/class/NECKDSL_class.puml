@@ -1,0 +1,203 @@
+
+@startuml
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle folder
+skinparam linetype ortho
+skinparam nodesep 20
+skinparam ranksep 45
+
+package "neck2arduino" {
+
+    package "NECK" {
+
+        package "DSL" as NECK_DSL {
+
+            metaclass "Apparatus" as DSLApparatus <<macro>> #MistyRose {
+                + Apparatus(NAME){ ... }
+                - setup() : void
+                - loop() : void
+            }
+
+            metaclass "Element" as DSLElement <<macro>> #MistyRose {
+                + Element(EL)
+            }
+
+            metaclass "Preparation" as DSLPreparation <<macro>> #MistyRose {
+                + Preparation { ... }
+            }
+
+
+            metaclass "Sensing" as DSLSensing <<macro>> #MistyRose {
+                + Sensing(EL) { ... }
+            }
+
+            metaclass "Behaving" as DSLBehaving <<macro>> #MistyRose {
+                + Behaving(EL) { ... }
+            }
+
+            metaclass "Percept" as DSLPercept <<macro>> #MistyRose {
+                + Percept(EL, NAME, PerceptionType){ ... }
+            }
+
+            metaclass "Trieb" as DSLTrieb <<macro>> #MistyRose {
+                + Percept(EL, NAME){ ... }
+            }
+
+            metaclass "Act" as DSLAct <<macro>> #MistyRose {
+                + Act(EL, NAME){ ... }
+            }
+
+
+
+            DSLApparatus "1" *-- "0..*" DSLElement
+            
+            DSLSensing *--  DSLElement
+            DSLBehaving *--  DSLElement
+            DSLAct *--  DSLElement
+            DSLPercept *--  DSLElement
+            DSLTrieb *--  DSLElement
+
+            ' Perception and action specification
+            
+
+            ' Organize macros
+            DSLSensing -[hidden]right-> DSLBehaving
+            DSLBehaving -[hidden]right-> DSLApparatus
+            ' DSLApparatus -[hidden]right-> DSLPreparation
+            DSLPreparation -[hidden]right-> DSLApparatus 
+
+            DSLPercept -[hidden]right-> DSLAct
+        }
+
+        package "CORE" as NECK_CPP {
+
+            enum "PerceptionType" as PerceptionType #MistyRose{
+                INTEROCEPTION
+                PROPRIOCEPTION
+                EXTEROCEPTION
+            }
+            DSLPercept ..> PerceptionType
+
+            class "Apparatus" as Apparatus #MistyRose {
+                - _jslp : JSON_SLP
+                - _actions : ActionEntry*
+                - _percepts : PerceptionEntry*
+                - _sensings : SensingEntry*
+                - _behavings : BehavingEntry*
+                - _apparatusID : uint32_t
+
+                + Apparatus(name : const char*)
+                + name() : const char*
+                --
+                + {static} setPreparation(fn : PreparationFn) : void
+                + addAction(elementName : const char*, actionName : const char*, fn : ActionFn) : void
+                + addPerception(elementName : const char*, perceptName : const char*, type : PerceptionType, fn : PerceptionFn) : void
+                + addSensing(elementName : const char*, fn : SensingFn) : void
+                + addBehaving(elementName : const char*, fn : BehavingFn) : void
+                + addTrieb(const char* elementName, const char* triebName, TriebFn fn) : void
+                --
+                + {static} prepare() : void
+                + embody() : void
+                + bodyCycle() : void
+            }
+
+
+            struct "ElementDef" as ElementDef #MistyRose {
+                + name : const char*
+                + apparatus : Apparatus*
+            }
+
+            struct "SensingEntry" as SensingEntry #MistyRose {
+                + elementName : const char*
+                + fn : SensingFn
+                + next : SensingEntry*
+            }
+
+            struct "TriebEntry" as TriebEntry #MistyRose {
+                + elementName : const char*
+                + fn : TriebFn
+                + next : TriebEntry*
+            }
+
+            struct "BehavingEntry" as BehavingEntry #MistyRose {
+                + elementName : const char*
+                + fn : BehavingFn
+                + next : BehavingEntry*
+            }
+
+            struct "ActionEntry" as ActionEntry #MistyRose {
+                + elementName : const char*
+                + actionName : const char*
+                + fn : ActionFn
+                + next : ActionEntry*
+            }
+
+            struct "PerceptionEntry" as PerceptionEntry #MistyRose {
+                + elementName : const char*
+                + perceptName : const char*
+                + type : PerceptionType
+                + fn : PerceptionFn
+                + next : PerceptionEntry*
+            }
+
+            ' Apparatus  *-- "0..*" ActionEntry
+            ActionEntry <.. Apparatus
+            ' Apparatus  *-- "0..*" PerceptionEntry
+            PerceptionEntry <.. Apparatus
+            TriebEntry <.. Apparatus
+
+
+            ' Apparatus "1" <-- "0..*" ElementDef
+            ' Apparatus *-- "0..*" SensingEntry
+            ' Apparatus *-- "0..*" BehavingEntry
+            BehavingEntry <.. Apparatus
+            SensingEntry <.. Apparatus
+
+            ' ElementDef -[hidden]right-> SensingEntry
+            ' SensingEntry -[hidden]right-> BehavingEntry
+        }
+
+        ' DSL -> CORE
+        DSLApparatus ..down.> Apparatus
+        ' DSLElement ..down.> ElementDef
+        ElementDef ..down.> Apparatus
+        DSLElement ..down.> ElementDef
+        DSLPreparation ..down.> Apparatus
+        DSLSensing ..down.> SensingEntry
+        DSLBehaving ..down.> BehavingEntry
+        DSLTrieb ..down.> TriebEntry
+    }
+
+    package "JsonOverSLP" {
+
+        class "JSON_SLP" as JSON_SLP #MistyRose {
+            + incoming() : bool
+            + startTransmission() : void
+            + endTransmission() : void
+            + transmit(doc : JsonDocument&) : void
+        }
+    }
+
+    Apparatus *-down- JSON_SLP
+}
+
+package "ArduinoJson" {
+    class "JsonDocument" as JsonDocument
+}
+
+JSON_SLP ..down.> JsonDocument
+
+DSLAct ..down.> ActionEntry
+DSLPercept ..down.> PerceptionEntry
+
+' Vertical organization
+DSLApparatus -[hidden]down-> Apparatus
+Apparatus -[hidden]right-> JSON_SLP
+JSON_SLP -[hidden]down-> JsonDocument
+
+Apparatus --> PerceptionType
+
+@enduml

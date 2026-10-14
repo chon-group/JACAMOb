@@ -25,13 +25,15 @@
 /* new code */
 +!togglePower <- .myBody.act(tooglePower).
   
-+!decide: myBody::temperature(T)[source(interoception)] & T > 70 & myBody::powerStatus(P)[source(proprioception)] & P=="On" <- 
-    .print("[ALERT] The robot is overheated (",T,") Status is... ",P); .myBody.act(tooglePower).
++!decide: myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] & P=="On" & T > 70 <- 
+    .print("[ALERT] The robot is overheated (",T,") Status is... ",P); -+current(T); .myBody.act(tooglePower).
 
-+!decide: myBody::temperature(T)[source(interoception)] & T > 60 & myBody::powerStatus(P)[source(proprioception)] & P=="Off" <- 
-    .print("Waiting for decreasing temperature... SUCCESS!"); .stopMAS.
++!decide: current(C)[source(self)] & myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] & P=="Off" & T < C<- 
+    .print("Waiting for decreasing temperature ",T," SUCCESS!"); 
+    //.wait(10000); 
+    .stopMAS.
 
 +!decide: myBody::temperature(T)[source(interoception)] & myBody::powerStatus(P)[source(proprioception)] <- 
-    .print("[INFO] Temperature is ",T," powerStatus is... ",P).
+    .print("[INFO] Temperature is ",T," powerStatus is... ",P);  -+current(T).
 
 +myBody::temperature(T)[source(interoception)]: T>100 <- +status("burnt").

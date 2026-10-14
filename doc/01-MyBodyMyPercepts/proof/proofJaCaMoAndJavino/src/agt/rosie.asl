@@ -3,8 +3,8 @@
 { include("$jacamo/templates/common-moise.asl") }
 { include("$moise/asl/org-obedient.asl") }
 
-
 /* Plans */
+
 +!cleanLivingRoom[scheme(cleaning)] <- 
     .print("Starting to clean the living room..."); 
     !startWork.
@@ -13,23 +13,29 @@
     !togglePower; 
     !!monitorBodyTemp.
 
-+!monitorBodyTemp <- 
-    !decide; 
-    .wait(500); 
-    !monitorBodyTemp.
++!monitorBodyTemp <- !decide; .wait(250); !monitorBodyTemp.
 
--!decide.
 
 +status("burnt") <- .print("The robot burned out! temperature > 100ºC -- FAIL!!!"); .stopMAS.
 
 /* new code */
-+!togglePower <- togglePower.
- 
-+!decide: default::temperature(T)[source(percept)] & T > 70 & default::powerStatus(P)[source(percept)] & P=="On" <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")"); !togglePower.
++!decide: body::temperature(T)[source(percept),artifact_name(duster)] 
+& body::powerStatus(P)[source(percept),artifact_name(duster)] & P=="On" & T > 70 <- 
+    .print("Mind: temp(",T,") + powerStatus(",P,")"); 
+    -+current(T);
+    !togglePower;
+    .wait(500).
 
-+!decide: default::temperature(T)[source(percept)] & T > 60 & default::powerStatus(P)[source(percept)] & P=="Off" <- 
-    .print("Waiting for decreasing temperature... SUCCESS!"); .stopMAS.
++!decide: body::temperature(T)[source(percept),artifact_name(duster)] 
+& body::powerStatus(P)[source(percept),artifact_name(duster)] & current(C)[source(self)] & P=="Off" & T < C <- 
+ .print("Decreasing temp(",T,")... SUCCESS!");
+ .wait(10000);
+ .stopMAS.
     
-+!decide: default::temperature(T)[source(percept)] & default::powerStatus(P)[source(percept)] <- 
-    .print("My mind: temperature(",T,") + powerStatus(",P,")").
++!decide: body::temperature(T)[source(percept),artifact_name(duster)] 
+& body::powerStatus(P)[source(percept),artifact_name(duster)] <- 
+    .print("Mind: temp(",T,") + powerStatus(",P,")"); 
+    -+current(T);
+    .wait(500).
+    
++!togglePower <- togglePowerOperation.

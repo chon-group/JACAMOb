@@ -1,0 +1,600 @@
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1239
+Empty:                         27
+Active:                        1212
+
+SENSE
+----------------------------------------
+Total:                         1212
+Empty:                         500
+Useful:                        712
+
+PLAN
+----------------------------------------
+Total:                         1212
+Empty:                         251
+Useful:                        961
+
+ACT
+----------------------------------------
+Total:                         1212
+Empty:                         522
+Useful:                        690
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          690
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1234
+Empty:                         23
+Active:                        1211
+
+SENSE
+----------------------------------------
+Total:                         1211
+Empty:                         499
+Useful:                        712
+
+PLAN
+----------------------------------------
+Total:                         1211
+Empty:                         253
+Useful:                        958
+
+ACT
+----------------------------------------
+Total:                         1211
+Empty:                         527
+Useful:                        684
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         732
+Environment removals:          726
+Body additions:                2
+Body removals:                 0
+Total additions:               734
+Total removals:                726
+Total revisions:               1460
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1758
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          684
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1232
+Empty:                         22
+Active:                        1210
+
+SENSE
+----------------------------------------
+Total:                         1210
+Empty:                         490
+Useful:                        720
+
+PLAN
+----------------------------------------
+Total:                         1210
+Empty:                         244
+Useful:                        966
+
+ACT
+----------------------------------------
+Total:                         1210
+Empty:                         525
+Useful:                        685
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          685
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1235
+Empty:                         20
+Active:                        1215
+
+SENSE
+----------------------------------------
+Total:                         1215
+Empty:                         500
+Useful:                        715
+
+PLAN
+----------------------------------------
+Total:                         1215
+Empty:                         251
+Useful:                        964
+
+ACT
+----------------------------------------
+Total:                         1215
+Empty:                         527
+Useful:                        688
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         732
+Environment removals:          726
+Body additions:                2
+Body removals:                 0
+Total additions:               734
+Total removals:                726
+Total revisions:               1460
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1758
+Context succeeded:             288
+Context failed:                32
+Context evaluations (CE):      320
+Context failure rate:          10.0%
+Belief candidates:             264
+Belief query failures:         13
+Belief queries (BQ):           277
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          688
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1234
+Empty:                         24
+Active:                        1210
+
+SENSE
+----------------------------------------
+Total:                         1210
+Empty:                         490
+Useful:                        720
+
+PLAN
+----------------------------------------
+Total:                         1210
+Empty:                         246
+Useful:                        964
+
+ACT
+----------------------------------------
+Total:                         1210
+Empty:                         526
+Useful:                        684
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          684
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1236
+Empty:                         26
+Active:                        1210
+
+SENSE
+----------------------------------------
+Total:                         1210
+Empty:                         495
+Useful:                        715
+
+PLAN
+----------------------------------------
+Total:                         1210
+Empty:                         247
+Useful:                        963
+
+ACT
+----------------------------------------
+Total:                         1210
+Empty:                         520
+Useful:                        690
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          690
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1235
+Empty:                         22
+Active:                        1213
+
+SENSE
+----------------------------------------
+Total:                         1213
+Empty:                         498
+Useful:                        715
+
+PLAN
+----------------------------------------
+Total:                         1213
+Empty:                         250
+Useful:                        963
+
+ACT
+----------------------------------------
+Total:                         1213
+Empty:                         523
+Useful:                        690
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         732
+Environment removals:          726
+Body additions:                2
+Body removals:                 0
+Total additions:               734
+Total removals:                726
+Total revisions:               1460
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1758
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          690
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1235
+Empty:                         25
+Active:                        1210
+
+SENSE
+----------------------------------------
+Total:                         1210
+Empty:                         494
+Useful:                        716
+
+PLAN
+----------------------------------------
+Total:                         1210
+Empty:                         247
+Useful:                        963
+
+ACT
+----------------------------------------
+Total:                         1210
+Empty:                         520
+Useful:                        690
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          690
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1242
+Empty:                         31
+Active:                        1211
+
+SENSE
+----------------------------------------
+Total:                         1211
+Empty:                         494
+Useful:                        717
+
+PLAN
+----------------------------------------
+Total:                         1211
+Empty:                         251
+Useful:                        960
+
+ACT
+----------------------------------------
+Total:                         1211
+Empty:                         521
+Useful:                        690
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          690
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+
+
+========================================
+ Jason Log Parser
+========================================
+
+BDI CYCLES
+----------------------------------------
+Total:                         1236
+Empty:                         27
+Active:                        1209
+
+SENSE
+----------------------------------------
+Total:                         1209
+Empty:                         495
+Useful:                        714
+
+PLAN
+----------------------------------------
+Total:                         1209
+Empty:                         249
+Useful:                        960
+
+ACT
+----------------------------------------
+Total:                         1209
+Empty:                         519
+Useful:                        690
+
+PERCEPTUAL LOAD
+----------------------------------------
+Environment additions:         733
+Environment removals:          727
+Body additions:                2
+Body removals:                 0
+Total additions:               735
+Total removals:                727
+Total revisions:               1462
+
+DELIBERATION
+----------------------------------------
+Selected-event traces (SET):   1760
+Context succeeded:             284
+Context failed:                32
+Context evaluations (CE):      316
+Context failure rate:          10.1%
+Belief candidates:             261
+Belief query failures:         13
+Belief queries (BQ):           274
+Rule candidates:               0
+Rule query failures:           0
+Rule queries (RQ):             0
+
+EXECUTION
+----------------------------------------
+Execution steps (ES):          690
+Belief additions:              15
+Belief removals:               12
+Belief revisions (BR):         27
+

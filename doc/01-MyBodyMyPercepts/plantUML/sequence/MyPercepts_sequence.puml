@@ -61,11 +61,11 @@ group #faf6f1 jason.infra.local.LocalAgArch.reasoningCycle()
             activate NECK
             NECK -> DEVICE : Apparatus.requestPercepts()
             activate DEVICE
-            DEVICE -> DEVICE : NECKApparatus.inhabitance()
+            DEVICE -> DEVICE : NECKApparatus.bodyCycle()
             activate DEVICE
             DEVICE -> DEVICE : NECKApparatus.streamPercepts()
             activate DEVICE
-            DEVICE -> DEVICE : NECKElement.percept() 
+            DEVICE -> DEVICE : NECKApparatus.perceive() 
             return
             return
             return

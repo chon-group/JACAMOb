@@ -1,25 +1,52 @@
+#include <Servo.h> // https://docs.arduino.cc/libraries/servo/ 
+const byte Led = 13, Green = 10, Yellow = 11, Red = 12; 
+const byte TempSensor = A0, servoPin = 3; 
+
+Servo servoMotor;
+const int leftAngle = 20, rightAngle = 220, restAngle = 90;
+
+const int movementInterval = 200;
+unsigned long lastMovement = 0;
+float temp = 0;
+bool cleaning = false, movingLeft = true;
+
+// TogglePower
+void togglePower(){
+    cleaning = !cleaning;
+    digitalWrite(Led, cleaning);
+    servoMotor.write(cleaning ? leftAngle : restAngle);
+}
+
+// Temperature normalized between 20 and 120 degrees
+void getTemp(){
+    temp = 20.0 + (analogRead(TempSensor) / 1023.0) * 100.0;
+}
+// Broom-arm movement
+void broomArmMovement(){
+    if (!cleaning || temp >= 110) return;
+
+    unsigned long now = millis();
+    if ((now - lastMovement) < movementInterval) return;
+
+    servoMotor.write(movingLeft ? leftAngle : rightAngle);
+    lastMovement = now;
+    movingLeft = !movingLeft;
+}
+
+// Temperature indicator LEDs
+void manageLeds(){
+ if (temp > 100 && !digitalRead(Red)){setLeds(LOW, LOW, HIGH);}
+ else if (temp > 70 && !digitalRead(Yellow)){setLeds(LOW, HIGH, LOW);}
+ else if (temp <= 70 && !digitalRead(Green)){setLeds(HIGH, LOW, LOW);}
+}
+void setLeds(bool greenValue, bool yellowValue, bool redValue){
+    digitalWrite(Green, greenValue);
+    digitalWrite(Yellow, yellowValue);
+    digitalWrite(Red, redValue);
+}
+
+/*new*/
 #include <NECK.hpp>   /* https://github.com/chon-group/neck2arduino */
-#include <Servo.h>    /* https://docs.arduino.cc/libraries/servo/ */
-#define PinLed 	   13	// Led 
-#define PinGreen   10	// Alert
-#define PinYellow  11	// Alert
-#define PinRed     12	// Alert
-#define PinSensor  A0   // Temp sensor
-#define servoPin   3		// Servo Motor
-
-Servo servoMotor; 
-float temperature = 0;
-int extraTemp = 0;
-bool cleanning = false; 
-
-const int anguloEsq = 20;   // ajuste conforme posição esquerda
-const int anguloDir = 220;  // ajuste conforme posição direita
-const int anguloDescanso = 90;
-
-const unsigned long intervaloMovimento = 200;
-unsigned long ultimoMovimento = 0;
-bool movimentoEsquerda = true;
-
 
 Apparatus(duster){
 	Element(broom);
@@ -28,55 +55,24 @@ Apparatus(duster){
 }
 
 Preparation{
-  pinMode(PinLed, OUTPUT);
-  pinMode(PinGreen, OUTPUT);
-  pinMode(PinYellow, OUTPUT);
-  pinMode(PinRed, OUTPUT);
+  pinMode(Led, OUTPUT);
+  pinMode(Green, OUTPUT);
+  pinMode(Yellow, OUTPUT);
+  pinMode(Red, OUTPUT);
   pinMode(servoPin,  OUTPUT);      
   servoMotor.attach(servoPin);
-  servoMotor.write(anguloDescanso);  
+  servoMotor.write(restAngle);  
 }
 
+Sensing(tempSensor){getTemp();}
+Percept(tempSensor,temperature, INTEROCEPTION) {return temp;}
 
-
-/* ****************************************** */
-/* min= 20ºC - max=120ºC */
-Sensing(tempSensor){temperature = 20.0 + (analogRead(PinSensor) / 1023.0) * 100.0;}
-Percept(tempSensor,temperature, INTEROCEPTION) {return temperature;}
-
-
-Behaving(alertLeds){
-  if(temperature > 100 & digitalRead(PinRed)) return;
-  else if(temperature > 70  & digitalRead(PinYellow)) return;
-  else if(temperature <= 70  & digitalRead(PinGreen)) return;
-  else{
-    if(temperature > 100){digitalWrite(PinGreen,LOW); digitalWrite(PinYellow,LOW); digitalWrite(PinRed,HIGH);}
-    else if(temperature > 70){digitalWrite(PinGreen,LOW); digitalWrite(PinYellow,HIGH); digitalWrite(PinRed,LOW);}
-    else if(temperature <= 70){digitalWrite(PinGreen,HIGH); digitalWrite(PinYellow,LOW); digitalWrite(PinRed,LOW);}
-  }
-}
-
-
-Percept(broom, powerStatus, PROPRIOCEPTION){return digitalRead(PinLed) ? "On" : "Off";}
-
+Percept(broom, powerStatus, PROPRIOCEPTION){return digitalRead(Led) ? "On" : "Off";}
 Act (broom,tooglePower){
-  if(digitalRead)
-  digitalWrite(PinLed, !digitalRead(PinLed));
-  cleanning = !cleanning;
+  togglePower();
   return EXECUTED;  
 }
 
-Behaving(broom){
-  if(cleanning & temperature < 110){
-    unsigned long agora = millis();
-    if (agora - ultimoMovimento >= intervaloMovimento) {
-      ultimoMovimento = agora;
-      if (movimentoEsquerda) {
-        servoMotor.write(anguloEsq);
-      } else {
-        servoMotor.write(anguloDir);
-      }
-      movimentoEsquerda = !movimentoEsquerda;
-    }
-  }
-}
+Behaving(broom){broomArmMovement();}
+
+Behaving(alertLeds){manageLeds();}

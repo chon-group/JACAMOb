@@ -56,8 +56,7 @@ public class Util {
         return ASSyntax.createLiteral(json.getString(key));
     }
 
-    public static Literal addJSONArrayAsTermsInLiteral(Literal literal, JSONArray args) {
-
+      public static Literal addJSONArrayAsTermsInLiteral(Literal literal, JSONArray args) {
         /* EXPECTED
           "args":[0,1,2]
         */
@@ -188,7 +187,7 @@ public class Util {
     }
 
     /* PRIVATES */
-    private static Term jsonObjectToTerm(Object object) {
+    public static Term jsonObjectToTerm(Object object) {
 
         if(object != null && object != JSONObject.NULL){
             switch (object) {
