@@ -4,10 +4,10 @@
 top to bottom direction
 skinparam classAttributeIconSize 0
 skinparam packageStyle folder
-skinparam linetype ortho
-skinparam nodesep 25
-skinparam ranksep 50
-hide empty members
+ skinparam linetype ortho
+ skinparam nodesep 25
+ skinparam ranksep 50
+ hide empty members
 
 package "neck2arduino" {
     package "NECK" {
@@ -15,56 +15,45 @@ package "neck2arduino" {
 
             metaclass "Apparatus" as DSLApparatus <<macro>> {}
             metaclass "Element" as DSLElement <<macro>> {}
-            metaclass "Percept" as DSLPercept <<macro>> {}
+            
+            metaclass "Act" as DSLAct <<macro>>  {}
 
             DSLApparatus "1" *-- "0..*" DSLElement
-            DSLPercept ..> DSLElement
+            
         }
 
         package "CORE" as NECK_CPP {
 
-            enum "PerceptionType" as PerceptionType {
-                INTEROCEPTION
-                PROPRIOCEPTION
-                EXTEROCEPTION
+            class "ActionFn" as ActionFn <<typedef>> #MistyRose {
+                Response (*)(const NECKArgs&)
             }
 
+            struct "ActionEntry" as ActionEntry #MistyRose {
+                + elementName : const char*
+                + actionName : const char*
+                + fn : ActionFn
+                + next : ActionEntry*
+            }
+
+
+
+
             enum "Response" as Response #MistyRose {
-                EXECUTED
-                PERCEPTED
-                UNAVAILABLE
-                UNCHANGED
+            <color:red>ALREADY</color>
+            EXECUTED
+            <color:red>INVALID</color>
+            PERCEPTED
+            <color:red>REJECTED</color>
+            <color:red>UNABLE</color>
+            UNAVAILABLE
+            UNCHANGED
+            <color:red>UNKNOWN</color>
             }
 
             class NECKArgs #MistyRose {
-                + NECKArgs()
-                --
-                + add(x : bool) : bool
-                + add(x : int32_t) : bool
-                + add(x : uint32_t) : bool
-                + add(x : float) : bool
-                + add(x : double) : bool
-                + add(x : const char*) : bool
-                + add(x : const String&) : bool
+
             }
 
-            struct "PerceptReturn" as PerceptReturn #MistyRose {
-                + status : Response
-                + hasArgs : bool
-                + args : NECKArgs
-            }
-
-            class "PerceptionFn" as PerceptionFn <<typedef>> #MistyRose {
-                PerceptReturn (*)()
-            }
-
-            struct "PerceptionEntry" as PerceptionEntry {
-                + elementName : const char*
-                + perceptName : const char*
-                + type : PerceptionType
-                + fn : PerceptionFn
-                + next : PerceptionEntry*
-            }
 
             class "Apparatus" as Apparatus {
                 - _jslp : JSON_SLP
@@ -77,51 +66,51 @@ package "neck2arduino" {
                 + name() : const char*
                 --
                 + {static} setPreparation(fn : PreparationFn) : void
-                + addAction(elementName : const char*, actionName : const char*, fn : ActionFn) : void
+                + <color:red>addAction(elementName : const char*, actionName : const char*, fn : ActionFn) : void</color>
                 + addPerception(elementName : const char*, perceptName : const char*, type : PerceptionType, fn : PerceptionFn) : void
                 + addSensing(elementName : const char*, fn : SensingFn) : void
                 + addBehaving(elementName : const char*, fn : BehavingFn) : void
                 + addTrieb(const char* elementName, const char* triebName, TriebFn fn) : void
+                
                 + {static} prepare() : void
                 + embody() : void
                 + bodyCycle() : void
-                + inhabitance() : void
+                + <color:orange><b>inhabitance() : void</b></color>
+                + streamPercepts() : void
+                + <color:red>streamActions(onlyElement : const char*) : void</color>
+                + <color:red>streamAction(action : String, element : String, args : NECKArgs) : void</color>
 
-                + <color:red><b>streamPercepts() : void</b></color>
-                - <color:red><b>perceive(entry : PerceptionEntry*) : PerceptReturn</b></color>
-                - <color:red><b>sendHeader(request : const char*, response : Response) : void</b></color>
+                - perceive(entry : PerceptionEntry*) : PerceptReturn
+                - sendHeader(request : const char*, response : Response) : void
+                - <color:red>sendActionResultJSON(elementName : const char*, actionName : const char*, response : Response) : void</color>
+                - <color:red>dispatchActionUnicast(elementName : const char*, actionName : const char*, args : const NECKArgs&) : Response</color>
+                - <color:red>dispatchActionBroadcast(actionName : const char*, args : const NECKArgs&) : bool</color>
             }
 
             ' Registros gerenciados pelo Apparatus
-            Apparatus "1" *-- "0..*" PerceptionEntry
             Apparatus ..> Response
 
-            ' Natureza da percepcao
-            PerceptionEntry --> PerceptionType
+            
 
-            ' Ponteiro para a funcao perceptiva
-            PerceptionEntry --> PerceptionFn
-
-            ' Tipo retornado pela funcao perceptiva
-            PerceptionFn ..> PerceptReturn
-
-            ' Execucao das funcoes registradas
-            Apparatus ..> PerceptionFn 
-
-            ' Estrutura do resultado perceptivo
-            PerceptReturn --> Response
-            PerceptReturn *-- NECKArgs
+            
         }
 
         DSLApparatus ..down.> Apparatus
-        DSLPercept ..down.> PerceptionEntry
-        DSLPercept ..> PerceptionType
+        
+        
     }
 
     package "JsonOverSLP" {
         class "JSON_SLP" as JSON_SLP {
         }
     }
+
+    DSLAct ..> DSLElement
+    DSLAct ..> ActionEntry
+    Apparatus "1" *-- "0..*" ActionEntry
+    ActionEntry --> ActionFn
+    ActionFn ..> Response
+    ActionFn ..> NECKArgs
 
     Apparatus *-- JSON_SLP
 }

@@ -159,8 +159,8 @@ public abstract class Apparatus {
         for (int i = 0; i < actions.length(); i++) {
             JSONObject actionObj = actions.getJSONObject(i);
 
-            if (actionObj.has("action")) {
-                String action = actionObj.getString("action");
+            if (actionObj.has("supportedAction")) {
+                String action = actionObj.getString("supportedAction");
 
                 supportedActions.add(action);
 

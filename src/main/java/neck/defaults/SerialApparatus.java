@@ -329,14 +329,14 @@ public class SerialApparatus extends Apparatus {
                SUPPORTED ACTIONS
                ---------------------------------------------------- */
 
-            if (record.has("action")) {
+            if (record.has("supportedAction")) {
 
                 JSONObject action =
                         new JSONObject();
 
                 action.put(
-                        "action",
-                        record.get("action")
+                        "supportedAction",
+                        record.get("supportedAction")
                 );
 
                 if (record.has("args")) {

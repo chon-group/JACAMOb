@@ -136,7 +136,7 @@ public class Body {
         Apparatus apparatus = null;
 
         if(apparatusName == null) apparatus = getApparatusBySupportedAction(actionTerm);
-        else apparatus = getApparatusByName(apparatusName);
+        else apparatus = getApparatus(apparatusName);
 
         if(apparatus == null) return ApparatusResponse.UNKNOWN;
 
@@ -228,7 +228,7 @@ public class Body {
     }
 
 
-    private Apparatus getApparatusByName(Atom appName){
+    private Apparatus getApparatus(Atom appName){
         /* PODERIA SER ATOM */
         if (!attachedAppName.contains(appName.getFunctor())) return null;
         for (int i = 0; i < this.attachedAppName.size(); i++) {

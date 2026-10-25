@@ -34,4 +34,8 @@ public enum ApparatusResponse {
     public Term toTerm() {
         return ASSyntax.createAtom(name().toLowerCase());
     }
+
+    public Term toERRORTerm() {
+        return ASSyntax.createAtom("myBody_"+name().toLowerCase());
+    }
 }

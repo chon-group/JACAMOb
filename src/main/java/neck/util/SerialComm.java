@@ -32,7 +32,7 @@ public class SerialComm {
     private static final int JSONSTART = 0x1E;
     private static final int JSONEND = 0x0A;
 
-    private static final int TIMEOUTms = 4000;
+    private static final int TIMEOUTms = 5000;
 
     private final Logger logger;
 
@@ -186,6 +186,15 @@ public class SerialComm {
             return response;
         }
 
+        // TIMEOUT não implica desconexão: permite nova tentativa.
+        if (getPortStatus() == SerialCommStatus.TIMEOUT) {
+            if (port == null || !port.isOpen()) {
+                setPortStatus(SerialCommStatus.OFF);
+                return response;
+            }
+            setPortStatus(SerialCommStatus.ON);
+        }
+
         /*
          * Descarta resíduos de transmissões anteriores.
          */
@@ -211,6 +220,10 @@ public class SerialComm {
         while (getPortStatus() == SerialCommStatus.ON) {
 
             int b = readByte();
+
+            if (getPortStatus() == SerialCommStatus.TIMEOUT) {
+                break;
+            }
 
             if (b < 0) {
                 setPortStatus(SerialCommStatus.OFF);
@@ -336,13 +349,12 @@ public class SerialComm {
                 return true;
             }
 
-            if (b < 0) {
-
-                setPortStatus(SerialCommStatus.OFF);
+            if (getPortStatus() == SerialCommStatus.TIMEOUT) {
                 return false;
             }
 
-            if (getPortStatus() == SerialCommStatus.TIMEOUT) {
+            if (b < 0) {
+                setPortStatus(SerialCommStatus.OFF);
                 return false;
             }
         }
@@ -362,11 +374,11 @@ public class SerialComm {
 
             int b = readByte();
 
-            if (b < 0) {
+            if (getPortStatus() == SerialCommStatus.TIMEOUT) {
                 return null;
             }
 
-            if (getPortStatus() == SerialCommStatus.TIMEOUT) {
+            if (b < 0) {
                 return null;
             }
 
@@ -400,6 +412,8 @@ public class SerialComm {
 
         } catch (Exception ex) {
 
+            logger.warning("Serial read exception: "
+                    + ex.getClass().getName() + " - " + ex.getMessage());
             setPortStatus(SerialCommStatus.TIMEOUT);
             return -1;
         }

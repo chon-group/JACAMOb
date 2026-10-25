@@ -46,14 +46,14 @@ group jason.infra.local.LocalAgArch.reasoningCycle()
             return result
             end 
         else Caso 2
-            group #FFEEEE Ação coporal
+            group #e48383 Ação coporal
             Jason -> Jason : LocalAgArch.act()
             activate Jason
                 Jason -> Jason : TransitionSystem.act()
                 activate Jason
                     Jason -> Jason : TransitionSystem.applyExecInt()
                     activate Jason
-                        Jason -> NECK : jason.stdlib.myBody.Act.execute() 
+                        Jason -> NECK : jason.stdlib.myBody.act.execute() 
                         activate NECK
                             NECK -> NECK : internalActions.Act.execute() 
                             activate NECK

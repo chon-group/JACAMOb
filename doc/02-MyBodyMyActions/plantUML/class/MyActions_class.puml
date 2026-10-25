@@ -5,15 +5,14 @@ VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
 '/
 @startuml
 
-' top to bottom direction
+  top to bottom direction
 
  skinparam classAttributeIconSize 0
  skinparam packageStyle folder
  skinparam linetype ortho
- skinparam nodesep 35
- 'skinparam ranksep 45
- skinparam ranksep 60
-
+ skinparam linetype ortho
+ skinparam nodesep 60
+ skinparam ranksep 80
 
 package org{
   package json{
@@ -28,62 +27,31 @@ package org{
 ' ============================================================
 package jason {
 
-  package "asSemantics" as pkg_jason_semantics {
-
-    class "TransitionSystem" as TransitionSystem {
-        + getAg() : Agent
-        + getC() : Circumstance
+  package "stdlib" {
+    package "myBody" {
+        class "act" as myBodyAct #MistyRose
     }
-
-    class "Agent" as Agent {
-        + getBB() : BeliefBase
-    }
-
-    class "Circumstance" as Circumstance {
-        + addEvent(ev : Event) : void
-    }
-
-    class "DefaultInternalAction" as DefaultInternalAction{
-      + execute(TransitionSystem ts, Unifier un, Term[] args): Object
-    }
-
-    class "Event" as Event
-
-
   }
 
-  package "bb" as pkg_jason_bb {
+  package "asSemantics" as pkg_jason_semantics {
 
-    abstract "BeliefBase" as BeliefBase {
-         + add(l : Literal) : boolean
-         + remove(l : Literal) : boolean
-    }
+      class "TransitionSystem" as TransitionSystem
+
+      class "DefaultInternalAction" as DefaultInternalAction {
+          + execute(ts: TransitionSystem, un: Unifier, args: Term[]): Object
+      }
+
   }
 
   package "asSyntax" as pkg_jason_syntax {
 
-    class "Literal" as Literal {
-        ' + getAnnots() : List<Term>
-        ' + addAnnot(annot : Term) : boolean
-        ' + hasAnnot(annot : Term) : boolean
-        ' + clearAnnots() : Literal
-    }
+    interface "Term" as Term
 
+    class "Literal" as Literal
 
-  
-    
+    Literal ..|> Term
+
   }
-
-    TransitionSystem --> Agent 
-    TransitionSystem --> Circumstance
-
-    Circumstance o-- "0..*" Event 
-
-    Literal <-- BeliefBase
-    BeliefBase <-- Agent
-
-
-
 }
 
 
@@ -99,11 +67,6 @@ package jacamo {
 
   package "infra" as pkg_infra {
     class "JaCaMoAgArch" as JaCaMoAgArch {
-        - body : neck.Body = null
-
-        + init() : void
-        - embody() : void
-        + perceive() : Collection<Literal>
     }
   }
 
@@ -120,22 +83,34 @@ package "neck" as pkg_neck {
     enum "PerceptionType" as PerceptionType  {}
 
     enum "ApparatusResponse" as ApparatusResponse  {
+        <color:red>ALREADY</color>
         EXECUTED
+        <color:red>INVALID</color>
         PERCEPTED
+        <color:red>REJECTED</color>
+        <color:red>UNABLE</color>
         UNAVAILABLE
         UNCHANGED
+        <color:red>UNKNOWN</color>
         --
         {static} + toApparatusResponse(jsonObject : JSONObject): ApparatusResponse
         {static} + toApparatusResponse(bodyResponse : String): ApparatusResponse
         + toTerm(): Term
+        <color:red>+ toERRORTerm(): Term</color>
     }
   }
 
   package "internalActions" as internalActions {
-    class "Act" as Act #MistyRose {
-
+    class "BodyAct" as Act #MistyRose {
+    +getMinArgs(): int
+    +getMaxArgs(): int
+    #checkArguments(args: Term[]): void
+    +execute(ts: TransitionSystem, un: Unifier, args: Term[]): Object
+    {static} -currentAgtBody(ts: TransitionSystem): Body
     }
   }
+
+  Act <|-- myBodyAct
 
   class "Body" as Body {
 
@@ -144,23 +119,25 @@ package "neck" as pkg_neck {
 
       + Body(bodyName : String)
 
+      + <color:red>act(actionTerm: Term, apparatusName: Atom): ApparatusResponse</color>      
       + attachApparatus(implementation : neck.Apparatus, apparatusName : String) : boolean
       + detachApparatusByName(apparatusName : String) : boolean
       + perceive(transitionSystem : TransitionSystem) : void
 
-      - getApparatusByName(appName : jason.asSyntax.Atom) : neck.Apparatus
+      - getApparatus(appName : Atom) : Apparatus
+      - <color:red>getApparatusBySupportedAction(actionName: Term): Apparatus</color>
       - bodyPerceptionRevisionFunction(List<Literal> incoming) : List<Literal>
       - removeOldPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
       - addNewPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+
+
   }
 
-  Body ..> TransitionSystem 
-  Body ..> Literal
-  Apparatus ..> Literal
-
-
+  Act ..> TransitionSystem 
 
   Apparatus ..> ApparatusResponse
+  ApparatusResponse ..> Term
+  Apparatus ..> Literal
 
 
 
@@ -172,14 +149,17 @@ package "neck" as pkg_neck {
       - interoceptions : List<Literal>
       - exteroceptions : List<Literal>
       - proprioceptions : List<Literal>
+      - <color:red>supportedActions: Set<String></color>
 
       # Apparatus()
+      {abstract} + <color:red>act(actionTerm: Term): ApparatusResponse</color>
       + attach() : void
       + detach() : void
       + embody() : JSONObject
       + sense() : void
 
       # init() : void
+      {abstract} # <color:red>requestActions(): JSONObject</color>
       # requestPercepts() : JSONObject
 
       + getAllPerceptions() : List<Literal>
@@ -189,7 +169,8 @@ package "neck" as pkg_neck {
       + getHwAppName() : String
       + getApparatusName() : String
       + setApparatusName(apparatusName : String) : void
-
+      + <color:red>supportsAction(actionName: String): boolean</color>
+      - <color:red>loadBodyActions(): void</color>
       
       
     }
@@ -204,10 +185,12 @@ package "neck" as pkg_neck {
 
       + SerialApparatus(address : String)
 
+      + <color:red>act(actionTerm: Term): ApparatusResponse</color>
       + attach() : void
       + detach() : void
       + embody() : JSONObject
-      # requestPercepts() : JSONObject
+      # <color:red>requestActions() : JSONObject</color>
+      + requestPercepts() : JSONObject
 
       + getStatus() : boolean
       + getConnectionStatus() : String
@@ -232,12 +215,16 @@ package "neck" as pkg_neck {
 ' A ação interna do NECK estende a ação interna padrão do Jason
 Act --|> DefaultInternalAction
 
-' A ação interna acessa o corpo pela arquitetura do agente
-Act ..> JaCaMoAgArch
-Act ..> Body
+' ' A ação interna acessa o corpo pela arquitetura do agente
+ Act ..> JaCaMoAgArch
+' Act ..> Body
 
-' A ação interna utiliza a resposta corporal
-Act ..> ApparatusResponse
+' ' A ação interna utiliza a resposta corporal
+' Act ..> ApparatusResponse
+
+
+Act ..[norank]> Body
+Act ..[norank]> ApparatusResponse
 
 
 Apparatus ..> PerceptionType

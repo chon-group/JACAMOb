@@ -15,7 +15,7 @@ import neck.model.ApparatusResponse;
 import java.util.logging.Logger;
 
 
-public class Act extends DefaultInternalAction {
+public class BodyAct extends DefaultInternalAction {
 
     private ApparatusResponse apparatusResponse = null;
     private Term    actionTerm          = null;
@@ -84,30 +84,39 @@ public class Act extends DefaultInternalAction {
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
         /* MULTIPLAS RESPOSTAS NÃO SÃO CONSIDERADAS AINDA */
         /* NO CASO DE UMA ACAO QUE VÁRIOS APARATUS PODEM EXECUTAR, ATUALMENTE ENVIAMOS PARA O PRIMEIRO */
-        /* PORÉM VÁRIOS ELEMENTOS NO MESMO APARATUS PODEM EXECUTAR A MESMA AÇÃO */
+        /* PORÉM VÁRIOS ELEMENTOS NO MESMO APARATUS PODEM EXECUTAR A MESMA AÇÃO - trabalho futuro...*/
         checkArguments(args);
 
-        apparatusResponse = currentAgtBody(ts).act(this.actionTerm,this.apparatusName);
+        apparatusResponse = currentAgtBody(ts).act(this.actionTerm, this.apparatusName);
 
-
-        if (apparatusResponse != null){
-            if (replyRequested != null){
+        if (apparatusResponse != null) {
+            /* solicitou retorno: act(actionName,Reply); */
+            if (replyRequested != null) {
                 un.unifies(replyRequested, apparatusResponse.toTerm());
-                ts.getLogger().info("UNIFIES: Action "+this.actionTerm+" replied "+ apparatusResponse);
+                ts.getLogger().fine("UNIFIES: Action " + this.actionTerm + " replied " + apparatusResponse);
                 return true;
             }
-            if (apparatusResponse == ApparatusResponse.EXECUTED){
-                ts.getLogger().info("Action "+this.actionTerm+" replied "+ apparatusResponse);
+
+            /* não solicitou retorno: act(actionName) */
+            if (apparatusResponse == ApparatusResponse.EXECUTED) {
+                ts.getLogger().info("Action " + this.actionTerm + " replied " + apparatusResponse);
                 return true;
-            }else if (apparatusResponse == ApparatusResponse.ALREADY){
-                ts.getLogger().info("Action "+this.actionTerm+" replied "+ apparatusResponse);
+            } else if (apparatusResponse == ApparatusResponse.ALREADY) {
+                ts.getLogger().info("Action " + this.actionTerm + " replied " + apparatusResponse);
                 return true;
-            }else {
-                ts.getLogger().severe("severe Action "+this.actionTerm+" replied "+ apparatusResponse);
-                return false;
+            } else {
+                ts.getLogger().severe("Action " + this.actionTerm + " replied " + apparatusResponse);
+                throw new JasonException(null,apparatusResponse.toERRORTerm());
             }
         }
-        return false;
+
+        throw new JasonException(
+                "Body action failed",
+                JasonException.createBasicErrorAnnots(
+                        "myBody_failed",
+                        "null"
+                )
+        );
     }
 
     private static Body currentAgtBody(TransitionSystem ts) {
