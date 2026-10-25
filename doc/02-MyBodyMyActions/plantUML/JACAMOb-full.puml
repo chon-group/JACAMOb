@@ -1,0 +1,48 @@
+ 
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant Jason
+participant JaCa
+participant CArtAgO
+participant DEVICE
+
+activate JaCaMo
+activate Jason
+
+
+
+
+== CICLO DE RACIOCÍNIO DO AGENTE ==
+
+
+group jason.infra.local.LocalAgArch.reasoningCycle()
+
+    group jason.infra.local.LocalAgArch.sense
+        
+
+    end
+
+    group jason.infra.local.LocalAgArch.deliberate
+
+    end
+
+    group jason.infra.local.LocalAgArch.act
+    Jason -> Jason : infra.local.LocalAgArch.act
+    end
+
+
+
+end
+
+deactivate JaCaMo
+
+@enduml
+

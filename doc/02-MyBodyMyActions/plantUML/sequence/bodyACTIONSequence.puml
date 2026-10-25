@@ -1,0 +1,140 @@
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+actor Designer
+participant JaCaMo
+participant Jason
+participant NECK
+participant JaCa
+participant CArtAgO
+participant DEVICE
+
+activate JaCaMo
+activate Jason
+activate DEVICE
+
+== RACIOCÍNIO DO AGENTE CICLO_i ==
+
+group jason.infra.local.LocalAgArch.reasoningCycle()
+
+    group jason.infra.local.LocalAgArch.sense
+
+    end
+
+    group jason.infra.local.LocalAgArch.deliberate
+
+    end
+
+    group jason.infra.local.LocalAgArch.act
+        alt Caso 1
+            group Ação Interna
+            Jason -> Jason : LocalAgArch.act()
+            activate Jason
+                Jason -> Jason : TransitionSystem.act()
+                activate Jason
+                    Jason -> Jason : TransitionSystem.applyExecInt()
+                    activate Jason
+                        Jason -> Jason : jason.stdlib.[ACTION-NAME].execute()
+                        activate Jason
+                        return result
+                    return result
+                return result
+            return result
+            end 
+        else Caso 2
+            group #FFEEEE Ação coporal
+            Jason -> Jason : LocalAgArch.act()
+            activate Jason
+                Jason -> Jason : TransitionSystem.act()
+                activate Jason
+                    Jason -> Jason : TransitionSystem.applyExecInt()
+                    activate Jason
+                        Jason -> NECK : jason.stdlib.myBody.Act.execute() 
+                        activate NECK
+                            NECK -> NECK : internalActions.Act.execute() 
+                            activate NECK
+                                NECK -> NECK : internalActions.Act.getAgtBody()
+                                activate NECK
+                                    NECK -> NECK : Body.act()
+                                    activate NECK
+                                        NECK -> NECK : Body.getApparatus()
+                                        activate NECK
+                                            NECK -> NECK : Apparatus.act()
+                                            activate NECK
+                                                NECK -> DEVICE : SerialApparatus.request()
+                                                activate DEVICE
+                                                    DEVICE -> DEVICE : NECKApparatus.bodyCycle()
+                                                    activate DEVICE
+                                                        DEVICE -> DEVICE : NECKApparatus.streamAction()
+                                                        activate DEVICE
+                                                            DEVICE -> DEVICE : NECKApparatus.dispatchAction()
+                                                        return result
+                                                    return result
+                                                return result
+                                            return result
+                                        return result
+                                    return result
+                                return result
+                            return result
+                        return result
+                    return result
+                return result
+            return result
+        end
+        else Caso 3
+        group Ação Ambiental (REQUISIÇÃO)
+            Jason -> Jason : LocalAgArch.act()
+            activate Jason
+                Jason -> Jason : TransitionSystem.act()
+                activate Jason
+                    Jason -> Jason : TransitionSystem.applyExecInt()
+                    activate Jason
+                        Jason -> JaCa : AgArch.act()
+                        activate JaCa
+                            JaCa -> CArtAgO : CAgentArch.act()
+                            activate CArtAgO
+                                CArtAgO -> CArtAgO : IAgentSession.doAction()
+                            return actionId
+                        return 
+                    return 
+                return 
+            return                 
+        
+        end
+        end
+    end
+
+end
+
+== RACIOCÍNIO DO AGENTE CICLO_i+1 ==
+
+
+group  jason.infra.local.LocalAgArch.reasoningCycle()
+
+    group jason.infra.local.LocalAgArch.sense
+        Jason -> JaCa : asSemantics.TransitionSystem.sense
+        activate Jason
+        group Ação Ambiental (RESPOSTA)
+            activate JaCa
+            JaCa -> CArtAgO : CAgentArch.perceive()
+                activate CArtAgO
+                    CArtAgO -> CArtAgO: AgentSession.fetchNextPercept()
+                return
+                JaCa -> Jason : AgArch.actionExecuted()           
+                activate Jason
+                    Jason -> Jason : Circumstance.addFeedbackAction()
+                    Jason -> Jason : AgArch.wakeUpAct()
+                return
+    end
+            return
+        Jason --> Jason
+        deactivate Jason
+    end
+end
+
+
+@enduml

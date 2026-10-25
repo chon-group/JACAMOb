@@ -1,0 +1,70 @@
+#include "common.h"
+
+void setup() {
+	configPinMode();
+	attachServos();
+	Serial.begin(9600);
+}
+
+void loop() {
+  static String msg = "";
+  while (Serial.available()) {
+    char c = Serial.read();
+    if (c == '\n') {processMsg(msg); msg = "";}
+    else if (c != '\r') {msg += c;}
+  }
+
+}
+
+void processMsg(String cmd) {
+    cmd.trim();
+    if (cmd == "getPercepts") sendPercepts();
+    else if (cmd == "keepWalking") keepWalkingAction();
+    else if (cmd == "standUp") standUpAction();
+}
+
+void keepWalkingAction(){
+	Serial.print("keepWalkingReply(");
+	    if(walk()){Serial.print("ok");}
+        else{
+            isStuck();
+		    if(state==STUCK) Serial.print("stuck");
+		    else if(state==OK) Serial.print("ok");
+		    else Serial.print("fall");
+	    }
+	Serial.print(");");
+
+	Serial.print("legState");
+	    if(state==STUCK) Serial.print("stuck");
+	    else if(state==FALL) 	Serial.print("fall");
+	    else Serial.print("ok");
+	Serial.print(");");
+}
+
+void standUpAction(){
+ 	standUp();
+	isStuck();
+
+	Serial.print("standUpReply(");
+	    if(state==STUCK) Serial.print("stuck");
+	    else if(state==OK) Serial.print("ok");
+	    else Serial.print("fall");
+	Serial.print(");");
+
+	Serial.print("legState(");
+	    if(state==STUCK) Serial.print("stuck");
+	    else if(state==FALL) 	Serial.print("fall");
+	    else Serial.print("ok");
+	Serial.print(");");
+}
+
+void sendPercepts() {
+    if (state != FALL) isStuck();	
+
+    Serial.print("legState(");
+        if(state==STUCK) Serial.print("stuck");
+	    else if(state==FALL) 	Serial.print("fall");
+	    else Serial.print("ok");
+    Serial.print(");");
+
+}

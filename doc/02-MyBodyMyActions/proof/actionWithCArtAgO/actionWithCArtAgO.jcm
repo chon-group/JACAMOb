@@ -1,0 +1,11 @@
+mas actionWithCArtAgO {
+  agent rosie{
+    focus: myBody.legs
+  }
+
+  workspace myBody {
+    artifact legs: body.Legs("/dev/ttyEmulatedPort0") 
+  }
+  
+  uses package: javino "com.github.chon-group:Javino:1.6.7"
+}

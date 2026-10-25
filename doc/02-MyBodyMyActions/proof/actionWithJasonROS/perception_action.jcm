@@ -1,0 +1,8 @@
+mas architecture_1 {
+
+  agent rosie{
+    ag-class: embedded.mas.bridges.jacamo.CyberPhysicalAgent      
+    ag-arch: embedded.mas.bridges.jacamo.DefaultEmbeddedAgArch     
+  }
+
+}

@@ -1,0 +1,6 @@
+mas minimumJaCaMoProject {
+   agent rosie{
+      body :
+         apparatus locomotion : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort0")
+   }
+}

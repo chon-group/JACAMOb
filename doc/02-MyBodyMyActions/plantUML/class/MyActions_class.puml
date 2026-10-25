@@ -1,0 +1,265 @@
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+' top to bottom direction
+
+ skinparam classAttributeIconSize 0
+ skinparam packageStyle folder
+ skinparam linetype ortho
+ skinparam nodesep 35
+ 'skinparam ranksep 45
+ skinparam ranksep 60
+
+
+package org{
+  package json{
+    class JSONObject
+  }
+}
+
+
+
+' ============================================================
+' JASON
+' ============================================================
+package jason {
+
+  package "asSemantics" as pkg_jason_semantics {
+
+    class "TransitionSystem" as TransitionSystem {
+        + getAg() : Agent
+        + getC() : Circumstance
+    }
+
+    class "Agent" as Agent {
+        + getBB() : BeliefBase
+    }
+
+    class "Circumstance" as Circumstance {
+        + addEvent(ev : Event) : void
+    }
+
+    class "DefaultInternalAction" as DefaultInternalAction{
+      + execute(TransitionSystem ts, Unifier un, Term[] args): Object
+    }
+
+    class "Event" as Event
+
+
+  }
+
+  package "bb" as pkg_jason_bb {
+
+    abstract "BeliefBase" as BeliefBase {
+         + add(l : Literal) : boolean
+         + remove(l : Literal) : boolean
+    }
+  }
+
+  package "asSyntax" as pkg_jason_syntax {
+
+    class "Literal" as Literal {
+        ' + getAnnots() : List<Term>
+        ' + addAnnot(annot : Term) : boolean
+        ' + hasAnnot(annot : Term) : boolean
+        ' + clearAnnots() : Literal
+    }
+
+
+  
+    
+  }
+
+    TransitionSystem --> Agent 
+    TransitionSystem --> Circumstance
+
+    Circumstance o-- "0..*" Event 
+
+    Literal <-- BeliefBase
+    BeliefBase <-- Agent
+
+
+
+}
+
+
+
+
+
+' ============================================================
+' JACAMO
+' ============================================================
+package jacamo {
+
+
+
+  package "infra" as pkg_infra {
+    class "JaCaMoAgArch" as JaCaMoAgArch {
+        - body : neck.Body = null
+
+        + init() : void
+        - embody() : void
+        + perceive() : Collection<Literal>
+    }
+  }
+
+}
+
+' ============================================================
+' NECK
+' ============================================================
+
+package "neck" as pkg_neck {
+
+  
+  package "model" as pkg_model {
+    enum "PerceptionType" as PerceptionType  {}
+
+    enum "ApparatusResponse" as ApparatusResponse  {
+        EXECUTED
+        PERCEPTED
+        UNAVAILABLE
+        UNCHANGED
+        --
+        {static} + toApparatusResponse(jsonObject : JSONObject): ApparatusResponse
+        {static} + toApparatusResponse(bodyResponse : String): ApparatusResponse
+        + toTerm(): Term
+    }
+  }
+
+  package "internalActions" as internalActions {
+    class "Act" as Act #MistyRose {
+
+    }
+  }
+
+  class "Body" as Body {
+
+      - apparatus : neck.Apparatus[]
+      - bodyName : String
+
+      + Body(bodyName : String)
+
+      + attachApparatus(implementation : neck.Apparatus, apparatusName : String) : boolean
+      + detachApparatusByName(apparatusName : String) : boolean
+      + perceive(transitionSystem : TransitionSystem) : void
+
+      - getApparatusByName(appName : jason.asSyntax.Atom) : neck.Apparatus
+      - bodyPerceptionRevisionFunction(List<Literal> incoming) : List<Literal>
+      - removeOldPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+      - addNewPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+  }
+
+  Body ..> TransitionSystem 
+  Body ..> Literal
+  Apparatus ..> Literal
+
+
+
+  Apparatus ..> ApparatusResponse
+
+
+
+  abstract class "Apparatus" as Apparatus {
+
+      - apparatusName : String
+      - hwAppName : String
+      - hwAppID : Long
+      - interoceptions : List<Literal>
+      - exteroceptions : List<Literal>
+      - proprioceptions : List<Literal>
+
+      # Apparatus()
+      + attach() : void
+      + detach() : void
+      + embody() : JSONObject
+      + sense() : void
+
+      # init() : void
+      # requestPercepts() : JSONObject
+
+      + getAllPerceptions() : List<Literal>
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+      + getHwAppName() : String
+      + getApparatusName() : String
+      + setApparatusName(apparatusName : String) : void
+
+      
+      
+    }
+    
+    
+
+
+    package "defaults" as pkg_defaults {
+      class "SerialApparatus" as SerialApparatus {
+
+      - serialComm : neck.util.SerialComm
+
+      + SerialApparatus(address : String)
+
+      + attach() : void
+      + detach() : void
+      + embody() : JSONObject
+      # requestPercepts() : JSONObject
+
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+      
+      - request(message : String, args : Object[]) : JSONObject
+      - prepareRequest(message : String, args : Object[]) : JSONObject
+      - parseResponse(records : List<JSONObject>) : JSONObject
+      }
+
+      
+    }
+
+  
+}
+
+
+' ============================================================
+' RELAÇÕES
+' ============================================================
+
+' A ação interna do NECK estende a ação interna padrão do Jason
+Act --|> DefaultInternalAction
+
+' A ação interna acessa o corpo pela arquitetura do agente
+Act ..> JaCaMoAgArch
+Act ..> Body
+
+' A ação interna utiliza a resposta corporal
+Act ..> ApparatusResponse
+
+
+Apparatus ..> PerceptionType
+
+JaCaMoAgArch "1" --> "0..1" Body 
+
+Body "1" o-- "1..*" Apparatus
+
+SerialApparatus --|> Apparatus
+
+JSONObject <..SerialApparatus
+
+' ============================================================
+' ORGANIZAÇÃO VISUAL
+' ============================================================
+
+' Model à esquerda do Apparatus
+ApparatusResponse -[hidden]right- Apparatus
+
+' Jason abaixo do NECK
+Apparatus -[hidden]down- Literal
+
+' JaCaMo acima do NECK
+JaCaMoAgArch -[hidden]down- Body
+@enduml
