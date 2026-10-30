@@ -1,0 +1,2969 @@
+[13:25.433214] [H[2J[3JThe computer has all required dependencies
+[13:25.433316] Python ENV
+[13:25.437134] [PythonBridgeBody] Preparing environment...
+[13:25.437203] [PythonBridgeBody] Creating Python virtual environment...
+[13:26.582483] [PythonBridgeBody] Installing pyserial...
+[13:26.802199] Collecting pyserial
+[13:26.803021]   Using cached pyserial-3.5-py2.py3-none-any.whl.metadata (1.6 kB)
+[13:26.804754] Using cached pyserial-3.5-py2.py3-none-any.whl (90 kB)
+[13:26.808294] Installing collected packages: pyserial
+[13:26.842108] Successfully installed pyserial-3.5
+[13:26.868674] Do you want to recompile firmware.hex? [y/N]
+[13:28.627834] [H[2J[3JInstall required Arduino libraries
+[13:28.854907] Already installed LiquidCrystal@1.0.7
+[13:29.204607] Already installed Servo@1.3.0
+[13:29.344203] Compiling firmware...
+[13:29.678287] Sketch uses 7606 bytes (23%) of program storage space. Maximum is 32256 bytes.
+[13:29.678340] Global variables use 357 bytes (17%) of dynamic memory, leaving 1691 bytes for local variables. Maximum is 2048 bytes.
+[13:30.030470] Sketch uses 3010 bytes (9%) of program storage space. Maximum is 32256 bytes.
+[13:30.030537] Global variables use 93 bytes (4%) of dynamic memory, leaving 1955 bytes for local variables. Maximum is 2048 bytes.
+[13:30.395910] Sketch uses 2878 bytes (8%) of program storage space. Maximum is 32256 bytes.
+[13:30.395966] Global variables use 65 bytes (3%) of dynamic memory, leaving 1983 bytes for local variables. Maximum is 2048 bytes.
+[13:30.451144] Firmware compiled successfully!
+[13:30.451266] Copy firmware to simulator
+[13:30.453239] '/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/actionWithEJasonArch/src/bdy/firmware/build/firmware.ino.hex' -> '/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/actionWithEJasonArch/../simulator/firmware.hex'
+[13:30.455481] '/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/actionWithEJasonArch/src/bdy/helpers/jammer/build/jammer.ino.hex' -> '/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/actionWithEJasonArch/../simulator/jammer.hex'
+[13:30.457606] '/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/actionWithEJasonArch/src/bdy/helpers/proxyServoMotor/build/proxyServoMotor.ino.hex' -> '/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/actionWithEJasonArch/../simulator/proxyServoMotor.hex'
+[13:30.457884] Configuring serial port baudrate...
+[13:30.463280] How many executions? [1]
+[13:32.945190] Starting the Simulation!
+[13:33.229776] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[13:33.390212] 
+[13:33.390258] ------------------------------------------------- 
+[13:33.390262]                    NEW CIRCUIT                    
+[13:33.390265]  
+[13:33.396923] 
+[13:33.396945]  "    Loading Compilers at:" 
+[13:33.396949]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[13:33.396952]  
+[13:33.396955] "        Found Compiler: " "AScript" 
+[13:33.396959] "        Found Compiler: " "Arduino" 
+[13:33.396962] "        Found Compiler: " "Avrgcc" 
+[13:33.397035] "        Found Compiler: " "Dummy C" 
+[13:33.397060] "        Found Compiler: " "GcBasic" 
+[13:33.397064] "        Found Compiler: " "Make_avrgcc" 
+[13:33.397171] "        Found Compiler: " "Mplabx_xc8" 
+[13:33.397191] "        Found Compiler: " "Mplabx_xc8_12F" 
+[13:33.397207] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[13:33.397292] "        Found Compiler: " "SDCC-PIC" 
+[13:33.397310] "        Found Compiler: " "SDCC" 
+[13:33.397331] 
+[13:33.397334]  "    Loading Compilers at:" 
+[13:33.397339]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[13:33.397344]  
+[13:33.397366] "        Found Compiler: " "Asem-51" 
+[13:33.397392] "        Found Compiler: " "Avra" 
+[13:33.397419] "        Found Compiler: " "Avrasm2" 
+[13:33.397447] "        Found Compiler: " "Avrgcc-asm" 
+[13:33.397471] "        Found Compiler: " "Gavrasm" 
+[13:33.397497] "        Found Compiler: " "GpAsm" 
+[13:33.397532] "        Found Compiler: " "sdas8051(SDCC)" 
+[13:33.397556] "        Found Compiler: " "SDCC_asm" 
+[13:33.397586] "        Found Compiler: " "SjASMPlus" 
+[13:33.397619] "        Found Compiler: " "Vasm-6502" 
+[13:33.471963] 
+[13:33.472012]  "    Loading Component sets at:" 
+[13:33.472017]  "/opt/group.chon/simulide/data" 
+[13:33.472020]  
+[13:33.472281] "        Loaded Component set:           " "arduinos.xml" 
+[13:33.472458] "        Loaded Component set:           " "avr.xml" 
+[13:33.472615] "        Loaded Component set:           " "dig_pot.xml" 
+[13:33.472634] "        Loaded Component set:           " "i51.xml" 
+[13:33.473758] "        Loaded Component set:           " "ic74.xml" 
+[13:33.474079] "        Loaded Component set:           " "icCD.xml" 
+[13:33.474098] "        Loaded Component set:           " "keys.xml" 
+[13:33.474212] "        Loaded Component set:           " "led_display.xml" 
+[13:33.474261] "        Loaded Component set:           " "mcs65.xml" 
+[13:33.474450] "        Loaded Component set:           " "pics.xml" 
+[13:33.474664] "        Loaded Component set:           " "scripted.xml" 
+[13:33.474851] "        Loaded Component set:           " "shields.xml" 
+[13:33.474933] "        Loaded Component set:           " "ternary.xml" 
+[13:33.475079] "        Loaded Component set:           " "tools.xml" 
+[13:33.475219] "        Loaded Component set:           " "unsorted.xml" 
+[13:33.475330] "        Loaded Component set:           " "ussr.xml" 
+[13:33.475380] "        Loaded Component set:           " "z80.xml" 
+[13:33.475399] 
+[13:33.475403]  
+[13:33.478420] 
+[13:33.478440] ------------------------------------------------- 
+[13:33.478443]                    NEW CIRCUIT                    
+[13:33.478446]  
+[13:33.501445]         Initializing "1@mega328-109" 
+[13:33.501730]         "1@mega328-109" Initialized 
+[13:33.501734]  
+[13:33.509856] Loading hex file:
+[13:33.509866]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[13:33.509874]  
+[13:33.510475] Firmware successfully loaded
+[13:33.510483]  
+[13:33.527740]         Initializing "345@m328 TQFP-269" 
+[13:33.528026]         "345@m328 TQFP-269" Initialized 
+[13:33.528035]  
+[13:33.537613] Loading hex file:
+[13:33.537625]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[13:33.537633]  
+[13:33.537881] Firmware successfully loaded
+[13:33.537889]  
+[13:33.544061]         Initializing "405@m328 TQFP-269" 
+[13:33.544295]         "405@m328 TQFP-269" Initialized 
+[13:33.544303]  
+[13:33.553783] Loading hex file:
+[13:33.553794]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[13:33.553800]  
+[13:33.554042] Firmware successfully loaded
+[13:33.554055]  
+[13:33.593316]         Initializing "456@mega328-109" 
+[13:33.593538]         "456@mega328-109" Initialized 
+[13:33.593545]  
+[13:33.596793] Loading hex file:
+[13:33.596801]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[13:33.596808]  
+[13:33.597045] Firmware successfully loaded
+[13:33.597053]  
+[13:33.665275] Circuit Loaded:  
+[13:33.665326] "rosie.sim1" 
+[13:35.065618] 
+[13:36.194343] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[13:36.194649] Starting Circuit Simulation...
+[13:36.194682]  
+[13:36.197138] Connected to "/dev/ttyExogenous0" 
+[13:36.197308] Loading hex file:
+[13:36.197324]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[13:36.197336]  
+[13:36.198492] Firmware successfully loaded
+[13:36.198519]  
+[13:36.198523] Loading hex file:
+[13:36.198526]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[13:36.198529]  
+[13:36.198726] Firmware successfully loaded
+[13:36.198744]  
+[13:36.198748] Loading hex file:
+[13:36.198751]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[13:36.198754]  
+[13:36.198967] Firmware successfully loaded
+[13:36.198984]  
+[13:36.216184] Loading hex file:
+[13:36.216228]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[13:36.216233]  
+[13:36.216558] Firmware successfully loaded
+[13:36.216567]  
+[13:36.216669]     Simulation Running... 
+[13:36.216674]  
+[13:37.067799] 
+[13:39.069965] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[13:41.072133] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[13:41.312158] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[13:41.312472] Waiting for Rosie's body...
+[13:41.316137] [PythonBridgeBody] Connecting Rosie's body...
+[13:43.335395] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[13:44.335360] [PythonBridgeBody] Perceiving...
+[13:44.343857] Rosie's body is ready!
+[13:44.343910] Execution 1 of 10
+[13:44.343921] Starting the MAS!
+[13:45.018249] > Task :compileJava UP-TO-DATE
+[13:45.018608] > Task :processResources NO-SOURCE
+[13:45.018661] > Task :classes UP-TO-DATE
+[13:45.093357] 
+[13:45.093407] > Task :buildJCMDeps
+[13:45.093443] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[13:45.093470] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[13:45.093491] 
+[13:45.093533] JCM packages dependencies updated at .jcm-deps.gradle
+[13:45.093553] 
+[13:45.093580] BUILD SUCCESSFUL in 171ms
+[13:45.093606] 2 actionable tasks: 1 executed, 1 up-to-date
+[13:45.196563] > Task :compileJava UP-TO-DATE
+[13:45.196656] > Task :processResources NO-SOURCE
+[13:45.196719] > Task :classes UP-TO-DATE
+[13:45.470998] [PythonBridgeBody] Connected: ('127.0.0.1', 40450)
+[13:45.471716] [PythonBridgeBody] Agent: rosie
+[13:45.525596] [PythonBridgeBody] Perceived: legState("ok");
+[13:46.513367] [PythonBridgeBody] Action... keepWalking
+[13:47.196122] 
+[13:47.196215] > Task :run
+[13:47.196226] Runtime Services (RTS) is running at 127.0.1.1:36335
+[13:47.196236] Agent mind inspector is running at http://127.0.1.1:3272
+[13:47.196317] CArtAgO Http Server running on http://127.0.1.1:3273
+[13:47.196339] [Connecting to socket...]
+[13:47.196350] [Connection established]
+[13:47.196374] [EJasonArch] keepWalking
+[13:48.875118] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[13:49.875251] [PythonBridgeBody] Perceiving...
+[13:49.996148] [EJasonArch] standUp
+[13:51.024652] [PythonBridgeBody] Perceived: legState("ok");
+[13:51.024714] [PythonBridgeBody] Action... standUp
+[13:52.175275] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[13:53.175528] [PythonBridgeBody] Perceiving...
+[13:53.195982] [rosie] StandUp again
+[13:53.196042] [EJasonArch] keepWalking
+[13:54.325096] [PythonBridgeBody] Perceived: legState("ok");
+[13:54.325165] [PythonBridgeBody] Action... keepWalking
+[13:56.875097] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[13:56.898088] [PythonBridgeBody] Action... keepWalking
+[13:56.996192] [rosie] Steps so far: 9
+[13:56.996245] [EJasonArch] keepWalking
+[13:59.476572] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[13:59.548033] [PythonBridgeBody] Action... keepWalking
+[13:59.596150] [rosie] Steps so far: 8
+[13:59.596206] [EJasonArch] keepWalking
+[14:02.826581] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[14:03.826888] [PythonBridgeBody] Perceiving...
+[14:03.996093] [EJasonArch] standUp
+[14:04.825600] [PythonBridgeBody] Perceived: legState("ok");
+[14:04.825660] [PythonBridgeBody] Action... standUp
+[14:05.825715] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[14:06.825783] [PythonBridgeBody] Perceiving...
+[14:06.896010] [rosie] StandUp again
+[14:06.896068] [EJasonArch] keepWalking
+[14:07.826345] [PythonBridgeBody] Perceived: legState("ok");
+[14:07.826415] [PythonBridgeBody] Action... keepWalking
+[14:09.977071] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:10.027473] [PythonBridgeBody] Action... keepWalking
+[14:10.096196] [rosie] Steps so far: 7
+[14:10.096259] [EJasonArch] keepWalking
+[14:12.176372] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:12.228000] [PythonBridgeBody] Action... keepWalking
+[14:12.296100] [rosie] Steps so far: 6
+[14:12.296157] [EJasonArch] keepWalking
+[14:15.176491] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[14:16.176717] [PythonBridgeBody] Perceiving...
+[14:16.296080] [EJasonArch] standUp
+[14:17.176194] [PythonBridgeBody] Perceived: legState("ok");
+[14:17.176249] [PythonBridgeBody] Action... standUp
+[14:18.175699] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[14:19.175808] [PythonBridgeBody] Perceiving...
+[14:19.296070] [rosie] StandUp again
+[14:19.296154] [EJasonArch] keepWalking
+[14:20.175995] [PythonBridgeBody] Perceived: legState("ok");
+[14:20.176066] [PythonBridgeBody] Action... keepWalking
+[14:22.325876] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:22.353278] [PythonBridgeBody] Action... keepWalking
+[14:22.396053] [rosie] Steps so far: 5
+[14:22.396107] [EJasonArch] keepWalking
+[14:24.475922] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:24.556231] [PythonBridgeBody] Action... keepWalking
+[14:24.596107] [rosie] Steps so far: 4
+[14:24.596166] [EJasonArch] keepWalking
+[14:26.975559] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[14:27.975736] [PythonBridgeBody] Perceiving...
+[14:28.096092] [EJasonArch] standUp
+[14:28.976003] [PythonBridgeBody] Perceived: legState("ok");
+[14:28.976057] [PythonBridgeBody] Action... standUp
+[14:29.976121] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[14:30.976281] [PythonBridgeBody] Perceiving...
+[14:31.096122] [rosie] StandUp again
+[14:31.096195] [EJasonArch] keepWalking
+[14:31.976158] [PythonBridgeBody] Perceived: legState("ok");
+[14:31.976216] [PythonBridgeBody] Action... keepWalking
+[14:34.126377] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:34.129222] [PythonBridgeBody] Action... keepWalking
+[14:34.196137] [rosie] Steps so far: 3
+[14:34.196206] [EJasonArch] keepWalking
+[14:36.276087] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:36.327634] [PythonBridgeBody] Action... keepWalking
+[14:36.396179] [rosie] Steps so far: 2
+[14:36.396240] [EJasonArch] keepWalking
+[14:39.276928] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[14:40.277140] [PythonBridgeBody] Perceiving...
+[14:40.396095] [EJasonArch] standUp
+[14:41.275729] [PythonBridgeBody] Perceived: legState("ok");
+[14:41.275786] [PythonBridgeBody] Action... standUp
+[14:42.276176] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[14:43.276345] [PythonBridgeBody] Perceiving...
+[14:43.296056] [rosie] StandUp again
+[14:43.296121] [EJasonArch] keepWalking
+[14:44.276281] [PythonBridgeBody] Perceived: legState("ok");
+[14:44.276336] [PythonBridgeBody] Action... keepWalking
+[14:46.425325] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:46.447623] [PythonBridgeBody] Action... keepWalking
+[14:46.496087] [rosie] Steps so far: 1
+[14:46.496144] [EJasonArch] keepWalking
+[14:48.576265] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[14:48.696198] [rosie] Steps so far: 0
+[14:48.696278] [rosie] I arrived at my destination: elroyBedroom stuck=5 falls=0 avoid=0
+[14:48.696290] [rosie] Started at:11:13:45 Finished at:11:14:48
+[14:48.696299] cartago.CartagoException: User not in workspace.
+[14:48.696308] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[14:48.696317] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[14:48.696483] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[14:48.696519] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[14:48.696523] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[14:48.696527] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[14:48.696612] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[14:48.696635] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[14:48.696647] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[14:48.696667] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[14:48.696770] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[14:48.696793] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[14:48.696804] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[14:48.696813] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[14:48.696922] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[14:48.696944] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[14:48.696954] cartago.ArtifactNotAvailableException
+[14:48.696964] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[14:48.697069] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[14:48.697090] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[14:48.697102] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[14:48.697122] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[14:48.697155] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[14:48.697200] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[14:48.697233] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[14:48.697272] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[14:48.697302] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[14:48.697337] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[14:48.697371] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[14:48.697405] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[14:48.697435] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[14:48.697467] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[14:48.697499] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[14:48.697530] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[14:48.990856] 
+[14:48.990900] BUILD SUCCESSFUL in 1m 3s
+[14:48.990904] 2 actionable tasks: 1 executed, 1 up-to-date
+[14:48.996011] MAS Stopped!
+[15:06.577083] Stopping the Python (PID: 18943)...
+[15:06.577228] Stopping the Simulation (PID: 18920)...
+[15:06.577263] Starting the Simulation!
+[15:06.646330] ./run.sh, linha 180: 18920 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[15:06.849183] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[15:07.028775] 
+[15:07.028812] ------------------------------------------------- 
+[15:07.028816]                    NEW CIRCUIT                    
+[15:07.028819]  
+[15:07.037628] 
+[15:07.037657]  "    Loading Compilers at:" 
+[15:07.037663]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[15:07.037667]  
+[15:07.037672] "        Found Compiler: " "AScript" 
+[15:07.037676] "        Found Compiler: " "Arduino" 
+[15:07.037759] "        Found Compiler: " "Avrgcc" 
+[15:07.037784] "        Found Compiler: " "Dummy C" 
+[15:07.037791] "        Found Compiler: " "GcBasic" 
+[15:07.037912] "        Found Compiler: " "Make_avrgcc" 
+[15:07.037938] "        Found Compiler: " "Mplabx_xc8" 
+[15:07.037946] "        Found Compiler: " "Mplabx_xc8_12F" 
+[15:07.038054] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[15:07.038079] "        Found Compiler: " "SDCC-PIC" 
+[15:07.038086] "        Found Compiler: " "SDCC" 
+[15:07.038158] 
+[15:07.038163]  "    Loading Compilers at:" 
+[15:07.038168]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[15:07.038172]  
+[15:07.038204] "        Found Compiler: " "Asem-51" 
+[15:07.038240] "        Found Compiler: " "Avra" 
+[15:07.038276] "        Found Compiler: " "Avrasm2" 
+[15:07.038314] "        Found Compiler: " "Avrgcc-asm" 
+[15:07.038347] "        Found Compiler: " "Gavrasm" 
+[15:07.038390] "        Found Compiler: " "GpAsm" 
+[15:07.038438] "        Found Compiler: " "sdas8051(SDCC)" 
+[15:07.038473] "        Found Compiler: " "SDCC_asm" 
+[15:07.038514] "        Found Compiler: " "SjASMPlus" 
+[15:07.038559] "        Found Compiler: " "Vasm-6502" 
+[15:07.113100] 
+[15:07.113144]  "    Loading Component sets at:" 
+[15:07.113149]  "/opt/group.chon/simulide/data" 
+[15:07.113154]  
+[15:07.113960] "        Loaded Component set:           " "arduinos.xml" 
+[15:07.114296] "        Loaded Component set:           " "avr.xml" 
+[15:07.114486] "        Loaded Component set:           " "dig_pot.xml" 
+[15:07.114510] "        Loaded Component set:           " "i51.xml" 
+[15:07.117271] "        Loaded Component set:           " "ic74.xml" 
+[15:07.117541] "        Loaded Component set:           " "icCD.xml" 
+[15:07.117616] "        Loaded Component set:           " "keys.xml" 
+[15:07.117914] "        Loaded Component set:           " "led_display.xml" 
+[15:07.117978] "        Loaded Component set:           " "mcs65.xml" 
+[15:07.118166] "        Loaded Component set:           " "pics.xml" 
+[15:07.118423] "        Loaded Component set:           " "scripted.xml" 
+[15:07.118614] "        Loaded Component set:           " "shields.xml" 
+[15:07.118705] "        Loaded Component set:           " "ternary.xml" 
+[15:07.118848] "        Loaded Component set:           " "tools.xml" 
+[15:07.118969] "        Loaded Component set:           " "unsorted.xml" 
+[15:07.119516] "        Loaded Component set:           " "ussr.xml" 
+[15:07.120307] "        Loaded Component set:           " "z80.xml" 
+[15:07.120359] 
+[15:07.120365]  
+[15:07.124711] 
+[15:07.124771] ------------------------------------------------- 
+[15:07.124790]                    NEW CIRCUIT                    
+[15:07.124799]  
+[15:07.148966]         Initializing "1@mega328-109" 
+[15:07.149268]         "1@mega328-109" Initialized 
+[15:07.149287]  
+[15:07.159296] Loading hex file:
+[15:07.159337]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[15:07.159341]  
+[15:07.159892] Firmware successfully loaded
+[15:07.159918]  
+[15:07.178234]         Initializing "345@m328 TQFP-269" 
+[15:07.178536]         "345@m328 TQFP-269" Initialized 
+[15:07.178559]  
+[15:07.188930] Loading hex file:
+[15:07.188956]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[15:07.188960]  
+[15:07.189146] Firmware successfully loaded
+[15:07.189164]  
+[15:07.195828]         Initializing "405@m328 TQFP-269" 
+[15:07.196082]         "405@m328 TQFP-269" Initialized 
+[15:07.196100]  
+[15:07.205863] Loading hex file:
+[15:07.205889]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[15:07.205893]  
+[15:07.206060] Firmware successfully loaded
+[15:07.206078]  
+[15:07.245294]         Initializing "456@mega328-109" 
+[15:07.245476]         "456@mega328-109" Initialized 
+[15:07.245495]  
+[15:07.248767] Loading hex file:
+[15:07.248788]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[15:07.248792]  
+[15:07.248996] Firmware successfully loaded
+[15:07.249018]  
+[15:07.317244] Circuit Loaded:  
+[15:07.317300] "rosie.sim1" 
+[15:08.686816] 
+[15:10.036021] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[15:10.036144] Starting Circuit Simulation...
+[15:10.036172]  
+[15:10.039576] Connected to "/dev/ttyExogenous0" 
+[15:10.039885] Loading hex file:
+[15:10.039939]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[15:10.039962]  
+[15:10.040923] Firmware successfully loaded
+[15:10.040944]  
+[15:10.041080] Loading hex file:
+[15:10.041102]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[15:10.041112]  
+[15:10.041384] Firmware successfully loaded
+[15:10.041404]  
+[15:10.041534] Loading hex file:
+[15:10.041556]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[15:10.041566]  
+[15:10.041780] Firmware successfully loaded
+[15:10.041791]  
+[15:10.061240] Loading hex file:
+[15:10.061313]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[15:10.061324]  
+[15:10.061607] Firmware successfully loaded
+[15:10.061643]  
+[15:10.061811]     Simulation Running... 
+[15:10.061831]  
+[15:10.688971] 
+[15:12.690601] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[15:13.041591] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[15:13.041832] Waiting for Rosie's body...
+[15:13.045520] [PythonBridgeBody] Connecting Rosie's body...
+[15:15.061512] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[15:16.061549] [PythonBridgeBody] Perceiving...
+[15:16.073077] Rosie's body is ready!
+[15:16.073131] Execution 2 of 10
+[15:16.073141] Starting the MAS!
+[15:16.736590] > Task :compileJava UP-TO-DATE
+[15:16.736715] > Task :processResources NO-SOURCE
+[15:16.736788] > Task :classes UP-TO-DATE
+[15:16.791790] 
+[15:16.791851] > Task :buildJCMDeps
+[15:16.791899] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[15:16.791949] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[15:16.791970] 
+[15:16.792123] JCM packages dependencies updated at .jcm-deps.gradle
+[15:16.792382] 
+[15:16.792414] BUILD SUCCESSFUL in 138ms
+[15:16.792512] 2 actionable tasks: 1 executed, 1 up-to-date
+[15:16.896998] > Task :compileJava UP-TO-DATE
+[15:16.897057] > Task :processResources NO-SOURCE
+[15:16.897273] > Task :classes UP-TO-DATE
+[15:17.181103] [PythonBridgeBody] Connected: ('127.0.0.1', 41418)
+[15:17.181917] [PythonBridgeBody] Agent: rosie
+[15:17.271042] [PythonBridgeBody] Perceived: legState("ok");
+[15:18.228421] [PythonBridgeBody] Action... keepWalking
+[15:18.896781] 
+[15:18.896835] > Task :run
+[15:18.896855] Runtime Services (RTS) is running at 127.0.1.1:40383
+[15:18.896989] Agent mind inspector is running at http://127.0.1.1:3272
+[15:18.897009] CArtAgO Http Server running on http://127.0.1.1:3273
+[15:18.897019] [Connecting to socket...]
+[15:18.897027] [Connection established]
+[15:18.897036] [EJasonArch] keepWalking
+[15:20.770591] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:20.787788] [PythonBridgeBody] Action... keepWalking
+[15:20.796861] [rosie] Steps so far: 9
+[15:20.796900] [EJasonArch] keepWalking
+[15:22.820747] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[15:23.820945] [PythonBridgeBody] Perceiving...
+[15:23.896787] [EJasonArch] standUp
+[15:24.970979] [PythonBridgeBody] Perceived: legState("ok");
+[15:24.971033] [PythonBridgeBody] Action... standUp
+[15:26.170253] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[15:27.170378] [PythonBridgeBody] Perceiving...
+[15:27.296816] [rosie] StandUp again
+[15:27.296885] [EJasonArch] keepWalking
+[15:28.370651] [PythonBridgeBody] Perceived: legState("ok");
+[15:28.370698] [PythonBridgeBody] Action... keepWalking
+[15:30.920825] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:30.962965] [PythonBridgeBody] Action... keepWalking
+[15:30.996882] [rosie] Steps so far: 8
+[15:30.996937] [EJasonArch] keepWalking
+[15:33.570067] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:33.616130] [PythonBridgeBody] Action... keepWalking
+[15:33.696755] [rosie] Steps so far: 7
+[15:33.696806] [EJasonArch] keepWalking
+[15:36.169388] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:36.216217] [PythonBridgeBody] Action... keepWalking
+[15:36.296874] [rosie] Steps so far: 6
+[15:36.296929] [EJasonArch] keepWalking
+[15:36.419936] [PythonBridgeBody] Acted: keepWalkingReply("fall");legState("fall");
+[15:37.420112] [PythonBridgeBody] Perceiving...
+[15:37.569599] [PythonBridgeBody] Perceived: legState("fall");
+[15:37.569638] [PythonBridgeBody] Action... standUp
+[15:37.596795] [rosie] CAI ACAO ERRADA
+[15:37.596848] [EJasonArch] standUp
+[15:38.769861] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[15:39.770007] [PythonBridgeBody] Perceiving...
+[15:39.896845] [rosie] StandUp again
+[15:39.896913] [EJasonArch] keepWalking
+[15:40.969165] [PythonBridgeBody] Perceived: legState("ok");
+[15:40.969212] [PythonBridgeBody] Action... keepWalking
+[15:43.569669] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:43.581792] [PythonBridgeBody] Action... keepWalking
+[15:43.596850] [rosie] Steps so far: 5
+[15:43.596899] [EJasonArch] keepWalking
+[15:46.170070] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:46.232012] [PythonBridgeBody] Action... keepWalking
+[15:46.296865] [rosie] Steps so far: 4
+[15:46.296920] [EJasonArch] keepWalking
+[15:48.769247] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[15:48.836406] [PythonBridgeBody] Action... keepWalking
+[15:48.896741] [rosie] Steps so far: 3
+[15:48.896798] [EJasonArch] keepWalking
+[15:52.319750] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[15:53.319902] [PythonBridgeBody] Perceiving...
+[15:53.496817] [EJasonArch] standUp
+[15:54.519741] [PythonBridgeBody] Perceived: legState("ok");
+[15:54.519811] [PythonBridgeBody] Action... standUp
+[15:55.669187] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[15:56.669340] [PythonBridgeBody] Perceiving...
+[15:56.796881] [rosie] StandUp again
+[15:56.796954] [EJasonArch] keepWalking
+[15:57.819503] [PythonBridgeBody] Perceived: legState("ok");
+[15:57.819572] [PythonBridgeBody] Action... keepWalking
+[16:00.320114] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:00.365707] [PythonBridgeBody] Action... keepWalking
+[16:00.396861] [rosie] Steps so far: 2
+[16:00.396920] [EJasonArch] keepWalking
+[16:02.869786] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:02.916073] [PythonBridgeBody] Action... keepWalking
+[16:02.996892] [rosie] Steps so far: 1
+[16:02.996964] [EJasonArch] keepWalking
+[16:06.370120] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[16:07.370336] [PythonBridgeBody] Perceiving...
+[16:07.496858] [EJasonArch] standUp
+[16:08.520070] [PythonBridgeBody] Perceived: legState("ok");
+[16:08.520129] [PythonBridgeBody] Action... standUp
+[16:09.670802] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[16:10.671032] [PythonBridgeBody] Perceiving...
+[16:10.696761] [rosie] StandUp again
+[16:10.696820] [EJasonArch] keepWalking
+[16:11.819456] [PythonBridgeBody] Perceived: legState("ok");
+[16:11.819523] [PythonBridgeBody] Action... keepWalking
+[16:14.319450] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:14.396844] [rosie] Steps so far: 0
+[16:14.396898] [rosie] I arrived at my destination: elroyBedroom stuck=3 falls=1 avoid=0
+[16:14.396910] [rosie] Started at:11:15:17 Finished at:11:16:14
+[16:14.396919] cartago.CartagoException: User not in workspace.
+[16:14.396938] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[16:14.397057] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[16:14.397078] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[16:14.397088] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[16:14.397195] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[16:14.397217] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[16:14.397228] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[16:14.397334] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[16:14.397356] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[16:14.397366] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[16:14.397376] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[16:14.397398] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[16:14.397513] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[16:14.397535] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[16:14.397545] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[16:14.397555] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[16:14.397564] cartago.ArtifactNotAvailableException
+[16:14.397591] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[16:14.397625] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[16:14.397659] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[16:14.397713] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[16:14.397743] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[16:14.397777] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[16:14.397813] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[16:14.397845] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[16:14.397881] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[16:14.397912] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[16:14.397948] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[16:14.397983] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[16:14.398044] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[16:14.398078] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[16:14.398132] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[16:14.398163] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[16:14.398196] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[16:14.696814] 
+[16:14.696890] BUILD SUCCESSFUL in 57s
+[16:14.696901] 2 actionable tasks: 1 executed, 1 up-to-date
+[16:14.705208] MAS Stopped!
+[16:22.090045] Stopping the Python (PID: 19437)...
+[16:22.090101] Stopping the Simulation (PID: 19409)...
+[16:22.090112] Starting the Simulation!
+[16:22.158377] ./run.sh, linha 180: 19409 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[16:22.351667] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[16:22.523936] 
+[16:22.523984] ------------------------------------------------- 
+[16:22.523988]                    NEW CIRCUIT                    
+[16:22.523991]  
+[16:22.530607] 
+[16:22.530630]  "    Loading Compilers at:" 
+[16:22.530634]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[16:22.530637]  
+[16:22.530641] "        Found Compiler: " "AScript" 
+[16:22.530656] "        Found Compiler: " "Arduino" 
+[16:22.530730] "        Found Compiler: " "Avrgcc" 
+[16:22.530748] "        Found Compiler: " "Dummy C" 
+[16:22.530757] "        Found Compiler: " "GcBasic" 
+[16:22.530875] "        Found Compiler: " "Make_avrgcc" 
+[16:22.530894] "        Found Compiler: " "Mplabx_xc8" 
+[16:22.530898] "        Found Compiler: " "Mplabx_xc8_12F" 
+[16:22.530913] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[16:22.531022] "        Found Compiler: " "SDCC-PIC" 
+[16:22.531041] "        Found Compiler: " "SDCC" 
+[16:22.531046] 
+[16:22.531049]  "    Loading Compilers at:" 
+[16:22.531052]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[16:22.531055]  
+[16:22.531074] "        Found Compiler: " "Asem-51" 
+[16:22.531197] "        Found Compiler: " "Avra" 
+[16:22.531215] "        Found Compiler: " "Avrasm2" 
+[16:22.531219] "        Found Compiler: " "Avrgcc-asm" 
+[16:22.531222] "        Found Compiler: " "Gavrasm" 
+[16:22.531226] "        Found Compiler: " "GpAsm" 
+[16:22.531316] "        Found Compiler: " "sdas8051(SDCC)" 
+[16:22.531334] "        Found Compiler: " "SDCC_asm" 
+[16:22.531338] "        Found Compiler: " "SjASMPlus" 
+[16:22.531342] "        Found Compiler: " "Vasm-6502" 
+[16:22.605985] 
+[16:22.606033]  "    Loading Component sets at:" 
+[16:22.606037]  "/opt/group.chon/simulide/data" 
+[16:22.606040]  
+[16:22.606235] "        Loaded Component set:           " "arduinos.xml" 
+[16:22.606492] "        Loaded Component set:           " "avr.xml" 
+[16:22.606645] "        Loaded Component set:           " "dig_pot.xml" 
+[16:22.606665] "        Loaded Component set:           " "i51.xml" 
+[16:22.607784] "        Loaded Component set:           " "ic74.xml" 
+[16:22.608138] "        Loaded Component set:           " "icCD.xml" 
+[16:22.608159] "        Loaded Component set:           " "keys.xml" 
+[16:22.608332] "        Loaded Component set:           " "led_display.xml" 
+[16:22.608351] "        Loaded Component set:           " "mcs65.xml" 
+[16:22.608594] "        Loaded Component set:           " "pics.xml" 
+[16:22.608822] "        Loaded Component set:           " "scripted.xml" 
+[16:22.609046] "        Loaded Component set:           " "shields.xml" 
+[16:22.609066] "        Loaded Component set:           " "ternary.xml" 
+[16:22.609206] "        Loaded Component set:           " "tools.xml" 
+[16:22.609284] "        Loaded Component set:           " "unsorted.xml" 
+[16:22.609381] "        Loaded Component set:           " "ussr.xml" 
+[16:22.609432] "        Loaded Component set:           " "z80.xml" 
+[16:22.609462] 
+[16:22.609493]  
+[16:22.612654] 
+[16:22.612695] ------------------------------------------------- 
+[16:22.612699]                    NEW CIRCUIT                    
+[16:22.612702]  
+[16:22.651904]         Initializing "1@mega328-109" 
+[16:22.652147]         "1@mega328-109" Initialized 
+[16:22.652167]  
+[16:22.660815] Loading hex file:
+[16:22.660842]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[16:22.660846]  
+[16:22.661472] Firmware successfully loaded
+[16:22.661516]  
+[16:22.679767]         Initializing "345@m328 TQFP-269" 
+[16:22.679976]         "345@m328 TQFP-269" Initialized 
+[16:22.679981]  
+[16:22.690445] Loading hex file:
+[16:22.690475]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[16:22.690479]  
+[16:22.690662] Firmware successfully loaded
+[16:22.690683]  
+[16:22.697135]         Initializing "405@m328 TQFP-269" 
+[16:22.697464]         "405@m328 TQFP-269" Initialized 
+[16:22.697491]  
+[16:22.708007] Loading hex file:
+[16:22.708046]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[16:22.708050]  
+[16:22.708239] Firmware successfully loaded
+[16:22.708258]  
+[16:22.759032]         Initializing "456@mega328-109" 
+[16:22.759181]         "456@mega328-109" Initialized 
+[16:22.759198]  
+[16:22.762366] Loading hex file:
+[16:22.762387]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[16:22.762391]  
+[16:22.762595] Firmware successfully loaded
+[16:22.762621]  
+[16:22.830215] Circuit Loaded:  
+[16:22.830280] "rosie.sim1" 
+[16:24.189789] 
+[16:24.283831] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[16:24.283944] Starting Circuit Simulation...
+[16:24.283957]  
+[16:24.286160] Connected to "/dev/ttyExogenous0" 
+[16:24.286313] Loading hex file:
+[16:24.286327]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[16:24.286336]  
+[16:24.287948] Firmware successfully loaded
+[16:24.288010]  
+[16:24.288134] Loading hex file:
+[16:24.288185]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[16:24.288196]  
+[16:24.288667] Firmware successfully loaded
+[16:24.288718]  
+[16:24.288731] Loading hex file:
+[16:24.288739]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[16:24.288747]  
+[16:24.289333] Firmware successfully loaded
+[16:24.289388]  
+[16:24.307913] Loading hex file:
+[16:24.307968]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[16:24.307978]  
+[16:24.308178] Firmware successfully loaded
+[16:24.308198]  
+[16:24.308329]     Simulation Running... 
+[16:24.308350]  
+[16:26.190676] 
+[16:26.874089] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[16:26.874328] Waiting for Rosie's body...
+[16:26.877722] [PythonBridgeBody] Connecting Rosie's body...
+[16:28.896256] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[16:29.896293] [PythonBridgeBody] Perceiving...
+[16:29.908793] Rosie's body is ready!
+[16:29.908849] Execution 3 of 10
+[16:29.908859] Starting the MAS!
+[16:30.568340] > Task :compileJava UP-TO-DATE
+[16:30.568490] > Task :processResources NO-SOURCE
+[16:30.568634] > Task :classes UP-TO-DATE
+[16:30.623864] 
+[16:30.623923] > Task :buildJCMDeps
+[16:30.624031] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[16:30.624052] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[16:30.624064] 
+[16:30.624168] JCM packages dependencies updated at .jcm-deps.gradle
+[16:30.624189] 
+[16:30.624279] BUILD SUCCESSFUL in 150ms
+[16:30.624300] 2 actionable tasks: 1 executed, 1 up-to-date
+[16:30.728766] > Task :compileJava UP-TO-DATE
+[16:30.728851] > Task :processResources NO-SOURCE
+[16:30.728914] > Task :classes UP-TO-DATE
+[16:31.001459] [PythonBridgeBody] Connected: ('127.0.0.1', 57794)
+[16:31.002139] [PythonBridgeBody] Agent: rosie
+[16:31.066686] [PythonBridgeBody] Perceived: legState("ok");
+[16:32.048823] [PythonBridgeBody] Action... keepWalking
+[16:32.728366] 
+[16:32.728420] > Task :run
+[16:32.728431] Runtime Services (RTS) is running at 127.0.1.1:38263
+[16:32.728513] Agent mind inspector is running at http://127.0.1.1:3272
+[16:32.728537] CArtAgO Http Server running on http://127.0.1.1:3273
+[16:32.728548] [Connecting to socket...]
+[16:32.728571] [Connection established]
+[16:32.728680] [EJasonArch] keepWalking
+[16:34.516224] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:34.558171] [PythonBridgeBody] Action... keepWalking
+[16:34.628382] [rosie] Steps so far: 9
+[16:34.628439] [EJasonArch] keepWalking
+[16:36.915962] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[16:37.916194] [PythonBridgeBody] Perceiving...
+[16:38.028414] [EJasonArch] standUp
+[16:39.067319] [PythonBridgeBody] Perceived: legState("ok");
+[16:39.067389] [PythonBridgeBody] Action... standUp
+[16:40.266285] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[16:41.266505] [PythonBridgeBody] Perceiving...
+[16:41.328331] [rosie] StandUp again
+[16:41.328389] [EJasonArch] keepWalking
+[16:42.416926] [PythonBridgeBody] Perceived: legState("ok");
+[16:42.416985] [PythonBridgeBody] Action... keepWalking
+[16:44.915819] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:44.932307] [PythonBridgeBody] Action... keepWalking
+[16:45.028450] [rosie] Steps so far: 8
+[16:45.028502] [EJasonArch] keepWalking
+[16:47.416182] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:47.484299] [PythonBridgeBody] Action... keepWalking
+[16:47.528407] [rosie] Steps so far: 7
+[16:47.528457] [EJasonArch] keepWalking
+[16:50.915691] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[16:51.915963] [PythonBridgeBody] Perceiving...
+[16:52.028428] [EJasonArch] standUp
+[16:53.066688] [PythonBridgeBody] Perceived: legState("ok");
+[16:53.066734] [PythonBridgeBody] Action... standUp
+[16:54.267045] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[16:55.267251] [PythonBridgeBody] Perceiving...
+[16:55.328416] [rosie] StandUp again
+[16:55.328469] [EJasonArch] keepWalking
+[16:56.417133] [PythonBridgeBody] Perceived: legState("ok");
+[16:56.417196] [PythonBridgeBody] Action... keepWalking
+[16:58.916455] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[16:58.960565] [PythonBridgeBody] Action... keepWalking
+[16:59.028383] [rosie] Steps so far: 6
+[16:59.028437] [EJasonArch] keepWalking
+[17:01.465932] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[17:01.511975] [PythonBridgeBody] Action... keepWalking
+[17:01.528410] [rosie] Steps so far: 5
+[17:01.528465] [EJasonArch] keepWalking
+[17:04.966172] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[17:05.966507] [PythonBridgeBody] Perceiving...
+[17:06.028281] [EJasonArch] standUp
+[17:07.166609] [PythonBridgeBody] Perceived: legState("ok");
+[17:07.166663] [PythonBridgeBody] Action... standUp
+[17:08.366310] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[17:09.366608] [PythonBridgeBody] Perceiving...
+[17:09.428398] [rosie] StandUp again
+[17:09.428453] [EJasonArch] keepWalking
+[17:10.566568] [PythonBridgeBody] Perceived: legState("ok");
+[17:10.566625] [PythonBridgeBody] Action... keepWalking
+[17:13.166792] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[17:13.191852] [PythonBridgeBody] Action... keepWalking
+[17:13.228390] [rosie] Steps so far: 4
+[17:13.228445] [EJasonArch] keepWalking
+[17:15.766024] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[17:15.843743] [PythonBridgeBody] Action... keepWalking
+[17:15.928385] [rosie] Steps so far: 3
+[17:15.928437] [EJasonArch] keepWalking
+[17:19.366223] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[17:20.366340] [PythonBridgeBody] Perceiving...
+[17:20.528372] [EJasonArch] standUp
+[17:21.565541] [PythonBridgeBody] Perceived: legState("ok");
+[17:21.565594] [PythonBridgeBody] Action... standUp
+[17:22.766257] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[17:23.766522] [PythonBridgeBody] Perceiving...
+[17:23.828372] [rosie] StandUp again
+[17:23.828425] [EJasonArch] keepWalking
+[17:24.966268] [PythonBridgeBody] Perceived: legState("ok");
+[17:24.966311] [PythonBridgeBody] Action... keepWalking
+[17:27.566542] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[17:27.571151] [PythonBridgeBody] Action... keepWalking
+[17:27.628406] [rosie] Steps so far: 2
+[17:27.628458] [EJasonArch] keepWalking
+[17:30.165572] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[17:30.223991] [PythonBridgeBody] Action... keepWalking
+[17:30.228342] [rosie] Steps so far: 1
+[17:30.228370] [EJasonArch] keepWalking
+[17:33.766130] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[17:34.766402] [PythonBridgeBody] Perceiving...
+[17:34.928303] [EJasonArch] standUp
+[17:35.966045] [PythonBridgeBody] Perceived: legState("ok");
+[17:35.966110] [PythonBridgeBody] Action... standUp
+[17:37.166037] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[17:38.166133] [PythonBridgeBody] Perceiving...
+[17:38.228351] [rosie] StandUp again
+[17:38.228406] [EJasonArch] keepWalking
+[17:39.316100] [PythonBridgeBody] Perceived: legState("ok");
+[17:39.316157] [PythonBridgeBody] Action... keepWalking
+[17:41.865620] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[17:41.928368] [rosie] Steps so far: 0
+[17:41.928421] [rosie] I arrived at my destination: elroyBedroom stuck=5 falls=0 avoid=0
+[17:41.928432] [rosie] Started at:11:16:31 Finished at:11:17:41
+[17:41.928451] cartago.CartagoException: User not in workspace.
+[17:41.928525] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[17:41.928545] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[17:41.928647] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[17:41.928669] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[17:41.928680] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[17:41.928697] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[17:41.928802] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[17:41.928825] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[17:41.928836] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[17:41.928857] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[17:41.928945] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[17:41.928967] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[17:41.928978] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[17:41.929000] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[17:41.929032] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[17:41.929069] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[17:41.929099] cartago.ArtifactNotAvailableException
+[17:41.929132] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[17:41.929163] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[17:41.929196] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[17:41.929229] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[17:41.929266] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[17:41.929299] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[17:41.929334] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[17:41.929369] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[17:41.929405] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[17:41.929436] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[17:41.929487] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[17:41.929538] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[17:41.929572] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[17:41.929604] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[17:41.929636] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[17:41.929667] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[17:41.929701] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[17:42.244158] 
+[17:42.244219] BUILD SUCCESSFUL in 1m 11s
+[17:42.244233] 2 actionable tasks: 1 executed, 1 up-to-date
+[17:42.250751] MAS Stopped!
+[17:46.011362] Stopping the Python (PID: 19912)...
+[17:46.011423] Stopping the Simulation (PID: 19889)...
+[17:46.011433] Starting the Simulation!
+[17:46.106347] ./run.sh, linha 180: 19889 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[17:46.288284] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[17:46.451139] 
+[17:46.451181] ------------------------------------------------- 
+[17:46.451186]                    NEW CIRCUIT                    
+[17:46.451190]  
+[17:46.458175] 
+[17:46.458200]  "    Loading Compilers at:" 
+[17:46.458206]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[17:46.458210]  
+[17:46.458239] "        Found Compiler: " "AScript" 
+[17:46.458274] "        Found Compiler: " "Arduino" 
+[17:46.458312] "        Found Compiler: " "Avrgcc" 
+[17:46.458351] "        Found Compiler: " "Dummy C" 
+[17:46.458471] "        Found Compiler: " "GcBasic" 
+[17:46.458494] "        Found Compiler: " "Make_avrgcc" 
+[17:46.458499] "        Found Compiler: " "Mplabx_xc8" 
+[17:46.458587] "        Found Compiler: " "Mplabx_xc8_12F" 
+[17:46.458609] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[17:46.458625] "        Found Compiler: " "SDCC-PIC" 
+[17:46.458654] "        Found Compiler: " "SDCC" 
+[17:46.458740] 
+[17:46.458745]  "    Loading Compilers at:" 
+[17:46.458748]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[17:46.458752]  
+[17:46.458782] "        Found Compiler: " "Asem-51" 
+[17:46.458814] "        Found Compiler: " "Avra" 
+[17:46.458846] "        Found Compiler: " "Avrasm2" 
+[17:46.458879] "        Found Compiler: " "Avrgcc-asm" 
+[17:46.458909] "        Found Compiler: " "Gavrasm" 
+[17:46.458940] "        Found Compiler: " "GpAsm" 
+[17:46.458981] "        Found Compiler: " "sdas8051(SDCC)" 
+[17:46.459010] "        Found Compiler: " "SDCC_asm" 
+[17:46.459045] "        Found Compiler: " "SjASMPlus" 
+[17:46.459084] "        Found Compiler: " "Vasm-6502" 
+[17:46.523168] 
+[17:46.523205]  "    Loading Component sets at:" 
+[17:46.523209]  "/opt/group.chon/simulide/data" 
+[17:46.523212]  
+[17:46.523496] "        Loaded Component set:           " "arduinos.xml" 
+[17:46.523734] "        Loaded Component set:           " "avr.xml" 
+[17:46.523922] "        Loaded Component set:           " "dig_pot.xml" 
+[17:46.523948] "        Loaded Component set:           " "i51.xml" 
+[17:46.525052] "        Loaded Component set:           " "ic74.xml" 
+[17:46.525354] "        Loaded Component set:           " "icCD.xml" 
+[17:46.525476] "        Loaded Component set:           " "keys.xml" 
+[17:46.525609] "        Loaded Component set:           " "led_display.xml" 
+[17:46.525628] "        Loaded Component set:           " "mcs65.xml" 
+[17:46.525844] "        Loaded Component set:           " "pics.xml" 
+[17:46.526055] "        Loaded Component set:           " "scripted.xml" 
+[17:46.526172] "        Loaded Component set:           " "shields.xml" 
+[17:46.526248] "        Loaded Component set:           " "ternary.xml" 
+[17:46.526406] "        Loaded Component set:           " "tools.xml" 
+[17:46.526532] "        Loaded Component set:           " "unsorted.xml" 
+[17:46.526629] "        Loaded Component set:           " "ussr.xml" 
+[17:46.526680] "        Loaded Component set:           " "z80.xml" 
+[17:46.526700] 
+[17:46.526703]  
+[17:46.529917] 
+[17:46.529954] ------------------------------------------------- 
+[17:46.529958]                    NEW CIRCUIT                    
+[17:46.529961]  
+[17:46.552028]         Initializing "1@mega328-109" 
+[17:46.552290]         "1@mega328-109" Initialized 
+[17:46.552294]  
+[17:46.560070] Loading hex file:
+[17:46.560106]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[17:46.560118]  
+[17:46.560715] Firmware successfully loaded
+[17:46.560758]  
+[17:46.577619]         Initializing "345@m328 TQFP-269" 
+[17:46.577862]         "345@m328 TQFP-269" Initialized 
+[17:46.577866]  
+[17:46.587487] Loading hex file:
+[17:46.587513]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[17:46.587516]  
+[17:46.587735] Firmware successfully loaded
+[17:46.587740]  
+[17:46.594165]         Initializing "405@m328 TQFP-269" 
+[17:46.594313]         "405@m328 TQFP-269" Initialized 
+[17:46.594317]  
+[17:46.603854] Loading hex file:
+[17:46.603874]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[17:46.603877]  
+[17:46.604133] Firmware successfully loaded
+[17:46.604153]  
+[17:46.640884]         Initializing "456@mega328-109" 
+[17:46.641009]         "456@mega328-109" Initialized 
+[17:46.641015]  
+[17:46.644366] Loading hex file:
+[17:46.644386]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[17:46.644390]  
+[17:46.644596] Firmware successfully loaded
+[17:46.644615]  
+[17:46.712002] Circuit Loaded:  
+[17:46.712056] "rosie.sim1" 
+[17:48.136758] 
+[17:48.989181] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[17:48.989295] Starting Circuit Simulation...
+[17:48.989312]  
+[17:48.991908] Connected to "/dev/ttyExogenous0" 
+[17:48.992139] Loading hex file:
+[17:48.992197]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[17:48.992208]  
+[17:48.993774] Firmware successfully loaded
+[17:48.993829]  
+[17:48.993865] Loading hex file:
+[17:48.993878]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[17:48.993886]  
+[17:48.994518] Firmware successfully loaded
+[17:48.994570]  
+[17:48.994583] Loading hex file:
+[17:48.994591]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[17:48.994600]  
+[17:48.995203] Firmware successfully loaded
+[17:48.995270]  
+[17:49.014689] Loading hex file:
+[17:49.014767]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[17:49.014782]  
+[17:49.015478] Firmware successfully loaded
+[17:49.015527]  
+[17:49.015662]     Simulation Running... 
+[17:49.015674]  
+[17:50.138829] 
+[17:52.140871] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[17:53.458974] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[17:53.459298] Waiting for Rosie's body...
+[17:53.462909] [PythonBridgeBody] Connecting Rosie's body...
+[17:55.476803] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[17:55.485021] Rosie's body is ready!
+[17:55.485056] Execution 4 of 10
+[17:55.485066] Starting the MAS!
+[17:56.193068] > Task :compileJava UP-TO-DATE
+[17:56.193140] > Task :processResources NO-SOURCE
+[17:56.193227] > Task :classes UP-TO-DATE
+[17:56.268316] 
+[17:56.268364] > Task :buildJCMDeps
+[17:56.268387] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[17:56.268432] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[17:56.268449] 
+[17:56.268640] JCM packages dependencies updated at .jcm-deps.gradle
+[17:56.268680] 
+[17:56.268727] BUILD SUCCESSFUL in 167ms
+[17:56.268778] 2 actionable tasks: 1 executed, 1 up-to-date
+[17:56.372210] > Task :compileJava UP-TO-DATE
+[17:56.372267] > Task :processResources NO-SOURCE
+[17:56.372370] > Task :classes UP-TO-DATE
+[17:56.476730] [PythonBridgeBody] Perceiving...
+[17:56.658690] [PythonBridgeBody] Connected: ('127.0.0.1', 45042)
+[17:56.659135] [PythonBridgeBody] Agent: rosie
+[17:57.624869] [PythonBridgeBody] Perceived: legState("ok");
+[17:57.701945] [PythonBridgeBody] Action... keepWalking
+[17:58.371777] 
+[17:58.371831] > Task :run
+[17:58.371843] Runtime Services (RTS) is running at 127.0.1.1:46229
+[17:58.371923] Agent mind inspector is running at http://127.0.1.1:3272
+[17:58.371945] CArtAgO Http Server running on http://127.0.1.1:3273
+[17:58.371957] [Connecting to socket...]
+[17:58.371980] [Connection established]
+[17:58.372072] [EJasonArch] keepWalking
+[18:00.173831] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:00.214005] [PythonBridgeBody] Action... keepWalking
+[18:00.271788] [rosie] Steps so far: 9
+[18:00.271842] [EJasonArch] keepWalking
+[18:01.724378] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[18:02.724590] [PythonBridgeBody] Perceiving...
+[18:02.871761] [EJasonArch] standUp
+[18:03.875058] [PythonBridgeBody] Perceived: legState("ok");
+[18:03.875110] [PythonBridgeBody] Action... standUp
+[18:05.074160] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[18:06.074382] [PythonBridgeBody] Perceiving...
+[18:06.171763] [rosie] StandUp again
+[18:06.171817] [EJasonArch] keepWalking
+[18:07.224780] [PythonBridgeBody] Perceived: legState("ok");
+[18:07.224832] [PythonBridgeBody] Action... keepWalking
+[18:09.724844] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:09.741528] [PythonBridgeBody] Action... keepWalking
+[18:09.771781] [rosie] Steps so far: 8
+[18:09.771836] [EJasonArch] keepWalking
+[18:12.224599] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:12.296142] [PythonBridgeBody] Action... keepWalking
+[18:12.371748] [rosie] Steps so far: 7
+[18:12.371803] [EJasonArch] keepWalking
+[18:15.724496] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[18:16.724723] [PythonBridgeBody] Perceiving...
+[18:16.871777] [EJasonArch] standUp
+[18:17.875150] [PythonBridgeBody] Perceived: legState("ok");
+[18:17.875201] [PythonBridgeBody] Action... standUp
+[18:19.024538] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[18:20.024770] [PythonBridgeBody] Perceiving...
+[18:20.071770] [rosie] StandUp again
+[18:20.071821] [EJasonArch] keepWalking
+[18:21.174826] [PythonBridgeBody] Perceived: legState("ok");
+[18:21.174869] [PythonBridgeBody] Action... keepWalking
+[18:23.675159] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:23.726031] [PythonBridgeBody] Action... keepWalking
+[18:23.771747] [rosie] Steps so far: 6
+[18:23.771801] [EJasonArch] keepWalking
+[18:26.225636] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:26.275745] [PythonBridgeBody] Action... keepWalking
+[18:26.371735] [rosie] Steps so far: 5
+[18:26.371791] [EJasonArch] keepWalking
+[18:29.724324] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[18:30.724498] [PythonBridgeBody] Perceiving...
+[18:30.871740] [EJasonArch] standUp
+[18:31.874590] [PythonBridgeBody] Perceived: legState("ok");
+[18:31.874639] [PythonBridgeBody] Action... standUp
+[18:33.024623] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[18:34.024864] [PythonBridgeBody] Perceiving...
+[18:34.071774] [rosie] StandUp again
+[18:34.071829] [EJasonArch] keepWalking
+[18:35.174183] [PythonBridgeBody] Perceived: legState("ok");
+[18:35.174226] [PythonBridgeBody] Action... keepWalking
+[18:37.675142] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:37.703363] [PythonBridgeBody] Action... keepWalking
+[18:37.771739] [rosie] Steps so far: 4
+[18:37.771793] [EJasonArch] keepWalking
+[18:40.175077] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:40.255716] [PythonBridgeBody] Action... keepWalking
+[18:40.271627] [rosie] Steps so far: 3
+[18:40.271689] [EJasonArch] keepWalking
+[18:43.673965] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[18:44.674083] [PythonBridgeBody] Perceiving...
+[18:44.771739] [EJasonArch] standUp
+[18:45.824481] [PythonBridgeBody] Perceived: legState("ok");
+[18:45.824523] [PythonBridgeBody] Action... standUp
+[18:46.974166] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[18:47.974418] [PythonBridgeBody] Perceiving...
+[18:48.071716] [rosie] StandUp again
+[18:48.071770] [EJasonArch] keepWalking
+[18:49.123933] [PythonBridgeBody] Perceived: legState("ok");
+[18:49.123999] [PythonBridgeBody] Action... keepWalking
+[18:51.624176] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:51.633245] [PythonBridgeBody] Action... keepWalking
+[18:51.671747] [rosie] Steps so far: 2
+[18:51.671803] [EJasonArch] keepWalking
+[18:54.124373] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[18:54.183664] [PythonBridgeBody] Action... keepWalking
+[18:54.271736] [rosie] Steps so far: 1
+[18:54.271789] [EJasonArch] keepWalking
+[18:57.374705] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[18:58.375081] [PythonBridgeBody] Perceiving...
+[18:58.471733] [EJasonArch] standUp
+[18:59.374798] [PythonBridgeBody] Perceived: legState("ok");
+[18:59.374842] [PythonBridgeBody] Action... standUp
+[19:00.375503] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[19:01.375760] [PythonBridgeBody] Perceiving...
+[19:01.471742] [rosie] StandUp again
+[19:01.471795] [EJasonArch] keepWalking
+[19:02.375302] [PythonBridgeBody] Perceived: legState("ok");
+[19:02.375349] [PythonBridgeBody] Action... keepWalking
+[19:04.525169] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[19:04.571693] [rosie] Steps so far: 0
+[19:04.571752] [rosie] I arrived at my destination: elroyBedroom stuck=5 falls=0 avoid=0
+[19:04.571763] [rosie] Started at:11:17:56 Finished at:11:19:4
+[19:04.571773] cartago.CartagoException: User not in workspace.
+[19:04.571801] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[19:04.571893] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[19:04.571916] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[19:04.572015] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[19:04.572036] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[19:04.572047] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[19:04.572057] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[19:04.572160] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[19:04.572189] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[19:04.572199] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[19:04.572209] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[19:04.572226] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[19:04.572321] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[19:04.572341] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[19:04.572352] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[19:04.572361] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[19:04.572391] cartago.ArtifactNotAvailableException
+[19:04.572423] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[19:04.572455] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[19:04.572487] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[19:04.572543] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[19:04.572586] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[19:04.572617] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[19:04.572651] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[19:04.572683] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[19:04.572717] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[19:04.572751] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[19:04.572786] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[19:04.572822] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[19:04.572854] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[19:04.572884] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[19:04.572922] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[19:04.572954] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[19:04.572988] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[19:04.897783] 
+[19:04.897851] BUILD SUCCESSFUL in 1m 8s
+[19:04.897855] 2 actionable tasks: 1 executed, 1 up-to-date
+[19:04.905124] MAS Stopped!
+[19:09.300116] Stopping the Python (PID: 20455)...
+[19:09.300171] Stopping the Simulation (PID: 20433)...
+[19:09.300182] Starting the Simulation!
+[19:09.366454] ./run.sh, linha 180: 20433 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[19:09.572357] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[19:09.742034] 
+[19:09.742080] ------------------------------------------------- 
+[19:09.742084]                    NEW CIRCUIT                    
+[19:09.742087]  
+[19:09.748685] 
+[19:09.748707]  "    Loading Compilers at:" 
+[19:09.748711]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[19:09.748715]  
+[19:09.748722] "        Found Compiler: " "AScript" 
+[19:09.748726] "        Found Compiler: " "Arduino" 
+[19:09.748729] "        Found Compiler: " "Avrgcc" 
+[19:09.748809] "        Found Compiler: " "Dummy C" 
+[19:09.748826] "        Found Compiler: " "GcBasic" 
+[19:09.748831] "        Found Compiler: " "Make_avrgcc" 
+[19:09.748928] "        Found Compiler: " "Mplabx_xc8" 
+[19:09.748948] "        Found Compiler: " "Mplabx_xc8_12F" 
+[19:09.748952] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[19:09.748956] "        Found Compiler: " "SDCC-PIC" 
+[19:09.749054] "        Found Compiler: " "SDCC" 
+[19:09.749073] 
+[19:09.749077]  "    Loading Compilers at:" 
+[19:09.749082]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[19:09.749085]  
+[19:09.749110] "        Found Compiler: " "Asem-51" 
+[19:09.749189] "        Found Compiler: " "Avra" 
+[19:09.749208] "        Found Compiler: " "Avrasm2" 
+[19:09.749213] "        Found Compiler: " "Avrgcc-asm" 
+[19:09.749216] "        Found Compiler: " "Gavrasm" 
+[19:09.749304] "        Found Compiler: " "GpAsm" 
+[19:09.749322] "        Found Compiler: " "sdas8051(SDCC)" 
+[19:09.749326] "        Found Compiler: " "SDCC_asm" 
+[19:09.749329] "        Found Compiler: " "SjASMPlus" 
+[19:09.749355] "        Found Compiler: " "Vasm-6502" 
+[19:09.830647] 
+[19:09.830711]  "    Loading Component sets at:" 
+[19:09.830720]  "/opt/group.chon/simulide/data" 
+[19:09.830727]  
+[19:09.831353] "        Loaded Component set:           " "arduinos.xml" 
+[19:09.831699] "        Loaded Component set:           " "avr.xml" 
+[19:09.832001] "        Loaded Component set:           " "dig_pot.xml" 
+[19:09.832084] "        Loaded Component set:           " "i51.xml" 
+[19:09.834498] "        Loaded Component set:           " "ic74.xml" 
+[19:09.835264] "        Loaded Component set:           " "icCD.xml" 
+[19:09.835417] "        Loaded Component set:           " "keys.xml" 
+[19:09.835703] "        Loaded Component set:           " "led_display.xml" 
+[19:09.835816] "        Loaded Component set:           " "mcs65.xml" 
+[19:09.836222] "        Loaded Component set:           " "pics.xml" 
+[19:09.836668] "        Loaded Component set:           " "scripted.xml" 
+[19:09.837028] "        Loaded Component set:           " "shields.xml" 
+[19:09.837214] "        Loaded Component set:           " "ternary.xml" 
+[19:09.837517] "        Loaded Component set:           " "tools.xml" 
+[19:09.837765] "        Loaded Component set:           " "unsorted.xml" 
+[19:09.837873] "        Loaded Component set:           " "ussr.xml" 
+[19:09.837921] "        Loaded Component set:           " "z80.xml" 
+[19:09.837940] 
+[19:09.837950]  
+[19:09.842120] 
+[19:09.842181] ------------------------------------------------- 
+[19:09.842187]                    NEW CIRCUIT                    
+[19:09.842194]  
+[19:09.872600]         Initializing "1@mega328-109" 
+[19:09.872838]         "1@mega328-109" Initialized 
+[19:09.872863]  
+[19:09.880619] Loading hex file:
+[19:09.880647]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[19:09.880651]  
+[19:09.881167] Firmware successfully loaded
+[19:09.881187]  
+[19:09.897707]         Initializing "345@m328 TQFP-269" 
+[19:09.897851]         "345@m328 TQFP-269" Initialized 
+[19:09.897856]  
+[19:09.907406] Loading hex file:
+[19:09.907438]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[19:09.907442]  
+[19:09.907565] Firmware successfully loaded
+[19:09.907569]  
+[19:09.913793]         Initializing "405@m328 TQFP-269" 
+[19:09.913960]         "405@m328 TQFP-269" Initialized 
+[19:09.913979]  
+[19:09.923175] Loading hex file:
+[19:09.923197]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[19:09.923201]  
+[19:09.923392] Firmware successfully loaded
+[19:09.923410]  
+[19:09.962518]         Initializing "456@mega328-109" 
+[19:09.962682]         "456@mega328-109" Initialized 
+[19:09.962705]  
+[19:09.965796] Loading hex file:
+[19:09.965818]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[19:09.965828]  
+[19:09.966079] Firmware successfully loaded
+[19:09.966097]  
+[19:10.034000] Circuit Loaded:  
+[19:10.034055] "rosie.sim1" 
+[19:11.397166] 
+[19:11.397243] Starting Circuit Simulation...
+[19:11.397261]  
+[19:11.399579] Connected to "/dev/ttyExogenous0" 
+[19:11.399669] Loading hex file:
+[19:11.399687]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[19:11.399703]  
+[19:11.401056] Firmware successfully loaded
+[19:11.401125]  
+[19:11.401257] Loading hex file:
+[19:11.401323]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[19:11.401334]  
+[19:11.401821] Firmware successfully loaded
+[19:11.401873]  
+[19:11.401886] Loading hex file:
+[19:11.401894]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[19:11.401902]  
+[19:11.402468] Firmware successfully loaded
+[19:11.402525]  
+[19:11.402538] 
+[19:11.423754] PLEASE, start the execution in simulIDE. After, press ENTER to continueLoading hex file:
+[19:11.423835]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[19:11.423855]  
+[19:11.424134] Firmware successfully loaded
+[19:11.424173]  
+[19:11.424266]     Simulation Running... 
+[19:11.424303]  
+[19:13.404745] 
+[19:15.406588] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[19:15.892107] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[19:15.892314] Waiting for Rosie's body...
+[19:15.895574] [PythonBridgeBody] Connecting Rosie's body...
+[19:17.914365] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[19:18.914371] [PythonBridgeBody] Perceiving...
+[19:18.926008] Rosie's body is ready!
+[19:18.926058] Execution 5 of 10
+[19:18.926069] Starting the MAS!
+[19:19.592425] > Task :compileJava UP-TO-DATE
+[19:19.592546] > Task :processResources NO-SOURCE
+[19:19.592653] > Task :classes UP-TO-DATE
+[19:19.656812] 
+[19:19.656858] > Task :buildJCMDeps
+[19:19.656862] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[19:19.656874] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[19:19.656880] 
+[19:19.656928] JCM packages dependencies updated at .jcm-deps.gradle
+[19:19.656948] 
+[19:19.656977] BUILD SUCCESSFUL in 163ms
+[19:19.657002] 2 actionable tasks: 1 executed, 1 up-to-date
+[19:19.759787] > Task :compileJava UP-TO-DATE
+[19:19.759859] > Task :processResources NO-SOURCE
+[19:19.759919] > Task :classes UP-TO-DATE
+[19:20.021561] [PythonBridgeBody] Connected: ('127.0.0.1', 41872)
+[19:20.022256] [PythonBridgeBody] Agent: rosie
+[19:20.083989] [PythonBridgeBody] Perceived: legState("ok");
+[19:21.067965] [PythonBridgeBody] Action... keepWalking
+[19:21.759415] 
+[19:21.759470] > Task :run
+[19:21.759488] Runtime Services (RTS) is running at 127.0.1.1:33687
+[19:21.759580] Agent mind inspector is running at http://127.0.1.1:3272
+[19:21.759601] CArtAgO Http Server running on http://127.0.1.1:3273
+[19:21.759613] [Connecting to socket...]
+[19:21.759622] [Connection established]
+[19:21.759653] [EJasonArch] keepWalking
+[19:24.482932] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[19:25.483192] [PythonBridgeBody] Perceiving...
+[19:25.559445] [EJasonArch] standUp
+[19:26.633452] [PythonBridgeBody] Perceived: legState("ok");
+[19:26.633497] [PythonBridgeBody] Action... standUp
+[19:27.783498] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[19:28.783739] [PythonBridgeBody] Perceiving...
+[19:28.859554] [rosie] StandUp again
+[19:28.859604] [EJasonArch] keepWalking
+[19:29.933504] [PythonBridgeBody] Perceived: legState("ok");
+[19:29.933553] [PythonBridgeBody] Action... keepWalking
+[19:32.533716] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[19:32.551418] [PythonBridgeBody] Action... keepWalking
+[19:32.559411] [rosie] Steps so far: 9
+[19:32.559446] [EJasonArch] keepWalking
+[19:35.133778] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[19:35.203950] [PythonBridgeBody] Action... keepWalking
+[19:35.259476] [rosie] Steps so far: 8
+[19:35.259537] [EJasonArch] keepWalking
+[19:38.633776] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[19:39.633882] [PythonBridgeBody] Perceiving...
+[19:39.759447] [EJasonArch] standUp
+[19:40.783257] [PythonBridgeBody] Perceived: legState("ok");
+[19:40.783301] [PythonBridgeBody] Action... standUp
+[19:41.982982] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[19:42.983114] [PythonBridgeBody] Perceiving...
+[19:43.059438] [rosie] StandUp again
+[19:43.059512] [EJasonArch] keepWalking
+[19:44.133373] [PythonBridgeBody] Perceived: legState("ok");
+[19:44.133421] [PythonBridgeBody] Action... keepWalking
+[19:46.632770] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[19:46.679371] [PythonBridgeBody] Action... keepWalking
+[19:46.759391] [rosie] Steps so far: 7
+[19:46.759443] [EJasonArch] keepWalking
+[19:49.182912] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[19:49.231775] [PythonBridgeBody] Action... keepWalking
+[19:49.259417] [rosie] Steps so far: 6
+[19:49.259489] [EJasonArch] keepWalking
+[19:52.682908] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[19:53.683174] [PythonBridgeBody] Perceiving...
+[19:53.759407] [EJasonArch] standUp
+[19:54.832983] [PythonBridgeBody] Perceived: legState("ok");
+[19:54.833071] [PythonBridgeBody] Action... standUp
+[19:56.033403] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[19:57.033630] [PythonBridgeBody] Perceiving...
+[19:57.059348] [rosie] StandUp again
+[19:57.059406] [EJasonArch] keepWalking
+[19:58.183507] [PythonBridgeBody] Perceived: legState("ok");
+[19:58.183564] [PythonBridgeBody] Action... keepWalking
+[20:00.682898] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:00.710103] [PythonBridgeBody] Action... keepWalking
+[20:00.759409] [rosie] Steps so far: 5
+[20:00.759462] [EJasonArch] keepWalking
+[20:03.183618] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:03.259956] [PythonBridgeBody] Action... keepWalking
+[20:03.359416] [rosie] Steps so far: 4
+[20:03.359485] [EJasonArch] keepWalking
+[20:06.682825] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[20:07.683044] [PythonBridgeBody] Perceiving...
+[20:07.859357] [EJasonArch] standUp
+[20:08.833216] [PythonBridgeBody] Perceived: legState("ok");
+[20:08.833270] [PythonBridgeBody] Action... standUp
+[20:10.033621] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[20:11.033800] [PythonBridgeBody] Perceiving...
+[20:11.159364] [rosie] StandUp again
+[20:11.159418] [EJasonArch] keepWalking
+[20:12.183072] [PythonBridgeBody] Perceived: legState("ok");
+[20:12.183125] [PythonBridgeBody] Action... keepWalking
+[20:14.683152] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:14.692259] [PythonBridgeBody] Action... keepWalking
+[20:14.759304] [rosie] Steps so far: 3
+[20:14.759358] [EJasonArch] keepWalking
+[20:17.183153] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:17.244022] [PythonBridgeBody] Action... keepWalking
+[20:17.259358] [rosie] Steps so far: 2
+[20:17.259403] [EJasonArch] keepWalking
+[20:20.683130] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[20:21.683387] [PythonBridgeBody] Perceiving...
+[20:21.759342] [EJasonArch] standUp
+[20:22.833878] [PythonBridgeBody] Perceived: legState("ok");
+[20:22.833937] [PythonBridgeBody] Action... standUp
+[20:23.982899] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[20:24.983018] [PythonBridgeBody] Perceiving...
+[20:25.059368] [rosie] StandUp again
+[20:25.059438] [EJasonArch] keepWalking
+[20:26.133124] [PythonBridgeBody] Perceived: legState("ok");
+[20:26.133183] [PythonBridgeBody] Action... keepWalking
+[20:28.632600] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:28.672081] [PythonBridgeBody] Action... keepWalking
+[20:28.759376] [rosie] Steps so far: 1
+[20:28.759433] [EJasonArch] keepWalking
+[20:31.132553] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:31.259343] [rosie] Steps so far: 0
+[20:31.259396] [rosie] I arrived at my destination: elroyBedroom stuck=5 falls=0 avoid=0
+[20:31.259407] [rosie] Started at:11:19:20 Finished at:11:20:31
+[20:31.259416] cartago.CartagoException: User not in workspace.
+[20:31.259492] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[20:31.259512] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[20:31.259613] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[20:31.259636] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[20:31.259655] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[20:31.259746] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[20:31.259769] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[20:31.259781] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[20:31.259804] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[20:31.259914] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[20:31.259936] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[20:31.259946] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[20:31.259956] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[20:31.259976] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[20:31.260029] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[20:31.260063] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[20:31.260092] cartago.ArtifactNotAvailableException
+[20:31.260124] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[20:31.260165] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[20:31.260204] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[20:31.260235] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[20:31.260271] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[20:31.260302] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[20:31.260336] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[20:31.260368] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[20:31.260402] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[20:31.260436] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[20:31.260473] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[20:31.260510] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[20:31.260551] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[20:31.260580] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[20:31.260611] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[20:31.260642] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[20:31.260672] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[20:31.571505] 
+[20:31.571547] BUILD SUCCESSFUL in 1m 11s
+[20:31.571551] 2 actionable tasks: 1 executed, 1 up-to-date
+[20:31.577250] MAS Stopped!
+[20:37.853702] Stopping the Python (PID: 20930)...
+[20:37.853770] Stopping the Simulation (PID: 20906)...
+[20:37.853775] Starting the Simulation!
+[20:37.914204] ./run.sh, linha 180: 20906 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[20:38.128751] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[20:38.283378] 
+[20:38.283425] ------------------------------------------------- 
+[20:38.283433]                    NEW CIRCUIT                    
+[20:38.283437]  
+[20:38.289546] 
+[20:38.289572]  "    Loading Compilers at:" 
+[20:38.289580]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[20:38.289585]  
+[20:38.289613] "        Found Compiler: " "AScript" 
+[20:38.289652] "        Found Compiler: " "Arduino" 
+[20:38.289691] "        Found Compiler: " "Avrgcc" 
+[20:38.289732] "        Found Compiler: " "Dummy C" 
+[20:38.289883] "        Found Compiler: " "GcBasic" 
+[20:38.289929] "        Found Compiler: " "Make_avrgcc" 
+[20:38.289934] "        Found Compiler: " "Mplabx_xc8" 
+[20:38.289937] "        Found Compiler: " "Mplabx_xc8_12F" 
+[20:38.289952] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[20:38.290075] "        Found Compiler: " "SDCC-PIC" 
+[20:38.290093] "        Found Compiler: " "SDCC" 
+[20:38.290115] 
+[20:38.290119]  "    Loading Compilers at:" 
+[20:38.290122]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[20:38.290125]  
+[20:38.290163] "        Found Compiler: " "Asem-51" 
+[20:38.290196] "        Found Compiler: " "Avra" 
+[20:38.290225] "        Found Compiler: " "Avrasm2" 
+[20:38.290262] "        Found Compiler: " "Avrgcc-asm" 
+[20:38.290293] "        Found Compiler: " "Gavrasm" 
+[20:38.290328] "        Found Compiler: " "GpAsm" 
+[20:38.290380] "        Found Compiler: " "sdas8051(SDCC)" 
+[20:38.290412] "        Found Compiler: " "SDCC_asm" 
+[20:38.290449] "        Found Compiler: " "SjASMPlus" 
+[20:38.290488] "        Found Compiler: " "Vasm-6502" 
+[20:38.362160] 
+[20:38.362200]  "    Loading Component sets at:" 
+[20:38.362204]  "/opt/group.chon/simulide/data" 
+[20:38.362207]  
+[20:38.362655] "        Loaded Component set:           " "arduinos.xml" 
+[20:38.362850] "        Loaded Component set:           " "avr.xml" 
+[20:38.362994] "        Loaded Component set:           " "dig_pot.xml" 
+[20:38.363031] "        Loaded Component set:           " "i51.xml" 
+[20:38.364121] "        Loaded Component set:           " "ic74.xml" 
+[20:38.364460] "        Loaded Component set:           " "icCD.xml" 
+[20:38.364530] "        Loaded Component set:           " "keys.xml" 
+[20:38.364659] "        Loaded Component set:           " "led_display.xml" 
+[20:38.364713] "        Loaded Component set:           " "mcs65.xml" 
+[20:38.364908] "        Loaded Component set:           " "pics.xml" 
+[20:38.365136] "        Loaded Component set:           " "scripted.xml" 
+[20:38.365286] "        Loaded Component set:           " "shields.xml" 
+[20:38.365365] "        Loaded Component set:           " "ternary.xml" 
+[20:38.365514] "        Loaded Component set:           " "tools.xml" 
+[20:38.365644] "        Loaded Component set:           " "unsorted.xml" 
+[20:38.365748] "        Loaded Component set:           " "ussr.xml" 
+[20:38.365800] "        Loaded Component set:           " "z80.xml" 
+[20:38.365844] 
+[20:38.365888]  
+[20:38.368604] 
+[20:38.368641] ------------------------------------------------- 
+[20:38.368645]                    NEW CIRCUIT                    
+[20:38.368649]  
+[20:38.391373]         Initializing "1@mega328-109" 
+[20:38.391629]         "1@mega328-109" Initialized 
+[20:38.391635]  
+[20:38.399638] Loading hex file:
+[20:38.399672]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[20:38.399676]  
+[20:38.400264] Firmware successfully loaded
+[20:38.400295]  
+[20:38.418284]         Initializing "345@m328 TQFP-269" 
+[20:38.418580]         "345@m328 TQFP-269" Initialized 
+[20:38.418600]  
+[20:38.428322] Loading hex file:
+[20:38.428352]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[20:38.428356]  
+[20:38.428540] Firmware successfully loaded
+[20:38.428558]  
+[20:38.435340]         Initializing "405@m328 TQFP-269" 
+[20:38.435867]         "405@m328 TQFP-269" Initialized 
+[20:38.435901]  
+[20:38.445642] Loading hex file:
+[20:38.445666]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[20:38.445670]  
+[20:38.445850] Firmware successfully loaded
+[20:38.445868]  
+[20:38.489775]         Initializing "456@mega328-109" 
+[20:38.490003]         "456@mega328-109" Initialized 
+[20:38.490022]  
+[20:38.493318] Loading hex file:
+[20:38.493336]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[20:38.493340]  
+[20:38.493543] Firmware successfully loaded
+[20:38.493561]  
+[20:38.562671] Circuit Loaded:  
+[20:38.562729] "rosie.sim1" 
+[20:39.953212] 
+[20:39.959807] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[20:39.959922] Starting Circuit Simulation...
+[20:39.959937]  
+[20:39.962318] Connected to "/dev/ttyExogenous0" 
+[20:39.962557] Loading hex file:
+[20:39.962618]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[20:39.962630]  
+[20:39.964175] Firmware successfully loaded
+[20:39.964226]  
+[20:39.964239] Loading hex file:
+[20:39.964247]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[20:39.964255]  
+[20:39.964858] Firmware successfully loaded
+[20:39.964908]  
+[20:39.964921] Loading hex file:
+[20:39.964929]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[20:39.964937]  
+[20:39.965492] Firmware successfully loaded
+[20:39.965540]  
+[20:39.981188] Loading hex file:
+[20:39.981241]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[20:39.981248]  
+[20:39.981512] Firmware successfully loaded
+[20:39.981518]  
+[20:39.981616]     Simulation Running... 
+[20:39.981621]  
+[20:41.954594] 
+[20:43.956752] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[20:45.958578] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[20:47.133125] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[20:47.133431] Waiting for Rosie's body...
+[20:47.137090] [PythonBridgeBody] Connecting Rosie's body...
+[20:49.151459] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[20:50.151376] [PythonBridgeBody] Perceiving...
+[20:50.165443] Rosie's body is ready!
+[20:50.165494] Execution 6 of 10
+[20:50.165505] Starting the MAS!
+[20:50.866226] > Task :compileJava UP-TO-DATE
+[20:50.866348] > Task :processResources NO-SOURCE
+[20:50.866457] > Task :classes UP-TO-DATE
+[20:50.920344] 
+[20:50.920404] > Task :buildJCMDeps
+[20:50.920418] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[20:50.920457] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[20:50.920469] 
+[20:50.920520] JCM packages dependencies updated at .jcm-deps.gradle
+[20:50.920542] 
+[20:50.920571] BUILD SUCCESSFUL in 153ms
+[20:50.920609] 2 actionable tasks: 1 executed, 1 up-to-date
+[20:51.023701] > Task :compileJava UP-TO-DATE
+[20:51.023832] > Task :processResources NO-SOURCE
+[20:51.023879] > Task :classes UP-TO-DATE
+[20:51.276946] [PythonBridgeBody] Connected: ('127.0.0.1', 47206)
+[20:51.277656] [PythonBridgeBody] Agent: rosie
+[20:51.341183] [PythonBridgeBody] Perceived: legState("ok");
+[20:52.315342] [PythonBridgeBody] Action... keepWalking
+[20:52.490713] [PythonBridgeBody] Acted: keepWalkingReply("fall");legState("fall");
+[20:53.023182] 
+[20:53.023240] > Task :run
+[20:53.023251] Runtime Services (RTS) is running at 127.0.1.1:40967
+[20:53.023327] Agent mind inspector is running at http://127.0.1.1:3272
+[20:53.023351] CArtAgO Http Server running on http://127.0.1.1:3273
+[20:53.023362] [Connecting to socket...]
+[20:53.023469] [Connection established]
+[20:53.023491] [EJasonArch] keepWalking
+[20:53.491051] [PythonBridgeBody] Perceiving...
+[20:53.623273] [rosie] CAI ACAO ERRADA
+[20:53.623325] [EJasonArch] standUp
+[20:53.641251] [PythonBridgeBody] Perceived: legState("fall");
+[20:53.641312] [PythonBridgeBody] Action... standUp
+[20:54.840774] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[20:55.841043] [PythonBridgeBody] Perceiving...
+[20:55.923141] [rosie] StandUp again
+[20:55.923194] [EJasonArch] keepWalking
+[20:56.990258] [PythonBridgeBody] Perceived: legState("ok");
+[20:56.990324] [PythonBridgeBody] Action... keepWalking
+[20:59.490383] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[20:59.542570] [PythonBridgeBody] Action... keepWalking
+[20:59.623251] [rosie] Steps so far: 9
+[20:59.623304] [EJasonArch] keepWalking
+[21:02.040294] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:02.096238] [PythonBridgeBody] Action... keepWalking
+[21:02.123145] [rosie] Steps so far: 8
+[21:02.123192] [EJasonArch] keepWalking
+[21:04.591014] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:04.648102] [PythonBridgeBody] Action... keepWalking
+[21:04.723263] [rosie] Steps so far: 7
+[21:04.723333] [EJasonArch] keepWalking
+[21:06.390959] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[21:07.391134] [PythonBridgeBody] Perceiving...
+[21:07.523153] [EJasonArch] standUp
+[21:08.391036] [PythonBridgeBody] Perceived: legState("ok");
+[21:08.391104] [PythonBridgeBody] Action... standUp
+[21:09.391489] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[21:10.391594] [PythonBridgeBody] Perceiving...
+[21:10.423268] [rosie] StandUp again
+[21:10.423335] [EJasonArch] keepWalking
+[21:11.391040] [PythonBridgeBody] Perceived: legState("ok");
+[21:11.391090] [PythonBridgeBody] Action... keepWalking
+[21:13.540501] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:13.570443] [PythonBridgeBody] Action... keepWalking
+[21:13.623261] [rosie] Steps so far: 6
+[21:13.623313] [EJasonArch] keepWalking
+[21:15.690793] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:15.772365] [PythonBridgeBody] Action... keepWalking
+[21:15.823226] [rosie] Steps so far: 5
+[21:15.823283] [EJasonArch] keepWalking
+[21:18.690412] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[21:19.690565] [PythonBridgeBody] Perceiving...
+[21:19.823264] [EJasonArch] standUp
+[21:20.690860] [PythonBridgeBody] Perceived: legState("ok");
+[21:20.690950] [PythonBridgeBody] Action... standUp
+[21:21.690280] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[21:22.690489] [PythonBridgeBody] Perceiving...
+[21:22.823233] [rosie] StandUp again
+[21:22.823289] [EJasonArch] keepWalking
+[21:23.689702] [PythonBridgeBody] Perceived: legState("ok");
+[21:23.689759] [PythonBridgeBody] Action... keepWalking
+[21:25.940048] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:25.949243] [PythonBridgeBody] Action... keepWalking
+[21:26.023225] [rosie] Steps so far: 4
+[21:26.023278] [EJasonArch] keepWalking
+[21:28.140201] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:28.199681] [PythonBridgeBody] Action... keepWalking
+[21:28.223243] [rosie] Steps so far: 3
+[21:28.223297] [EJasonArch] keepWalking
+[21:31.139995] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[21:32.140222] [PythonBridgeBody] Perceiving...
+[21:32.223212] [EJasonArch] standUp
+[21:33.140657] [PythonBridgeBody] Perceived: legState("ok");
+[21:33.140712] [PythonBridgeBody] Action... standUp
+[21:34.140926] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[21:35.141050] [PythonBridgeBody] Perceiving...
+[21:35.223219] [rosie] StandUp again
+[21:35.223270] [EJasonArch] keepWalking
+[21:36.140982] [PythonBridgeBody] Perceived: legState("ok");
+[21:36.141030] [PythonBridgeBody] Action... keepWalking
+[21:38.340856] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:38.372992] [PythonBridgeBody] Action... keepWalking
+[21:38.423181] [rosie] Steps so far: 2
+[21:38.423234] [EJasonArch] keepWalking
+[21:40.490809] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:40.571857] [PythonBridgeBody] Action... keepWalking
+[21:40.623232] [rosie] Steps so far: 1
+[21:40.623286] [EJasonArch] keepWalking
+[21:42.990869] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[21:43.991113] [PythonBridgeBody] Perceiving...
+[21:44.123182] [EJasonArch] standUp
+[21:44.990977] [PythonBridgeBody] Perceived: legState("ok");
+[21:44.991036] [PythonBridgeBody] Action... standUp
+[21:46.040333] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[21:47.040544] [PythonBridgeBody] Perceiving...
+[21:47.123118] [rosie] StandUp again
+[21:47.123171] [EJasonArch] keepWalking
+[21:48.040322] [PythonBridgeBody] Perceived: legState("ok");
+[21:48.040391] [PythonBridgeBody] Action... keepWalking
+[21:50.190712] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[21:50.223126] [rosie] Steps so far: 0
+[21:50.223179] [rosie] I arrived at my destination: elroyBedroom stuck=4 falls=1 avoid=0
+[21:50.223190] [rosie] Started at:11:20:51 Finished at:11:21:50
+[21:50.223200] cartago.CartagoException: User not in workspace.
+[21:50.223282] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[21:50.223319] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[21:50.223405] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[21:50.223427] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[21:50.223438] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[21:50.223521] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[21:50.223543] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[21:50.223555] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[21:50.223578] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[21:50.223664] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[21:50.223686] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[21:50.223697] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[21:50.223718] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[21:50.223751] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[21:50.223784] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[21:50.223817] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[21:50.223847] cartago.ArtifactNotAvailableException
+[21:50.223879] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[21:50.223912] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[21:50.223944] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[21:50.223977] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[21:50.224009] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[21:50.224044] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[21:50.224078] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[21:50.224112] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[21:50.224150] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[21:50.224181] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[21:50.224240] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[21:50.224277] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[21:50.224310] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[21:50.224342] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[21:50.224375] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[21:50.224405] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[21:50.224436] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[21:50.535210] 
+[21:50.535275] BUILD SUCCESSFUL in 59s
+[21:50.535288] 2 actionable tasks: 1 executed, 1 up-to-date
+[21:50.543132] MAS Stopped!
+[22:01.782063] Stopping the Python (PID: 21420)...
+[22:01.782118] Stopping the Simulation (PID: 21398)...
+[22:01.782129] Starting the Simulation!
+[22:01.862736] ./run.sh, linha 180: 21398 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[22:02.081295] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[22:02.246694] 
+[22:02.246733] ------------------------------------------------- 
+[22:02.246737]                    NEW CIRCUIT                    
+[22:02.246741]  
+[22:02.253463] 
+[22:02.253486]  "    Loading Compilers at:" 
+[22:02.253490]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[22:02.253494]  
+[22:02.253497] "        Found Compiler: " "AScript" 
+[22:02.253500] "        Found Compiler: " "Arduino" 
+[22:02.253503] "        Found Compiler: " "Avrgcc" 
+[22:02.253588] "        Found Compiler: " "Dummy C" 
+[22:02.253607] "        Found Compiler: " "GcBasic" 
+[22:02.253612] "        Found Compiler: " "Make_avrgcc" 
+[22:02.253734] "        Found Compiler: " "Mplabx_xc8" 
+[22:02.253754] "        Found Compiler: " "Mplabx_xc8_12F" 
+[22:02.253758] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[22:02.253762] "        Found Compiler: " "SDCC-PIC" 
+[22:02.253776] "        Found Compiler: " "SDCC" 
+[22:02.253888] 
+[22:02.253906]  "    Loading Compilers at:" 
+[22:02.253911]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[22:02.253914]  
+[22:02.253918] "        Found Compiler: " "Asem-51" 
+[22:02.253922] "        Found Compiler: " "Avra" 
+[22:02.253934] "        Found Compiler: " "Avrasm2" 
+[22:02.254031] "        Found Compiler: " "Avrgcc-asm" 
+[22:02.254050] "        Found Compiler: " "Gavrasm" 
+[22:02.254055] "        Found Compiler: " "GpAsm" 
+[22:02.254059] "        Found Compiler: " "sdas8051(SDCC)" 
+[22:02.254157] "        Found Compiler: " "SDCC_asm" 
+[22:02.254179] "        Found Compiler: " "SjASMPlus" 
+[22:02.254184] "        Found Compiler: " "Vasm-6502" 
+[22:02.332941] 
+[22:02.333018]  "    Loading Component sets at:" 
+[22:02.333026]  "/opt/group.chon/simulide/data" 
+[22:02.333033]  
+[22:02.333563] "        Loaded Component set:           " "arduinos.xml" 
+[22:02.333952] "        Loaded Component set:           " "avr.xml" 
+[22:02.334247] "        Loaded Component set:           " "dig_pot.xml" 
+[22:02.334330] "        Loaded Component set:           " "i51.xml" 
+[22:02.336745] "        Loaded Component set:           " "ic74.xml" 
+[22:02.337456] "        Loaded Component set:           " "icCD.xml" 
+[22:02.337594] "        Loaded Component set:           " "keys.xml" 
+[22:02.337847] "        Loaded Component set:           " "led_display.xml" 
+[22:02.337947] "        Loaded Component set:           " "mcs65.xml" 
+[22:02.338300] "        Loaded Component set:           " "pics.xml" 
+[22:02.338670] "        Loaded Component set:           " "scripted.xml" 
+[22:02.338953] "        Loaded Component set:           " "shields.xml" 
+[22:02.339082] "        Loaded Component set:           " "ternary.xml" 
+[22:02.339340] "        Loaded Component set:           " "tools.xml" 
+[22:02.339624] "        Loaded Component set:           " "unsorted.xml" 
+[22:02.339761] "        Loaded Component set:           " "ussr.xml" 
+[22:02.339796] "        Loaded Component set:           " "z80.xml" 
+[22:02.339827] 
+[22:02.339834]  
+[22:02.345047] 
+[22:02.345117] ------------------------------------------------- 
+[22:02.345124]                    NEW CIRCUIT                    
+[22:02.345129]  
+[22:02.369960]         Initializing "1@mega328-109" 
+[22:02.370146]         "1@mega328-109" Initialized 
+[22:02.370151]  
+[22:02.378064] Loading hex file:
+[22:02.378095]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[22:02.378099]  
+[22:02.378749] Firmware successfully loaded
+[22:02.378775]  
+[22:02.396686]         Initializing "345@m328 TQFP-269" 
+[22:02.396894]         "345@m328 TQFP-269" Initialized 
+[22:02.396913]  
+[22:02.406610] Loading hex file:
+[22:02.406639]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[22:02.406644]  
+[22:02.406887] Firmware successfully loaded
+[22:02.406905]  
+[22:02.413485]         Initializing "405@m328 TQFP-269" 
+[22:02.413718]         "405@m328 TQFP-269" Initialized 
+[22:02.413737]  
+[22:02.423294] Loading hex file:
+[22:02.423322]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[22:02.423326]  
+[22:02.423518] Firmware successfully loaded
+[22:02.423537]  
+[22:02.461834]         Initializing "456@mega328-109" 
+[22:02.461987]         "456@mega328-109" Initialized 
+[22:02.461992]  
+[22:02.465380] Loading hex file:
+[22:02.465416]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[22:02.465419]  
+[22:02.465676] Firmware successfully loaded
+[22:02.465695]  
+[22:02.535311] Circuit Loaded:  
+[22:02.535360] "rosie.sim1" 
+[22:03.864218] 
+[22:03.864318] Starting Circuit Simulation...
+[22:03.864332]  
+[22:03.866791] Connected to "/dev/ttyExogenous0" 
+[22:03.867039] Loading hex file:
+[22:03.867102]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[22:03.867115]  
+[22:03.868696] Firmware successfully loaded
+[22:03.868750]  
+[22:03.868879] Loading hex file:
+[22:03.868930]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[22:03.868941]  
+[22:03.869415] Firmware successfully loaded
+[22:03.869456]  
+[22:03.869460] Loading hex file:
+[22:03.869464]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[22:03.869467]  
+[22:03.869719] Firmware successfully loaded
+[22:03.869738]  
+[22:03.883716] Loading hex file:
+[22:03.883762]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[22:03.883769]  
+[22:03.884127] Firmware successfully loaded
+[22:03.884147]  
+[22:03.884243]     Simulation Running... 
+[22:03.884249]  
+[22:03.900789] 
+[22:05.270110] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[22:05.270451] Waiting for Rosie's body...
+[22:05.273748] [PythonBridgeBody] Connecting Rosie's body...
+[22:07.288230] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[22:07.294468] Rosie's body is ready!
+[22:07.294513] Execution 7 of 10
+[22:07.294524] Starting the MAS!
+[22:07.957860] > Task :compileJava UP-TO-DATE
+[22:07.957973] > Task :processResources NO-SOURCE
+[22:07.958059] > Task :classes UP-TO-DATE
+[22:08.012314] 
+[22:08.012352] > Task :buildJCMDeps
+[22:08.012412] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[22:08.012445] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[22:08.012451] 
+[22:08.012503] JCM packages dependencies updated at .jcm-deps.gradle
+[22:08.012523] 
+[22:08.012552] BUILD SUCCESSFUL in 153ms
+[22:08.012581] 2 actionable tasks: 1 executed, 1 up-to-date
+[22:08.115376] > Task :compileJava UP-TO-DATE
+[22:08.115515] > Task :processResources NO-SOURCE
+[22:08.115541] > Task :classes UP-TO-DATE
+[22:08.288171] [PythonBridgeBody] Perceiving...
+[22:08.363241] [PythonBridgeBody] Connected: ('127.0.0.1', 32992)
+[22:08.363608] [PythonBridgeBody] Agent: rosie
+[22:09.449551] [PythonBridgeBody] Perceived: legState("ok");
+[22:10.115073] 
+[22:10.115182] > Task :run
+[22:10.115193] Runtime Services (RTS) is running at 127.0.1.1:38139
+[22:10.115213] Agent mind inspector is running at http://127.0.1.1:3272
+[22:10.115222] CArtAgO Http Server running on http://127.0.1.1:3273
+[22:10.115360] [Connecting to socket...]
+[22:10.115381] [Connection established]
+[22:10.406132] [PythonBridgeBody] Action... keepWalking
+[22:10.414886] [EJasonArch] keepWalking
+[22:12.892695] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:12.918135] [PythonBridgeBody] Action... keepWalking
+[22:13.014921] [rosie] Steps so far: 9
+[22:13.014990] [EJasonArch] keepWalking
+[22:15.392322] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:15.472326] [PythonBridgeBody] Action... keepWalking
+[22:15.514990] [rosie] Steps so far: 8
+[22:15.515059] [EJasonArch] keepWalking
+[22:15.642187] [PythonBridgeBody] Acted: keepWalkingReply("fall");legState("fall");
+[22:16.642430] [PythonBridgeBody] Perceiving...
+[22:16.792956] [PythonBridgeBody] Perceived: legState("fall");
+[22:16.793032] [PythonBridgeBody] Action... standUp
+[22:16.814873] [rosie] CAI ACAO ERRADA
+[22:16.814928] [EJasonArch] standUp
+[22:17.943512] [PythonBridgeBody] Acted: standUpReply("stuck");legState("stuck");
+[22:18.943703] [PythonBridgeBody] Perceiving...
+[22:19.014857] [EJasonArch] standUp
+[22:20.093036] [PythonBridgeBody] Perceived: legState("ok");
+[22:20.093087] [PythonBridgeBody] Action... standUp
+[22:21.292200] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[22:22.292452] [PythonBridgeBody] Perceiving...
+[22:22.414919] [rosie] StandUp again
+[22:22.414975] [EJasonArch] keepWalking
+[22:23.442472] [PythonBridgeBody] Perceived: legState("ok");
+[22:23.442531] [PythonBridgeBody] Action... keepWalking
+[22:25.942273] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:25.948479] [PythonBridgeBody] Action... keepWalking
+[22:26.014936] [rosie] Steps so far: 7
+[22:26.015031] [EJasonArch] keepWalking
+[22:28.443042] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:28.495745] [PythonBridgeBody] Action... keepWalking
+[22:28.514885] [rosie] Steps so far: 6
+[22:28.514933] [EJasonArch] keepWalking
+[22:31.942824] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[22:32.942978] [PythonBridgeBody] Perceiving...
+[22:33.014901] [EJasonArch] standUp
+[22:34.142606] [PythonBridgeBody] Perceived: legState("ok");
+[22:34.142647] [PythonBridgeBody] Action... standUp
+[22:35.393229] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[22:36.393426] [PythonBridgeBody] Perceiving...
+[22:36.414859] [rosie] StandUp again
+[22:36.414913] [EJasonArch] keepWalking
+[22:37.591770] [PythonBridgeBody] Perceived: legState("ok");
+[22:37.591830] [PythonBridgeBody] Action... keepWalking
+[22:40.142752] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:40.168524] [PythonBridgeBody] Action... keepWalking
+[22:40.214898] [rosie] Steps so far: 5
+[22:40.214965] [EJasonArch] keepWalking
+[22:42.643135] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:42.719907] [PythonBridgeBody] Action... keepWalking
+[22:42.814860] [rosie] Steps so far: 4
+[22:42.814913] [EJasonArch] keepWalking
+[22:46.142966] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[22:47.143217] [PythonBridgeBody] Perceiving...
+[22:47.314825] [EJasonArch] standUp
+[22:48.292665] [PythonBridgeBody] Perceived: legState("ok");
+[22:48.292723] [PythonBridgeBody] Action... standUp
+[22:49.492271] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[22:50.492468] [PythonBridgeBody] Perceiving...
+[22:50.614897] [rosie] StandUp again
+[22:50.614975] [EJasonArch] keepWalking
+[22:51.644596] [PythonBridgeBody] Perceived: legState("ok");
+[22:51.644647] [PythonBridgeBody] Action... keepWalking
+[22:54.142688] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:54.194557] [PythonBridgeBody] Action... keepWalking
+[22:54.214820] [rosie] Steps so far: 3
+[22:54.214875] [EJasonArch] keepWalking
+[22:56.693020] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[22:56.743728] [PythonBridgeBody] Action... keepWalking
+[22:56.814881] [rosie] Steps so far: 2
+[22:56.814951] [EJasonArch] keepWalking
+[23:00.193085] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[23:01.193309] [PythonBridgeBody] Perceiving...
+[23:01.314887] [EJasonArch] standUp
+[23:02.393167] [PythonBridgeBody] Perceived: legState("ok");
+[23:02.393231] [PythonBridgeBody] Action... standUp
+[23:03.643818] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[23:04.643978] [PythonBridgeBody] Perceiving...
+[23:04.714947] [rosie] StandUp again
+[23:04.715014] [EJasonArch] keepWalking
+[23:05.792662] [PythonBridgeBody] Perceived: legState("ok");
+[23:05.792734] [PythonBridgeBody] Action... keepWalking
+[23:08.292798] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:08.319889] [PythonBridgeBody] Action... keepWalking
+[23:08.414834] [rosie] Steps so far: 1
+[23:08.414888] [EJasonArch] keepWalking
+[23:10.843018] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:11.014829] [rosie] Steps so far: 0
+[23:11.014884] [rosie] I arrived at my destination: elroyBedroom stuck=3 falls=1 avoid=0
+[23:11.014895] [rosie] Started at:11:22:8 Finished at:11:23:10
+[23:11.014914] cartago.CartagoException: User not in workspace.
+[23:11.014998] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[23:11.015019] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[23:11.015030] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[23:11.015129] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[23:11.015152] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[23:11.015163] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[23:11.015236] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[23:11.015257] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[23:11.015332] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[23:11.015352] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[23:11.015364] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[23:11.015442] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[23:11.015463] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[23:11.015475] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[23:11.015557] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[23:11.015578] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[23:11.015589] cartago.ArtifactNotAvailableException
+[23:11.015598] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[23:11.015628] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[23:11.015662] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[23:11.015695] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[23:11.015726] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[23:11.015762] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[23:11.015798] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[23:11.015832] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[23:11.015868] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[23:11.015900] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[23:11.015934] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[23:11.015995] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[23:11.016034] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[23:11.016066] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[23:11.016099] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[23:11.016131] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[23:11.016163] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[23:11.266887] 
+[23:11.266944] BUILD SUCCESSFUL in 1m 3s
+[23:11.266956] 2 actionable tasks: 1 executed, 1 up-to-date
+[23:11.276279] MAS Stopped!
+[23:13.993436] Stopping the Python (PID: 21932)...
+[23:13.993493] Stopping the Simulation (PID: 21909)...
+[23:13.993505] Starting the Simulation!
+[23:14.082192] ./run.sh, linha 180: 21909 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[23:14.269544] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[23:14.443636] 
+[23:14.443680] ------------------------------------------------- 
+[23:14.443685]                    NEW CIRCUIT                    
+[23:14.443688]  
+[23:14.450269] 
+[23:14.450304]  "    Loading Compilers at:" 
+[23:14.450309]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[23:14.450313]  
+[23:14.450316] "        Found Compiler: " "AScript" 
+[23:14.450331] "        Found Compiler: " "Arduino" 
+[23:14.450371] "        Found Compiler: " "Avrgcc" 
+[23:14.450481] "        Found Compiler: " "Dummy C" 
+[23:14.450501] "        Found Compiler: " "GcBasic" 
+[23:14.450505] "        Found Compiler: " "Make_avrgcc" 
+[23:14.450509] "        Found Compiler: " "Mplabx_xc8" 
+[23:14.450623] "        Found Compiler: " "Mplabx_xc8_12F" 
+[23:14.450641] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[23:14.450645] "        Found Compiler: " "SDCC-PIC" 
+[23:14.450661] "        Found Compiler: " "SDCC" 
+[23:14.450744] 
+[23:14.450748]  "    Loading Compilers at:" 
+[23:14.450751]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[23:14.450756]  
+[23:14.450788] "        Found Compiler: " "Asem-51" 
+[23:14.450812] "        Found Compiler: " "Avra" 
+[23:14.450839] "        Found Compiler: " "Avrasm2" 
+[23:14.450866] "        Found Compiler: " "Avrgcc-asm" 
+[23:14.450890] "        Found Compiler: " "Gavrasm" 
+[23:14.450915] "        Found Compiler: " "GpAsm" 
+[23:14.450950] "        Found Compiler: " "sdas8051(SDCC)" 
+[23:14.450973] "        Found Compiler: " "SDCC_asm" 
+[23:14.451004] "        Found Compiler: " "SjASMPlus" 
+[23:14.451041] "        Found Compiler: " "Vasm-6502" 
+[23:14.542525] 
+[23:14.542594]  "    Loading Component sets at:" 
+[23:14.542601]  "/opt/group.chon/simulide/data" 
+[23:14.542607]  
+[23:14.543103] "        Loaded Component set:           " "arduinos.xml" 
+[23:14.543426] "        Loaded Component set:           " "avr.xml" 
+[23:14.543711] "        Loaded Component set:           " "dig_pot.xml" 
+[23:14.543751] "        Loaded Component set:           " "i51.xml" 
+[23:14.545754] "        Loaded Component set:           " "ic74.xml" 
+[23:14.546299] "        Loaded Component set:           " "icCD.xml" 
+[23:14.546329] "        Loaded Component set:           " "keys.xml" 
+[23:14.546582] "        Loaded Component set:           " "led_display.xml" 
+[23:14.546614] "        Loaded Component set:           " "mcs65.xml" 
+[23:14.546963] "        Loaded Component set:           " "pics.xml" 
+[23:14.547223] "        Loaded Component set:           " "scripted.xml" 
+[23:14.547468] "        Loaded Component set:           " "shields.xml" 
+[23:14.547524] "        Loaded Component set:           " "ternary.xml" 
+[23:14.547730] "        Loaded Component set:           " "tools.xml" 
+[23:14.547912] "        Loaded Component set:           " "unsorted.xml" 
+[23:14.548056] "        Loaded Component set:           " "ussr.xml" 
+[23:14.548119] "        Loaded Component set:           " "z80.xml" 
+[23:14.548146] 
+[23:14.548151]  
+[23:14.551395] 
+[23:14.551441] ------------------------------------------------- 
+[23:14.551447]                    NEW CIRCUIT                    
+[23:14.551452]  
+[23:14.595548]         Initializing "1@mega328-109" 
+[23:14.595815]         "1@mega328-109" Initialized 
+[23:14.595821]  
+[23:14.604005] Loading hex file:
+[23:14.604044]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[23:14.604048]  
+[23:14.604592] Firmware successfully loaded
+[23:14.604623]  
+[23:14.621849]         Initializing "345@m328 TQFP-269" 
+[23:14.622120]         "345@m328 TQFP-269" Initialized 
+[23:14.622127]  
+[23:14.631815] Loading hex file:
+[23:14.631842]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[23:14.631846]  
+[23:14.632086] Firmware successfully loaded
+[23:14.632109]  
+[23:14.638878]         Initializing "405@m328 TQFP-269" 
+[23:14.639059]         "405@m328 TQFP-269" Initialized 
+[23:14.639088]  
+[23:14.648720] Loading hex file:
+[23:14.648767]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[23:14.648771]  
+[23:14.649041] Firmware successfully loaded
+[23:14.649060]  
+[23:14.687593]         Initializing "456@mega328-109" 
+[23:14.687808]         "456@mega328-109" Initialized 
+[23:14.687828]  
+[23:14.691451] Loading hex file:
+[23:14.691476]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[23:14.691480]  
+[23:14.691715] Firmware successfully loaded
+[23:14.691720]  
+[23:14.764232] Circuit Loaded:  
+[23:14.764277] "rosie.sim1" 
+[23:16.112791] 
+[23:16.309197] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[23:16.309273] Starting Circuit Simulation...
+[23:16.309283]  
+[23:16.311363] Connected to "/dev/ttyExogenous0" 
+[23:16.311633] Loading hex file:
+[23:16.311684]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[23:16.311696]  
+[23:16.313241] Firmware successfully loaded
+[23:16.313297]  
+[23:16.313346] Loading hex file:
+[23:16.313365]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[23:16.313374]  
+[23:16.313985] Firmware successfully loaded
+[23:16.314035]  
+[23:16.314048] Loading hex file:
+[23:16.314057]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[23:16.314066]  
+[23:16.314700] Firmware successfully loaded
+[23:16.314759]  
+[23:16.337621] Loading hex file:
+[23:16.337686]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[23:16.337693]  
+[23:16.338004] Firmware successfully loaded
+[23:16.338054]  
+[23:16.338081]     Simulation Running... 
+[23:16.338088]  
+[23:17.009417] Connecting the simulated body
+[23:17.009665] Waiting for Rosie's body...
+[23:17.013125] [PythonBridgeBody] Connecting Rosie's body...
+[23:19.026317] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[23:19.034765] Rosie's body is ready!
+[23:19.034812] Execution 8 of 10
+[23:19.034816] Starting the MAS!
+[23:19.753912] > Task :compileJava UP-TO-DATE
+[23:19.754035] > Task :processResources NO-SOURCE
+[23:19.754140] > Task :classes UP-TO-DATE
+[23:19.798724] 
+[23:19.798792] > Task :buildJCMDeps
+[23:19.798899] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[23:19.798955] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[23:19.798972] 
+[23:19.799081] JCM packages dependencies updated at .jcm-deps.gradle
+[23:19.799117] 
+[23:19.799204] BUILD SUCCESSFUL in 141ms
+[23:19.799259] 2 actionable tasks: 1 executed, 1 up-to-date
+[23:19.903400] > Task :compileJava UP-TO-DATE
+[23:19.903467] > Task :processResources NO-SOURCE
+[23:19.903572] > Task :classes UP-TO-DATE
+[23:20.026197] [PythonBridgeBody] Perceiving...
+[23:20.175040] [PythonBridgeBody] Connected: ('127.0.0.1', 46450)
+[23:20.175455] [PythonBridgeBody] Agent: rosie
+[23:21.247807] [PythonBridgeBody] Perceived: legState("ok");
+[23:21.903336] 
+[23:21.903389] > Task :run
+[23:21.903400] Runtime Services (RTS) is running at 127.0.1.1:45419
+[23:21.903433] Agent mind inspector is running at http://127.0.1.1:3272
+[23:21.903533] CArtAgO Http Server running on http://127.0.1.1:3273
+[23:21.903554] [Connecting to socket...]
+[23:21.903564] [Connection established]
+[23:22.217742] [PythonBridgeBody] Action... keepWalking
+[23:22.303274] [EJasonArch] keepWalking
+[23:24.846671] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:24.876977] [PythonBridgeBody] Action... keepWalking
+[23:24.903280] [rosie] Steps so far: 9
+[23:24.903337] [EJasonArch] keepWalking
+[23:27.397071] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:27.476546] [PythonBridgeBody] Action... keepWalking
+[23:27.503293] [rosie] Steps so far: 8
+[23:27.503351] [EJasonArch] keepWalking
+[23:29.496738] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[23:30.496978] [PythonBridgeBody] Perceiving...
+[23:30.603220] [EJasonArch] standUp
+[23:31.697310] [PythonBridgeBody] Perceived: legState("ok");
+[23:31.697377] [PythonBridgeBody] Action... standUp
+[23:32.897227] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[23:33.897421] [PythonBridgeBody] Perceiving...
+[23:34.003345] [rosie] StandUp again
+[23:34.003407] [EJasonArch] keepWalking
+[23:35.096892] [PythonBridgeBody] Perceived: legState("ok");
+[23:35.096952] [PythonBridgeBody] Action... keepWalking
+[23:37.696900] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:37.700424] [PythonBridgeBody] Action... keepWalking
+[23:37.703276] [rosie] Steps so far: 7
+[23:37.703311] [EJasonArch] keepWalking
+[23:40.247108] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:40.303716] [PythonBridgeBody] Action... keepWalking
+[23:40.403345] [rosie] Steps so far: 6
+[23:40.403406] [EJasonArch] keepWalking
+[23:42.897562] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:42.955816] [PythonBridgeBody] Action... keepWalking
+[23:43.003316] [rosie] Steps so far: 5
+[23:43.003368] [EJasonArch] keepWalking
+[23:43.148089] [PythonBridgeBody] Acted: keepWalkingReply("fall");legState("fall");
+[23:44.148271] [PythonBridgeBody] Perceiving...
+[23:44.296743] [PythonBridgeBody] Perceived: legState("fall");
+[23:44.296798] [PythonBridgeBody] Action... standUp
+[23:44.303223] [rosie] CAI ACAO ERRADA
+[23:44.303288] [EJasonArch] standUp
+[23:45.497037] [PythonBridgeBody] Acted: standUpReply("stuck");legState("stuck");
+[23:46.497186] [PythonBridgeBody] Perceiving...
+[23:46.603328] [EJasonArch] standUp
+[23:47.697163] [PythonBridgeBody] Perceived: legState("ok");
+[23:47.697210] [PythonBridgeBody] Action... standUp
+[23:48.897665] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[23:49.897837] [PythonBridgeBody] Perceiving...
+[23:50.003284] [rosie] StandUp again
+[23:50.003336] [EJasonArch] keepWalking
+[23:51.046255] [PythonBridgeBody] Perceived: legState("ok");
+[23:51.046311] [PythonBridgeBody] Action... keepWalking
+[23:53.596815] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:53.626343] [PythonBridgeBody] Action... keepWalking
+[23:53.703173] [rosie] Steps so far: 4
+[23:53.703229] [EJasonArch] keepWalking
+[23:56.197075] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[23:56.275899] [PythonBridgeBody] Action... keepWalking
+[23:56.303178] [rosie] Steps so far: 3
+[23:56.303230] [EJasonArch] keepWalking
+[23:59.797390] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[24:00.797585] [PythonBridgeBody] Perceiving...
+[24:00.903166] [EJasonArch] standUp
+[24:01.997247] [PythonBridgeBody] Perceived: legState("ok");
+[24:01.997292] [PythonBridgeBody] Action... standUp
+[24:03.197194] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[24:04.197437] [PythonBridgeBody] Perceiving...
+[24:04.303245] [rosie] StandUp again
+[24:04.303297] [EJasonArch] keepWalking
+[24:05.347648] [PythonBridgeBody] Perceived: legState("ok");
+[24:05.347701] [PythonBridgeBody] Action... keepWalking
+[24:07.897527] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[24:07.900709] [PythonBridgeBody] Action... keepWalking
+[24:08.003264] [rosie] Steps so far: 2
+[24:08.003319] [EJasonArch] keepWalking
+[24:10.496350] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[24:10.551776] [PythonBridgeBody] Action... keepWalking
+[24:10.603280] [rosie] Steps so far: 1
+[24:10.603343] [EJasonArch] keepWalking
+[24:14.046294] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[24:15.046494] [PythonBridgeBody] Perceiving...
+[24:15.203255] [EJasonArch] standUp
+[24:16.247746] [PythonBridgeBody] Perceived: legState("ok");
+[24:16.247811] [PythonBridgeBody] Action... standUp
+[24:17.497148] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[24:18.497341] [PythonBridgeBody] Perceiving...
+[24:18.603172] [rosie] StandUp again
+[24:18.603228] [EJasonArch] keepWalking
+[24:19.697338] [PythonBridgeBody] Perceived: legState("ok");
+[24:19.697381] [PythonBridgeBody] Action... keepWalking
+[24:22.298113] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[24:22.403158] [rosie] Steps so far: 0
+[24:22.403197] [rosie] I arrived at my destination: elroyBedroom stuck=3 falls=1 avoid=0
+[24:22.403203] [rosie] Started at:11:23:20 Finished at:11:24:22
+[24:22.403206] cartago.CartagoException: User not in workspace.
+[24:22.403210] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[24:22.403213] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[24:22.403231] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[24:22.403399] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[24:22.403418] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[24:22.403422] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[24:22.403425] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[24:22.403428] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[24:22.403432] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[24:22.403435] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[24:22.403533] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[24:22.403552] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[24:22.403556] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[24:22.403560] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[24:22.403564] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[24:22.403567] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[24:22.403585] cartago.ArtifactNotAvailableException
+[24:22.403606] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[24:22.403626] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[24:22.403642] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[24:22.403661] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[24:22.403679] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[24:22.403698] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[24:22.403719] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[24:22.403741] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[24:22.403765] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[24:22.403785] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[24:22.403808] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[24:22.403831] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[24:22.403853] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[24:22.403873] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[24:22.403891] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[24:22.403909] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[24:22.403927] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[24:22.660514] 
+[24:22.660578] BUILD SUCCESSFUL in 1m 2s
+[24:22.660609] 2 actionable tasks: 1 executed, 1 up-to-date
+[24:22.666089] MAS Stopped!
+[24:25.812710] Stopping the Python (PID: 22430)...
+[24:25.812763] Stopping the Simulation (PID: 22414)...
+[24:25.812768] Starting the Simulation!
+[24:25.884727] ./run.sh, linha 180: 22414 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[24:26.087980] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[24:26.276968] 
+[24:26.277014] ------------------------------------------------- 
+[24:26.277018]                    NEW CIRCUIT                    
+[24:26.277021]  
+[24:26.286666] 
+[24:26.286698]  "    Loading Compilers at:" 
+[24:26.286704]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[24:26.286709]  
+[24:26.286715] "        Found Compiler: " "AScript" 
+[24:26.286807] "        Found Compiler: " "Arduino" 
+[24:26.286839] "        Found Compiler: " "Avrgcc" 
+[24:26.286848] "        Found Compiler: " "Dummy C" 
+[24:26.286953] "        Found Compiler: " "GcBasic" 
+[24:26.286983] "        Found Compiler: " "Make_avrgcc" 
+[24:26.287085] "        Found Compiler: " "Mplabx_xc8" 
+[24:26.287117] "        Found Compiler: " "Mplabx_xc8_12F" 
+[24:26.287146] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[24:26.287192] "        Found Compiler: " "SDCC-PIC" 
+[24:26.287231] "        Found Compiler: " "SDCC" 
+[24:26.287337] 
+[24:26.287343]  "    Loading Compilers at:" 
+[24:26.287348]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[24:26.287354]  
+[24:26.287393] "        Found Compiler: " "Asem-51" 
+[24:26.287434] "        Found Compiler: " "Avra" 
+[24:26.287477] "        Found Compiler: " "Avrasm2" 
+[24:26.287520] "        Found Compiler: " "Avrgcc-asm" 
+[24:26.287559] "        Found Compiler: " "Gavrasm" 
+[24:26.287599] "        Found Compiler: " "GpAsm" 
+[24:26.287656] "        Found Compiler: " "sdas8051(SDCC)" 
+[24:26.287694] "        Found Compiler: " "SDCC_asm" 
+[24:26.287742] "        Found Compiler: " "SjASMPlus" 
+[24:26.287796] "        Found Compiler: " "Vasm-6502" 
+[24:26.372803] 
+[24:26.372853]  "    Loading Component sets at:" 
+[24:26.372857]  "/opt/group.chon/simulide/data" 
+[24:26.372860]  
+[24:26.373157] "        Loaded Component set:           " "arduinos.xml" 
+[24:26.373351] "        Loaded Component set:           " "avr.xml" 
+[24:26.373504] "        Loaded Component set:           " "dig_pot.xml" 
+[24:26.373541] "        Loaded Component set:           " "i51.xml" 
+[24:26.374640] "        Loaded Component set:           " "ic74.xml" 
+[24:26.375007] "        Loaded Component set:           " "icCD.xml" 
+[24:26.375080] "        Loaded Component set:           " "keys.xml" 
+[24:26.375238] "        Loaded Component set:           " "led_display.xml" 
+[24:26.375289] "        Loaded Component set:           " "mcs65.xml" 
+[24:26.375472] "        Loaded Component set:           " "pics.xml" 
+[24:26.375686] "        Loaded Component set:           " "scripted.xml" 
+[24:26.375858] "        Loaded Component set:           " "shields.xml" 
+[24:26.376073] "        Loaded Component set:           " "ternary.xml" 
+[24:26.376107] "        Loaded Component set:           " "tools.xml" 
+[24:26.376226] "        Loaded Component set:           " "unsorted.xml" 
+[24:26.376404] "        Loaded Component set:           " "ussr.xml" 
+[24:26.376432] "        Loaded Component set:           " "z80.xml" 
+[24:26.376442] 
+[24:26.376450]  
+[24:26.379851] 
+[24:26.379926] ------------------------------------------------- 
+[24:26.379931]                    NEW CIRCUIT                    
+[24:26.379934]  
+[24:26.400940]         Initializing "1@mega328-109" 
+[24:26.401215]         "1@mega328-109" Initialized 
+[24:26.401235]  
+[24:26.409738] Loading hex file:
+[24:26.409781]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[24:26.409785]  
+[24:26.410353] Firmware successfully loaded
+[24:26.410369]  
+[24:26.428858]         Initializing "345@m328 TQFP-269" 
+[24:26.429096]         "345@m328 TQFP-269" Initialized 
+[24:26.429104]  
+[24:26.438994] Loading hex file:
+[24:26.439030]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[24:26.439035]  
+[24:26.439231] Firmware successfully loaded
+[24:26.439251]  
+[24:26.445997]         Initializing "405@m328 TQFP-269" 
+[24:26.446150]         "405@m328 TQFP-269" Initialized 
+[24:26.446157]  
+[24:26.456349] Loading hex file:
+[24:26.456403]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[24:26.456407]  
+[24:26.456573] Firmware successfully loaded
+[24:26.456591]  
+[24:26.500720]         Initializing "456@mega328-109" 
+[24:26.500904]         "456@mega328-109" Initialized 
+[24:26.500922]  
+[24:26.504992] Loading hex file:
+[24:26.505025]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[24:26.505029]  
+[24:26.505158] Firmware successfully loaded
+[24:26.505202]  
+[24:26.576121] Circuit Loaded:  
+[24:26.576170] "rosie.sim1" 
+[24:27.918659] 
+[24:28.942135] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[24:28.942231] Starting Circuit Simulation...
+[24:28.942244]  
+[24:28.945354] Connected to "/dev/ttyExogenous0" 
+[24:28.945484] Loading hex file:
+[24:28.945499]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[24:28.945508]  
+[24:28.947292] Firmware successfully loaded
+[24:28.947357]  
+[24:28.947518] Loading hex file:
+[24:28.947582]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[24:28.947595]  
+[24:28.948163] Firmware successfully loaded
+[24:28.948221]  
+[24:28.948235] Loading hex file:
+[24:28.948246]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[24:28.948255]  
+[24:28.948934] Firmware successfully loaded
+[24:28.948997]  
+[24:28.965269] Loading hex file:
+[24:28.965311]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[24:28.965317]  
+[24:28.965780] Firmware successfully loaded
+[24:28.965803]  
+[24:28.965893]     Simulation Running... 
+[24:28.965897]  
+[24:29.920318] 
+[24:31.922533] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[24:32.372883] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[24:32.372923] Waiting for Rosie's body...
+[24:32.376673] [PythonBridgeBody] Connecting Rosie's body...
+[24:34.395543] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[24:35.395518] [PythonBridgeBody] Perceiving...
+[24:35.403468] Rosie's body is ready!
+[24:35.403499] Execution 9 of 10
+[24:35.403509] Starting the MAS!
+[24:36.095179] > Task :compileJava UP-TO-DATE
+[24:36.095314] > Task :processResources NO-SOURCE
+[24:36.095441] > Task :classes UP-TO-DATE
+[24:36.159764] 
+[24:36.159843] > Task :buildJCMDeps
+[24:36.159851] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[24:36.159867] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[24:36.159873] 
+[24:36.159908] JCM packages dependencies updated at .jcm-deps.gradle
+[24:36.159930] 
+[24:36.159960] BUILD SUCCESSFUL in 154ms
+[24:36.159988] 2 actionable tasks: 1 executed, 1 up-to-date
+[24:36.263065] > Task :compileJava UP-TO-DATE
+[24:36.263233] > Task :processResources NO-SOURCE
+[24:36.263256] > Task :classes UP-TO-DATE
+[24:36.618910] [PythonBridgeBody] Connected: ('127.0.0.1', 54856)
+[24:36.619337] [PythonBridgeBody] Agent: rosie
+[24:36.674804] [PythonBridgeBody] Perceived: legState("ok");
+[24:37.659362] [PythonBridgeBody] Action... keepWalking
+[24:38.262684] 
+[24:38.262742] > Task :run
+[24:38.262747] Runtime Services (RTS) is running at 127.0.1.1:41017
+[24:38.262750] Agent mind inspector is running at http://127.0.1.1:3272
+[24:38.262753] CArtAgO Http Server running on http://127.0.1.1:3273
+[24:38.262756] [Connecting to socket...]
+[24:38.262765] [Connection established]
+[24:38.262774] [EJasonArch] keepWalking
+[24:40.125039] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[24:40.170052] [PythonBridgeBody] Action... keepWalking
+[24:40.262677] [rosie] Steps so far: 9
+[24:40.262721] [EJasonArch] keepWalking
+[24:41.774267] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[24:42.774529] [PythonBridgeBody] Perceiving...
+[24:42.862616] [EJasonArch] standUp
+[24:43.974587] [PythonBridgeBody] Perceived: legState("ok");
+[24:43.974641] [PythonBridgeBody] Action... standUp
+[24:45.174981] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[24:46.175154] [PythonBridgeBody] Perceiving...
+[24:46.262461] [rosie] StandUp again
+[24:46.262507] [EJasonArch] keepWalking
+[24:47.324188] [PythonBridgeBody] Perceived: legState("ok");
+[24:47.324250] [PythonBridgeBody] Action... keepWalking
+[24:49.825026] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[24:49.845167] [PythonBridgeBody] Action... keepWalking
+[24:49.862644] [rosie] Steps so far: 8
+[24:49.862701] [EJasonArch] keepWalking
+[24:52.324236] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[24:52.396181] [PythonBridgeBody] Action... keepWalking
+[24:52.462603] [rosie] Steps so far: 7
+[24:52.462659] [EJasonArch] keepWalking
+[24:55.974715] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[24:56.974835] [PythonBridgeBody] Perceiving...
+[24:57.062518] [EJasonArch] standUp
+[24:58.174652] [PythonBridgeBody] Perceived: legState("ok");
+[24:58.174701] [PythonBridgeBody] Action... standUp
+[24:59.374701] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[25:00.374919] [PythonBridgeBody] Perceiving...
+[25:00.462688] [rosie] StandUp again
+[25:00.462739] [EJasonArch] keepWalking
+[25:01.524555] [PythonBridgeBody] Perceived: legState("ok");
+[25:01.524599] [PythonBridgeBody] Action... keepWalking
+[25:04.024693] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:04.076653] [PythonBridgeBody] Action... keepWalking
+[25:04.162616] [rosie] Steps so far: 6
+[25:04.162656] [EJasonArch] keepWalking
+[25:06.574702] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:06.628263] [PythonBridgeBody] Action... keepWalking
+[25:06.662659] [rosie] Steps so far: 5
+[25:06.662720] [EJasonArch] keepWalking
+[25:10.224639] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[25:11.224808] [PythonBridgeBody] Perceiving...
+[25:11.362506] [EJasonArch] standUp
+[25:12.424651] [PythonBridgeBody] Perceived: legState("ok");
+[25:12.424706] [PythonBridgeBody] Action... standUp
+[25:13.674548] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[25:14.674632] [PythonBridgeBody] Perceiving...
+[25:14.762577] [rosie] StandUp again
+[25:14.762626] [EJasonArch] keepWalking
+[25:15.874542] [PythonBridgeBody] Perceived: legState("ok");
+[25:15.874649] [PythonBridgeBody] Action... keepWalking
+[25:18.474469] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:18.511832] [PythonBridgeBody] Action... keepWalking
+[25:18.562538] [rosie] Steps so far: 4
+[25:18.562598] [EJasonArch] keepWalking
+[25:21.124667] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:21.212010] [PythonBridgeBody] Action... keepWalking
+[25:21.262668] [rosie] Steps so far: 3
+[25:21.262721] [EJasonArch] keepWalking
+[25:24.674648] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[25:25.674763] [PythonBridgeBody] Perceiving...
+[25:25.862610] [EJasonArch] standUp
+[25:26.824754] [PythonBridgeBody] Perceived: legState("ok");
+[25:26.824810] [PythonBridgeBody] Action... standUp
+[25:28.074193] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[25:29.074435] [PythonBridgeBody] Perceiving...
+[25:29.162630] [rosie] StandUp again
+[25:29.162672] [EJasonArch] keepWalking
+[25:30.224844] [PythonBridgeBody] Perceived: legState("ok");
+[25:30.224900] [PythonBridgeBody] Action... keepWalking
+[25:32.734590] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:32.736726] [PythonBridgeBody] Action... keepWalking
+[25:32.762546] [rosie] Steps so far: 2
+[25:32.762589] [EJasonArch] keepWalking
+[25:35.325212] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:35.387934] [PythonBridgeBody] Action... keepWalking
+[25:35.462486] [rosie] Steps so far: 1
+[25:35.462536] [EJasonArch] keepWalking
+[25:38.924064] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[25:39.924302] [PythonBridgeBody] Perceiving...
+[25:40.062638] [EJasonArch] standUp
+[25:41.074776] [PythonBridgeBody] Perceived: legState("ok");
+[25:41.074829] [PythonBridgeBody] Action... standUp
+[25:42.274508] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[25:43.274568] [PythonBridgeBody] Perceiving...
+[25:43.362438] [rosie] StandUp again
+[25:43.362484] [EJasonArch] keepWalking
+[25:44.474627] [PythonBridgeBody] Perceived: legState("ok");
+[25:44.474681] [PythonBridgeBody] Action... keepWalking
+[25:46.974725] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[25:47.062606] [rosie] Steps so far: 0
+[25:47.062660] [rosie] I arrived at my destination: elroyBedroom stuck=5 falls=0 avoid=0
+[25:47.062664] [rosie] Started at:11:24:36 Finished at:11:25:47
+[25:47.062668] cartago.CartagoException: User not in workspace.
+[25:47.062671] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[25:47.062674] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[25:47.062758] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[25:47.062778] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[25:47.062782] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[25:47.062786] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[25:47.062789] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[25:47.062792] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[25:47.062804] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[25:47.062887] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[25:47.062906] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[25:47.062911] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[25:47.062914] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[25:47.062918] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[25:47.062922] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[25:47.062926] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[25:47.062936] cartago.ArtifactNotAvailableException
+[25:47.062950] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[25:47.062962] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[25:47.062975] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[25:47.062988] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[25:47.063002] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[25:47.063016] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[25:47.063032] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[25:47.063053] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[25:47.063071] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[25:47.063084] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[25:47.063099] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[25:47.063116] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[25:47.063134] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[25:47.063156] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[25:47.063173] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[25:47.063188] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[25:47.063202] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[25:47.359861] 
+[25:47.359927] BUILD SUCCESSFUL in 1m 11s
+[25:47.359951] 2 actionable tasks: 1 executed, 1 up-to-date
+[25:47.368200] MAS Stopped!
+[25:50.912129] Stopping the Python (PID: 22910)...
+[25:50.912182] Stopping the Simulation (PID: 22891)...
+[25:50.912194] Starting the Simulation!
+[25:50.986518] ./run.sh, linha 180: 22891 Morto                   chonos-simulide rosie.sim1  (wd: ~/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator)
+[25:51.181127] [H[2J[3JPLEASE, start the execution in simulIDE. After, press ENTER to continueWarning: Could not find the Qt platform plugin "wayland" in "" (:0, )
+[25:51.360442] 
+[25:51.360484] ------------------------------------------------- 
+[25:51.360488]                    NEW CIRCUIT                    
+[25:51.360491]  
+[25:51.368376] 
+[25:51.368400]  "    Loading Compilers at:" 
+[25:51.368404]  "/opt/group.chon/simulide/data/codeeditor/compilers/compilers" 
+[25:51.368407]  
+[25:51.368410] "        Found Compiler: " "AScript" 
+[25:51.368414] "        Found Compiler: " "Arduino" 
+[25:51.368417] "        Found Compiler: " "Avrgcc" 
+[25:51.368494] "        Found Compiler: " "Dummy C" 
+[25:51.368512] "        Found Compiler: " "GcBasic" 
+[25:51.368516] "        Found Compiler: " "Make_avrgcc" 
+[25:51.368623] "        Found Compiler: " "Mplabx_xc8" 
+[25:51.368641] "        Found Compiler: " "Mplabx_xc8_12F" 
+[25:51.368646] "        Found Compiler: " "Mplabx_xc8_16Fe" 
+[25:51.368770] "        Found Compiler: " "SDCC-PIC" 
+[25:51.368789] "        Found Compiler: " "SDCC" 
+[25:51.368793] 
+[25:51.368796]  "    Loading Compilers at:" 
+[25:51.368799]  "/opt/group.chon/simulide/data/codeeditor/compilers/assemblers" 
+[25:51.368802]  
+[25:51.368806] "        Found Compiler: " "Asem-51" 
+[25:51.368823] "        Found Compiler: " "Avra" 
+[25:51.368941] "        Found Compiler: " "Avrasm2" 
+[25:51.368959] "        Found Compiler: " "Avrgcc-asm" 
+[25:51.368963] "        Found Compiler: " "Gavrasm" 
+[25:51.368966] "        Found Compiler: " "GpAsm" 
+[25:51.368970] "        Found Compiler: " "sdas8051(SDCC)" 
+[25:51.368986] "        Found Compiler: " "SDCC_asm" 
+[25:51.369087] "        Found Compiler: " "SjASMPlus" 
+[25:51.369106] "        Found Compiler: " "Vasm-6502" 
+[25:51.450184] 
+[25:51.450237]  "    Loading Component sets at:" 
+[25:51.450248]  "/opt/group.chon/simulide/data" 
+[25:51.450257]  
+[25:51.450492] "        Loaded Component set:           " "arduinos.xml" 
+[25:51.450672] "        Loaded Component set:           " "avr.xml" 
+[25:51.450841] "        Loaded Component set:           " "dig_pot.xml" 
+[25:51.450863] "        Loaded Component set:           " "i51.xml" 
+[25:51.452015] "        Loaded Component set:           " "ic74.xml" 
+[25:51.452298] "        Loaded Component set:           " "icCD.xml" 
+[25:51.452321] "        Loaded Component set:           " "keys.xml" 
+[25:51.452476] "        Loaded Component set:           " "led_display.xml" 
+[25:51.452500] "        Loaded Component set:           " "mcs65.xml" 
+[25:51.452689] "        Loaded Component set:           " "pics.xml" 
+[25:51.452983] "        Loaded Component set:           " "scripted.xml" 
+[25:51.453076] "        Loaded Component set:           " "shields.xml" 
+[25:51.453166] "        Loaded Component set:           " "ternary.xml" 
+[25:51.453332] "        Loaded Component set:           " "tools.xml" 
+[25:51.453454] "        Loaded Component set:           " "unsorted.xml" 
+[25:51.453547] "        Loaded Component set:           " "ussr.xml" 
+[25:51.453596] "        Loaded Component set:           " "z80.xml" 
+[25:51.453615] 
+[25:51.453626]  
+[25:51.456210] 
+[25:51.456255] ------------------------------------------------- 
+[25:51.456265]                    NEW CIRCUIT                    
+[25:51.456274]  
+[25:51.499574]         Initializing "1@mega328-109" 
+[25:51.499836]         "1@mega328-109" Initialized 
+[25:51.499859]  
+[25:51.507548] Loading hex file:
+[25:51.507572]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[25:51.507576]  
+[25:51.508050] Firmware successfully loaded
+[25:51.508070]  
+[25:51.525808]         Initializing "345@m328 TQFP-269" 
+[25:51.526102]         "345@m328 TQFP-269" Initialized 
+[25:51.526129]  
+[25:51.535975] Loading hex file:
+[25:51.536019]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[25:51.536023]  
+[25:51.536193] Firmware successfully loaded
+[25:51.536212]  
+[25:51.542507]         Initializing "405@m328 TQFP-269" 
+[25:51.542805]         "405@m328 TQFP-269" Initialized 
+[25:51.542834]  
+[25:51.552378] Loading hex file:
+[25:51.552412]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[25:51.552416]  
+[25:51.552595] Firmware successfully loaded
+[25:51.552600]  
+[25:51.591924]         Initializing "456@mega328-109" 
+[25:51.592141]         "456@mega328-109" Initialized 
+[25:51.592146]  
+[25:51.595457] Loading hex file:
+[25:51.595479]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[25:51.595493]  
+[25:51.595707] Firmware successfully loaded
+[25:51.595715]  
+[25:51.663730] Circuit Loaded:  
+[25:51.663777] "rosie.sim1" 
+[25:53.022800] 
+[25:53.681185] PLEASE, start the execution in simulIDE. After, press ENTER to continue
+[25:53.681262] Starting Circuit Simulation...
+[25:53.681272]  
+[25:53.683539] Connected to "/dev/ttyExogenous0" 
+[25:53.683790] Loading hex file:
+[25:53.683802]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/firmware.hex" 
+[25:53.683811]  
+[25:53.685668] Firmware successfully loaded
+[25:53.685689]  
+[25:53.685897] Loading hex file:
+[25:53.685910]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[25:53.685920]  
+[25:53.686633] Firmware successfully loaded
+[25:53.686645]  
+[25:53.686814] Loading hex file:
+[25:53.686826]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/proxyServoMotor.hex" 
+[25:53.686835]  
+[25:53.687469] Firmware successfully loaded
+[25:53.687473]  
+[25:53.706497] Loading hex file:
+[25:53.706559]  "/home/nilson/chonGroup/JACAMOb/doc/02-MyBodyMyActions/proof/simulator/jammer.hex" 
+[25:53.706568]  
+[25:53.706941] Firmware successfully loaded
+[25:53.706962]  
+[25:53.707065]     Simulation Running... 
+[25:53.707072]  
+[25:55.024691] 
+[25:55.096162] PLEASE, start the execution in simulIDE. After, press ENTER to continueConnecting the simulated body
+[25:55.096380] Waiting for Rosie's body...
+[25:55.099572] [PythonBridgeBody] Connecting Rosie's body...
+[25:57.113930] [PythonBridgeBody] Waiting for EJasonArch at localhost:6969
+[25:58.113830] [PythonBridgeBody] Perceiving...
+[25:58.126030] Rosie's body is ready!
+[25:58.126086] Execution 10 of 10
+[25:58.126096] Starting the MAS!
+[25:58.834331] > Task :compileJava UP-TO-DATE
+[25:58.834467] > Task :processResources NO-SOURCE
+[25:58.834523] > Task :classes UP-TO-DATE
+[25:58.878607] 
+[25:58.878649] > Task :buildJCMDeps
+[25:58.878676] reading from file proofJaCaMoAndEJasonArch.jcm ...
+[25:58.878703] file proofJaCaMoAndEJasonArch.jcm parsed successfully!
+[25:58.878709] 
+[25:58.878760] JCM packages dependencies updated at .jcm-deps.gradle
+[25:58.878780] 
+[25:58.878811] BUILD SUCCESSFUL in 141ms
+[25:58.878838] 2 actionable tasks: 1 executed, 1 up-to-date
+[25:58.981576] > Task :compileJava UP-TO-DATE
+[25:58.981661] > Task :processResources NO-SOURCE
+[25:58.981718] > Task :classes UP-TO-DATE
+[25:59.238565] [PythonBridgeBody] Connected: ('127.0.0.1', 39414)
+[25:59.239013] [PythonBridgeBody] Agent: rosie
+[25:59.315659] [PythonBridgeBody] Perceived: legState("ok");
+[26:00.280657] [PythonBridgeBody] Action... keepWalking
+[26:00.981588] 
+[26:00.981640] > Task :run
+[26:00.981644] Runtime Services (RTS) is running at 127.0.1.1:34729
+[26:00.981650] Agent mind inspector is running at http://127.0.1.1:3272
+[26:00.981654] CArtAgO Http Server running on http://127.0.1.1:3273
+[26:00.981657] [Connecting to socket...]
+[26:00.981660] [Connection established]
+[26:00.981663] [EJasonArch] keepWalking
+[26:02.815939] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:02.839741] [PythonBridgeBody] Action... keepWalking
+[26:02.881606] [rosie] Steps so far: 9
+[26:02.881678] [EJasonArch] keepWalking
+[26:05.315821] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:05.391936] [PythonBridgeBody] Action... keepWalking
+[26:05.481557] [rosie] Steps so far: 8
+[26:05.481597] [EJasonArch] keepWalking
+[26:05.565324] [PythonBridgeBody] Acted: keepWalkingReply("fall");legState("fall");
+[26:06.565519] [PythonBridgeBody] Perceiving...
+[26:06.681562] [rosie] CAI ACAO ERRADA
+[26:06.681611] [EJasonArch] standUp
+[26:06.715445] [PythonBridgeBody] Perceived: legState("fall");
+[26:06.715498] [PythonBridgeBody] Action... standUp
+[26:07.866014] [PythonBridgeBody] Acted: standUpReply("stuck");legState("stuck");
+[26:08.866196] [PythonBridgeBody] Perceiving...
+[26:08.981618] [EJasonArch] standUp
+[26:10.016439] [PythonBridgeBody] Perceived: legState("ok");
+[26:10.016499] [PythonBridgeBody] Action... standUp
+[26:11.215904] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[26:12.216043] [PythonBridgeBody] Perceiving...
+[26:12.281591] [rosie] StandUp again
+[26:12.281635] [EJasonArch] keepWalking
+[26:13.416266] [PythonBridgeBody] Perceived: legState("ok");
+[26:13.416312] [PythonBridgeBody] Action... keepWalking
+[26:16.065949] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:16.115049] [PythonBridgeBody] Action... keepWalking
+[26:16.181543] [rosie] Steps so far: 7
+[26:16.181607] [EJasonArch] keepWalking
+[26:18.766470] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:18.816066] [PythonBridgeBody] Action... keepWalking
+[26:18.881540] [rosie] Steps so far: 6
+[26:18.881592] [EJasonArch] keepWalking
+[26:22.466066] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[26:23.466349] [PythonBridgeBody] Perceiving...
+[26:23.581408] [EJasonArch] standUp
+[26:24.716266] [PythonBridgeBody] Perceived: legState("ok");
+[26:24.716323] [PythonBridgeBody] Action... standUp
+[26:25.966732] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[26:26.966990] [PythonBridgeBody] Perceiving...
+[26:27.081473] [rosie] StandUp again
+[26:27.081543] [EJasonArch] keepWalking
+[26:28.166268] [PythonBridgeBody] Perceived: legState("ok");
+[26:28.166327] [PythonBridgeBody] Action... keepWalking
+[26:30.866568] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:30.891312] [PythonBridgeBody] Action... keepWalking
+[26:30.981399] [rosie] Steps so far: 5
+[26:30.981494] [EJasonArch] keepWalking
+[26:33.515862] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:33.592158] [PythonBridgeBody] Action... keepWalking
+[26:33.681509] [rosie] Steps so far: 4
+[26:33.681589] [EJasonArch] keepWalking
+[26:37.265764] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[26:38.265981] [PythonBridgeBody] Perceiving...
+[26:38.381546] [EJasonArch] standUp
+[26:39.517209] [PythonBridgeBody] Perceived: legState("ok");
+[26:39.517266] [PythonBridgeBody] Action... standUp
+[26:40.815910] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[26:41.816076] [PythonBridgeBody] Perceiving...
+[26:41.881429] [rosie] StandUp again
+[26:41.881483] [EJasonArch] keepWalking
+[26:43.065940] [PythonBridgeBody] Perceived: legState("ok");
+[26:43.066001] [PythonBridgeBody] Action... keepWalking
+[26:45.616192] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:45.666706] [PythonBridgeBody] Action... keepWalking
+[26:45.681528] [rosie] Steps so far: 3
+[26:45.681602] [EJasonArch] keepWalking
+[26:48.265751] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[26:48.319738] [PythonBridgeBody] Action... keepWalking
+[26:48.381480] [rosie] Steps so far: 2
+[26:48.381545] [EJasonArch] keepWalking
+[26:51.965882] [PythonBridgeBody] Acted: keepWalkingReply("stuck");legState("stuck");
+[26:52.966102] [PythonBridgeBody] Perceiving...
+[26:53.081517] [EJasonArch] standUp
+[26:54.116831] [PythonBridgeBody] Perceived: legState("ok");
+[26:54.116887] [PythonBridgeBody] Action... standUp
+[26:55.366884] [PythonBridgeBody] Acted: standUpReply("ok");legState("ok");
+[26:56.367135] [PythonBridgeBody] Perceiving...
+[26:56.481532] [rosie] StandUp again
+[26:56.481590] [EJasonArch] keepWalking
+[26:57.516417] [PythonBridgeBody] Perceived: legState("ok");
+[26:57.516476] [PythonBridgeBody] Action... keepWalking
+[27:00.066495] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[27:00.103369] [PythonBridgeBody] Action... keepWalking
+[27:00.181461] [rosie] Steps so far: 1
+[27:00.181611] [EJasonArch] keepWalking
+[27:02.616872] [PythonBridgeBody] Acted: keepWalkingReply("ok");legState("ok");
+[27:02.781558] [rosie] Steps so far: 0
+[27:02.781608] [rosie] I arrived at my destination: elroyBedroom stuck=3 falls=1 avoid=0
+[27:02.781613] [rosie] Started at:11:25:59 Finished at:11:27:2
+[27:02.781616] cartago.CartagoException: User not in workspace.
+[27:02.781624] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[27:02.781629] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[27:02.781632] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[27:02.781635] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[27:02.781638] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[27:02.781655] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[27:02.781671] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[27:02.781687] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[27:02.781704] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[27:02.781835] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[27:02.781856] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[27:02.781861] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[27:02.781866] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[27:02.781870] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[27:02.781874] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[27:02.781878] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[27:02.781882] cartago.ArtifactNotAvailableException
+[27:02.781886] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[27:02.781904] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[27:02.781909] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[27:02.781913] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[27:02.781918] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[27:02.781936] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[27:02.781958] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[27:02.781973] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[27:02.781990] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[27:02.782005] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[27:02.782021] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[27:02.782041] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[27:02.782057] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[27:02.782072] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[27:02.782089] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[27:02.782105] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[27:02.782120] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[27:03.045080] 
+[27:03.045142] BUILD SUCCESSFUL in 1m 4s
+[27:03.045154] 2 actionable tasks: 1 executed, 1 up-to-date
+[27:03.050902] MAS Stopped!
+[27:17.123265] Stopping the Python (PID: 23387)...
+[27:17.123318] Stopping the Simulation (PID: 23364)...

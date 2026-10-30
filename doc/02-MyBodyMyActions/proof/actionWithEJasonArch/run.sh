@@ -143,7 +143,7 @@ for ((i=1; i<=EXECUTIONS; i++)); do
 
     echo "Waiting for Rosie's body..."
 
-    for i in {1..60}
+    for t in {1..60}
     do
         # Body process died
         if ! kill -0 "$BODY_PID" 2>/dev/null
@@ -168,6 +168,8 @@ for ((i=1; i<=EXECUTIONS; i++)); do
     jacamo *.jcm
     echo "MAS Stopped!"
 
+    read
+
 
     echo "Stopping the Python (PID: $BODY_PID)..."
     kill -9 "$BODY_PID" 2>/dev/null
@@ -176,6 +178,3 @@ for ((i=1; i<=EXECUTIONS; i++)); do
     kill -9 "$SIMULATOR_PID" 2>/dev/null
 
 done
-
-
-
