@@ -32,7 +32,7 @@
 
 -!step[error(no_applicable)]<- .wait(1000); !!step.
 -!step[error(wait_timeout)] <- .print("TIMEOUT: keepWalkingReply nao chegou"); .wait(1000); !step.
-+legState("fall")   <- .wait(1000); .print("CAI ACAO ERRADA"); ?fall(Q); -+fall(Q+1).
++legState("fall")   <- .wait(1000); .print("I fell"); ?fall(Q); -+fall(Q+1).
 
 +!step: legState("fall") & needSteps(S) & S > 0 <- !tryStandUp.  
 

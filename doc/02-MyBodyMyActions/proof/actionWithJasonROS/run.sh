@@ -128,6 +128,7 @@ for ((i=1; i<=EXECUTIONS; i++)); do
     echo "Starting the MAS!"
     jacamo *.jcm
     echo "MAS Stopped!"
+    read
 
     echo "Stopping the Simulation (PID: $SIMULATOR_PID)..."
     kill -9 "$SIMULATOR_PID" 2>/dev/null
