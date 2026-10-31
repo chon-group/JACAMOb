@@ -32,10 +32,8 @@
 
 -!step[error(no_applicable)] <- .wait(1000); !!step.
 -!step[error(action_failed), error_msg("unable")] <- .wait(1000); ?stuck(S); -+stuck(S+1); !!tryStandUp.
--!step[error(action_failed), error_msg("fall")] <- .wait(1000); .print("CAI ACAO ERRADA"); ?fall(Q); -+fall(Q+1); !!tryStandUp.
+-!step[error(action_failed), error_msg("fall")] <- .wait(1000); .print("I fell"); ?fall(Q); -+fall(Q+1); !!tryStandUp.
 
 +!tryStandUp <- standUp(Reply); !!tryStandUp(Reply).
 +!tryStandUp(R): R=="ok" <- .wait(1000); .print("StandUp again"); !!step.
 +!tryStandUp(R): R=="stuck" <- .wait(1000); !!tryStandUp.
-
-//+legState("fall") <- .print("CAI ACAO ERRADA"); ?fall(Q); -+fall(Q+1); !tryStandUp.

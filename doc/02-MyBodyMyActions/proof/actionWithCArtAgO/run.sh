@@ -126,9 +126,9 @@ for ((i=1; i<=EXECUTIONS; i++)); do
     echo "Execution $i of $EXECUTIONS"
     
     echo "Starting the MAS!"
-    #java -jar JACAMOb.jar *.jcm
     jacamo *.jcm
     echo "MAS Stopped!"
+    read
 
     echo "Stopping the Simulation (PID: $SIMULATOR_PID)..."
     kill -9 "$SIMULATOR_PID" 2>/dev/null
