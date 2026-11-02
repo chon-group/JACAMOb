@@ -41,11 +41,3 @@ Percept(legs, legState, PROPRIOCEPTION){
   if (isStuck()) return "stuck";
   else return "ok";
 }
-
-
-// Behaving(legs){
-// 	if(millis()-walker.getLastPresence()>1000){
-// 	digitalWrite(13, !digitalRead(13));
-// 	delay(200);
-// 	}
-// }

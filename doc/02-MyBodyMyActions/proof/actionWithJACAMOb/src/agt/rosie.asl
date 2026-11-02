@@ -2,6 +2,14 @@
 { include("$jacamo/templates/common-moise.asl") }
 { include("$moise/asl/org-obedient.asl") }
 
+/*
+!tryActionInContext.
+
++!tryActionInContext <- .wait(5000); !tryUseActionInContext.
++!tryUseActionInContext: myBody::legState(ok) & .myBody.act(keepWalking)  <- .print("Funciona!"); .stopMAS.
++!tryUseActionInContext: myBody::legState(stuck) <- .print("Espera"); .wait(1000); !tryUseActionInContext.
+*/
+
 !cleanElroyBedrooom.
 
 +!cleanElroyBedrooom <- 
@@ -32,10 +40,8 @@
 
 -!step[error(no_applicable)]    <- .wait(1000); !!step.
 -!step[error(myBody_unable)]    <- .wait(1000); ?stuck(S); -+stuck(S+1); !!tryStandUp.
--!step[error(myBody_rejected)]  <- .wait(1000); .print("CAI ACAO ERRADA"); ?fall(Q); -+fall(Q+1); !!tryStandUp.
+-!step[error(myBody_rejected)]  <- .wait(1000); .print("I fell"); ?fall(Q); -+fall(Q+1); !!tryStandUp.
 
 +!tryStandUp <- .myBody.act(standUp,Reply); !!tryStandUp(Reply).
 +!tryStandUp(R): R == already | R == executed <- .wait(1000); .print("StandUp again"); !!step.
 +!tryStandUp(R): R==unable <- .wait(1000); !!tryStandUp.
-
-//+myBody::legState(fall) <- .print("CAI ACAO ERRADA"); ?fall(Q); -+fall(Q+1); !tryStandUp.

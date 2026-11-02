@@ -2,6 +2,15 @@
 { include("$jacamo/templates/common-moise.asl") }
 { include("$moise/asl/org-obedient.asl") }
 
+/*
+!tryActionInContext.
+
++!tryActionInContext <- .wait(10000); !tryUseActionInContext.
++!tryUseActionInContext: legState("ok") & ext::keepWalking  <- .print("Funciona!"); .stopMAS.
++!tryUseActionInContext: legState("stuck") <- .print("Espera"); .wait(1000); !tryUseActionInContext.
+-!tryUseActionInContext[error(E), error_msg(M)] <- .print(E," ",M); .stopMAS.
+*/
+
 !cleanElroyBedrooom.
 
 +!cleanElroyBedrooom <- 

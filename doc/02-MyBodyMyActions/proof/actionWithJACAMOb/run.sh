@@ -82,7 +82,7 @@ then
     
     echo "Install required Arduino libraries"
     arduino-cli lib install "LiquidCrystal" || exit 1
-    arduino-cli lib install "NECK" || exit 1
+    #arduino-cli lib install "NECK" || exit 1
     arduino-cli lib install "Servo" || exit 1
 
     echo "Compiling firmware..."
@@ -150,8 +150,9 @@ for ((i=1; i<=EXECUTIONS; i++)); do
     echo "Execution $i of $EXECUTIONS"
     
     echo "Starting the MAS!"
-    java -jar JACAMOb.jar *.jcm
+     java -jar JACAMOb.jar *.jcm
     echo "MAS Stopped!"
+    read
 
     echo "Stopping the Simulation (PID: $SIMULATOR_PID)..."
     kill -9 "$SIMULATOR_PID" 2>/dev/null

@@ -68,7 +68,7 @@
 
 <item itemtype="Resistor" CircId="Resistor-473" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-496,4" rotation="0" hflip="1" vflip="1" label="Resistor-473" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="470 Ω" />
 
-<item itemtype="TextComponent" CircId="TextComponent-481" mainComp="false" Show_id="false" Show_Val="false" Pos="-1340,280" rotation="0" hflip="1" vflip="1" label="TextComponent-481" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Margin="5 _px" Border="1 _px" Color="#ffffdc" Opacity="1" Font="Helvetica [Cronyx]" Font_Color="#000080" Font_Size="33 _px" Fixed_Width="false" Text=" EJasonArch" />
+<item itemtype="TextComponent" CircId="TextComponent-481" mainComp="false" Show_id="false" Show_Val="false" Pos="-1340,280" rotation="0" hflip="1" vflip="1" label="TextComponent-481" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Margin="5 _px" Border="1 _px" Color="#ffffdc" Opacity="1" Font="Helvetica [Cronyx]" Font_Color="#000080" Font_Size="33 _px" Fixed_Width="false" Text=" JasonROS" />
 
 <item itemtype="Image" CircId="Image-487" mainComp="false" Show_id="false" Show_Val="false" Pos="-44,-56" rotation="0" hflip="1" vflip="1" label="Image-487" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" H_size="3072 _px" V_size="2048 _px" Border="2 _px" Z_Value="-100" Color="#a0a0a4" Opacity="1" Image_File="helpers/imgs/rosie.png" />
 
