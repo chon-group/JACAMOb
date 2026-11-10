@@ -1,0 +1,1381 @@
+[08:48:43.403751] [rosie] Start sense
+[08:48:43.803392] [EMASJasonROS] Perceived: [batteryLevel(4.879)]
+[08:48:43.803528] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:43.803560] [rosie] Added event +batteryLevel(4.879)[device(arduino1),source(percept)], events = [+batteryLevel(4.879)[device(arduino1),source(percept)]]
+[08:48:43.803589] [rosie] Selected event +batteryLevel(4.879)[device(arduino1),source(percept)]
+[08:48:43.803617] [rosie]      | (L < 5) succeeded  -- {L=4.879}
+[08:48:43.803644] [rosie] Selected intention intention 326: 
+[08:48:43.803679]     +batteryLevel(6.847)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=6.847}
+[08:48:43.803708] 
+[08:48:43.803738] [rosie] I'm busy. Battery Level=6.847
+[08:48:43.803767] [rosie] Start sense
+[08:48:43.803800] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:44.003241] [EMASJasonROS] Perceived: [batteryLevel(4.715)]
+[08:48:44.003327] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:44.003345] [rosie] Added event +batteryLevel(4.715)[device(arduino1),source(percept)], events = [+batteryLevel(4.715)[device(arduino1),source(percept)]]
+[08:48:44.003360] [rosie] Selected event +batteryLevel(4.715)[device(arduino1),source(percept)]
+[08:48:44.003375] [rosie]      | (L < 5) succeeded  -- {L=4.715}
+[08:48:44.003390] [rosie] Selected intention intention 316: 
+[08:48:44.003405]     +batteryLevel(8.323)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=8.323}
+[08:48:44.003419] 
+[08:48:44.003433] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:44.003447] [rosie] Start sense
+[08:48:44.103468] [EMASJasonROS] Perceived: [batteryLevel(4.715)]
+[08:48:44.103607] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:44.103639] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:44.103667] [rosie] Selected intention intention 327: 
+[08:48:44.103695]     +batteryLevel(6.683)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=6.683}
+[08:48:44.103722] 
+[08:48:44.103750] [rosie] I'm busy. Battery Level=6.683
+[08:48:44.103778] [rosie] Start sense
+[08:48:45.003343] [rosie] Selected intention intention 317: 
+[08:48:45.003425]     +batteryLevel(8.159)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=8.159}
+[08:48:45.003443] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:45.003459] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:45.003473] 
+[08:48:45.003488] [rosie] Start sense
+[08:48:45.403389] [EMASJasonROS] Perceived: [batteryLevel(4.551)]
+[08:48:45.403499] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:45.403522] [rosie] Added event +batteryLevel(4.551)[device(arduino1),source(percept)], events = [-batteryLevel(4.715)[source(percept)], +batteryLevel(4.551)[device(arduino1),source(percept)]]
+[08:48:45.403541] [rosie] Selected event -batteryLevel(4.715)[source(percept)]
+[08:48:45.403561] [rosie] Selected event +batteryLevel(4.551)[device(arduino1),source(percept)]
+[08:48:45.403579] [rosie]      | (L < 5) succeeded  -- {L=4.551}
+[08:48:45.403597] [rosie] Selected intention intention 308: 
+[08:48:45.403615]     +batteryLevel(9.635)[device(arduino1),source(percept)] <- . / {L=9.635}
+[08:48:45.403633] 
+[08:48:45.403656] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(9.635)[device(arduino1),source(percept)] unif={L=9.635}
+[08:48:45.403676] [rosie] Start sense
+[08:48:45.403699] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:45.703447] [EMASJasonROS] Perceived: [batteryLevel(4.551)]
+[08:48:45.703589] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:45.703621] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:45.703650] [rosie] Selected intention intention 328: 
+[08:48:45.703678]     +batteryLevel(6.519)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=6.519}
+[08:48:45.703706] 
+[08:48:45.703735] [rosie] I'm busy. Battery Level=6.519
+[08:48:45.703763] [rosie] Start sense
+[08:48:46.203422] [EMASJasonROS] Perceived: [batteryLevel(4.387)]
+[08:48:46.203566] [rosie] Added event +batteryLevel(4.387)[device(arduino1),source(percept)], events = [+batteryLevel(4.387)[device(arduino1),source(percept)]]
+[08:48:46.203598] [rosie] Selected event +batteryLevel(4.387)[device(arduino1),source(percept)]
+[08:48:46.203626] [rosie]      | (L < 5) succeeded  -- {L=4.387}
+[08:48:46.203652] [rosie] Selected intention intention 309: 
+[08:48:46.203678]     +batteryLevel(9.471)[device(arduino1),source(percept)] <- . / {L=9.471}
+[08:48:46.203708] 
+[08:48:46.203735] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(9.471)[device(arduino1),source(percept)] unif={L=9.471}
+[08:48:46.203764] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:46.203791] [rosie] Start sense
+[08:48:46.203820] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:47.103399] [EMASJasonROS] Perceived: [batteryLevel(4.387)]
+[08:48:47.103539] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:47.103571] [rosie] Selected intention intention 329: 
+[08:48:47.103599]     +batteryLevel(6.355)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=6.355}
+[08:48:47.103625] 
+[08:48:47.103651] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:47.103683] [rosie] I'm busy. Battery Level=6.355
+[08:48:47.103710] [rosie] Start sense
+[08:48:47.403385] [EMASJasonROS] Perceived: [batteryLevel(4.223)]
+[08:48:47.403531] [rosie] Added event +batteryLevel(4.223)[device(arduino1),source(percept)], events = [+batteryLevel(4.223)[device(arduino1),source(percept)]]
+[08:48:47.403564] [rosie] Selected event +batteryLevel(4.223)[device(arduino1),source(percept)]
+[08:48:47.403592] [rosie]      | (L < 5) succeeded  -- {L=4.223}
+[08:48:47.403619] [rosie] Selected intention intention 318: 
+[08:48:47.403647]     +batteryLevel(7.995)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.995}
+[08:48:47.403676] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:47.403705] 
+[08:48:47.403734] [rosie] Start sense
+[08:48:47.403767] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:48.103432] [EMASJasonROS] Perceived: [batteryLevel(4.223)]
+[08:48:48.103570] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:48.203468] [rosie] Selected intention intention 330: 
+[08:48:48.203613]     +batteryLevel(6.191)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=6.191}
+[08:48:48.203645] 
+[08:48:48.203674] [rosie] I'm busy. Battery Level=6.191
+[08:48:48.203701] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:48.203728] [rosie] Start sense
+[08:48:48.903457] [EMASJasonROS] Perceived: [batteryLevel(4.059)]
+[08:48:48.903587] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:48.903617] [rosie] Added event +batteryLevel(4.059)[device(arduino1),source(percept)], events = [+batteryLevel(4.059)[device(arduino1),source(percept)]]
+[08:48:48.903642] [rosie] Selected event +batteryLevel(4.059)[device(arduino1),source(percept)]
+[08:48:48.903667] [rosie]      | (L < 5) succeeded  -- {L=4.059}
+[08:48:48.903692] [rosie] Selected intention intention 319: 
+[08:48:48.903717] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:48.903742]     +batteryLevel(7.831)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.831}
+[08:48:48.903769] 
+[08:48:48.903797] [rosie] Start sense
+[08:48:49.703436] [EMASJasonROS] Perceived: [batteryLevel(3.895)]
+[08:48:49.703568] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:49.703598] [rosie] Added event +batteryLevel(3.895)[device(arduino1),source(percept)], events = [-batteryLevel(4.059)[source(percept)], +batteryLevel(3.895)[device(arduino1),source(percept)]]
+[08:48:49.703625] [rosie] Selected event -batteryLevel(4.059)[source(percept)]
+[08:48:49.703650] [rosie] Selected event +batteryLevel(3.895)[device(arduino1),source(percept)]
+[08:48:49.703675] [rosie]      | (L < 5) succeeded  -- {L=3.895}
+[08:48:49.703704] [rosie] Selected intention intention 331: 
+[08:48:49.703729]     +batteryLevel(6.027)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=6.027}
+[08:48:49.703756] 
+[08:48:49.703786] [rosie] I'm busy. Battery Level=6.027
+[08:48:49.703812] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:49.703837] [rosie] Start sense
+[08:48:50.403445] [EMASJasonROS] Perceived: [batteryLevel(3.895)]
+[08:48:50.403584] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:50.403613] [rosie] Selected intention intention 310: 
+[08:48:50.403639]     +batteryLevel(9.307)[device(arduino1),source(percept)] <- . / {L=9.307}
+[08:48:50.403664] 
+[08:48:50.403688] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(9.307)[device(arduino1),source(percept)] unif={L=9.307}
+[08:48:50.403712] [rosie] Start sense
+[08:48:50.403736] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:50.903264] [EMASJasonROS] Perceived: [batteryLevel(3.731)]
+[08:48:50.903410] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:50.903448] [rosie] Added event +batteryLevel(3.731)[device(arduino1),source(percept)], events = [+batteryLevel(3.731)[device(arduino1),source(percept)]]
+[08:48:50.903478] [rosie] Selected event +batteryLevel(3.731)[device(arduino1),source(percept)]
+[08:48:50.903507] [rosie]      | (L < 5) succeeded  -- {L=3.731}
+[08:48:50.903534] [rosie] Selected intention intention 332: 
+[08:48:50.903564]     +batteryLevel(5.863)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=5.863}
+[08:48:50.903592] 
+[08:48:50.903621] [rosie] I'm busy. Battery Level=5.863
+[08:48:50.903651] [rosie] Start sense
+[08:48:50.903681] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:51.503419] [EMASJasonROS] Perceived: [batteryLevel(3.567)]
+[08:48:51.503546] [rosie] Added event +batteryLevel(3.567)[device(arduino1),source(percept)], events = [+batteryLevel(3.567)[device(arduino1),source(percept)]]
+[08:48:51.503574] [rosie] Selected event +batteryLevel(3.567)[device(arduino1),source(percept)]
+[08:48:51.503597] [rosie]      | (L < 5) succeeded  -- {L=3.567}
+[08:48:51.503621] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:51.503645] [rosie] Selected intention intention 320: 
+[08:48:51.503669]     +batteryLevel(7.667)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.667}
+[08:48:51.503695] 
+[08:48:51.503722] [rosie] Start sense
+[08:48:51.503756] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:51.703454] [EMASJasonROS] Perceived: [batteryLevel(3.567)]
+[08:48:51.703594] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:51.703623] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:51.703648] [rosie] Selected intention intention 311: 
+[08:48:51.703672]     +batteryLevel(9.143)[device(arduino1),source(percept)] <- . / {L=9.143}
+[08:48:51.703697] 
+[08:48:51.703722] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(9.143)[device(arduino1),source(percept)] unif={L=9.143}
+[08:48:51.703748] [rosie] Start sense
+[08:48:52.203437] [EMASJasonROS] Perceived: [batteryLevel(3.403)]
+[08:48:52.203575] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:52.203605] [rosie] Added event +batteryLevel(3.403)[device(arduino1),source(percept)], events = [-batteryLevel(3.567)[source(percept)], +batteryLevel(3.403)[device(arduino1),source(percept)]]
+[08:48:52.203631] [rosie] Selected event -batteryLevel(3.567)[source(percept)]
+[08:48:52.203656] [rosie] Selected event +batteryLevel(3.403)[device(arduino1),source(percept)]
+[08:48:52.203681] [rosie]      | (L < 5) succeeded  -- {L=3.403}
+[08:48:52.203706] [rosie] Selected intention intention 312: 
+[08:48:52.203731]     +batteryLevel(8.979)[device(arduino1),source(percept)] <- . / {L=8.979}
+[08:48:52.203762] 
+[08:48:52.203793] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(8.979)[device(arduino1),source(percept)] unif={L=8.979}
+[08:48:52.203820] [rosie] Start sense
+[08:48:52.203847] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:53.203413] [EMASJasonROS] Perceived: [batteryLevel(3.403)]
+[08:48:53.203549] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:53.203579] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:53.203604] [rosie] Selected intention intention 333: 
+[08:48:53.203629]     +batteryLevel(5.699)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=5.699}
+[08:48:53.203654] 
+[08:48:53.203682] [rosie] I'm busy. Battery Level=5.699
+[08:48:53.203711] [rosie] Start sense
+[08:48:53.903432] [EMASJasonROS] Perceived: [batteryLevel(3.239)]
+[08:48:53.903569] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:53.903599] [rosie] Added event +batteryLevel(3.239)[device(arduino1),source(percept)], events = [+batteryLevel(3.239)[device(arduino1),source(percept)]]
+[08:48:53.903626] [rosie] Selected event +batteryLevel(3.239)[device(arduino1),source(percept)]
+[08:48:53.903652] [rosie]      | (L < 5) succeeded  -- {L=3.239}
+[08:48:53.903677] [rosie] Selected intention intention 321: 
+[08:48:53.903705]     +batteryLevel(7.503)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.503}
+[08:48:53.903732] 
+[08:48:53.903759] [rosie] Start sense
+[08:48:53.903789] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:54.703450] [EMASJasonROS] Perceived: [batteryLevel(3.075)]
+[08:48:54.703575] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:54.703602] [rosie] Added event +batteryLevel(3.075)[device(arduino1),source(percept)], events = [-batteryLevel(3.239)[source(percept)], +batteryLevel(3.075)[device(arduino1),source(percept)]]
+[08:48:54.703627] [rosie] Selected event -batteryLevel(3.239)[source(percept)]
+[08:48:54.703650] [rosie] Selected event +batteryLevel(3.075)[device(arduino1),source(percept)]
+[08:48:54.703672] [rosie]      | (L < 5) succeeded  -- {L=3.075}
+[08:48:54.703698] [rosie] Selected intention intention 334: 
+[08:48:54.703722]     +batteryLevel(5.535)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=5.535}
+[08:48:54.703747] 
+[08:48:54.703771] [rosie] I'm busy. Battery Level=5.535
+[08:48:54.703795] [rosie] Start sense
+[08:48:54.703818] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:55.603311] [EMASJasonROS] Perceived: [batteryLevel(2.911)]
+[08:48:55.603447] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:55.603476] [rosie] Added event +batteryLevel(2.911)[device(arduino1),source(percept)], events = [+batteryLevel(2.911)[device(arduino1),source(percept)]]
+[08:48:55.603502] [rosie] Selected event +batteryLevel(2.911)[device(arduino1),source(percept)]
+[08:48:55.603526] [rosie]      | (L < 5) succeeded  -- {L=2.911}
+[08:48:55.603550] [rosie] Selected intention intention 322: 
+[08:48:55.603574]     +batteryLevel(7.339)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.339}
+[08:48:55.603602] 
+[08:48:55.603628] [rosie] Start sense
+[08:48:55.603658] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:55.903367] [EMASJasonROS] Perceived: [batteryLevel(2.911)]
+[08:48:55.903471] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:55.903492] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:55.903510] [rosie] Selected intention intention 335: 
+[08:48:55.903528]     +batteryLevel(5.371)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=5.371}
+[08:48:55.903546] 
+[08:48:55.903564] [rosie] I'm busy. Battery Level=5.371
+[08:48:55.903584] [rosie] Start sense
+[08:48:56.103366] [EMASJasonROS] Perceived: [batteryLevel(2.747)]
+[08:48:56.103510] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:56.103545] [rosie] Added event +batteryLevel(2.747)[device(arduino1),source(percept)], events = [-batteryLevel(2.911)[source(percept)], +batteryLevel(2.747)[device(arduino1),source(percept)]]
+[08:48:56.103574] [rosie] Selected event -batteryLevel(2.911)[source(percept)]
+[08:48:56.103602] [rosie] Selected event +batteryLevel(2.747)[device(arduino1),source(percept)]
+[08:48:56.103629] [rosie]      | (L < 5) succeeded  -- {L=2.747}
+[08:48:56.103658] [rosie] Selected intention intention 313: 
+[08:48:56.103691]     +batteryLevel(8.815)[device(arduino1),source(percept)] <- . / {L=8.815}
+[08:48:56.103720] 
+[08:48:56.103756] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(8.815)[device(arduino1),source(percept)] unif={L=8.815}
+[08:48:56.103785] [rosie] Start sense
+[08:48:56.103813] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:56.503301] [EMASJasonROS] Perceived: [batteryLevel(2.747)]
+[08:48:56.503443] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:56.503473] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:56.503499] [rosie] Selected intention intention 323: 
+[08:48:56.503524]     +batteryLevel(7.175)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.175}
+[08:48:56.503549] 
+[08:48:56.503576] [rosie] Start sense
+[08:48:57.403397] [EMASJasonROS] Perceived: [batteryLevel(2.747)]
+[08:48:57.403530] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:57.403559] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:57.403584] [rosie] Selected intention intention 314: 
+[08:48:57.403608]     +batteryLevel(8.651)[device(arduino1),source(percept)] <- . / {L=8.651}
+[08:48:57.403632] 
+[08:48:57.403665] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(8.651)[device(arduino1),source(percept)] unif={L=8.651}
+[08:48:57.403693] [rosie] Start sense
+[08:48:57.603369] [EMASJasonROS] Perceived: [batteryLevel(2.583)]
+[08:48:57.603479] [rosie] Added event +batteryLevel(2.583)[device(arduino1),source(percept)], events = [+batteryLevel(2.583)[device(arduino1),source(percept)]]
+[08:48:57.603502] [rosie] Selected event +batteryLevel(2.583)[device(arduino1),source(percept)]
+[08:48:57.603523] [rosie]      | (L < 5) succeeded  -- {L=2.583}
+[08:48:57.603541] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:57.603559] [rosie] Selected intention intention 336: 
+[08:48:57.603583]     +batteryLevel(5.207)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=5.207}
+[08:48:57.603604] 
+[08:48:57.603625] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:57.603645] [rosie] I'm busy. Battery Level=5.207
+[08:48:57.603669] [rosie] Start sense
+[08:48:58.503388] [EMASJasonROS] Perceived: [batteryLevel(2.583)]
+[08:48:58.503516] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:58.503544] [rosie] Selected intention intention 337: 
+[08:48:58.503567]     +batteryLevel(5.043)[device(arduino1),source(percept)] <- ... .print("I'm busy. Battery Level=",L); .wait(1000) / {L=5.043}
+[08:48:58.503590] 
+[08:48:58.503614] [rosie] I'm busy. Battery Level=5.043
+[08:48:58.503636] [rosie] Start sense
+[08:48:58.503665] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:58.703412] [EMASJasonROS] Perceived: [batteryLevel(2.419)]
+[08:48:58.703536] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:58.703566] [rosie] Added event +batteryLevel(2.419)[device(arduino1),source(percept)], events = [+batteryLevel(2.419)[device(arduino1),source(percept)]]
+[08:48:58.703593] [rosie] Selected event +batteryLevel(2.419)[device(arduino1),source(percept)]
+[08:48:58.703618] [rosie]      | (L < 5) succeeded  -- {L=2.419}
+[08:48:58.703643] [rosie] Selected intention intention 324: 
+[08:48:58.703670]     +!cleanBedroom[source(self)] <- ... !!cleanBedroom / {}
+[08:48:58.703695] 
+[08:48:58.703722] [rosie] Returning from IM p__2[source(self),url("file:src/agt/rosie.asl")], te=+!cleanBedroom[source(self)] unif={}
+[08:48:58.703752] [rosie] Start sense
+[08:48:58.703779] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:59.303429] [EMASJasonROS] Perceived: [batteryLevel(2.255)]
+[08:48:59.303560] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:59.303588] [rosie] Added event +batteryLevel(2.255)[device(arduino1),source(percept)], events = [+!cleanBedroom[source(self)], +batteryLevel(2.255)[device(arduino1),source(percept)]]
+[08:48:59.303612] [rosie] Selected event +!cleanBedroom[source(self)]
+[08:48:59.303634] [rosie] Selected intention intention 315: 
+[08:48:59.303656]     +batteryLevel(8.487)[device(arduino1),source(percept)] <- . / {L=8.487}
+[08:48:59.303678] 
+[08:48:59.303700] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(8.487)[device(arduino1),source(percept)] unif={L=8.487}
+[08:48:59.303723] [EMASJasonROS] BEFORE PERCEIVE 
+[08:48:59.303746] [rosie] Start sense
+[08:48:59.903345] [EMASJasonROS] Perceived: [batteryLevel(2.255)]
+[08:48:59.903479] [EMASJasonROS] AFTER PERCEIVE 
+[08:48:59.903508] [rosie] Selected event +batteryLevel(2.255)[device(arduino1),source(percept)]
+[08:48:59.903533] [rosie]      | (L < 5) succeeded  -- {L=2.255}
+[08:48:59.903557] [rosie] Selected intention intention 325: 
+[08:48:59.903581]     +batteryLevel(7.011)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=7.011}
+[08:48:59.903610] 
+[08:48:59.903638] [rosie] Start sense
+[08:48:59.903666] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:00.403408] [EMASJasonROS] Perceived: [batteryLevel(2.091)]
+[08:49:00.403551] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:00.403584] [rosie] Added event +batteryLevel(2.091)[device(arduino1),source(percept)], events = [-batteryLevel(2.255)[source(percept)], +batteryLevel(2.091)[device(arduino1),source(percept)]]
+[08:49:00.403612] [rosie] Selected event -batteryLevel(2.255)[source(percept)]
+[08:49:00.403639] [rosie] Selected event +batteryLevel(2.091)[device(arduino1),source(percept)]
+[08:49:00.403668] [rosie]      | (L < 5) succeeded  -- {L=2.091}
+[08:49:00.403702] [rosie] Selected intention intention 338: 
+[08:49:00.403731]     +batteryLevel(4.879)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=4.879}
+[08:49:00.403761] 
+[08:49:00.403793] [rosie] Stopping cleaning. Battery Level=4.879
+[08:49:00.403823] [rosie] Start sense
+[08:49:00.403850] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:01.103447] [EMASJasonROS] Perceived: [batteryLevel(2.091)]
+[08:49:01.103581] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:01.103610] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:01.103635] [rosie] Selected intention intention 326: 
+[08:49:01.103659]     +batteryLevel(6.847)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=6.847}
+[08:49:01.103683] 
+[08:49:01.103708] [rosie] Start sense
+[08:49:01.703437] [EMASJasonROS] Perceived: [batteryLevel(1.927)]
+[08:49:01.703568] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:01.703599] [rosie] Added event +batteryLevel(1.927)[device(arduino1),source(percept)], events = [-batteryLevel(2.091)[source(percept)], +batteryLevel(1.927)[device(arduino1),source(percept)]]
+[08:49:01.703625] [rosie] Selected event -batteryLevel(2.091)[source(percept)]
+[08:49:01.703651] [rosie] Selected event +batteryLevel(1.927)[device(arduino1),source(percept)]
+[08:49:01.703676] [rosie]      | (L < 5) succeeded  -- {L=1.927}
+[08:49:01.703703] [rosie] Selected intention intention 339: 
+[08:49:01.703728]     +batteryLevel(4.715)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=4.715}
+[08:49:01.703755] 
+[08:49:01.703784] [rosie] Stopping cleaning. Battery Level=4.715
+[08:49:01.703812] [rosie] Start sense
+[08:49:01.703838] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:02.403361] [EMASJasonROS] Perceived: [batteryLevel(1.763)]
+[08:49:02.403495] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:02.403528] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:02.403557] [rosie] Added event +batteryLevel(1.763)[device(arduino1),source(percept)], events = [+batteryLevel(1.763)[device(arduino1),source(percept)]]
+[08:49:02.403585] [rosie] Selected event +batteryLevel(1.763)[device(arduino1),source(percept)]
+[08:49:02.403612] [rosie]      | (L < 5) succeeded  -- {L=1.763}
+[08:49:02.403642] [rosie] Selected intention intention 327: 
+[08:49:02.403672]     +batteryLevel(6.683)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=6.683}
+[08:49:02.403699] 
+[08:49:02.403730] [rosie] Start sense
+[08:49:03.403399] [EMASJasonROS] Perceived: [batteryLevel(1.763)]
+[08:49:03.403533] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:03.403563] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:03.403589] [rosie] Selected intention intention 316: 
+[08:49:03.403615]     +batteryLevel(8.323)[device(arduino1),source(percept)] <- . / {L=8.323}
+[08:49:03.403639] 
+[08:49:03.403666] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(8.323)[device(arduino1),source(percept)] unif={L=8.323}
+[08:49:03.403693] [rosie] Start sense
+[08:49:04.403430] [EMASJasonROS] Perceived: [batteryLevel(1.599)]
+[08:49:04.403570] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:04.403603] [rosie] Added event +batteryLevel(1.599)[device(arduino1),source(percept)], events = [+batteryLevel(1.599)[device(arduino1),source(percept)]]
+[08:49:04.403632] [rosie] Selected event +batteryLevel(1.599)[device(arduino1),source(percept)]
+[08:49:04.403660] [rosie]      | (L < 5) succeeded  -- {L=1.599}
+[08:49:04.403687] [rosie] Selected intention intention 340: 
+[08:49:04.403717]     +batteryLevel(4.551)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=4.551}
+[08:49:04.403745] 
+[08:49:04.403775] [rosie] Stopping cleaning. Battery Level=4.551
+[08:49:04.403805] [rosie] Start sense
+[08:49:04.403837] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:05.203331] [EMASJasonROS] Perceived: [batteryLevel(1.435)]
+[08:49:05.203469] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:05.203499] [rosie] Added event +batteryLevel(1.435)[device(arduino1),source(percept)], events = [+batteryLevel(1.435)[device(arduino1),source(percept)]]
+[08:49:05.203526] [rosie] Selected event +batteryLevel(1.435)[device(arduino1),source(percept)]
+[08:49:05.203550] [rosie]      | (L < 5) succeeded  -- {L=1.435}
+[08:49:05.203574] [rosie] Selected intention intention 328: 
+[08:49:05.203599]     +batteryLevel(6.519)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=6.519}
+[08:49:05.203625] 
+[08:49:05.203653] [rosie] Start sense
+[08:49:05.203680] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:05.303454] [EMASJasonROS] Perceived: [batteryLevel(1.271)]
+[08:49:05.303594] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:05.303625] [rosie] Added event +batteryLevel(1.271)[device(arduino1),source(percept)], events = [-batteryLevel(1.435)[source(percept)], +batteryLevel(1.271)[device(arduino1),source(percept)]]
+[08:49:05.303651] [rosie] Selected event -batteryLevel(1.435)[source(percept)]
+[08:49:05.303676] [rosie] Selected event +batteryLevel(1.271)[device(arduino1),source(percept)]
+[08:49:05.303702] [rosie]      | (L < 5) succeeded  -- {L=1.271}
+[08:49:05.303727] [rosie] Selected intention intention 317: 
+[08:49:05.303754]     +batteryLevel(8.159)[device(arduino1),source(percept)] <- . / {L=8.159}
+[08:49:05.303781] 
+[08:49:05.303811] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(8.159)[device(arduino1),source(percept)] unif={L=8.159}
+[08:49:05.303839] [rosie] Start sense
+[08:49:05.303866] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:06.003358] [EMASJasonROS] Perceived: [batteryLevel(1.271)]
+[08:49:06.003447] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:06.003464] [rosie] Selected intention intention 341: 
+[08:49:06.003478]     +batteryLevel(4.387)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=4.387}
+[08:49:06.003492] 
+[08:49:06.003507] [rosie] Stopping cleaning. Battery Level=4.387
+[08:49:06.003521] [rosie] Start sense
+[08:49:06.003535] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:06.303418] [EMASJasonROS] Perceived: [batteryLevel(1.107)]
+[08:49:06.303559] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:06.303589] [rosie] Added event +batteryLevel(1.107)[device(arduino1),source(percept)], events = [+batteryLevel(1.107)[device(arduino1),source(percept)]]
+[08:49:06.303615] [rosie] Selected event +batteryLevel(1.107)[device(arduino1),source(percept)]
+[08:49:06.303639] [rosie]      | (L < 5) succeeded  -- {L=1.107}
+[08:49:06.303664] [rosie] Selected intention intention 329: 
+[08:49:06.303688]     +batteryLevel(6.355)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=6.355}
+[08:49:06.303712] 
+[08:49:06.303747] [rosie] Start sense
+[08:49:06.303775] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:07.003349] [EMASJasonROS] Perceived: [batteryLevel(1.107)]
+[08:49:07.003424] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:07.003444] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:07.003457] [rosie] Selected intention intention 342: 
+[08:49:07.003469]     +batteryLevel(4.223)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=4.223}
+[08:49:07.003483] 
+[08:49:07.003496] [rosie] Stopping cleaning. Battery Level=4.223
+[08:49:07.003509] [rosie] Start sense
+[08:49:07.303449] [EMASJasonROS] Perceived: [batteryLevel(0.943)]
+[08:49:07.303581] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:07.303611] [rosie] Added event +batteryLevel(0.943)[device(arduino1),source(percept)], events = [+batteryLevel(0.943)[device(arduino1),source(percept)]]
+[08:49:07.303637] [rosie] Selected event +batteryLevel(0.943)[device(arduino1),source(percept)]
+[08:49:07.303661] [rosie]      | (L < 5) succeeded  -- {L=0.943}
+[08:49:07.303685] [rosie] Selected intention intention 330: 
+[08:49:07.303714]     +batteryLevel(6.191)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=6.191}
+[08:49:07.303741] 
+[08:49:07.303770] [rosie] Start sense
+[08:49:07.303799] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:07.603430] [EMASJasonROS] Perceived: [batteryLevel(0.943)]
+[08:49:07.603567] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:07.603596] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:07.603622] [rosie] Selected intention intention 318: 
+[08:49:07.603647]     +batteryLevel(7.995)[device(arduino1),source(percept)] <- . / {L=7.995}
+[08:49:07.603672] 
+[08:49:07.603700] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.995)[device(arduino1),source(percept)] unif={L=7.995}
+[08:49:07.603727] [rosie] Start sense
+[08:49:08.003332] [EMASJasonROS] Perceived: [batteryLevel(0.943)]
+[08:49:08.003423] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:08.003440] [rosie] Selected intention intention 343: 
+[08:49:08.003456]     +batteryLevel(4.059)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=4.059}
+[08:49:08.003469] 
+[08:49:08.003483] [rosie] Stopping cleaning. Battery Level=4.059
+[08:49:08.003497] [rosie] Start sense
+[08:49:08.003512] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:08.803383] [EMASJasonROS] Perceived: [batteryLevel(0.779)]
+[08:49:08.803524] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:08.803559] [rosie] Added event +batteryLevel(0.779)[device(arduino1),source(percept)], events = [+batteryLevel(0.779)[device(arduino1),source(percept)]]
+[08:49:08.803588] [rosie] Selected event +batteryLevel(0.779)[device(arduino1),source(percept)]
+[08:49:08.803616] [rosie]      | (L < 5) succeeded  -- {L=0.779}
+[08:49:08.803643] [rosie] Selected intention intention 344: 
+[08:49:08.803673]     +batteryLevel(3.895)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=3.895}
+[08:49:08.803701] 
+[08:49:08.803733] [rosie] Stopping cleaning. Battery Level=3.895
+[08:49:08.803763] [rosie] Start sense
+[08:49:08.803792] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:09.503304] [EMASJasonROS] Perceived: [batteryLevel(0.615)]
+[08:49:09.503436] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:09.503468] [rosie] Added event +batteryLevel(0.615)[device(arduino1),source(percept)], events = [+batteryLevel(0.615)[device(arduino1),source(percept)]]
+[08:49:09.503496] [rosie] Selected event +batteryLevel(0.615)[device(arduino1),source(percept)]
+[08:49:09.503523] [rosie]      | (L < 5) succeeded  -- {L=0.615}
+[08:49:09.503550] [rosie] Selected intention intention 331: 
+[08:49:09.503580]     +batteryLevel(6.027)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=6.027}
+[08:49:09.503609] 
+[08:49:09.503639] [rosie] Start sense
+[08:49:09.503672] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:09.903351] [EMASJasonROS] Perceived: [batteryLevel(0.615)]
+[08:49:09.903478] [rosie] Selected intention intention 319: 
+[08:49:09.903507]     +batteryLevel(7.831)[device(arduino1),source(percept)] <- . / {L=7.831}
+[08:49:09.903533] 
+[08:49:09.903557] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.831)[device(arduino1),source(percept)] unif={L=7.831}
+[08:49:09.903581] [rosie] Start sense
+[08:49:09.903608] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:09.903636] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:10.303433] [EMASJasonROS] Perceived: [batteryLevel(0.451)]
+[08:49:10.303568] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:10.303600] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:10.303630] [rosie] Added event +batteryLevel(0.451)[device(arduino1),source(percept)], events = [-batteryLevel(0.615)[source(percept)], +batteryLevel(0.451)[device(arduino1),source(percept)]]
+[08:49:10.303658] [rosie] Selected event -batteryLevel(0.615)[source(percept)]
+[08:49:10.303686] [rosie] Selected event +batteryLevel(0.451)[device(arduino1),source(percept)]
+[08:49:10.303715] [rosie]      | (L < 5) succeeded  -- {L=0.451}
+[08:49:10.303743] [rosie] Selected intention intention 345: 
+[08:49:10.303773]     +batteryLevel(3.731)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=3.731}
+[08:49:10.303804] 
+[08:49:10.303838] [rosie] Stopping cleaning. Battery Level=3.731
+[08:49:10.303867] [rosie] Start sense
+[08:49:10.503283] [EMASJasonROS] Perceived: [batteryLevel(0.451)]
+[08:49:10.503416] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:10.503449] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:10.503478] [rosie] Selected intention intention 332: 
+[08:49:10.503505]     +batteryLevel(5.863)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=5.863}
+[08:49:10.503534] 
+[08:49:10.503563] [rosie] Start sense
+[08:49:11.103472] [EMASJasonROS] Perceived: [batteryLevel(0.451)]
+[08:49:11.103628] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:11.103665] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:11.103694] [rosie] Selected intention intention 346: 
+[08:49:11.103721]     +batteryLevel(3.567)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=3.567}
+[08:49:11.103749] 
+[08:49:11.103780] [rosie] Stopping cleaning. Battery Level=3.567
+[08:49:11.103808] [rosie] Start sense
+[08:49:11.103836] [EMASJasonROS] Perceived: [batteryLevel(0.287)]
+[08:49:11.103863] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:11.103894] [rosie] Added event +batteryLevel(0.287)[device(arduino1),source(percept)], events = [-batteryLevel(0.451)[source(percept)], +batteryLevel(0.287)[device(arduino1),source(percept)]]
+[08:49:11.103923] [rosie] Selected event -batteryLevel(0.451)[source(percept)]
+[08:49:11.103949] [rosie] Selected event +batteryLevel(0.287)[device(arduino1),source(percept)]
+[08:49:11.103976] [rosie]      | (L < 5) succeeded  -- {L=0.287}
+[08:49:11.104004] [rosie] Selected intention intention 347: 
+[08:49:11.104031]     +batteryLevel(3.403)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=3.403}
+[08:49:11.104057] 
+[08:49:11.104082] [rosie] Stopping cleaning. Battery Level=3.403
+[08:49:11.104107] [rosie] Start sense
+[08:49:11.104132] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:11.703392] [EMASJasonROS] Perceived: [batteryLevel(0.287)]
+[08:49:11.703525] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:11.703554] [rosie] Selected intention intention 320: 
+[08:49:11.703580]     +batteryLevel(7.667)[device(arduino1),source(percept)] <- . / {L=7.667}
+[08:49:11.703604] 
+[08:49:11.703628] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:11.703651] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.667)[device(arduino1),source(percept)] unif={L=7.667}
+[08:49:11.703678] [rosie] Start sense
+[08:49:11.903401] [EMASJasonROS] Perceived: [batteryLevel(0.123)]
+[08:49:11.903532] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:11.903560] [rosie] Added event +batteryLevel(0.123)[device(arduino1),source(percept)], events = [+batteryLevel(0.123)[device(arduino1),source(percept)]]
+[08:49:11.903583] [rosie] Selected event +batteryLevel(0.123)[device(arduino1),source(percept)]
+[08:49:11.903606] [rosie]      | (L < 5) succeeded  -- {L=0.123}
+[08:49:11.903629] [rosie] Selected intention intention 333: 
+[08:49:11.903651]     +batteryLevel(5.699)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=5.699}
+[08:49:11.903674] 
+[08:49:11.903697] [rosie] Start sense
+[08:49:11.903721] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:12.003444] [EMASJasonROS] Perceived: [batteryLevel(0.123)]
+[08:49:12.003589] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:12.003621] [rosie] Selected intention intention 348: 
+[08:49:12.003648]     +batteryLevel(3.239)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=3.239}
+[08:49:12.003674] 
+[08:49:12.003699] [rosie] Stopping cleaning. Battery Level=3.239
+[08:49:12.003727] [rosie] Start sense
+[08:49:12.003753] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:12.503395] [EMASJasonROS] Perceived: [batteryLevel(0.123)]
+[08:49:12.503529] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:12.503556] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:12.503580] [rosie] Selected intention intention 349: 
+[08:49:12.503603]     +batteryLevel(3.075)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=3.075}
+[08:49:12.503626] 
+[08:49:12.503651] [rosie] Stopping cleaning. Battery Level=3.075
+[08:49:12.503675] [rosie] Start sense
+[08:49:12.903390] [EMASJasonROS] Perceived: [batteryLevel(0.123)]
+[08:49:12.903536] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:12.903569] [rosie] Selected intention intention 334: 
+[08:49:12.903598]     +batteryLevel(5.535)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=5.535}
+[08:49:12.903626] 
+[08:49:12.903653] [rosie] Start sense
+[08:49:12.903682] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:13.503349] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:13.503484] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:13.503516] [rosie] Added event +batteryLevel(0)[device(arduino1),source(percept)], events = [-batteryLevel(0.123)[source(percept)], +batteryLevel(0)[device(arduino1),source(percept)]]
+[08:49:13.503542] [rosie] Selected event -batteryLevel(0.123)[source(percept)]
+[08:49:13.503568] [rosie] Selected event +batteryLevel(0)[device(arduino1),source(percept)]
+[08:49:13.503594] [rosie]      | (L < 5) succeeded  -- {L=0}
+[08:49:13.503620] [rosie] Selected intention intention 321: 
+[08:49:13.503647]     +batteryLevel(7.503)[device(arduino1),source(percept)] <- . / {L=7.503}
+[08:49:13.503674] 
+[08:49:13.503703] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.503)[device(arduino1),source(percept)] unif={L=7.503}
+[08:49:13.503730] [rosie] Start sense
+[08:49:13.503755] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:13.503779] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:13.503805] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:13.503830] [rosie] Selected intention intention 350: 
+[08:49:13.503856] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:13.503883]     +batteryLevel(2.911)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=2.911}
+[08:49:13.503910] 
+[08:49:13.503936] [rosie] Stopping cleaning. Battery Level=2.911
+[08:49:13.503963] [rosie] Start sense
+[08:49:14.203415] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:14.203556] [rosie] Selected intention intention 335: 
+[08:49:14.203589]     +batteryLevel(5.371)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=5.371}
+[08:49:14.203616] 
+[08:49:14.203644] [rosie] Start sense
+[08:49:14.203672] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:14.503287] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:14.503418] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:14.503443] [rosie] Selected intention intention 351: 
+[08:49:14.503466]     +batteryLevel(2.747)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=2.747}
+[08:49:14.503487] 
+[08:49:14.503509] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:14.503533] [rosie] Stopping cleaning. Battery Level=2.747
+[08:49:14.503555] [rosie] Start sense
+[08:49:14.703459] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:14.703602] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:14.703634] [rosie] Selected intention intention 322: 
+[08:49:14.703663]     +batteryLevel(7.339)[device(arduino1),source(percept)] <- . / {L=7.339}
+[08:49:14.703691] 
+[08:49:14.703719] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:14.703749] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.339)[device(arduino1),source(percept)] unif={L=7.339}
+[08:49:14.703778] [rosie] Start sense
+[08:49:15.103426] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:15.103564] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:15.103596] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:15.103622] [rosie] Selected intention intention 323: 
+[08:49:15.103648]     +batteryLevel(7.175)[device(arduino1),source(percept)] <- . / {L=7.175}
+[08:49:15.103674] 
+[08:49:15.103702] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.175)[device(arduino1),source(percept)] unif={L=7.175}
+[08:49:15.103728] [rosie] Start sense
+[08:49:15.303448] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:15.303593] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:15.303626] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:15.303655] [rosie] Selected intention intention 352: 
+[08:49:15.303683]     +batteryLevel(2.583)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=2.583}
+[08:49:15.303711] 
+[08:49:15.303741] [rosie] Stopping cleaning. Battery Level=2.583
+[08:49:15.303772] [rosie] Start sense
+[08:49:15.903394] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:15.903524] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:15.903553] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:15.903579] [rosie] Selected intention intention 336: 
+[08:49:15.903604]     +batteryLevel(5.207)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=5.207}
+[08:49:15.903629] 
+[08:49:15.903654] [rosie] Start sense
+[08:49:16.203324] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:16.203466] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:16.203498] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:16.203526] [rosie] Selected intention intention 337: 
+[08:49:16.203554]     +batteryLevel(5.043)[device(arduino1),source(percept)] <- ... .wait(1000) / {L=5.043}
+[08:49:16.203581] 
+[08:49:16.203610] [rosie] Start sense
+[08:49:16.403306] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:16.403449] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:16.403481] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:16.403509] [rosie] Selected intention intention 353: 
+[08:49:16.403537]     +batteryLevel(2.419)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=2.419}
+[08:49:16.403565] 
+[08:49:16.403595] [rosie] Stopping cleaning. Battery Level=2.419
+[08:49:16.403624] [rosie] Start sense
+[08:49:16.503301] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:16.503441] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:16.503473] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:16.503501] [rosie] Selected intention intention 354: 
+[08:49:16.503529]     +!cleanBedroom[source(self)] <- ... .wait(1000); !!cleanBedroom / {}
+[08:49:16.503557] 
+[08:49:16.503588] [rosie] Start sense
+[08:49:17.203435] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:17.203580] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:17.203612] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:17.203639] [rosie] Selected intention intention 355: 
+[08:49:17.203665]     +batteryLevel(2.255)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=2.255}
+[08:49:17.203691] 
+[08:49:17.203716] [rosie] Stopping cleaning. Battery Level=2.255
+[08:49:17.203746] [rosie] Start sense
+[08:49:17.803415] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:17.803537] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:17.803563] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:17.803584] [rosie] Selected intention intention 356: 
+[08:49:17.803606]     +batteryLevel(2.091)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=2.091}
+[08:49:17.803627] 
+[08:49:17.803649] [rosie] Stopping cleaning. Battery Level=2.091
+[08:49:17.803670] [rosie] Start sense
+[08:49:17.903306] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:17.903442] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:17.903474] [rosie] Selected intention intention 338: 
+[08:49:17.903503]     +batteryLevel(4.879)[device(arduino1),source(percept)] <- ... !recharge / {L=4.879}
+[08:49:17.903531] 
+[08:49:17.903565] [rosie] Start sense
+[08:49:17.903594] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:18.703301] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:18.703436] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:18.703469] [rosie] Selected event +!recharge[source(self)]
+[08:49:18.703497] intention 338: 
+[08:49:18.703524] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:18.703552]     +batteryLevel(4.879)[device(arduino1),source(percept)] <- ... !recharge / {L=4.879}
+[08:49:18.703585] 
+[08:49:18.703612] [rosie] Selected intention intention 325: 
+[08:49:18.703639]     +batteryLevel(7.011)[device(arduino1),source(percept)] <- . / {L=7.011}
+[08:49:18.703667] 
+[08:49:18.703698] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(7.011)[device(arduino1),source(percept)] unif={L=7.011}
+[08:49:18.703727] [rosie] Start sense
+[08:49:19.103435] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:19.103576] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:19.103607] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:19.103635] [rosie] Selected intention intention 357: 
+[08:49:19.103661]     +batteryLevel(1.927)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=1.927}
+[08:49:19.103688] 
+[08:49:19.103716] [rosie] Stopping cleaning. Battery Level=1.927
+[08:49:19.103743] [rosie] Start sense
+[08:49:19.803441] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:19.803572] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:19.803602] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:19.803628] [rosie] Selected intention intention 339: 
+[08:49:19.803653]     +batteryLevel(4.715)[device(arduino1),source(percept)] <- ... !recharge / {L=4.715}
+[08:49:19.803678] 
+[08:49:19.803706] [rosie] Start sense
+[08:49:20.203385] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:20.203527] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:20.203563] [rosie] Selected event +!recharge[source(self)]
+[08:49:20.203593] intention 339: 
+[08:49:20.203622]     +batteryLevel(4.715)[device(arduino1),source(percept)] <- ... !recharge / {L=4.715}
+[08:49:20.203650] 
+[08:49:20.203680] [rosie] Selected intention intention 326: 
+[08:49:20.203708]     +batteryLevel(6.847)[device(arduino1),source(percept)] <- . / {L=6.847}
+[08:49:20.203737] 
+[08:49:20.203767] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(6.847)[device(arduino1),source(percept)] unif={L=6.847}
+[08:49:20.203796] [rosie] Start sense
+[08:49:20.203823] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:20.403452] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:20.403593] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:20.403624] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:20.403652] [rosie] Selected intention intention 358: 
+[08:49:20.403678]     +batteryLevel(1.763)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=1.763}
+[08:49:20.403705] 
+[08:49:20.403732] [rosie] Stopping cleaning. Battery Level=1.763
+[08:49:20.403760] [rosie] Start sense
+[08:49:21.103363] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:21.103504] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:21.103540] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:21.103568] [rosie] Selected intention intention 327: 
+[08:49:21.103595]     +batteryLevel(6.683)[device(arduino1),source(percept)] <- . / {L=6.683}
+[08:49:21.103629] 
+[08:49:21.103660] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(6.683)[device(arduino1),source(percept)] unif={L=6.683}
+[08:49:21.103689] [rosie] Start sense
+[08:49:21.103718] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:21.103751] [rosie] Selected intention intention 359: 
+[08:49:21.103780]     +batteryLevel(1.599)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=1.599}
+[08:49:21.103808] 
+[08:49:21.103837] [rosie] Stopping cleaning. Battery Level=1.599
+[08:49:21.103864] [rosie] Start sense
+[08:49:21.103892] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:21.103919] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:22.103303] [rosie] Selected intention intention 340: 
+[08:49:22.103442]     +batteryLevel(4.551)[device(arduino1),source(percept)] <- ... !recharge / {L=4.551}
+[08:49:22.103475] 
+[08:49:22.103504] [rosie] Start sense
+[08:49:22.103532] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:22.103558] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:22.403350] [rosie] Selected event +!recharge[source(self)]
+[08:49:22.403482] intention 340: 
+[08:49:22.403513]     +batteryLevel(4.551)[device(arduino1),source(percept)] <- ... !recharge / {L=4.551}
+[08:49:22.403540] 
+[08:49:22.403565] [rosie] Selected intention intention 360: 
+[08:49:22.403591]     +batteryLevel(1.435)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=1.435}
+[08:49:22.403618] 
+[08:49:22.403648] [rosie] Stopping cleaning. Battery Level=1.435
+[08:49:22.403675] [rosie] Start sense
+[08:49:22.403705] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:22.403732] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:22.403757] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:22.703368] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:22.703502] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:22.703533] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:22.703558] [rosie] Selected intention intention 361: 
+[08:49:22.703584]     +batteryLevel(1.271)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=1.271}
+[08:49:22.703609] 
+[08:49:22.703635] [rosie] Stopping cleaning. Battery Level=1.271
+[08:49:22.703662] [rosie] Start sense
+[08:49:23.303270] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:23.303362] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:23.303380] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:23.303395] [rosie] Selected intention intention 341: 
+[08:49:23.303410]     +batteryLevel(4.387)[device(arduino1),source(percept)] <- ... !recharge / {L=4.387}
+[08:49:23.303425] 
+[08:49:23.303440] [rosie] Start sense
+[08:49:24.103455] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:24.103585] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:24.103615] [rosie] Selected event +!recharge[source(self)]
+[08:49:24.103640] intention 341: 
+[08:49:24.103664]     +batteryLevel(4.387)[device(arduino1),source(percept)] <- ... !recharge / {L=4.387}
+[08:49:24.103688] 
+[08:49:24.103713] [rosie] Selected intention intention 328: 
+[08:49:24.103744]     +batteryLevel(6.519)[device(arduino1),source(percept)] <- . / {L=6.519}
+[08:49:24.103770] 
+[08:49:24.103796] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(6.519)[device(arduino1),source(percept)] unif={L=6.519}
+[08:49:24.103821] [rosie] Start sense
+[08:49:24.103846] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:24.903439] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:24.903574] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:24.903603] [rosie] Selected intention intention 362: 
+[08:49:24.903629]     +batteryLevel(1.107)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=1.107}
+[08:49:24.903655] 
+[08:49:24.903680] [rosie] Stopping cleaning. Battery Level=1.107
+[08:49:24.903707] [rosie] Start sense
+[08:49:24.903734] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:25.903386] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:25.903509] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:25.903534] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:25.903556] [rosie] Selected intention intention 342: 
+[08:49:25.903578]     +batteryLevel(4.223)[device(arduino1),source(percept)] <- ... !recharge / {L=4.223}
+[08:49:25.903599] 
+[08:49:25.903621] [rosie] Start sense
+[08:49:26.203437] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:26.203563] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:26.203589] [rosie] Selected event +!recharge[source(self)]
+[08:49:26.203612] intention 342: 
+[08:49:26.203633]     +batteryLevel(4.223)[device(arduino1),source(percept)] <- ... !recharge / {L=4.223}
+[08:49:26.203654] 
+[08:49:26.203674] [rosie] Selected intention intention 329: 
+[08:49:26.203694]     +batteryLevel(6.355)[device(arduino1),source(percept)] <- . / {L=6.355}
+[08:49:26.203718] 
+[08:49:26.203742] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:26.203766] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(6.355)[device(arduino1),source(percept)] unif={L=6.355}
+[08:49:26.203789] [rosie] Start sense
+[08:49:26.803441] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:26.803588] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:26.803617] [rosie] Selected intention intention 363: 
+[08:49:26.803641]     +batteryLevel(0.943)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0.943}
+[08:49:26.803663] 
+[08:49:26.803687] [rosie] Stopping cleaning. Battery Level=0.943
+[08:49:26.803710] [rosie] Start sense
+[08:49:26.803735] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:27.003437] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:27.003524] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:27.003541] [rosie] Selected intention intention 343: 
+[08:49:27.003556]     +batteryLevel(4.059)[device(arduino1),source(percept)] <- ... !recharge / {L=4.059}
+[08:49:27.003570] 
+[08:49:27.003584] [rosie] Start sense
+[08:49:27.003597] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:27.603294] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:27.603432] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:27.603463] [rosie] Selected event +!recharge[source(self)]
+[08:49:27.603489] intention 343: 
+[08:49:27.603514]     +batteryLevel(4.059)[device(arduino1),source(percept)] <- ... !recharge / {L=4.059}
+[08:49:27.603540] 
+[08:49:27.603572] [rosie] Selected intention intention 330: 
+[08:49:27.603599]     +batteryLevel(6.191)[device(arduino1),source(percept)] <- . / {L=6.191}
+[08:49:27.603626] 
+[08:49:27.603656] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(6.191)[device(arduino1),source(percept)] unif={L=6.191}
+[08:49:27.603683] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:27.603710] [rosie] Start sense
+[08:49:27.803444] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:27.803587] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:27.803621] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:27.803651] [rosie] Selected intention intention 364: 
+[08:49:27.803678]     +batteryLevel(0.779)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0.779}
+[08:49:27.803706] 
+[08:49:27.803735] [rosie] Stopping cleaning. Battery Level=0.779
+[08:49:27.803765] [rosie] Start sense
+[08:49:28.403338] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:28.403443] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:28.403464] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:28.403481] [rosie] Selected intention intention 344: 
+[08:49:28.403499]     +batteryLevel(3.895)[device(arduino1),source(percept)] <- ... !recharge / {L=3.895}
+[08:49:28.403517] 
+[08:49:28.403534] [rosie] Start sense
+[08:49:29.003346] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:29.003457] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:29.003484] [rosie] Selected event +!recharge[source(self)]
+[08:49:29.003507] intention 344: 
+[08:49:29.003528] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:29.003549]     +batteryLevel(3.895)[device(arduino1),source(percept)] <- ... !recharge / {L=3.895}
+[08:49:29.003571] 
+[08:49:29.003594] [rosie] Selected intention intention 365: 
+[08:49:29.003617]     +batteryLevel(0.615)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0.615}
+[08:49:29.003639] 
+[08:49:29.003668] [rosie] Stopping cleaning. Battery Level=0.615
+[08:49:29.003692] [rosie] Start sense
+[08:49:29.503287] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:29.503417] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:29.503441] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:29.503461] [rosie] Selected intention intention 366: 
+[08:49:29.503480]     +batteryLevel(0.451)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0.451}
+[08:49:29.503500] 
+[08:49:29.503519] [rosie] Stopping cleaning. Battery Level=0.451
+[08:49:29.503538] [rosie] Start sense
+[08:49:29.903462] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:29.903641] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:29.903674] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:29.903701] [rosie] Selected intention intention 345: 
+[08:49:29.903729]     +batteryLevel(3.731)[device(arduino1),source(percept)] <- ... !recharge / {L=3.731}
+[08:49:29.903756] 
+[08:49:29.903785] [rosie] Start sense
+[08:49:30.303367] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:30.303514] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:30.303549] [rosie] Selected event +!recharge[source(self)]
+[08:49:30.303578] intention 345: 
+[08:49:30.303606]     +batteryLevel(3.731)[device(arduino1),source(percept)] <- ... !recharge / {L=3.731}
+[08:49:30.303633] 
+[08:49:30.303663] [rosie] Selected intention intention 331: 
+[08:49:30.303691]     +batteryLevel(6.027)[device(arduino1),source(percept)] <- . / {L=6.027}
+[08:49:30.303720] 
+[08:49:30.303753] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(6.027)[device(arduino1),source(percept)] unif={L=6.027}
+[08:49:30.303782] [rosie] Start sense
+[08:49:30.303811] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:30.503462] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:30.503610] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:30.503645] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:30.503673] [rosie] Selected intention intention 346: 
+[08:49:30.503701]     +batteryLevel(3.567)[device(arduino1),source(percept)] <- ... !recharge / {L=3.567}
+[08:49:30.503728] 
+[08:49:30.503758] [rosie] Start sense
+[08:49:31.203313] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:31.203458] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:31.203491] [rosie] Selected event +!recharge[source(self)]
+[08:49:31.203521] intention 346: 
+[08:49:31.203548]     +batteryLevel(3.567)[device(arduino1),source(percept)] <- ... !recharge / {L=3.567}
+[08:49:31.203576] 
+[08:49:31.203606] [rosie] Selected intention intention 367: 
+[08:49:31.203636]     +batteryLevel(0.287)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0.287}
+[08:49:31.203665] 
+[08:49:31.203694] [rosie] Stopping cleaning. Battery Level=0.287
+[08:49:31.203726] [rosie] Start sense
+[08:49:31.203756] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:31.403469] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:31.403619] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:31.403656] [rosie] Selected intention intention 347: 
+[08:49:31.403685] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:31.403713]     +batteryLevel(3.403)[device(arduino1),source(percept)] <- ... !recharge / {L=3.403}
+[08:49:31.403741] 
+[08:49:31.403771] [rosie] Start sense
+[08:49:31.703352] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:31.703512] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:31.703546] [rosie] Selected event +!recharge[source(self)]
+[08:49:31.703575] intention 347: 
+[08:49:31.703603]     +batteryLevel(3.403)[device(arduino1),source(percept)] <- ... !recharge / {L=3.403}
+[08:49:31.703635] 
+[08:49:31.703673] [rosie] Selected intention intention 332: 
+[08:49:31.703702]     +batteryLevel(5.863)[device(arduino1),source(percept)] <- . / {L=5.863}
+[08:49:31.703733] 
+[08:49:31.703761] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(5.863)[device(arduino1),source(percept)] unif={L=5.863}
+[08:49:31.703789] [rosie] Start sense
+[08:49:31.703816] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:32.603415] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:32.603520] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:32.603542] [rosie] Selected intention intention 368: 
+[08:49:32.603559]     +batteryLevel(0.123)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0.123}
+[08:49:32.603576] 
+[08:49:32.603593] [rosie] Stopping cleaning. Battery Level=0.123
+[08:49:32.603610] [rosie] Start sense
+[08:49:32.603628] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:32.703431] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:32.703576] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:32.703608] [rosie] Selected intention intention 348: 
+[08:49:32.703637] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:32.703664]     +batteryLevel(3.239)[device(arduino1),source(percept)] <- ... !recharge / {L=3.239}
+[08:49:32.703692] 
+[08:49:32.703722] [rosie] Start sense
+[08:49:32.803453] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:32.803593] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:32.803626] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:32.803654] [rosie] Selected event +!recharge[source(self)]
+[08:49:32.803682] intention 348: 
+[08:49:32.803710]     +batteryLevel(3.239)[device(arduino1),source(percept)] <- ... !recharge / {L=3.239}
+[08:49:32.803739] 
+[08:49:32.803772] [rosie] Selected intention intention 349: 
+[08:49:32.803801]     +batteryLevel(3.075)[device(arduino1),source(percept)] <- ... !recharge / {L=3.075}
+[08:49:32.803829] 
+[08:49:32.803857] [rosie] Start sense
+[08:49:33.003462] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:33.003610] [rosie] Selected event +!recharge[source(self)]
+[08:49:33.003642] intention 349: 
+[08:49:33.003670]     +batteryLevel(3.075)[device(arduino1),source(percept)] <- ... !recharge / {L=3.075}
+[08:49:33.003695] 
+[08:49:33.003720] [rosie] Selected intention intention 333: 
+[08:49:33.003745]     +batteryLevel(5.699)[device(arduino1),source(percept)] <- . / {L=5.699}
+[08:49:33.003773] 
+[08:49:33.003799] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:33.003825] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(5.699)[device(arduino1),source(percept)] unif={L=5.699}
+[08:49:33.003852] [rosie] Start sense
+[08:49:33.003878] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:33.003906] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:33.003939] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:33.003965] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:33.003990] [rosie] Selected intention intention 369: 
+[08:49:33.004015]     +batteryLevel(0)[device(arduino1),source(percept)] <- ... .print("Stopping cleaning. Battery Level=",L); !recharge / {L=0}
+[08:49:33.004040] 
+[08:49:33.004065] [rosie] Stopping cleaning. Battery Level=0
+[08:49:33.004091] [rosie] Start sense
+[08:49:33.203315] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:33.203460] [rosie] Selected intention intention 350: 
+[08:49:33.203492]     +batteryLevel(2.911)[device(arduino1),source(percept)] <- ... !recharge / {L=2.911}
+[08:49:33.203520] 
+[08:49:33.203547] [rosie] Start sense
+[08:49:33.203574] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:33.203604] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:33.903333] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:33.903467] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:33.903498] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:33.903525] [rosie] Selected event +!recharge[source(self)]
+[08:49:33.903550] intention 350: 
+[08:49:33.903576]     +batteryLevel(2.911)[device(arduino1),source(percept)] <- ... !recharge / {L=2.911}
+[08:49:33.903603] 
+[08:49:33.903631] [rosie] Selected intention intention 334: 
+[08:49:33.903657]     +batteryLevel(5.535)[device(arduino1),source(percept)] <- . / {L=5.535}
+[08:49:33.903684] 
+[08:49:33.903714] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(5.535)[device(arduino1),source(percept)] unif={L=5.535}
+[08:49:33.903741] [rosie] Start sense
+[08:49:34.003247] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:34.003310] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:34.003320] [rosie] Selected intention intention 351: 
+[08:49:34.003328]     +batteryLevel(2.747)[device(arduino1),source(percept)] <- ... !recharge / {L=2.747}
+[08:49:34.003336] 
+[08:49:34.003345] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:34.003353] [rosie] Start sense
+[08:49:34.503345] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:34.503471] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:34.503499] [rosie] Selected event +!recharge[source(self)]
+[08:49:34.503522] intention 351: 
+[08:49:34.503544]     +batteryLevel(2.747)[device(arduino1),source(percept)] <- ... !recharge / {L=2.747}
+[08:49:34.503566] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:34.503589] 
+[08:49:34.503612] [rosie] Selected intention intention 335: 
+[08:49:34.503637]     +batteryLevel(5.371)[device(arduino1),source(percept)] <- . / {L=5.371}
+[08:49:34.503660] 
+[08:49:34.503688] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(5.371)[device(arduino1),source(percept)] unif={L=5.371}
+[08:49:34.503715] [rosie] Start sense
+[08:49:35.003251] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:35.003346] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:35.003368] [rosie] Selected intention intention 352: 
+[08:49:35.003385]     +batteryLevel(2.583)[device(arduino1),source(percept)] <- ... !recharge / {L=2.583}
+[08:49:35.003403] 
+[08:49:35.003420] [rosie] Start sense
+[08:49:35.003436] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:35.803309] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:35.803454] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:35.803487] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:35.803515] [rosie] Selected event +!recharge[source(self)]
+[08:49:35.803543] intention 352: 
+[08:49:35.803570]     +batteryLevel(2.583)[device(arduino1),source(percept)] <- ... !recharge / {L=2.583}
+[08:49:35.803600] 
+[08:49:35.803630] [rosie] Selected intention intention 353: 
+[08:49:35.803660]     +batteryLevel(2.419)[device(arduino1),source(percept)] <- ... !recharge / {L=2.419}
+[08:49:35.803689] 
+[08:49:35.803719] [rosie] Start sense
+[08:49:36.203415] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:36.203558] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:36.203591] [rosie] Selected event +!recharge[source(self)]
+[08:49:36.203619] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:36.203646] intention 353: 
+[08:49:36.203673]     +batteryLevel(2.419)[device(arduino1),source(percept)] <- ... !recharge / {L=2.419}
+[08:49:36.203701] 
+[08:49:36.203730] [rosie] Selected intention intention 336: 
+[08:49:36.203759]     +batteryLevel(5.207)[device(arduino1),source(percept)] <- . / {L=5.207}
+[08:49:36.203787] 
+[08:49:36.203821] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(5.207)[device(arduino1),source(percept)] unif={L=5.207}
+[08:49:36.203851] [rosie] Start sense
+[08:49:36.403442] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:36.403583] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:36.403614] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:36.403642] [rosie] Selected intention intention 337: 
+[08:49:36.403670]     +batteryLevel(5.043)[device(arduino1),source(percept)] <- . / {L=5.043}
+[08:49:36.403697] 
+[08:49:36.403731] [rosie] Returning from IM p__6[source(self),url("file:src/agt/rosie.asl")], te=+batteryLevel(5.043)[device(arduino1),source(percept)] unif={L=5.043}
+[08:49:36.403761] [rosie] Start sense
+[08:49:37.103395] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:37.103521] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:37.103550] [rosie] Selected intention intention 355: 
+[08:49:37.103576] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:37.103599]     +batteryLevel(2.255)[device(arduino1),source(percept)] <- ... !recharge / {L=2.255}
+[08:49:37.103623] 
+[08:49:37.103649] [rosie] Start sense
+[08:49:37.103675] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:37.103701] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:37.103728] [rosie] Selected event +!recharge[source(self)]
+[08:49:37.103754] intention 355: 
+[08:49:37.103781]     +batteryLevel(2.255)[device(arduino1),source(percept)] <- ... !recharge / {L=2.255}
+[08:49:37.103807] 
+[08:49:37.103831] [rosie] Selected intention intention 354: 
+[08:49:37.103856]     +!cleanBedroom[source(self)] <- ... !!cleanBedroom / {}
+[08:49:37.103883] 
+[08:49:37.103910] [rosie] Returning from IM p__2[source(self),url("file:src/agt/rosie.asl")], te=+!cleanBedroom[source(self)] unif={}
+[08:49:37.103936] [rosie] Start sense
+[08:49:37.103963] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:37.803250] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:37.803388] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:37.803415] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:37.803437] [rosie] Selected event +!cleanBedroom[source(self)]
+[08:49:37.803457] [rosie] Selected intention intention 356: 
+[08:49:37.803477]     +batteryLevel(2.091)[device(arduino1),source(percept)] <- ... !recharge / {L=2.091}
+[08:49:37.803500] 
+[08:49:37.803522] [rosie] Start sense
+[08:49:37.903400] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:37.903524] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:37.903551] [rosie] Selected event +!recharge[source(self)]
+[08:49:37.903574] intention 356: 
+[08:49:37.903598]     +batteryLevel(2.091)[device(arduino1),source(percept)] <- ... !recharge / {L=2.091}
+[08:49:37.903621] 
+[08:49:37.903645] [rosie] Selected intention intention 338: 
+[08:49:37.903670]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:37.903694]     +batteryLevel(4.879)[device(arduino1),source(percept)] <- ... !recharge / {L=4.879}
+[08:49:37.903719] 
+[08:49:37.903744] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:37.903767] [rosie] Start sense
+[08:49:38.803452] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:38.803609] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:38.803640] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:38.803666] [rosie] Selected intention intention 357: 
+[08:49:38.803691]     +batteryLevel(1.927)[device(arduino1),source(percept)] <- ... !recharge / {L=1.927}
+[08:49:38.803716] 
+[08:49:38.803746] [rosie] Start sense
+[08:49:38.903423] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:38.903567] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:38.903599] [rosie] Selected event +!recharge[source(self)]
+[08:49:38.903626] intention 357: 
+[08:49:38.903654]     +batteryLevel(1.927)[device(arduino1),source(percept)] <- ... !recharge / {L=1.927}
+[08:49:38.903681] 
+[08:49:38.903710] [rosie] Selected intention intention 339: 
+[08:49:38.903742]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:38.903771]     +batteryLevel(4.715)[device(arduino1),source(percept)] <- ... !recharge / {L=4.715}
+[08:49:38.903799] 
+[08:49:38.903831] [rosie] Start sense
+[08:49:38.903859] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:39.503364] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:39.503497] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:39.503530] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:39.503559] [rosie] Selected intention intention 358: 
+[08:49:39.503585]     +batteryLevel(1.763)[device(arduino1),source(percept)] <- ... !recharge / {L=1.763}
+[08:49:39.503613] 
+[08:49:39.503640] [rosie] Start sense
+[08:49:40.503458] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:40.503596] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:40.503626] [rosie] Selected event +!recharge[source(self)]
+[08:49:40.503652] intention 358: 
+[08:49:40.503678]     +batteryLevel(1.763)[device(arduino1),source(percept)] <- ... !recharge / {L=1.763}
+[08:49:40.503703] 
+[08:49:40.503729] [rosie] Selected intention intention 359: 
+[08:49:40.503756]     +batteryLevel(1.599)[device(arduino1),source(percept)] <- ... !recharge / {L=1.599}
+[08:49:40.503783] 
+[08:49:40.503810] [rosie] Start sense
+[08:49:40.503838] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:41.103404] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:41.103548] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:41.103580] [rosie] Selected event +!recharge[source(self)]
+[08:49:41.103607] intention 359: 
+[08:49:41.103635]     +batteryLevel(1.599)[device(arduino1),source(percept)] <- ... !recharge / {L=1.599}
+[08:49:41.103663] 
+[08:49:41.103691] [rosie] Selected intention intention 340: 
+[08:49:41.103718]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:41.103748]     +batteryLevel(4.551)[device(arduino1),source(percept)] <- ... !recharge / {L=4.551}
+[08:49:41.103776] 
+[08:49:41.103804] [rosie] Start sense
+[08:49:41.103836] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:41.203439] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:41.203575] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:41.203603] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:41.203628] [rosie] Selected intention intention 360: 
+[08:49:41.203651]     +batteryLevel(1.435)[device(arduino1),source(percept)] <- ... !recharge / {L=1.435}
+[08:49:41.203674] 
+[08:49:41.203697] [rosie] Start sense
+[08:49:42.003613] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:42.003750] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:42.003783] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:42.003812] [rosie] Selected event +!recharge[source(self)]
+[08:49:42.003838] intention 360: 
+[08:49:42.003865]     +batteryLevel(1.435)[device(arduino1),source(percept)] <- ... !recharge / {L=1.435}
+[08:49:42.003891] 
+[08:49:42.003923] [rosie] Selected intention intention 361: 
+[08:49:42.003950]     +batteryLevel(1.271)[device(arduino1),source(percept)] <- ... !recharge / {L=1.271}
+[08:49:42.003978] 
+[08:49:42.004008] [rosie] Start sense
+[08:49:42.603418] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:42.603549] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:42.603579] [rosie] Selected event +!recharge[source(self)]
+[08:49:42.603604] intention 361: 
+[08:49:42.603628]     +batteryLevel(1.271)[device(arduino1),source(percept)] <- ... !recharge / {L=1.271}
+[08:49:42.603652] 
+[08:49:42.603682] [rosie] Selected intention intention 341: 
+[08:49:42.603708]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:42.603733]     +batteryLevel(4.387)[device(arduino1),source(percept)] <- ... !recharge / {L=4.387}
+[08:49:42.603759] 
+[08:49:42.603786] [rosie] Start sense
+[08:49:42.603813] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:43.303340] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:43.303469] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:43.303499] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:43.303525] [rosie] Selected intention intention 362: 
+[08:49:43.303550]     +batteryLevel(1.107)[device(arduino1),source(percept)] <- ... !recharge / {L=1.107}
+[08:49:43.303575] 
+[08:49:43.303600] [rosie] Start sense
+[08:49:43.703435] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:43.703571] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:43.703604] [rosie] Selected event +!recharge[source(self)]
+[08:49:43.703633] intention 362: 
+[08:49:43.703660]     +batteryLevel(1.107)[device(arduino1),source(percept)] <- ... !recharge / {L=1.107}
+[08:49:43.703685] 
+[08:49:43.703711] [rosie] Selected intention intention 342: 
+[08:49:43.703738]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:43.703768]     +batteryLevel(4.223)[device(arduino1),source(percept)] <- ... !recharge / {L=4.223}
+[08:49:43.703797] 
+[08:49:43.703826] [rosie] Start sense
+[08:49:43.703858] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:44.303434] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:44.303568] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:44.303596] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:44.303620] [rosie] Selected intention intention 363: 
+[08:49:44.303644]     +batteryLevel(0.943)[device(arduino1),source(percept)] <- ... !recharge / {L=0.943}
+[08:49:44.303667] 
+[08:49:44.303690] [rosie] Start sense
+[08:49:45.203399] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:45.203516] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:45.203540] [rosie] Selected event +!recharge[source(self)]
+[08:49:45.203560] intention 363: 
+[08:49:45.203579]     +batteryLevel(0.943)[device(arduino1),source(percept)] <- ... !recharge / {L=0.943}
+[08:49:45.203598] 
+[08:49:45.203617] [rosie] Selected intention intention 343: 
+[08:49:45.203636]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:45.203657]     +batteryLevel(4.059)[device(arduino1),source(percept)] <- ... !recharge / {L=4.059}
+[08:49:45.203676] 
+[08:49:45.203695] [rosie] Start sense
+[08:49:45.203716] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:45.203736] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:45.203756] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:45.203776] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:45.203796] [rosie] Selected intention intention 364: 
+[08:49:45.203818]     +batteryLevel(0.779)[device(arduino1),source(percept)] <- ... !recharge / {L=0.779}
+[08:49:45.203840] 
+[08:49:45.203864] [rosie] Start sense
+[08:49:45.203886] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:45.203907] [rosie] Selected event +!recharge[source(self)]
+[08:49:45.203929] intention 364: 
+[08:49:45.203949]     +batteryLevel(0.779)[device(arduino1),source(percept)] <- ... !recharge / {L=0.779}
+[08:49:45.203970] 
+[08:49:45.203991] [rosie] Selected intention intention 344: 
+[08:49:45.204012]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:45.204032]     +batteryLevel(3.895)[device(arduino1),source(percept)] <- ... !recharge / {L=3.895}
+[08:49:45.204053] 
+[08:49:45.204074] [rosie] Start sense
+[08:49:45.204095] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:46.103316] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:46.103446] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:46.103481] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:46.103510] [rosie] Selected intention intention 365: 
+[08:49:46.103538]     +batteryLevel(0.615)[device(arduino1),source(percept)] <- ... !recharge / {L=0.615}
+[08:49:46.103566] 
+[08:49:46.103593] [rosie] Start sense
+[08:49:46.203416] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:46.203556] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:46.203586] [rosie] Selected event +!recharge[source(self)]
+[08:49:46.203611] intention 365: 
+[08:49:46.203637]     +batteryLevel(0.615)[device(arduino1),source(percept)] <- ... !recharge / {L=0.615}
+[08:49:46.203662] 
+[08:49:46.203687] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:46.203714] [rosie] Selected intention intention 366: 
+[08:49:46.203742]     +batteryLevel(0.451)[device(arduino1),source(percept)] <- ... !recharge / {L=0.451}
+[08:49:46.203768] 
+[08:49:46.203794] [rosie] Start sense
+[08:49:46.803391] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:46.803527] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:46.803581] [rosie] Selected event +!recharge[source(self)]
+[08:49:46.803611] intention 366: 
+[08:49:46.803638]     +batteryLevel(0.451)[device(arduino1),source(percept)] <- ... !recharge / {L=0.451}
+[08:49:46.803664] 
+[08:49:46.803691] [rosie] Selected intention intention 345: 
+[08:49:46.803718]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:46.803746]     +batteryLevel(3.731)[device(arduino1),source(percept)] <- ... !recharge / {L=3.731}
+[08:49:46.803772] 
+[08:49:46.803798] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:46.803825] [rosie] Start sense
+[08:49:46.903410] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:46.903550] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:46.903579] [rosie] Selected intention intention 346: 
+[08:49:46.903604]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:46.903629]     +batteryLevel(3.567)[device(arduino1),source(percept)] <- ... !recharge / {L=3.567}
+[08:49:46.903654] 
+[08:49:46.903681] [rosie] Start sense
+[08:49:46.903707] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:47.703446] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:47.703584] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:47.703613] [rosie] Selected intention intention 367: 
+[08:49:47.703639]     +batteryLevel(0.287)[device(arduino1),source(percept)] <- ... !recharge / {L=0.287}
+[08:49:47.703663] 
+[08:49:47.703688] [rosie] Start sense
+[08:49:48.003351] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:48.003437] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:48.003453] [rosie] Selected event +!recharge[source(self)]
+[08:49:48.003467] intention 367: 
+[08:49:48.003480]     +batteryLevel(0.287)[device(arduino1),source(percept)] <- ... !recharge / {L=0.287}
+[08:49:48.003493] 
+[08:49:48.003506] [rosie] Selected intention intention 347: 
+[08:49:48.003519]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:48.003533]     +batteryLevel(3.403)[device(arduino1),source(percept)] <- ... !recharge / {L=3.403}
+[08:49:48.003547] 
+[08:49:48.003560] [rosie] Start sense
+[08:49:48.003574] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:48.403403] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:48.403540] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:48.403570] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:48.403595] [rosie] Selected intention intention 368: 
+[08:49:48.403619]     +batteryLevel(0.123)[device(arduino1),source(percept)] <- ... !recharge / {L=0.123}
+[08:49:48.403644] 
+[08:49:48.403668] [rosie] Start sense
+[08:49:48.703397] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:48.703530] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:48.703560] [rosie] Selected event +!recharge[source(self)]
+[08:49:48.703589] intention 368: 
+[08:49:48.703617]     +batteryLevel(0.123)[device(arduino1),source(percept)] <- ... !recharge / {L=0.123}
+[08:49:48.703644] 
+[08:49:48.703674] [rosie] Selected intention intention 348: 
+[08:49:48.703707]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:48.703737]     +batteryLevel(3.239)[device(arduino1),source(percept)] <- ... !recharge / {L=3.239}
+[08:49:48.703766] 
+[08:49:48.703795] [rosie] Start sense
+[08:49:48.703823] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:49.103390] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:49.103529] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:49.103561] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:49.103589] [rosie] Selected intention intention 349: 
+[08:49:49.103617]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:49.103644]     +batteryLevel(3.075)[device(arduino1),source(percept)] <- ... !recharge / {L=3.075}
+[08:49:49.103674] 
+[08:49:49.103703] [rosie] Start sense
+[08:49:49.103731] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:49.103758] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:49.103789] [rosie] Selected intention intention 369: 
+[08:49:49.103817]     +batteryLevel(0)[device(arduino1),source(percept)] <- ... !recharge / {L=0}
+[08:49:49.103847] 
+[08:49:49.103877] [rosie] Start sense
+[08:49:49.103906] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:50.003280] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:50.003353] [rosie] Selected event +!recharge[source(self)]
+[08:49:50.003366] intention 369: 
+[08:49:50.003376] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:50.003386]     +batteryLevel(0)[device(arduino1),source(percept)] <- ... !recharge / {L=0}
+[08:49:50.003397] 
+[08:49:50.003407] [rosie] Selected intention intention 350: 
+[08:49:50.003418]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:50.003430]     +batteryLevel(2.911)[device(arduino1),source(percept)] <- ... !recharge / {L=2.911}
+[08:49:50.003440] 
+[08:49:50.003451] [rosie] Start sense
+[08:49:50.103421] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:50.103566] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:50.103599] [rosie] Selected intention intention 351: 
+[08:49:50.103626]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:50.103652] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:50.103678]     +batteryLevel(2.747)[device(arduino1),source(percept)] <- ... !recharge / {L=2.747}
+[08:49:50.103715] 
+[08:49:50.103745] [rosie] Start sense
+[08:49:51.003428] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:51.003559] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:51.003588] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:51.003616] [rosie] Selected intention intention 352: 
+[08:49:51.003640]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:51.003664]     +batteryLevel(2.583)[device(arduino1),source(percept)] <- ... !recharge / {L=2.583}
+[08:49:51.003689] 
+[08:49:51.003715] [rosie] Start sense
+[08:49:51.503445] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:51.503581] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:51.503611] [rosie] Selected intention intention 353: 
+[08:49:51.503636]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:51.503660]     +batteryLevel(2.419)[device(arduino1),source(percept)] <- ... !recharge / {L=2.419}
+[08:49:51.503684] 
+[08:49:51.503708] [rosie] Start sense
+[08:49:51.503734] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:52.103399] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:52.103530] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:52.103559] [rosie] Selected intention intention 355: 
+[08:49:52.103585]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:52.103610]     +batteryLevel(2.255)[device(arduino1),source(percept)] <- ... !recharge / {L=2.255}
+[08:49:52.103635] 
+[08:49:52.103662] [rosie] Start sense
+[08:49:52.103690] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:53.003347] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:53.003431] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:53.003448] [rosie] Selected intention intention 356: 
+[08:49:53.003462]     +!recharge[source(self)] <- ... .suspend(cleanBedroom); .stopMAS / {}
+[08:49:53.003475]     +batteryLevel(2.091)[device(arduino1),source(percept)] <- ... !recharge / {L=2.091}
+[08:49:53.003489] 
+[08:49:53.003502] [rosie] Start sense
+[08:49:53.003515] [EMASJasonROS] BEFORE PERCEIVE 
+[08:49:53.903284] [EMASJasonROS] Perceived: [batteryLevel(0)]
+[08:49:53.903406] [EMASJasonROS] AFTER PERCEIVE 
+[08:49:53.903434] [rosie] Selected intention intention 338: 
+[08:49:53.903457]     +!recharge[source(self)] <- ... .stopMAS / {}
+[08:49:53.903478]     +batteryLevel(4.879)[device(arduino1),source(percept)] <- ... !recharge / {L=4.879}
+[08:49:53.903499] 
+[08:49:53.903523] cartago.CartagoException: User not in workspace.
+[08:49:53.903546] 	at cartago.Workspace.quitAgent(Workspace.java:692)
+[08:49:53.903568] 	at cartago.AgentBody.quit(AgentBody.java:90)
+[08:49:53.903591] 	at cartago.AgentSession.closeSession(AgentSession.java:199)
+[08:49:53.903619] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[08:49:53.903643] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[08:49:53.903667] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[08:49:53.903690] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[08:49:53.903714] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[08:49:53.903737] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[08:49:53.903759] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[08:49:53.903782] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[08:49:53.903805] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[08:49:53.903828] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[08:49:53.903850] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[08:49:53.903873] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[08:49:53.903895] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[08:49:53.903918] cartago.ArtifactNotAvailableException
+[08:49:53.903940] 	at cartago.Workspace.lookupLocalArtifact(Workspace.java:956)
+[08:49:53.903963] 	at cartago.Workspace.lookupArtifact(Workspace.java:948)
+[08:49:53.903986] 	at cartago.Workspace.closeSession(Workspace.java:453)
+[08:49:53.904009] 	at cartago.AgentSession.closeSession(AgentSession.java:206)
+[08:49:53.904031] 	at jaca.CAgentArch.stop(CAgentArch.java:154)
+[08:49:53.904054] 	at jason.infra.local.LocalAgArch.stopAg(LocalAgArch.java:147)
+[08:49:53.904077] 	at jason.infra.local.RunLocalMAS.stopAgs(RunLocalMAS.java:899)
+[08:49:53.904100] 	at jacamo.infra.JaCaMoLauncher.finish(JaCaMoLauncher.java:318)
+[08:49:53.904123] 	at jason.infra.local.BaseRuntimeServices.stopMAS(BaseRuntimeServices.java:47)
+[08:49:53.904145] 	at jason.stdlib.stopMAS.execute(stopMAS.java:74)
+[08:49:53.904168] 	at jason.asSemantics.TransitionSystem.applyExecInt(TransitionSystem.java:943)
+[08:49:53.904191] 	at jason.asSemantics.TransitionSystem.applySemanticRuleAct(TransitionSystem.java:221)
+[08:49:53.904213] 	at jason.asSemantics.TransitionSystem.act(TransitionSystem.java:1734)
+[08:49:53.904236] 	at jason.infra.local.LocalAgArch.act(LocalAgArch.java:250)
+[08:49:53.904259] 	at jason.infra.local.LocalAgArch.reasoningCycle(LocalAgArch.java:261)
+[08:49:53.904282] 	at jason.infra.local.LocalAgArch.run(LocalAgArch.java:282)
+[08:49:53.904305] 	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+[08:49:53.904328] [rosie] I finished!
+[08:49:54.203272] 
+[08:49:54.203338] BUILD SUCCESSFUL in 10m 38s
+[08:49:54.203352] 2 actionable tasks: 1 executed, 1 up-to-date
+[08:49:54.531858] MAS Stopped!
+[08:49:54.531921] Stopping SimulIDE (PID: 5212)...
+[08:49:54.534577] 
+[08:49:54.534998] All 1 executions completed!

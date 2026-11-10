@@ -1,0 +1,232 @@
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+  top to bottom direction
+
+ skinparam classAttributeIconSize 0
+ skinparam packageStyle folder
+ skinparam linetype ortho
+ skinparam linetype ortho
+'  skinparam nodesep 60
+'  skinparam ranksep 80
+ skinparam nodesep 35
+skinparam ranksep 40
+
+package org{
+  package json{
+    class JSONObject
+  }
+}
+
+
+
+
+' ============================================================
+' JASON
+' ============================================================
+package jason {
+
+
+    package "asSemantics" {
+
+        class TransitionSystem {
+            + getAg() : Agent
+            + getC() : Circumstance
+            + updateEvents(e : Event) : void
+        }
+
+        class Circumstance {
+            + addEvent(e : Event) : void
+            + getEvents() : Queue<Event>
+            + getAllIntentions() : Iterator<Intention>
+        }
+
+        class Event {
+            + Event(t : Trigger)
+            + getTrigger() : Trigger
+        }
+
+        class Intention {
+            + iterator() : Iterator<IntendedMeans>
+        }
+
+        class IntendedMeans {
+            + getTrigger() : Trigger
+        }
+    }
+
+    package "asSyntax" {
+
+        class Trigger {
+            + Trigger(op : TEOperator, t : TEType, l : Literal)
+            + getLiteral() : Literal
+        }
+
+        class Literal
+    }
+
+    TransitionSystem --> Circumstance
+    Circumstance o-- "0..*" Event
+    Circumstance o-- "0..*" Intention
+
+    Event --> Trigger
+    Intention *-- "0..*" IntendedMeans
+    IntendedMeans --> Trigger
+    Trigger --> Literal
+}
+
+
+
+
+
+' ============================================================
+' JACAMO
+' ============================================================
+package jacamo {
+
+
+
+  package "infra" as pkg_infra {
+    class "JaCaMoAgArch" as JaCaMoAgArch {
+    }
+  }
+
+}
+
+' ============================================================
+' NECK
+' ============================================================
+
+package "neck" as pkg_neck {
+
+
+  class "Body" as Body {
+
+      - apparatus : neck.Apparatus[]
+      - bodyName : String
+
+      + Body(bodyName : String)
+
+      + act(actionTerm: Term, apparatusName: Atom): ApparatusResponse      
+      + attachApparatus(implementation : neck.Apparatus, apparatusName : String) : boolean
+      + detachApparatusByName(apparatusName : String) : boolean
+      + <color:orange><b>perceive(transitionSystem : TransitionSystem) : void</b></color>
+
+      - getApparatus(appName : Atom) : Apparatus
+      - getApparatusBySupportedAction(actionName: Term): Apparatus
+      - bodyPerceptionRevisionFunction(List<Literal> incoming) : List<Literal>
+      - removeOldPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+      - addNewPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+      - <color:red><b>bodyDesireRevisionFunction(transitionSystem : TransitionSystem, listOfDesires : List<Literal>) : void</b></color>
+      - <color:red><b>isSameDesire(desire : Literal, intention : Literal) : boolean</b></color>
+      - <color:red><b>isDesireAlreadyIntentioned(desire : Literal, intentions : Iterator<Intention>) : boolean</b></color>
+      - <color:red><b>isDesireAlreadyEvent(desire : Literal, events : Iterator<Event>) : boolean</b></color>
+
+  }
+
+  
+  Body .right.> TransitionSystem
+
+ 
+  
+  
+
+
+
+  abstract class "Apparatus" as Apparatus {
+
+      - apparatusName : String
+      - hwAppName : String
+      - hwAppID : Long
+      - interoceptions : List<Literal>
+      - exteroceptions : List<Literal>
+      - proprioceptions : List<Literal>
+      - supportedActions: Set<String>
+      - <color:red><b>desires : List<Literal></b></color>
+
+      # Apparatus()
+      {abstract} + act(actionTerm: Term): ApparatusResponse
+      + attach() : void
+      + detach() : void
+      + embody() : JSONObject
+      + <color:orange><b>sense() : void</b></color>
+
+      # init() : void
+      {abstract} # requestActions(): JSONObject
+      # requestPercepts() : JSONObject
+
+      + getAllPerceptions() : List<Literal>
+      + <color:red><b>getAllDesires() : List<Literal></b></color>
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+      + getHwAppName() : String
+      + getApparatusName() : String
+      + setApparatusName(apparatusName : String) : void
+      + supportsAction(actionName: String): boolean
+      - loadBodyActions(): void
+      - <color:red><b>loadDesires(apparatusResponse : JSONObject) : void</b></color>
+      
+      
+    }
+    
+    
+
+
+    package "defaults" as pkg_defaults {
+      class "SerialApparatus" as SerialApparatus {
+
+      - serialComm : neck.util.SerialComm
+
+      + SerialApparatus(address : String)
+
+      + act(actionTerm: Term): ApparatusResponse
+      + attach() : void
+      + detach() : void
+      + embody() : JSONObject
+      # requestActions() : JSONObject
+      + requestPercepts() : JSONObject
+
+      + getStatus() : boolean
+      + getConnectionStatus() : String
+      + getAddress() : String
+      
+      - request(message : String, args : Object[]) : JSONObject
+      - prepareRequest(message : String, args : Object[]) : JSONObject
+      - <color:orange><b>parseResponse(records : List<JSONObject>) : JSONObject</b></color>
+
+      }
+
+      
+    }
+
+  
+}
+
+
+
+JaCaMoAgArch "1" --> "0..1" Body 
+
+Body "1" o-- "1..*" Apparatus
+
+SerialApparatus --|> Apparatus
+
+JSONObject <..SerialApparatus
+
+' ============================================================
+' ORGANIZAÇÃO VISUAL
+' ============================================================
+
+' JaCaMo acima do NECK
+JaCaMoAgArch -[hidden]down- Body
+
+' Jason à direita do NECK
+Body -[hidden]right- TransitionSystem
+
+' Mantém a organização vertical interna do Jason
+TransitionSystem -[hidden]down- Circumstance
+@enduml

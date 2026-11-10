@@ -1,0 +1,103 @@
+@startuml
+
+top to bottom direction
+skinparam classAttributeIconSize 0
+skinparam packageStyle folder
+ skinparam linetype ortho
+ skinparam nodesep 25
+ skinparam ranksep 50
+ hide empty members
+
+package "neck2arduino" {
+    package "NECK" {
+        package "DSL" as NECK_DSL {
+
+            metaclass "Apparatus" as DSLApparatus <<macro>> {}
+            metaclass "Element" as DSLElement <<macro>> {}
+            
+            
+            metaclass "Trieb" as DSLTrieb <<macro>> {}
+
+
+            DSLApparatus "1" *-- "0..*" DSLElement
+            
+        }
+
+        package "CORE" as NECK_CPP {
+
+
+            class "TriebFn" as TriebFn <<typedef>> {
+                double (*)()
+            }
+
+            struct "TriebEntry" as TriebEntry {
+                + elementName : const char*
+                + triebName : const char*
+                + fn : TriebFn
+                + next : TriebEntry*
+            }
+
+
+
+            class "Apparatus" as Apparatus {
+                - _jslp : JSON_SLP
+                - _actions : ActionEntry*
+                - _percepts : PerceptionEntry*
+                - <color:red><b>_triebs : TriebEntry*</b></color>
+                - _sensings : SensingEntry*
+                - _behavings : BehavingEntry*
+                - _apparatusID : uint32_t
+                + Apparatus(name : const char*)
+                + name() : const char*
+                --
+                + {static} setPreparation(fn : PreparationFn) : void
+                + addAction(elementName : const char*, actionName : const char*, fn : ActionFn) : void
+                + addPerception(elementName : const char*, perceptName : const char*, type : PerceptionType, fn : PerceptionFn) : void
+                + addSensing(elementName : const char*, fn : SensingFn) : void
+                + addBehaving(elementName : const char*, fn : BehavingFn) : void
+                + <color:red><b>addTrieb(elementName : const char*, triebName : const char*, fn : TriebFn) : void</b></color>
+                
+                + {static} prepare() : void
+                + embody() : void
+                + bodyCycle() : void
+                + inhabitance() : void
+                + <color:orange><b>streamPercepts() : void</b></color>
+                + <color:red><b>streamTriebs() : void</b></color>
+                + streamActions(onlyElement : const char*) : void
+                + streamAction(action : String, element : String, args : NECKArgs) : void
+                
+                - perceive(entry : PerceptionEntry*) : PerceptReturn
+                - sendHeader(request : const char*, response : Response) : void
+                - sendActionResultJSON(elementName : const char*, actionName : const char*, response : Response) : void
+                - dispatchActionUnicast(elementName : const char*, actionName : const char*, args : const NECKArgs&) : Response
+                - dispatchActionBroadcast(actionName : const char*, args : const NECKArgs&) : bool
+                - <color:red><b>sendTriebJSON(elementName : const char*, triebName : const char*, drang : double) : void</b></color>
+            }
+
+
+            
+
+            
+        }
+
+        DSLApparatus ..down.> Apparatus
+        
+        
+    }
+
+    package "JsonOverSLP" {
+        class "JSON_SLP" as JSON_SLP {
+        }
+    }
+
+
+    DSLTrieb ..> DSLElement
+    DSLTrieb ..> TriebEntry
+
+    Apparatus "1" *-- "0..*" TriebEntry
+    TriebEntry --> TriebFn
+
+    Apparatus *-- JSON_SLP
+}
+
+@enduml

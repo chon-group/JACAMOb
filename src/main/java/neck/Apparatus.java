@@ -146,7 +146,7 @@ public abstract class Apparatus {
         if (jsonObject == null) {return;}
 
         this.hwAppName = jsonObject.optString("apparatus", "unknown");
-        this.hwAppID = jsonObject.optLong("apparatusID", 0L);
+        this.hwAppID = jsonObject.optLong("apptID", 0L);
 
         logger.fine("hwApparatusName: " + this.hwAppName+ " hwApparatusID: " + this.hwAppID);
 
@@ -331,7 +331,7 @@ public abstract class Apparatus {
         Term apparatusID;
 
         if (apparatusResponse.has("apparatus")
-                && apparatusResponse.has("apparatusID")) {
+                && apparatusResponse.has("apptID")) {
 
             apparatus =
                     neck.util.Util.stringToAtom(
@@ -340,7 +340,7 @@ public abstract class Apparatus {
 
             apparatusID =
                     ASSyntax.createNumber(
-                            apparatusResponse.getLong("apparatusID")
+                            apparatusResponse.getLong("apptID")
                     );
 
         } else {

@@ -1,0 +1,210 @@
+========================================
+Arquivo: log/experiment_10.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [20:14:10.778465] [rosie] Selected event +!startClean[source(self)]
+FIM: [20:23:45.775190] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 566
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1707
+ Seleções de eventos de crença: 1128
+ Seleções de eventos de objetivo: 579
+ Total de registros de avaliação de contexto: 1805
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1568
+ACT
+ Seleções de intenções: 1337
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_1.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [18:46:12.069997] [rosie] Selected event +!startClean[source(self)]
+FIM: [18:55:46.864983] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 566
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1706
+ Seleções de eventos de crença: 1128
+ Seleções de eventos de objetivo: 578
+ Total de registros de avaliação de contexto: 1805
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1568
+ACT
+ Seleções de intenções: 1335
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_2.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [18:55:58.290258] [rosie] Selected event +!startClean[source(self)]
+FIM: [19:05:33.385651] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 566
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1707
+ Seleções de eventos de crença: 1128
+ Seleções de eventos de objetivo: 579
+ Total de registros de avaliação de contexto: 1805
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1568
+ACT
+ Seleções de intenções: 1337
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_3.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [19:05:45.478452] [rosie] Selected event +!startClean[source(self)]
+FIM: [19:15:19.772476] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 565
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1703
+ Seleções de eventos de crença: 1125
+ Seleções de eventos de objetivo: 578
+ Total de registros de avaliação de contexto: 1802
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1565
+ACT
+ Seleções de intenções: 1335
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_4.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [19:15:31.440196] [rosie] Selected event +!startClean[source(self)]
+FIM: [19:25:06.330105] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 566
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1707
+ Seleções de eventos de crença: 1128
+ Seleções de eventos de objetivo: 579
+ Total de registros de avaliação de contexto: 1805
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1568
+ACT
+ Seleções de intenções: 1336
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_5.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [19:25:18.859986] [rosie] Selected event +!startClean[source(self)]
+FIM: [19:34:53.755571] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 565
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1705
+ Seleções de eventos de crença: 1126
+ Seleções de eventos de objetivo: 579
+ Total de registros de avaliação de contexto: 1802
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1565
+ACT
+ Seleções de intenções: 1336
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_6.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [19:35:04.215821] [rosie] Selected event +!startClean[source(self)]
+FIM: [19:44:39.506009] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 566
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1707
+ Seleções de eventos de crença: 1128
+ Seleções de eventos de objetivo: 579
+ Total de registros de avaliação de contexto: 1805
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1568
+ACT
+ Seleções de intenções: 1337
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_7.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [19:44:50.037050] [rosie] Selected event +!startClean[source(self)]
+FIM: [19:54:25.030868] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 566
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1707
+ Seleções de eventos de crença: 1128
+ Seleções de eventos de objetivo: 579
+ Total de registros de avaliação de contexto: 1805
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1568
+ACT
+ Seleções de intenções: 1337
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_8.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [19:54:38.450617] [rosie] Selected event +!startClean[source(self)]
+FIM: [20:04:12.443189] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 565
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1702
+ Seleções de eventos de crença: 1124
+ Seleções de eventos de objetivo: 578
+ Total de registros de avaliação de contexto: 1802
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1565
+ACT
+ Seleções de intenções: 1335
+
+RESULTADO: SUCESSO
+========================================
+Arquivo: log/experiment_9.log
+========================================
+TEMPO DE EXECUÇÃO
+INICIO: [20:04:25.022777] [rosie] Selected event +!startClean[source(self)]
+FIM: [20:13:59.518442] [rosie] I finished!
+
+SENSE
+ Eventos de adição de crença: 565
+ Eventos de adição de objetivo: 
+PLAN
+ Total de seleções de eventos: 1704
+ Seleções de eventos de crença: 1126
+ Seleções de eventos de objetivo: 578
+ Total de registros de avaliação de contexto: 1802
+ Avaliações de contexto com sucesso: 237
+ Avaliações de contexto com falha: 1565
+ACT
+ Seleções de intenções: 1335
+
+RESULTADO: SUCESSO

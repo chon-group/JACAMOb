@@ -1,0 +1,81 @@
+ 
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+@startuml
+
+
+actor Designer
+participant JaCaMo
+participant NECK
+participant Jason
+participant JaCa
+participant CArtAgO
+participant DEVICE
+
+activate DEVICE
+activate Jason
+
+== PERCEPÇÃO CORPORAL DO AGENTE ==
+        activate NECK
+        group neck.Body.perceive()           
+            NECK -> NECK : Apparatus.sense()
+            activate NECK
+            NECK -> DEVICE : Apparatus.requestPercepts()
+            activate DEVICE
+            DEVICE -> DEVICE : NECKApparatus.bodyCycle()
+            activate DEVICE
+            DEVICE -> DEVICE : NECKApparatus.streamPercepts()
+            activate DEVICE
+            return
+            
+            group #f19890 Instanciação dos Desejos Corporais
+                DEVICE -> DEVICE : NECKApparatus.streamTriebs()
+                activate DEVICE
+                DEVICE -> DEVICE : NECKApparatus.sendTriebJSON()
+                return
+
+                return
+                return
+                return
+
+                NECK -> NECK : SerialApparatus.parseResponse()
+                activate NECK
+                NECK -> NECK : Apparatus.loadDesires()
+                return
+            end
+
+            NECK -> NECK : Body.bodyPerceptionRevisionFuntion()
+            activate NECK
+            return
+
+
+            group #f19890 Revisão dos Desejos Corporais
+            NECK -> NECK : Body.bodyDesireRevisionFunction()
+            activate NECK
+            NECK -> Jason : Body.isDesireAlreadyIntentioned()
+            activate Jason
+            Jason -> Jason : asSemantics.Circumstance.getAllIntentions()
+            return
+            
+            NECK -> Jason : Body.isDesireAlreadyEvent()
+            activate Jason
+            Jason -> Jason : asSemantics.Circumstance.getEvents()
+            return
+
+            NECK -> Jason : new Event(new Trigger(add, achieve, desire))
+            activate Jason
+            Jason -> Jason : transitionSystem.updateEvents(ev);
+            return
+            end
+
+
+
+            
+
+        return
+        end
+@enduml
+

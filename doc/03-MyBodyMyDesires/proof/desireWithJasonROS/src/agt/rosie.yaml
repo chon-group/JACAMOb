@@ -1,0 +1,11 @@
+--- # Devices
+- device_id: arduino1
+  className: embedded.mas.bridges.jacamo.JSONWatcherDevice
+  microcontroller:
+      id: arduino1
+      className: Arduino4EmbeddedMas
+      serial: "/dev/ttyEmulatedPort0"
+      baudRate: 9600
+  serialActions:
+      - actionName: none
+        actuationName: NONE
