@@ -1,0 +1,12 @@
+gradle.beforeProject { project ->
+    project.pluginManager.withPlugin('java') {
+        project.repositories {
+            mavenCentral()
+            maven { url 'https://jitpack.io' }
+        }
+
+        project.dependencies {
+            add('implementation', 'com.github.chon-group:Javino:1.6.7')
+        }
+    }
+}

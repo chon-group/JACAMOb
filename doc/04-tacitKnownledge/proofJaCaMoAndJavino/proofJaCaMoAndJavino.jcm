@@ -1,0 +1,27 @@
+/*
+    proofJaCaMoAndJavino
+    ---------------------------
+
+    JaCaMo Application File
+
+    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
+
+    (see jacamo/doc/jcm.html for more information about what can be defined in this file)
+
+    JaCaMo 1.3.0
+    julho 27, 2026 - 19:23:17
+*/
+
+mas proofJaCaMoAndJavino {
+ agent rosie{
+  join: myBody
+  focus: myBody.duster
+  focus: myBody.battery
+ }
+
+ workspace myBody {
+  artifact duster     : myBody.Duster("/dev/ttyUSB0") 
+  artifact battery    : myBody.Battery("/dev/ttyEmulatedPort0") 
+ }
+
+}
