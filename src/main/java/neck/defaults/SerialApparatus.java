@@ -258,11 +258,11 @@ public class SerialApparatus extends Apparatus {
                 );
             }
 
-            if (record.has("apparatusID")) {
+            if (record.has("apptID")) {
 
                 meta.put(
-                        "apparatusID",
-                        record.get("apparatusID")
+                        "apptID",
+                        record.get("apptID")
                 );
             }
 

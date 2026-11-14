@@ -346,10 +346,14 @@ public abstract class Apparatus {
         } else {
 
             apparatus =
-                    neck.util.Util.stringToAtom("unknown");
+                    neck.util.Util.stringToAtom(
+                            hwAppName != null ? hwAppName : "unknown"
+                    );
 
             apparatusID =
-                    ASSyntax.createNumber(0);
+                    ASSyntax.createNumber(
+                            hwAppID != null ? hwAppID : 0L
+                    );
         }
 
         litINFO.addTerm(portStatus);
@@ -489,8 +493,8 @@ public abstract class Apparatus {
                         + " : "
                         + context
                         + " <- "
-                        + body
-                        + ".";
+                        + body.stripTrailing()
+                        + (body.stripTrailing().endsWith(".") ? "" : ".");
 
         try {
 

@@ -30,6 +30,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import neck.util.EmbodimentMonitor;
+
 /**
  * Runs MASProject using JaCaMo infrastructure.
  *
@@ -47,6 +49,8 @@ public class JaCaMoLauncher extends RunLocalMAS {
     }
 
     public static String defaultProjectFileName = "default.jcm";
+
+    private final EmbodimentMonitor embodimentMonitor = new EmbodimentMonitor();
 
     public static void main(String[] args) throws JasonException {
 
@@ -314,7 +318,8 @@ public class JaCaMoLauncher extends RunLocalMAS {
     }
 
     @Override
-    public void finish(int deadline, boolean stopJVM, int exitValue) {     
+    public void finish(int deadline, boolean stopJVM, int exitValue) {
+        embodimentMonitor.stop();
         stopAgs(deadline); // stop the agents before shutting down the platforms
         
         for (Platform p: platforms) {
@@ -358,7 +363,8 @@ public class JaCaMoLauncher extends RunLocalMAS {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }        
+        }
+        embodimentMonitor.start();
         super.start(); // start agents after platforms
     }
 

@@ -28,7 +28,7 @@ public class AttachApparatus extends DefaultInternalAction {
     protected void checkArguments(Term[] args) throws JasonException {
         super.checkArguments(args); // check number of arguments
 
-        /* .mybody.neckAttach("/dev/ttyUSB0") */
+        /* .myBody.attach("/dev/ttyUSB0") */
         if (args.length == 1 && args[0].isString()){
             this.appName = null;
             this.appAddress = (StringTerm) args[0];
@@ -37,7 +37,7 @@ public class AttachApparatus extends DefaultInternalAction {
             return;
         }
 
-        /* .mybody.neckAttach(apparatus1) */
+        /* .myBody.attach(apparatus1) */
         if (args.length == 1 && args[0].isAtom()){
             this.appName = args[0];
             this.appAddress = neck.util.Util.getPortAddressByApparatusName(this.appName);
@@ -46,7 +46,7 @@ public class AttachApparatus extends DefaultInternalAction {
             return;
         }
 
-        /* .mybody.neckAttach("/dev/ttyUSB0",Reply) */
+        /* .myBody.attach("/dev/ttyUSB0",Reply) */
         if (args.length == 2 && args[0].isString() && args[1].isVar()){
             this.appName = null;
             this.appAddress = (StringTerm) args[0];
@@ -55,7 +55,7 @@ public class AttachApparatus extends DefaultInternalAction {
             return;
         }
 
-        /* .mybody.neckAttach(apparatus1,Reply) */
+        /* .myBody.attach(apparatus1,Reply) */
         if (args.length == 2 && args[0].isAtom() && args[1].isVar()){
             this.appName = args[0];
             this.appAddress = neck.util.Util.getPortAddressByApparatusName(this.appName);
@@ -64,7 +64,7 @@ public class AttachApparatus extends DefaultInternalAction {
             return;
         }
 
-        /* .mybody.neckAttach(apparatus1,"/dev/ttyUSB0") */
+        /* .myBody.attach(apparatus1,"/dev/ttyUSB0") */
         if (args.length == 2 && args[0].isLiteral() && args[1].isString()){
             this.appName = args[0];
             this.appAddress = (StringTerm) args[1];
@@ -73,7 +73,7 @@ public class AttachApparatus extends DefaultInternalAction {
             return;
         }
 
-        /* .mybody.neckAttach(apparatus1,"/dev/ttyUSB0",force) */
+        /* .myBody.attach(apparatus1,"/dev/ttyUSB0",force) */
         if (args.length == 3 && args[0].isLiteral() && args[1].isString() && args[2].toString().equals("force")){
             this.appName = args[0];
             this.appAddress = (StringTerm) args[1];
@@ -83,7 +83,7 @@ public class AttachApparatus extends DefaultInternalAction {
         }
 
 
-        /* .mybody.neckAttach(apparatus1,"/dev/ttyUSB0",Reply) */
+        /* .myBody.attach(apparatus1,"/dev/ttyUSB0",Reply) */
         if (args.length == 3 && args[0].isLiteral() && args[1].isString() && args[2].isVar()){
             this.appName = args[0];
             this.appAddress = (StringTerm) args[1];
@@ -97,7 +97,6 @@ public class AttachApparatus extends DefaultInternalAction {
 
     @Override
     public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
-        neck.util.Trace.log("BDY");
         checkArguments(args);
 
         if(getAppAddressAsString()==null) return false;
