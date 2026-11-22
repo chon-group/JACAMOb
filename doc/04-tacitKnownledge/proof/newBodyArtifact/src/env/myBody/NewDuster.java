@@ -1,8 +1,9 @@
-
 package myBody;
 
 import group.chon.javino.Javino;
 import cartago.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NewDuster extends Artifact {
 
@@ -10,9 +11,10 @@ public class NewDuster extends Artifact {
     private String serialPort = "";
     private volatile boolean running = true;
 
+    private static final Pattern PORT_PATTERN =
+        Pattern.compile("port\\(([^,()]+),\\s*(on|off|timeout)\\);");
+
     void init(String port) {
-        defineObsProperty("temperature", 0.00);
-        defineObsProperty("direction", "unknown");
         defineObsProperty("serialPortStatus", "unknown");
 
         initJavino(port);
@@ -34,7 +36,7 @@ public class NewDuster extends Artifact {
         serialPort = port;
         javino = new Javino();
         javino.infoPortStatus(true);
-        javino.timeout(1000);
+        javino.timeout(3000);
     }
 
     private String requesting(String data) {
@@ -51,27 +53,17 @@ public class NewDuster extends Artifact {
     }
 
     @OPERATION
-    void turnLeftArm() {
-        if (!javino.sendCommand(serialPort, "left")) {
+    void moveLeft() {
+        if (!javino.sendCommand(serialPort, "MOVELEFT")) {
             failed("Could not communicate with new duster arm");
         }
-        //System.out.println("[ARTIFACT] TURN LEFT ARM");
     }
 
     @OPERATION
-    void turnRightArm() {
-        if (!javino.sendCommand(serialPort, "right")) {
+    void moveRight() {
+        if (!javino.sendCommand(serialPort, "MOVERIGHT")) {
             failed("Could not communicate with new duster arm");
         }
-        //System.out.println("[ARTIFACT] TURN RIGHT ARM");
-    }
-
-    @OPERATION
-    void stopArm() {
-        if (!javino.sendCommand(serialPort, "stop")) {
-            failed("Could not communicate with new duster arm");
-        }
-        //System.out.println("[ARTIFACT] STOP ARM");
     }
 
     private boolean isTimeout(String data) {
@@ -81,53 +73,14 @@ public class NewDuster extends Artifact {
     private void processPercepts(String data) {
         if (data == null) return;
 
-        String[] percepts = data.split(";");
+        Matcher matcher = PORT_PATTERN.matcher(data);
+        ObsProperty property = getObsProperty("serialPortStatus");
 
-        for (String percept : percepts) {
-            percept = percept.trim();
+        while (matcher.find()) {
+            String status = matcher.group(2);
 
-            if (percept.startsWith("direction(")
-                    && percept.endsWith(")")) {
-
-                String value = percept.substring(
-                    "direction(".length(),
-                    percept.length() - 1
-                );
-
-                getObsProperty("direction").updateValue(value);
-
-            } else if (percept.startsWith("temperature(")
-                    && percept.endsWith(")")) {
-
-                String value = percept.substring(
-                    "temperature(".length(),
-                    percept.length() - 1
-                );
-
-                try {
-                    getObsProperty("temperature").updateValue(
-                        Double.parseDouble(value)
-                    );
-                } catch (NumberFormatException ex) {
-                    System.out.println(
-                        "[ARTIFACT] Invalid temperature: " + value
-                    );
-                }
-
-            } else if (percept.startsWith("port(")
-                    && percept.endsWith(")")) {
-
-                String value = percept.substring(
-                    "port(".length(),
-                    percept.length() - 1
-                );
-
-                String[] args = value.split(",", 2);
-
-                if (args.length == 2) {
-                    getObsProperty("serialPortStatus")
-                        .updateValue(args[1].trim());
-                }
+            if (!status.equals(property.stringValue())) {
+                property.updateValue(status);
             }
         }
     }
@@ -142,6 +95,8 @@ public class NewDuster extends Artifact {
 
             if (!running) break;
 
+            processPercepts(data);
+
             if (isTimeout(data)) {
                 System.out.println(
                     "[JAVINO] Timeout. Reconnecting..."
@@ -152,11 +107,11 @@ public class NewDuster extends Artifact {
                 if (!running) break;
 
                 data = requesting("getPercepts");
+
+                if (!running) break;
+
+                processPercepts(data);
             }
-
-            if (!running) break;
-
-            processPercepts(data);
 
             await_time(200);
         }

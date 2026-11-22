@@ -20,8 +20,8 @@ mas proofJaCaMoAndJavino {
  }
 
  workspace myBody {
-  artifact duster     : myBody.Duster("/dev/ttyUSB0") 
-  artifact battery    : myBody.Battery("/dev/ttyEmulatedPort0") 
+  artifact duster     : myBody.Duster("/dev/ttyUSB1") 
+  artifact battery    : myBody.Battery("/dev/ttyUSB0") 
  }
 
 }

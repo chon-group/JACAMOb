@@ -14,10 +14,10 @@
 
 mas proofJACAMOb {
 
-    agent bob {
-   //   body:
-     //   apparatus duster : neck.defaults.SerialApparatus("/dev/ttyUSB0") 
-      //  apparatus battery : neck.defaults.SerialApparatus("/dev/ttyEmulatedPort0") 
+    agent rosie {
+      body:
+        apparatus duster : neck.defaults.SerialApparatus("/dev/ttyUSB1") 
+        apparatus battery : neck.defaults.SerialApparatus("/dev/ttyUSB0") 
     }
 
 

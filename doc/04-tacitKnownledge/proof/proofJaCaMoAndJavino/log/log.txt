@@ -1,0 +1,60 @@
+nilson@debian:~/chonGroup/JACAMOb/doc/04-tacitKnownledge/proof/proofJaCaMoAndJavino$ jacamo proofJaCaMoAndJavino.jcm 
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :buildJCMDeps
+reading from file proofJaCaMoAndJavino.jcm ...
+file proofJaCaMoAndJavino.jcm parsed successfully!
+
+JCM packages dependencies updated at .jcm-deps.gradle
+
+BUILD SUCCESSFUL in 565ms
+2 actionable tasks: 1 executed, 1 up-to-date
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :run
+Runtime Services (RTS) is running at 127.0.1.1:36169
+Agent mind inspector is running at http://127.0.1.1:3272
+CArtAgO Http Server running on http://127.0.1.1:3273
+[Cartago] Workspace myBody created.
+[Javino] Using version 1.6.7 https://javino.chon.group/
+[Cartago] artifact duster: myBody.Duster("/dev/ttyUSB1") at myBody created.
+[JAVINO] Starting: /dev/ttyUSB1
+[Javino] Using version 1.6.7 https://javino.chon.group/
+[Cartago] artifact battery: myBody.Battery("/dev/ttyUSB0") at myBody created.
+[BATTERY] Monitoring: /dev/ttyUSB0
+[rosie] join workspace /main/myBody: done
+[rosie] focusing on artifact duster (at workspace /main/myBody) using namespace default
+[rosie] focus on duster: done
+[rosie] focusing on artifact battery (at workspace /main/myBody) using namespace default
+[rosie] focus on battery: done
+[rosie] Cleaning Elroy's bedroom...
+[rosie] Recharged battery level: 100%
+[rosie] Sweeping...
+[rosie] Sweeping...
+[rosie] Sweeping...
+[rosie] Critical  battery level: 5%
+[rosie] GOING TO RECHARGING BASE
+[rosie] Suspending intention: sweep[source(self)]
+[rosie] Suspending intention: cleanElroyBedroom[source(self)]
+[rosie] Critical  battery level: 4%
+[rosie] done
+[JAVINO] Timeout. Reconnecting...
+[Javino] Error: I'm connecting to /dev/ttyUSB1 something went wrong. 
+[rosie] Artifact disconnected: duster
+[Javino] Using version 1.6.7 https://javino.chon.group/
+[JAVINO] Starting: /dev/ttyUSB1
+[rosie] Id=cobj_6
+[rosie] done
+[rosie] done
+[rosie] Recharged battery level: 99%
+[rosie] Resuming intention: sweep[source(self)]
+[rosie] sweepingWithNewArm
+[rosie] Resuming intention: cleanElroyBedroom[source(self)]
+[rosie] sweepingWithNewArm
+[rosie] sweepingWithNewArm
+[rosie] sweepingWithNewArm
+^Cnilson@debian:~/chonGroup/JACAMOb/doc/04-tacitKnownledge/proof/proofJaCaMoAndJavino$ 

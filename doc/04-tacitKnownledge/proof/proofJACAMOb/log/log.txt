@@ -1,0 +1,52 @@
+Starting the MAS!
+Runtime Services (RTS) is running at 127.0.1.1:35559
+Agent mind inspector is running at http://127.0.1.1:3272
+CArtAgO Http Server running on http://127.0.1.1:3273
+[rosie] Embodying...
+[rosie] Apparatus [duster] was attached!
+[rosie] Adding into plan Library: @p__11[apparatus(duster),source(self)] +!sweep : not (clean) <- .print(sweeping); .myBody.act(togglePower); .wait(1000); !sweep.
+[rosie] Apparatus [battery] was attached!
+[rosie] Cleaning Elroy's bedroom...
+[rosie] Battery Level=100
+[rosie] sweeping
+[rosie] Action togglePower replied EXECUTED
+[rosie] sweeping
+[rosie] Action togglePower replied EXECUTED
+[rosie] sweeping
+[rosie] Action togglePower replied EXECUTED
+[rosie] sweeping
+[rosie] Action togglePower replied EXECUTED
+[rosie] sweeping
+[rosie] Action togglePower replied EXECUTED
+[rosie] sweeping
+[rosie] Action togglePower replied EXECUTED
+[rosie] Critical battery level: 5%
+[rosie] GOING TO RECHARGING BASE
+[rosie] Suspending intention: sweep[source(self)]
+[rosie] Suspending intention: cleanElroyBedroom[source(self)]
+[NECK] ERROR with communication at /dev/ttyUSB1
+[rosie] Apparatus disconnected: duster
+[rosie] Apparatus [duster] is OFF
+@p__11[apparatus(duster),source(self)] +!sweep : not (clean) <- .print(sweeping); .myBody.act(togglePower); .wait(1000); !sweep.
+[rosie] Removing from plan Library p__11[apparatus(duster),source(self)]
+[rosie] Apparatus [duster] was detached!
+[NECK] Serial connected: /dev/ttyUSB1
+[rosie] Apparatus [dusterv2] was attached!
+[rosie] Adding into plan Library: @p__12[apparatus(dusterv2),source(self)] +!sweep : not (clean) <- .print(sweeping); .myBody.act(moveLeft); .myBody.act(moveRight); .wait(1000); !sweep.
+[rosie] Battery Level=96
+[rosie] Resuming intention: sweep[source(self)]
+[rosie] sweeping
+[rosie] Resuming intention: cleanElroyBedroom[source(self)]
+[rosie] Action moveLeft replied EXECUTED
+[rosie] Action moveRight replied EXECUTED
+[rosie] sweeping
+[rosie] Action moveLeft replied EXECUTED
+[rosie] Action moveRight replied EXECUTED
+[rosie] sweeping
+[rosie] Action moveLeft replied EXECUTED
+[rosie] Action moveRight replied EXECUTED
+[rosie] sweeping
+[rosie] Action moveLeft replied EXECUTED
+[rosie] Action moveRight replied EXECUTED
+[rosie] sweeping
+[rosie] Action moveLeft replied EXECUTED

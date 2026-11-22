@@ -1,4 +1,3 @@
-
 package myBody;
 
 import group.chon.javino.Javino;
@@ -11,10 +10,7 @@ public class Duster extends Artifact {
     private volatile boolean running = true;
 
     void init(String port) {
-        defineObsProperty("temperature", 0.00);
-        defineObsProperty("powerStatus", "unknown");
         defineObsProperty("serialPortStatus", "unknown");
-
         initJavino(port);
         execInternalOp("getBodyInfo");
     }
@@ -34,7 +30,7 @@ public class Duster extends Artifact {
         serialPort = port;
         javino = new Javino();
         javino.infoPortStatus(true);
-        javino.timeout(1000);
+        javino.timeout(3000);
     }
 
     private String requesting(String data) {
@@ -52,8 +48,8 @@ public class Duster extends Artifact {
 
     @OPERATION
     void togglePowerOperation() {
-        if (!javino.sendCommand(serialPort, "togglePower")) {
-            failed("Could not communicate with broom arm");
+        if (!javino.sendCommand(serialPort, "TOGGLEPOWER")) {
+            failed("Could not communicate with duster arm");
         }
     }
 
@@ -69,35 +65,7 @@ public class Duster extends Artifact {
         for (String percept : percepts) {
             percept = percept.trim();
 
-            if (percept.startsWith("powerStatus(")
-                    && percept.endsWith(")")) {
-
-                String value = percept.substring(
-                    "powerStatus(".length(),
-                    percept.length() - 1
-                );
-
-                getObsProperty("powerStatus").updateValue(value);
-
-            } else if (percept.startsWith("temperature(")
-                    && percept.endsWith(")")) {
-
-                String value = percept.substring(
-                    "temperature(".length(),
-                    percept.length() - 1
-                );
-
-                try {
-                    getObsProperty("temperature").updateValue(
-                        Double.parseDouble(value)
-                    );
-                } catch (NumberFormatException ex) {
-                    System.out.println(
-                        "[ARTIFACT] Invalid temperature: " + value
-                    );
-                }
-
-            } else if (percept.startsWith("port(")
+            if (percept.startsWith("port(")
                     && percept.endsWith(")")) {
 
                 String value = percept.substring(
@@ -108,8 +76,14 @@ public class Duster extends Artifact {
                 String[] args = value.split(",", 2);
 
                 if (args.length == 2) {
-                    getObsProperty("serialPortStatus")
-                        .updateValue(args[1].trim());
+                    String status = args[1].trim();
+
+                    ObsProperty property =
+                        getObsProperty("serialPortStatus");
+
+                    if (!status.equals(property.stringValue())) {
+                        property.updateValue(status);
+                    }
                 }
             }
         }
@@ -122,8 +96,9 @@ public class Duster extends Artifact {
         while (running) {
 
             String data = requesting("getPercepts");
-
             if (!running) break;
+
+            processPercepts(data);
 
             if (isTimeout(data)) {
                 System.out.println(
@@ -135,11 +110,11 @@ public class Duster extends Artifact {
                 if (!running) break;
 
                 data = requesting("getPercepts");
+
+                if (!running) break;
+
+                processPercepts(data);
             }
-
-            if (!running) break;
-
-            processPercepts(data);
 
             await_time(200);
         }

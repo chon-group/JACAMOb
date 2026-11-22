@@ -25,7 +25,7 @@ public class Battery extends Artifact {
         serialPort = port;
         javino = new Javino();
         javino.infoPortStatus(false);
-        javino.timeout(1000);
+        javino.timeout(2000);
     }
 
     private String requesting(String data) {

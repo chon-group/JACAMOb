@@ -1,0 +1,7 @@
+mas proofJaCaMoAndEJasonArch {
+
+  agent rosie{
+    ag-arch: EJasonArch
+  }
+
+}
