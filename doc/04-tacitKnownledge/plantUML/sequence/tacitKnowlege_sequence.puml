@@ -1,0 +1,135 @@
+ 
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+
+@startuml
+actor Designer
+participant JaCaMo
+participant Jason
+participant NECK
+participant JaCa
+participant CArtAgO
+participant DEVICE
+
+activate JaCaMo
+activate Jason
+activate NECK
+== CARREGAMENTO DO SISTEMA MULTIAGENTE ==
+
+    group #faf6f1 Instanciação da Dimensão dos Agentes
+
+        group #faf6f1 Instanciação Corporal dos Agentes
+
+            activate DEVICE
+            DEVICE -> DEVICE : Preparation()
+            DEVICE -> DEVICE : Serial.begin(115200bps)
+
+            JaCaMo -> NECK : infra.JaCaMoAgArch.embody()
+            activate NECK
+
+            NECK -> NECK : Body.attachApparatus()
+            activate NECK
+                NECK -> DEVICE : defaults.SerialApparatus.embody()
+                activate DEVICE
+                DEVICE -> DEVICE : NECKApparatus.embody()
+                return
+                group #f19890 Assimilação do Conhecimento Tácito
+                    NECK -> NECK : Apparatus.loadTacitKnowledge()
+                    activate NECK
+                    NECK -> DEVICE : defaults.SerialApparatus.requestKnowHow()
+                    activate DEVICE
+                    DEVICE -> DEVICE : NECKApparatus.streamKnowHow()
+                    return
+                    NECK -> NECK : defaults.SerialApparatus.parseResponse()
+                    return
+
+                    NECK -> NECK : Apparatus.addKnowHow()
+                    activate NECK
+
+                    NECK -> Jason : asSyntax.ASSyntax.parsePlan()
+                    activate Jason
+                    return
+
+                    
+
+                    NECK -> Jason : asSemantics.Agent.getPL().add()
+                    activate Jason
+                    return
+                    
+                    return
+                    return
+                end
+                return
+        end
+    end
+
+
+== INICIALIZAÇÃO DA EXECUÇÃO DO SISTEMA MULTIAGENTE ==
+
+    JaCaMo -> NECK : infra.JaCaMoLauncher.start()
+
+    group #f19890 Inicialização do Monitoramento Corporal
+        
+        NECK -> NECK : util.EmbodimentMonitor.start()
+        activate NECK
+        NECK -> NECK : Thread.start()
+        
+
+    DEVICE -> NECK : evento udev (add, Port)
+    activate NECK
+    NECK -> NECK : EmbodimentMonitor.processEvent()
+    NECK -> NECK : EmbodimentMonitor.notifyAgents()
+    NECK -> Jason : infra.local.LocalAgArch.broadcast()
+    activate Jason
+    return
+    
+    NECK --> NECK
+    deactivate NECK
+
+end
+
+== DESACOPLAMENTO CORPORAL DO AGENTE ==
+
+    group #faf6f1 jason.infra.local.LocalAgArch.reasoningCycle()
+
+        group #faf6f1 act
+        
+            group #f19890 Desacoplamento Corporal
+                Jason -> NECK : stdlib.myBody.dettach.execute()
+
+                NECK -> NECK : internalActions.DetachApparatus.execute()
+                activate NECK
+
+                group #f19890 Remoção do Conhecimento Tácito
+
+                    NECK -> NECK : Body.getPlansByApparatusName()
+                    activate NECK
+
+                    NECK -> NECK : Apparatus.getPlans()
+                    NECK -> Jason : asSemantics.Agent.getPL().remove()
+                    activate Jason
+                    return
+                    return
+
+                end
+
+                NECK -> NECK : Body.detachApparatusByName()
+                activate NECK
+
+                NECK -> NECK : defaults.SerialApparatus.detach()
+
+                return
+                return
+
+            end
+
+        end
+
+    end
+
+@enduml
+
+@enduml

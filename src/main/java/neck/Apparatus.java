@@ -22,7 +22,7 @@ public abstract class Apparatus {
 
     private final Logger logger;
 
-    private final List<Plan> apparatusPlans = new ArrayList<>();
+    private final List<Plan> tacitKnowledge = new ArrayList<>();
     private final List<Literal> interoceptions = new ArrayList<>();
     private final List<Literal> exteroceptions = new ArrayList<>();
     private final List<Literal> proprioceptions = new ArrayList<>();
@@ -410,117 +410,62 @@ public abstract class Apparatus {
        ============================================================ */
 
     public void loadTacitKnowledge() {
-
-        apparatusPlans.clear();
-
+        tacitKnowledge.clear();
         JSONObject jsonObject = requestKnowHow();
 
-        if (jsonObject == null
-                || !jsonObject.has("knowHow")) {
-            return;
-        }
+        if (jsonObject == null || !jsonObject.has("knowHow")) {return;}
 
-        JSONArray knowHow =
-                jsonObject.getJSONArray("knowHow");
+        JSONArray knowHow = jsonObject.getJSONArray("knowHow");
 
         for (int i = 0; i < knowHow.length(); i++) {
+            JSONObject skillObj = knowHow.getJSONObject(i);
 
-            JSONObject skillObj =
-                    knowHow.getJSONObject(i);
-
-            if (!skillObj.has("context")
-                    || !skillObj.has("skill")
-                    || !skillObj.has("plan")) {
+            if (!skillObj.has("context") || !skillObj.has("skill") || !skillObj.has("plan")) {
                 continue;
             }
 
-            String context =
-                    skillObj.isNull("context")
-                            ? null
-                            : skillObj.get("context").toString();
-
-            String trigger =
-                    skillObj.isNull("skill")
-                            ? null
-                            : skillObj.get("skill").toString();
-
-            String planBody =
-                    skillObj.isNull("plan")
-                            ? null
-                            : skillObj.get("plan").toString();
+            String trigger =  skillObj.isNull("skill")   ? null : skillObj.get("skill").toString();
+            String context =  skillObj.isNull("context") ? null : skillObj.get("context").toString();
+            String planBody = skillObj.isNull("plan")    ? null : skillObj.get("plan").toString();
 
             if ("FILE".equals(context)) {
-
+                //TacitKnowledge(trigger,"/tmp/fileAddress.asl");
                 // TODO load from file
-
             } else if ("URL".equals(context)) {
-
+                //TacitKnowledge(trigger,"https://chon.group/fileAddress.asl");
                 // TODO load from URL
-
             } else {
-
-                addPlan(
-                        trigger,
-                        context,
-                        planBody
-                );
+                //TacitKnowledge(trigger,context,planBody);
+                //TacitKnowledge(trigger,"belief(A) & A > 10",".print(planBody).");
+                addKnowHow(trigger,context,planBody);
             }
         }
     }
 
-
-    private void addPlan(
-            String trigger,
-            String context,
-            String body
-    ) {
-
-        if (context == null || context.isBlank()) {
-            context = "true";
-        }
-
-        if (body == null || body.isBlank()) {
-            body = "true";
-        }
-
-        if (trigger == null || trigger.isBlank()) {
+    private void addKnowHow(String trigger, String context, String body) {
+        if (context == null || context.isBlank())   {context = "true";}
+        if (body == null    || body.isBlank())      {body = "true";}
+        if (trigger == null || trigger.isBlank())   {
             logger.severe("BAD formatted skill: empty trigger");
             return;
         }
 
         String stringPlan =
-                "+!" + trigger
-                        + " : "
-                        + context
-                        + " <- "
-                        + body.stripTrailing()
-                        + (body.stripTrailing().endsWith(".") ? "" : ".");
+                "+!" + trigger + " : "
+                     + context + " <- "
+                     + body.stripTrailing() + (body.stripTrailing().endsWith(".") ? "" : ".");
 
         try {
-
-            Plan plan =
-                    ASSyntax.parsePlan(stringPlan);
-
+            Plan plan = ASSyntax.parsePlan(stringPlan);
             if (plan != null) {
-                apparatusPlans.add(plan);
-            }
-
+                tacitKnowledge.add(plan);}
         } catch (Exception ex) {
-
-            logger.severe(
-                    "BAD formatted Skill: "
-                            + stringPlan
-            );
+            logger.severe("BAD formatted Skill: "+ stringPlan);
         }
     }
 
-
     public Plan[] getPlans() {
-
-        if (apparatusPlans.isEmpty()) {
-            return null;
-        }
-
-        return apparatusPlans.toArray(new Plan[0]);
+        if (tacitKnowledge.isEmpty()) {return null;}
+        return tacitKnowledge.toArray(new Plan[0]);
     }
 }

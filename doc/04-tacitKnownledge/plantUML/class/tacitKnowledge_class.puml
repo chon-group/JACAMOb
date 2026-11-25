@@ -1,0 +1,431 @@
+/'  ************** INSTRUCTIONS ****************************************
+CLI:    sudo apt install graphviz plantuml; plantuml -tpdf arquivo.puml
+Online: https://www.planttext.com
+VSCode: https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml
+'/
+
+@startuml
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle folder
+skinparam linetype ortho
+skinparam nodesep 25
+skinparam ranksep 30
+
+hide empty members
+
+
+' ============================================================
+' JAVA
+' ============================================================
+
+
+package "java.lang" as pkg_java_lang {
+
+    interface Runnable {
+        + run() : void
+    }
+
+}
+
+
+' ============================================================
+' JACAMO
+' ============================================================
+
+package jacamo {
+
+    package "infra" as pkg_infra {
+
+        class "JaCaMoAgArch" as JaCaMoAgArch {
+     
+        }
+
+     
+
+        class "JaCaMoLauncher" as JaCaMoLauncher {
+
+            - <color:red><b>embodimentMonitor : EmbodimentMonitor</b></color>
+
+            {static} + getJaCaMoRunner() : JaCaMoLauncher
+
+            + <color:orange><b>start() : void</b></color>
+            + <color:orange><b>finish(deadline : int, stopJVM : boolean, exitValue : int) : void</b></color>
+
+        }
+
+        JaCaMoAgArch -[hidden]right- JaCaMoLauncher
+        
+
+    }
+
+}
+
+
+' ============================================================
+' NECK
+' ============================================================
+
+package "neck" as pkg_neck {
+
+
+
+
+    class "Body" as Body {
+
+        - apparatus : neck.Apparatus[]
+        - bodyName : String
+
+        + Body(bodyName : String)
+
+        + act(actionTerm : Term, apparatusName : Atom) : ApparatusResponse
+        + attachApparatus(implementation : neck.Apparatus, apparatusName : String) : boolean
+        + detachApparatusByName(apparatusName : String) : boolean
+        + perceive(transitionSystem : TransitionSystem) : void
+
+        + <color:red><b>getPlansByApparatusName(apparatusName : String) : Plan[]</b></color>
+        + <color:red><b>getApparatusNameByAddress(address : String) : String</b></color>
+
+        - getApparatus(appName : Atom) : Apparatus
+        - getApparatusBySupportedAction(actionName : Term) : Apparatus
+        - bodyPerceptionRevisionFunction(transitionSystem : TransitionSystem, listOfPerceptions : List<Literal>) : void
+        - removeOldPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+        - addNewPerceptions(List<Literal> bodyBeliefs, List<Literal> perceived, TransitionSystem ts) : void
+
+        - bodyDesireRevisionFunction(transitionSystem : TransitionSystem, listOfDesires : List<Literal>) : void
+        - isSameDesire(desire : Literal, intention : Literal) : boolean
+        - isDesireAlreadyIntentioned(desire : Literal, intentions : Iterator<Intention>) : boolean
+        - isDesireAlreadyEvent(desire : Literal, events : Iterator<Event>) : boolean
+
+    }
+
+
+    abstract class "Apparatus" as Apparatus {
+
+        - apparatusName : String
+        - hwAppName : String
+        - hwAppID : Long
+        - interoceptions : List<Literal>
+        - exteroceptions : List<Literal>
+        - proprioceptions : List<Literal>
+        - supportedActions : Set<String>
+        - desires : List<Literal>
+        - <color:red><b>tacitKnowledge : List<Plan></b></color>
+
+        # Apparatus()
+        {abstract} + act(actionTerm : Term) : ApparatusResponse
+        {abstract} + attach() : void
+        {abstract} + detach() : void
+        {abstract} + embody() : JSONObject
+        + sense() : void
+
+        # init() : void
+        {abstract} # requestActions() : JSONObject
+        {abstract} # requestPercepts() : JSONObject
+        {abstract} # <color:red><b>requestKnowHow() : JSONObject</b></color>
+
+        + getAllPerceptions() : List<Literal>
+        + getAllDesires() : List<Literal>
+        + getStatus() : boolean
+        + getConnectionStatus() : String
+        + getAddress() : String
+        + getHwAppName() : String
+        + getApparatusName() : String
+        + setApparatusName(apparatusName : String) : void
+        + supportsAction(actionName : String) : boolean
+
+        + <color:red><b>loadTacitKnowledge() : void</b></color>
+        + <color:red><b>getPlans() : Plan[]</b></color>
+
+        - loadBodyActions() : void
+        - loadDesires(apparatusResponse : JSONObject) : void
+        - <color:red><b>addKnowHow(trigger : String, context : String, body : String) : void</b></color>
+
+    }
+
+
+    ' ========================================================
+    ' NECK - INTERNAL ACTIONS
+    ' ========================================================
+
+    package "internalActions" as pkg_internalActions {
+
+        class "AttachApparatus" as AttachApparatus #FFDDDD {
+
+            - appName : Term
+            - appAddress : Term
+            - response : Term
+            - forceName : boolean
+
+            + getMinArgs() : int
+            + getMaxArgs() : int
+            # checkArguments(args : Term[]) : void
+            + execute(ts : TransitionSystem, un : Unifier, args : Term[]) : Object
+
+            - getAppAddressAsString() : String
+            {static} - currentAgtBody(ts : TransitionSystem) : Body
+
+        }
+
+
+        class "DetachApparatus" as DetachApparatus #FFDDDD {
+
+            - appName : Term
+            - appAddress : Term
+
+            + getMinArgs() : int
+            + getMaxArgs() : int
+            # checkArguments(args : Term[]) : void
+            + execute(ts : TransitionSystem, un : Unifier, args : Term[]) : Object
+
+            - getAppNameAsString() : String
+            - getAppAddressAsString() : String
+            {static} - currentAgtBody(ts : TransitionSystem) : Body
+
+        }
+
+        AttachApparatus -[hidden]down- DetachApparatus
+
+    }
+
+
+    ' ========================================================
+    ' NECK - UTIL
+    ' ========================================================
+
+    package "util" as pkg_util {
+
+        class "EmbodimentMonitor" as EmbodimentMonitor #FFDDDD {
+
+            + start() : void
+            + run() : void
+            + stop() : void
+
+            - notifyAgents(port : String) : void
+            - processEvent(event : Map<String,String>) : void
+            - broadcast(agentName : String, performative : String, content : Literal) : void
+            - createNeckAgent() : String
+            - stopNeckAgent(agentName : String) : void
+
+        }
+
+    }
+
+
+    ' ========================================================
+    ' NECK - DEFAULTS
+    ' ========================================================
+
+    package "defaults" as pkg_defaults {
+
+        class "SerialApparatus" as SerialApparatus {
+
+            - serialComm : neck.util.SerialComm
+
+            + SerialApparatus(address : String)
+
+            + act(actionTerm : Term) : ApparatusResponse
+            + attach() : void
+            + detach() : void
+            + embody() : JSONObject
+            + requestActions() : JSONObject
+            + requestPercepts() : JSONObject
+            + <color:red><b>requestKnowHow() : JSONObject</b></color>
+
+            + getStatus() : boolean
+            + getConnectionStatus() : String
+            + getAddress() : String
+            - request(message : String, args : Object[]) : JSONObject
+            - prepareRequest(message : String, args : Object[]) : JSONObject
+            - <color:orange><b>parseResponse(records : List<JSONObject>) : JSONObject</b></color>
+
+        }
+
+    }
+
+
+    ' ========================================================
+    ' RELACIONAMENTOS INTERNOS DO NECK
+    ' ========================================================
+
+    Body o-down- Apparatus
+
+    SerialApparatus -left-|> Apparatus
+
+    AttachApparatus .left.> Body
+    DetachApparatus .left.> Body
+
+    AttachApparatus .down.> SerialApparatus
+
+    ' Organização horizontal do NECK
+    Body -[hidden]right- AttachApparatus
+    AttachApparatus -[hidden]right- EmbodimentMonitor
+
+}
+
+
+' ============================================================
+' JASON
+' ============================================================
+
+package jason {
+
+    package "asSemantics" {
+
+        class TransitionSystem {
+            + getAg() : Agent
+        }
+
+        class Agent {
+            + getPL() : PlanLibrary
+        }
+
+        class PlanLibrary {
+            + add(p : Plan)
+            + remove(label : Literal)
+        }
+
+        TransitionSystem -down-> Agent
+        Agent -right-> PlanLibrary
+
+    }
+
+
+    package "asSyntax" {
+
+        class Plan {
+        }
+
+        class ASSyntax {
+            {static} + parsePlan(plan : String) : Plan
+        }
+
+        ASSyntax .right.> Plan
+
+    }
+
+
+    package "stdlib.myBody" {
+
+        class attach {
+        }
+
+        class detach {
+        }
+
+        attach -[hidden]right- detach
+
+    }
+
+
+    package "infra.local" {
+
+        class LocalAgArch {
+            + broadcast(message : Message) : void
+        }
+
+    }
+
+    PlanLibrary o-down- Plan
+
+    ' Organização horizontal dos pacotes do Jason
+    ASSyntax -[hidden]right- LocalAgArch
+    LocalAgArch -[hidden]right- attach
+    detach -[hidden]right- TransitionSystem
+
+}
+
+
+
+
+' ============================================================
+' JSON
+' ============================================================
+
+package org {
+
+    package json {
+
+        class JSONObject
+
+    }
+
+}
+
+
+' ============================================================
+' RELACIONAMENTOS - JACAMO
+' ============================================================
+
+JaCaMoAgArch "1" -down-> "0..1" Body
+
+JaCaMoLauncher "1" *-down- "1" EmbodimentMonitor
+
+
+' ============================================================
+' RELACIONAMENTOS - NECK
+' ============================================================
+
+Body .down.> TransitionSystem
+
+SerialApparatus .up.> JSONObject
+
+
+' ============================================================
+' CONHECIMENTO TÁCITO
+' ============================================================
+
+Apparatus "1" o-down-  Plan
+
+Apparatus .down.> ASSyntax 
+
+
+' ============================================================
+' AÇÕES INTERNAS
+' ============================================================
+
+attach -up-|> AttachApparatus
+detach -up-|> DetachApparatus
+
+AttachApparatus .down.> PlanLibrary  
+DetachApparatus .down.> PlanLibrary 
+
+
+' ============================================================
+' MONITORAMENTO CORPORAL
+' ============================================================
+
+EmbodimentMonitor .up.|> Runnable
+
+EmbodimentMonitor .up.> JaCaMoLauncher
+
+EmbodimentMonitor .down.> LocalAgArch
+
+
+' ============================================================
+' ORGANIZAÇÃO VISUAL
+' ============================================================
+
+' Pacotes superiores
+pkg_java_lang -[hidden]right- pkg_infra
+
+JSONObject -[hidden]right- JaCaMoAgArch
+JaCaMoAgArch -[hidden]right- JaCaMoLauncher
+JaCaMoLauncher -[hidden]right- Runnable
+
+JSONObject -[hidden]down- Body
+JaCaMoAgArch -[hidden]down- Body
+JaCaMoLauncher -[hidden]down- EmbodimentMonitor
+
+
+' Alinhamento dos pacotes inferiores
+Apparatus -[hidden]down- ASSyntax
+EmbodimentMonitor -[hidden]down- LocalAgArch
+
+DetachApparatus -[hidden]down- PlanLibrary
+
+
+
+@enduml

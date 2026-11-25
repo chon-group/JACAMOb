@@ -23,15 +23,11 @@ import java.util.logging.Logger;
 
 public class EmbodimentMonitor implements Runnable {
 
-    private static final Logger logger =
-            Logger.getLogger("NECK");
-
+    private static final Logger logger = Logger.getLogger("NECK");
     private volatile boolean running = false;
     private volatile Process process;
     private Thread thread;
-
-    private final Set<String> temporaryAgents =
-            ConcurrentHashMap.newKeySet();
+    private final Set<String> temporaryAgents = ConcurrentHashMap.newKeySet();
 
     private final ScheduledExecutorService scheduler =
             Executors.newSingleThreadScheduledExecutor(r -> {
@@ -42,23 +38,18 @@ public class EmbodimentMonitor implements Runnable {
 
     public synchronized void start() {
         if (running) return;
-
         running = true;
-
         thread = new Thread(this, "NECK-EmbodimentMonitor");
         thread.setDaemon(true);
         thread.start();
+        logger.log(Level.INFO,"EmbodimentMonitor STARTED");
     }
 
     private String createNeckAgent() throws Exception {
 
         JaCaMoLauncher launcher = JaCaMoLauncher.getJaCaMoRunner();
 
-        if (launcher == null) {
-            throw new IllegalStateException(
-                    "JaCaMoLauncher is not available."
-            );
-        }
+        if (launcher == null) {throw new IllegalStateException("JaCaMoLauncher is not available.");}
 
         RuntimeServices rt = launcher.getRuntimeServices();
 
@@ -72,9 +63,7 @@ public class EmbodimentMonitor implements Runnable {
                 null
         );
 
-        if ("system.not.running".equals(agentName)) {
-            throw new IllegalStateException("MAS is not running.");
-        }
+        if ("system.not.running".equals(agentName)) {throw new IllegalStateException("MAS is not running.");}
 
         temporaryAgents.add(agentName);
 

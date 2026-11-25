@@ -143,78 +143,11 @@ public class Body {
         return apparatus.act(actionTerm);
     }
 
-    private static class SrcApp {
+    /*private static class SrcApp {
         final String src;
         final String app;
         SrcApp(String src, String app) { this.src = src; this.app = app; }
-    }
-
-//    private List<SrcApp> extractSourcePairs(Literal l) {
-//        List<SrcApp> out = new ArrayList<>();
-//
-//        // pega TODAS as annotations e filtra source(...)
-//        for (Term annT : l.getAnnots()) {
-//            if (!(annT instanceof Literal ann)) continue;
-//
-//            if (!"source".equals(ann.getFunctor())) continue;
-//
-//            // source(Type,App)
-//            if (ann.getArity() >= 2) {
-//                String src = ann.getTerm(0).toString();
-//                String app = ann.getTerm(1).toString();
-//                out.add(new SrcApp(src, app));
-//                continue;
-//            }
-//
-//        }
-//
-//        return out;
-//    }
-
-//    private String baseKey(Literal l) {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(l.getFunctor()).append('(');
-//        for (int i = 0; i < l.getArity(); i++) {
-//            if (i > 0) sb.append(',');
-//            sb.append(l.getTerm(i).toString());
-//        }
-//        sb.append(')');
-//        return sb.toString();
-//    }
-
-//    private Literal literalFromKey(Literal template, String key) {
-//        // key:  "...#src=TYPE#app=APPARATUS"
-//        String src = extractBetween(key, "#src=", "#app=");
-//        String app = extractAfter(key, "#app=");
-//
-//        Literal out = (Literal) template.clone();
-//        out.clearAnnots();
-//
-//        // source(TYPE,APPARATUS)
-//        out.addAnnot(
-//                ASSyntax.createStructure(
-//                        "source",
-//                        ASSyntax.createAtom(src),
-//                        ASSyntax.createAtom(app)
-//                )
-//        );
-//        return out;
-//    }
-
-//    private String extractBetween(String s, String a, String b) {
-//        int ia = s.indexOf(a);
-//        if (ia < 0) return "";
-//        ia += a.length();
-//        int ib = s.indexOf(b, ia);
-//        if (ib < 0) return s.substring(ia);
-//        return s.substring(ia, ib);
-//    }
-//
-//    private String extractAfter(String s, String a) {
-//        int ia = s.indexOf(a);
-//        if (ia < 0) return "";
-//        return s.substring(ia + a.length());
-//    }
+    }*/
 
     public Plan[] getPlansByApparatusName(String apparatusName){
         if (apparatusName == null) return null;
@@ -243,6 +176,13 @@ public class Body {
             if(apparatus[i].supportsAction(neck.util.Util.getFunctor(actionName)))
                 return apparatus[i];
         }
+        return null;
+    }
+
+    public String getApparatusNameByAddress(String address) {
+        if (address == null) {return null;}
+        int idx = attachedAppAddress.indexOf(address);
+        if (idx >= 0) {return attachedAppName.get(idx);}
         return null;
     }
 

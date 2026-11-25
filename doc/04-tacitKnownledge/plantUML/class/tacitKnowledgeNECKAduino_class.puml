@@ -1,0 +1,122 @@
+@startuml
+
+top to bottom direction
+skinparam classAttributeIconSize 0
+skinparam packageStyle folder
+skinparam linetype ortho
+skinparam nodesep 25
+skinparam ranksep 50
+
+hide empty members
+
+package "neck2arduino" {
+
+    package "NECK" {
+
+        package "DSL" as NECK_DSL {
+
+            metaclass "Apparatus" as DSLApparatus <<macro>> {}
+
+            
+            metaclass "TacitKnowledge" as DSLTacitKnowledge <<macro>> #FFDDDD {}
+
+
+        
+
+            DSLApparatus "1" *-- "0..*" DSLTacitKnowledge
+
+        }
+
+
+        package "CORE" as NECK_CPP {
+
+
+            struct "TacitEntry" as TacitEntry #FFDDDD {
+                + skill : const char*
+                + context : const char*
+                + plan : const char*
+            }
+
+
+            class "Apparatus" as Apparatus {
+
+                - _jslp : JSON_SLP
+                - _actions : ActionEntry*
+                - _percepts : PerceptionEntry*
+                - _triebs : TriebEntry*
+                - _sensings : SensingEntry*
+                - _behavings : BehavingEntry*
+                - _apparatusID : uint32_t
+
+                + Apparatus(name : const char*)
+                + name() : const char*
+
+                --
+
+                + {static} setPreparation(fn : PreparationFn) : void
+                + addAction(elementName : const char*, actionName : const char*, fn : ActionFn) : void
+                + addPerception(elementName : const char*, perceptName : const char*, type : PerceptionType, fn : PerceptionFn) : void
+                + addSensing(elementName : const char*, fn : SensingFn) : void
+                + addBehaving(elementName : const char*, fn : BehavingFn) : void
+                + addTrieb(elementName : const char*, triebName : const char*, fn : TriebFn) : void
+
+                + {static} prepare() : void
+                + embody() : void
+                + bodyCycle() : void
+                + <color:orange><b>inhabitance() : void</b></color>
+
+                + streamPercepts() : void
+                + streamTriebs() : void
+                + streamActions(onlyElement : const char*) : void
+                + streamAction(action : String, element : String, args : NECKArgs) : void
+                + <color:red><b>streamKnowHow() : void</b></color>
+
+                - perceive(entry : PerceptionEntry*) : PerceptReturn
+                - sendHeader(request : const char*, response : Response) : void
+                - sendActionResultJSON(elementName : const char*, actionName : const char*, response : Response) : void
+                - dispatchActionUnicast(elementName : const char*, actionName : const char*, args : const NECKArgs&) : Response
+                - dispatchActionBroadcast(actionName : const char*, args : const NECKArgs&) : bool
+                - sendTriebJSON(elementName : const char*, triebName : const char*, drang : double) : void
+
+                {static} - <color:red><b>copyPROGMEM(source : const char*, output : char*, outputSize : size_t) : void</b></color>
+
+            }
+
+        }
+
+
+        DSLApparatus ..down.> Apparatus
+
+    }
+
+
+    package "JsonOverSLP" {
+
+        class "JSON_SLP" as JSON_SLP {
+        }
+
+    }
+
+
+
+
+    ' ========================================================
+    ' CONHECIMENTO TÁCITO
+    ' ========================================================
+
+    DSLTacitKnowledge ..> TacitEntry
+
+    Apparatus ..> TacitEntry : streamKnowHow()
+
+
+    ' ========================================================
+    ' COMUNICAÇÃO
+    ' ========================================================
+
+    Apparatus *-- JSON_SLP
+
+
+
+}
+
+@enduml
